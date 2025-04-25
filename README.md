@@ -12,8 +12,10 @@ You have a certain set of Ingredients and want to know which recipes you can coo
 - Adding of Ingredients to Recipe-Search, to Fridge (& App)
 - Searching for Recipes
 - When Recipe cooked, remove Ingredients automatically
-- (Scanning Receipt)
 - Adding Recipe to Favourites
+- Near-Search, what do I need to buy to complete Recipe
+- Simple Server to get Recipes
+- Thermomix-Function (Step by step Cooking of selected Recipe)
 
 ## Screens
 - Recipe-Overview / List
@@ -22,4 +24,4 @@ You have a certain set of Ingredients and want to know which recipes you can coo
 - My-Fridge-Screen
 
 ## Nice to have
-- Simple Server to save created Recipes
+- (Scanning Receipt)
