@@ -20,3 +20,6 @@ You have a certain set of Ingredients and want to know which recipes you can coo
 - Currently Active/Cooking Recipe
 - Recipe-Search
 - My-Fridge-Screen
+
+## Nice to have
+- Simple Server to save created Recipes
