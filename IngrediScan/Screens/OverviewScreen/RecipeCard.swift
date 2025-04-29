@@ -21,19 +21,19 @@ struct RecipeCard: View {
             ZStack(alignment: .center) {
                 Image(recipe.image)
                     .resizable()
-                    .frame(width: .infinity, height: 200)
+                    .frame(width: .infinity)
                     .aspectRatio(contentMode: .fit)
-                Text(recipe.name)
+                Text(recipe.category)
                     .font(.largeTitle .smallCaps() .bold())
                     .foregroundStyle(Color.white)
                     .shadow(color: Color.black, radius: 2, x: 0, y: 2)
             }
             .cornerRadius(15)
-            .padding()
+            .padding(.horizontal)
         }
     }
 }
 
 #Preview {
-    RecipeCard(recipe: Recipe(name: "Pasta", image: "pasta"))
+    RecipeCard(recipe: PizzaMock())
 }

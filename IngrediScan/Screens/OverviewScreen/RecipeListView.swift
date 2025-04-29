@@ -20,7 +20,7 @@ struct RecipeListView: View {
     var body: some View {
         
             ScrollView {
-                Grid( horizontalSpacing: 20, verticalSpacing: 20) {
+                Grid( horizontalSpacing: 8, verticalSpacing: 20) {
                     ForEach(recipes) { recipe in
                         GridRow {
                             RecipeCard(recipe: recipe)
@@ -32,5 +32,5 @@ struct RecipeListView: View {
 }
 
 #Preview {
-    RecipeListView(recipes: [Recipe(name: "Pasta", image: "pasta")])
+    RecipeListView(recipes: [BurgerMock(), PizzaMock(), BurgerMock()])
 }
