@@ -35,16 +35,6 @@
 			path = IngrediScan;
 			sourceTree = "<group>";
 		};
-		D53566122DBB784B007255D1 /* IngrediScanTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = IngrediScanTests;
-			sourceTree = "<group>";
-		};
-		D535661C2DBB784B007255D1 /* IngrediScanUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = IngrediScanUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				D53566042DBB7849007255D1 /* IngrediScan */,
-				D53566122DBB784B007255D1 /* IngrediScanTests */,
-				D535661C2DBB784B007255D1 /* IngrediScanUITests */,
 				D53566032DBB7849007255D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				D53566112DBB784B007255D1 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D53566122DBB784B007255D1 /* IngrediScanTests */,
-			);
 			name = IngrediScanTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				D535661B2DBB784B007255D1 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D535661C2DBB784B007255D1 /* IngrediScanUITests */,
 			);
 			name = IngrediScanUITests;
 			packageProductDependencies = (
@@ -395,6 +377,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W767S6Q27S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -422,6 +405,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W767S6Q27S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
