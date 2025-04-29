@@ -29,6 +29,7 @@ struct CookingView: View {
                     .fontWeight(.bold)
                     .padding()
                 
+                CookingStatistics()
                 IngredientList()
             
                 // Cooking Section
