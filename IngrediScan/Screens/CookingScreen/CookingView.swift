@@ -8,6 +8,7 @@ struct CookingView: View {
     }
     
     var body: some View {
+        ScrollView {
         VStack(spacing: 0) {
             // Image
             Image(recipe.image)
@@ -47,12 +48,21 @@ struct CookingView: View {
                     .cornerRadius(12)
                 }
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Teig anmischen")
-                        .font(.subheadline .bold())
+                    Text("Italienischer Pizzateig")
+                        .font(.title .bold())
+                    Text("Im lauwarmen Wasser und dem Olivenöl die Hefe mit Salz und Zucker auflösen. Dann das Mehl hinzufügen und einen glatten Teig kneten. Den Teig eine halbe Stunde an einem warmen Ort gehen lassen, zusammenkneten und abgedeckt im Kühlschrank 2 Tage ruhen lassen. Nun kann man vom Teig eine herrlich frische Pizza herstellen. Der Teig reicht für 6 runde Pizzen.")
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Anmerkungen")
+                            .font(.subheadline .smallCaps())
+                            .foregroundColor(.gray)
+                        Text("Belegen kann man diese nach Belieben, natürlich sollten die Tomatensauce und der Käse nicht fehlen. Ich habe sie schon auf einem Blech sowie auf verschiedenen runden Pizzaformen gebacken. Sie wird immer supertoll und schmeckt original wie von meinem Lieblingsitaliener. Wenn man die Menge entsprechend reduzieren möchte, ist das auch kein Problem. Die Menge der Hefe habe ich jedoch immer bei 40 g gelassen. Am besten gelingt die Pizza, wenn man den Ofen sehr gut auf der höchstmöglichen Temperatur vorheizt!")
+                            .multilineTextAlignment(.leading)
+                    }
                 }
             }
             .padding()
             Spacer()
+        }
         }
         .edgesIgnoringSafeArea(.top)
     }
