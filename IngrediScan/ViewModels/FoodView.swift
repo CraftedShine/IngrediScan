@@ -2,7 +2,7 @@
 //  FoodView.swift
 //  IngrediScan
 //
-//  Created by Faramir on 27.04.25.
+//  Created by Fynn Schotten on 27.04.25.
 //
 
 import SwiftUI
