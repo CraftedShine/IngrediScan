@@ -9,7 +9,22 @@ import SwiftUI
 
 struct IngredientList: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Ingredients")
+                .font(.subheadline .smallCaps())
+                .foregroundColor(.gray)
+                .padding(.leading)
+            
+            // Ingredients List
+            List {
+                Text("Tomaten 2 Stk.")
+                Text("Mehl 200g")
+                Text("Backpulver 2EL")
+            }
+            .listStyle(.plain)
+            .scrollDisabled(true)
+            .frame(minHeight: 150)
+        }
     }
 }
 
