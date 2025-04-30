@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     private let recipes: [Recipe] = [BurgerMock(), PizzaMock()]
-    @State private var selectedRecipe: Recipe?
     @State private var selectedTab: Int = 0
     
     var body: some View {
