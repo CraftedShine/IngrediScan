@@ -52,7 +52,7 @@ struct YourIngredientList: View {
                 }
                 .confirmationDialog("Clear List?", isPresented: $showingConfirmation, titleVisibility: .visible) {
                             Button(role: .destructive) {
-                                print("Delete tapped")
+                                ingredients.removeAll()
                             } label: {
                                 Label("Clear", systemImage: "trash")
                             }
