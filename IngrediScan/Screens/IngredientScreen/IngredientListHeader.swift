@@ -9,9 +9,13 @@ import SwiftUI
 
 struct IngredientListHeader: View {
     var body: some View {
-        HStack (alignment: .center) {
+        HStack {
             Text("Ingredient")
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .leading)
             Text("Amount")
+                .bold()
+                .frame(width: .infinity, alignment: .trailing)
         }
     }
 }

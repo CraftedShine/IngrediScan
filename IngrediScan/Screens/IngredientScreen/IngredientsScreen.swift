@@ -19,33 +19,7 @@ struct IngredientsScreen: View {
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                List {
-                    // Tabellenkopf
-                    HStack {
-                        Text("Ingredient")
-                            .bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Amount")
-                            .bold()
-                            .frame(width: .infinity, alignment: .trailing)
-                    }
-                    
-                    ForEach(ingredients) { ingredient in
-                        HStack {
-                            Text(ingredient.name)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("\(String(ingredient.amount)) \(String(ingredient.unit))")
-                                .frame(width: .infinity, alignment: .trailing)
-                        }
-                    }
-                }
-                .navigationTitle("Your Ingredients")
-                .searchable(text: $selectedIngredient)
-                .onSubmit(of: .search) {
-                    ingredients.append(Ingredient(name: selectedIngredient, amount: 1, unit: "Stk"))
-                }
-            }
+            YourIngredientList()
         }
     }
 }
