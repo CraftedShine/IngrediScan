@@ -9,13 +9,13 @@ struct CookingScreen: View {
     
     var body: some View {
         ScrollView {
-            Image(recipe.image)
+            Image(self.recipe.image)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 250)
                 .clipped()
                 .overlay(
-                    Text(recipe.name)
+                    Text(self.recipe.name)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -24,25 +24,33 @@ struct CookingScreen: View {
             
             // Preparation Title
             VStack(alignment: .leading, spacing: 8) {
-                Text("Zubereitung")
-                    .font(.title)
-                    .fontWeight(.bold)
+                CookingStatistics(recipe: self.recipe)
                     .padding()
                 
-                CookingStatistics()
-                IngredientList()
+                Divider()
+                
+                IngredientList(recipe: self.recipe)
+                    .padding()
+                
+                Divider()
+                    .padding(.bottom)
             
                 // Cooking Section
                 VStack(alignment: .leading, spacing: 8) {
-                    CookingContent()
-                        .padding()
+                    Text("Zubereitung")
+                        .font(.callout .bold() .smallCaps())
+                        .foregroundStyle(.secondary)
+                        .padding(.leading)
+                    
+                    TimelineView(recipe: self.recipe)
+                    
                     Divider()
+                    
                     Annotations()
                         .padding()
         
                 }
             }
-            .padding()
         }
         .edgesIgnoringSafeArea(.top)
     }

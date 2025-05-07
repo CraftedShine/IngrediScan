@@ -17,7 +17,7 @@ struct RecipeListView: View {
     
     public init (category: Category, showRecipes: Binding<Bool>) {
         self.category = category
-        self.recipes = category.recipes
+        self.recipes = [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()]
         _showRecipes = showRecipes
     }
     
@@ -28,10 +28,11 @@ struct RecipeListView: View {
                 ScrollView {
                     ForEach(recipes) { recipe in
                         RecipeCard(recipe: recipe)
+                            .padding()
                     }
                 }
+                .searchable(text: $searchText)
             }
-            .searchable(text: $searchText)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

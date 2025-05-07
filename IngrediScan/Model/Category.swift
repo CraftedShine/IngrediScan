@@ -12,11 +12,9 @@ class Category : Identifiable {
     
     var name: String
     var image: String
-    var recipes: [Recipe]
     
-    public init(name: String, image: String, recipes: [Recipe]) {
+    public init(name: String, image: String) {
         self.name = name
         self.image = image
-        self.recipes = recipes
     }
 }

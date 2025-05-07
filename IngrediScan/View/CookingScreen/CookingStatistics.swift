@@ -1,42 +1,44 @@
 //
-//  StatisticsSection.swift
+//  CookingStatistics.swift
 //  IngrediScan
 //
-//  Created by Faramir on 07.05.25.
+//  Created by Faramir on 29.04.25.
 //
 
 import SwiftUI
 
-struct StatisticsSection: View {
-    let recipe: Recipe
+struct CookingStatistics: View {
+    private var recipe: Recipe
+    
+    public init(recipe: Recipe) {
+        self.recipe = recipe
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Statistics")
                 .font(.subheadline .smallCaps() .bold())
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             // Working Time
             HStack(alignment: .top) {
                 Text("Arbeitszeit:")
                     .font(.callout .bold())
-                Text("ca. 15 Minuten")
+                Text(recipe.workingTime)
             }
             HStack() {
                 Text("Schwierigkeitsgrad:")
                     .font(.callout .bold())
-                Text("einfach")
+                Text(recipe.difficulty.rawValue)
             }
             HStack() {
                 Text("kcal pro Portion:")
                     .font(.callout .bold())
-                Text("ca. 3489 kcal")
+                Text("\(recipe.calories) kcal")
             }
-            Divider()
-                .padding(.vertical)
         }
     }
 }
 
 #Preview {
-    StatisticsSection(recipe: PizzaMock())
+    CookingStatistics(recipe: BurgerMock())
 }

@@ -31,6 +31,7 @@ struct CategoryCard: View {
         .sheet(isPresented: $showRecipes) {
             RecipeListView(category: self.category, showRecipes: $showRecipes)
                 .presentationDragIndicator(.visible)
+                .presentationDetents([.fraction((0.999))])
         }
     }
 }
