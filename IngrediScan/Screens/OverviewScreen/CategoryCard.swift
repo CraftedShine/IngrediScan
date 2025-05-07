@@ -7,23 +7,20 @@
 
 import SwiftUI
 
-struct RecipeCard: View {
-    private let recipe: Recipe
-    
-    public init(recipe: Recipe) {
-        self.recipe = recipe
-    }
+struct CategoryCard: View {
+    @State private var showRecipes = false
+    let category: Category
     
     var body: some View {
-        Button() {
-            print("\(recipe.name) clicked")
+        Button {
+            showRecipes.toggle()
         } label: {
             ZStack(alignment: .center) {
-                Image(recipe.image)
+                Image(category.image)
                     .resizable()
                     .frame(width: .infinity)
                     .aspectRatio(contentMode: .fit)
-                Text(recipe.category)
+                Text(category.name)
                     .font(.largeTitle .smallCaps() .bold())
                     .foregroundStyle(Color.white)
                     .shadow(color: Color.black, radius: 2, x: 0, y: 2)
@@ -31,9 +28,13 @@ struct RecipeCard: View {
             .cornerRadius(15)
             .padding(.horizontal)
         }
+        .sheet(isPresented: $showRecipes) {
+            RecipeListView(category: self.category, showRecipes: $showRecipes)
+                .presentationDragIndicator(.visible)
+        }
     }
 }
 
 #Preview {
-    RecipeCard(recipe: PizzaMock())
+    CategoryCard(category: PizzaCategoryMock())
 }

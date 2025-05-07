@@ -9,15 +9,19 @@ import SwiftUI
 
 struct OverviewScreen: View {
     @State private var searchText: String = ""
-
+    
     var body: some View {
-        VStack (alignment: .center, spacing: 0) {
-            Text("Recipes")
-                .font(.largeTitle .bold())
-            NavigationView {
-                RecipeListView(recipes: [PizzaMock(), BurgerMock(), BurgerMock(), PizzaMock()])
-            }
-            .searchable(text: $searchText)
+        NavigationView {
+            CategoryList(categories: [PizzaCategoryMock(), BurgerCategoryMock()])
+            
+                .searchable(text: $searchText)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Recipes")
+                            .font(.title .bold() .smallCaps())
+                    }
+                }
         }
     }
 }

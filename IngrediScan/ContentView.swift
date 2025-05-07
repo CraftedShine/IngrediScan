@@ -16,16 +16,18 @@ struct ContentView: View {
             OverviewScreen()
                 .tabItem{
                     Label("Home", systemImage: "house.fill")
-                }.tag(0)
+                }
+                .tag(0)
             IngredientsScreen()
                 .tabItem
-                {
-                    Label("Ingredients", systemImage: "cart.fill")
-                }.tag(1)
+            {
+                Label("Ingredients", systemImage: "cart.fill")
+            }.tag(1)
             CookingScreen(recipe: BurgerMock())
                 .tabItem {
                     Label("Cooking", systemImage: "frying.pan.fill")
                 }.tag(2)
+                .badge(1)
             FridgeScreen()
                 .tabItem{
                     Label("My Fridge", systemImage: "storefront.fill")

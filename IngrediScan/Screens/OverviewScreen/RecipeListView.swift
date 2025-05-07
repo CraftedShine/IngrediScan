@@ -8,29 +8,49 @@
 import SwiftUI
 
 struct RecipeListView: View {
-    private var recipes: [Recipe] = []
-    private let adaptiveColumn = [
-        GridItem(.adaptive(minimum: 300))
-    ]
+    @Environment(\.dismiss) var dismiss
+    @State private var searchText: String = ""
+    @Binding var showRecipes: Bool
     
-    public init(recipes: [Recipe]) {
-        self.recipes = recipes
+    private var category: Category
+    private var recipes: [Recipe] = []
+    
+    public init (category: Category, showRecipes: Binding<Bool>) {
+        self.category = category
+        self.recipes = category.recipes
+        _showRecipes = showRecipes
     }
     
+    
     var body: some View {
-        
-            ScrollView {
-                Grid( horizontalSpacing: 8, verticalSpacing: 20) {
+        NavigationView {
+            VStack {
+                ScrollView {
                     ForEach(recipes) { recipe in
-                        GridRow {
-                            RecipeCard(recipe: recipe)
-                        }
+                        RecipeCard(recipe: recipe)
                     }
                 }
+            }
+            .searchable(text: $searchText)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(self.category.name)
+                        .font(.title .bold() .smallCaps())
+                }
+                ToolbarItem (placement: .topBarTrailing){
+                    Button {
+                        showRecipes.toggle()
+                    } label: {
+                            Image(systemName: "xmark.circle")
+                            .foregroundStyle(Color.primary)
+                    }
+                }
+            }
         }
     }
 }
 
 #Preview {
-    RecipeListView(recipes: [BurgerMock(), PizzaMock(), BurgerMock()])
+    RecipeListView(category: PizzaCategoryMock(), showRecipes: .constant(true))
 }
