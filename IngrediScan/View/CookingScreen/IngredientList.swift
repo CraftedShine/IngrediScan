@@ -22,11 +22,11 @@ struct IngredientList: View {
             
             ForEach(self.recipe.ingredients) { ingredient in
                 HStack {
-                    Text(String(ingredient.amount))
-                        .font(.callout .bold())
-                    Text(ingredient.unit)
-                        .font(.callout .bold())
-                    Text(ingredient.name)
+                    Text(ingredient.name + ":")
+                        .font(.headline .bold() .smallCaps())
+                    Text("\(String(ingredient.amount)) \(ingredient.unit)")
+                        .font(.subheadline .bold())
+                        .foregroundStyle(.secondary)
                 }
             }
         }
