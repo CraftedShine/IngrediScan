@@ -17,15 +17,12 @@
 		D5C828A62DCB686B0006929E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828872DCB686B0006929E /* Ingredient.swift */; };
 		D5C828A72DCB686B0006929E /* MyFridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828882DCB686B0006929E /* MyFridge.swift */; };
 		D5C828A82DCB686B0006929E /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828892DCB686B0006929E /* Recipe.swift */; };
-		D5C828A92DCB686B0006929E /* Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8288B2DCB686B0006929E /* Annotations.swift */; };
 		D5C828AB2DCB686B0006929E /* CookingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8288D2DCB686B0006929E /* CookingScreen.swift */; };
 		D5C828AC2DCB686B0006929E /* CookingStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8288E2DCB686B0006929E /* CookingStatistics.swift */; };
 		D5C828AD2DCB686B0006929E /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8288F2DCB686B0006929E /* IngredientList.swift */; };
 		D5C828AE2DCB686B0006929E /* IngredientListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828912DCB686B0006929E /* IngredientListHeader.swift */; };
 		D5C828AF2DCB686B0006929E /* IngredientsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828922DCB686B0006929E /* IngredientsScreen.swift */; };
 		D5C828B02DCB686B0006929E /* YourIngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828932DCB686B0006929E /* YourIngredientList.swift */; };
-		D5C828B12DCB686B0006929E /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828962DCB686B0006929E /* CategoryCard.swift */; };
-		D5C828B22DCB686B0006929E /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828972DCB686B0006929E /* CategoryList.swift */; };
 		D5C828B32DCB686B0006929E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828982DCB686B0006929E /* HomeView.swift */; };
 		D5C828B42DCB686B0006929E /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828992DCB686B0006929E /* RecipeCard.swift */; };
 		D5C828B52DCB686B0006929E /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8289A2DCB686B0006929E /* RecipeListView.swift */; };
@@ -65,15 +62,12 @@
 		D5C828872DCB686B0006929E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		D5C828882DCB686B0006929E /* MyFridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFridge.swift; sourceTree = "<group>"; };
 		D5C828892DCB686B0006929E /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		D5C8288B2DCB686B0006929E /* Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotations.swift; sourceTree = "<group>"; };
 		D5C8288D2DCB686B0006929E /* CookingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingScreen.swift; sourceTree = "<group>"; };
 		D5C8288E2DCB686B0006929E /* CookingStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingStatistics.swift; sourceTree = "<group>"; };
 		D5C8288F2DCB686B0006929E /* IngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientList.swift; sourceTree = "<group>"; };
 		D5C828912DCB686B0006929E /* IngredientListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListHeader.swift; sourceTree = "<group>"; };
 		D5C828922DCB686B0006929E /* IngredientsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsScreen.swift; sourceTree = "<group>"; };
 		D5C828932DCB686B0006929E /* YourIngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourIngredientList.swift; sourceTree = "<group>"; };
-		D5C828962DCB686B0006929E /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
-		D5C828972DCB686B0006929E /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		D5C828982DCB686B0006929E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D5C828992DCB686B0006929E /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
 		D5C8289A2DCB686B0006929E /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
@@ -152,7 +146,6 @@
 		D5C828902DCB686B0006929E /* CookingScreen */ = {
 			isa = PBXGroup;
 			children = (
-				D5C8288B2DCB686B0006929E /* Annotations.swift */,
 				D5C8288D2DCB686B0006929E /* CookingScreen.swift */,
 				D5C8288E2DCB686B0006929E /* CookingStatistics.swift */,
 				D5C8288F2DCB686B0006929E /* IngredientList.swift */,
@@ -164,9 +157,9 @@
 		D5C828942DCB686B0006929E /* IngredientScreen */ = {
 			isa = PBXGroup;
 			children = (
+				D5C828932DCB686B0006929E /* YourIngredientList.swift */,
 				D5C828912DCB686B0006929E /* IngredientListHeader.swift */,
 				D5C828922DCB686B0006929E /* IngredientsScreen.swift */,
-				D5C828932DCB686B0006929E /* YourIngredientList.swift */,
 				D5C828BE2DCB91C00006929E /* IngredientSearchSheet.swift */,
 			);
 			path = IngredientScreen;
@@ -175,10 +168,8 @@
 		D5C8289B2DCB686B0006929E /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				D5C828962DCB686B0006929E /* CategoryCard.swift */,
 				D5C8289A2DCB686B0006929E /* RecipeListView.swift */,
 				D5C828992DCB686B0006929E /* RecipeCard.swift */,
-				D5C828972DCB686B0006929E /* CategoryList.swift */,
 				D5C828982DCB686B0006929E /* HomeView.swift */,
 			);
 			path = HomeView;
@@ -351,7 +342,6 @@
 				D5C828A62DCB686B0006929E /* Ingredient.swift in Sources */,
 				D5C828A72DCB686B0006929E /* MyFridge.swift in Sources */,
 				D5C828A82DCB686B0006929E /* Recipe.swift in Sources */,
-				D5C828A92DCB686B0006929E /* Annotations.swift in Sources */,
 				D5C828BF2DCB91C00006929E /* IngredientSearchSheet.swift in Sources */,
 				D5C828AB2DCB686B0006929E /* CookingScreen.swift in Sources */,
 				D5C828AC2DCB686B0006929E /* CookingStatistics.swift in Sources */,
@@ -360,8 +350,6 @@
 				D5C828AE2DCB686B0006929E /* IngredientListHeader.swift in Sources */,
 				D5C828AF2DCB686B0006929E /* IngredientsScreen.swift in Sources */,
 				D5C828B02DCB686B0006929E /* YourIngredientList.swift in Sources */,
-				D5C828B12DCB686B0006929E /* CategoryCard.swift in Sources */,
-				D5C828B22DCB686B0006929E /* CategoryList.swift in Sources */,
 				D58B6A852DCBE9B2006EA229 /* TimelineView.swift in Sources */,
 				D5C828B32DCB686B0006929E /* HomeView.swift in Sources */,
 				D5C828B42DCB686B0006929E /* RecipeCard.swift in Sources */,
@@ -526,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W767S6Q27S;
@@ -541,8 +530,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.craftedshine.IngrediScan;
+				PRODUCT_BUNDLE_IDENTIFIER = IngrediScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,6 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W767S6Q27S;
@@ -569,8 +560,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.craftedshine.IngrediScan;
+				PRODUCT_BUNDLE_IDENTIFIER = IngrediScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

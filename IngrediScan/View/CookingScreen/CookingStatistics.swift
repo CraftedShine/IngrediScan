@@ -20,20 +20,26 @@ struct CookingStatistics: View {
                 .font(.subheadline .smallCaps() .bold())
                 .foregroundColor(.secondary)
             // Working Time
-            HStack(alignment: .top) {
+            HStack {
                 Text("Arbeitszeit:")
-                    .font(.callout .bold())
+                    .font(.headline .smallCaps() .bold())
                 Text(recipe.workingTime)
+                    .font(.subheadline .bold())
+                    .foregroundStyle(.secondary)
             }
-            HStack() {
+            HStack {
                 Text("Schwierigkeitsgrad:")
-                    .font(.callout .bold())
+                    .font(.headline .smallCaps() .bold())
                 Text(recipe.difficulty.rawValue)
+                    .font(.subheadline .bold())
+                    .foregroundStyle(.secondary)
             }
-            HStack() {
+            HStack {
                 Text("kcal pro Portion:")
-                    .font(.callout .bold())
+                    .font(.headline .smallCaps() .bold())
                 Text("\(recipe.calories) kcal")
+                    .font(.subheadline .bold())
+                    .foregroundStyle(.secondary)
             }
         }
     }

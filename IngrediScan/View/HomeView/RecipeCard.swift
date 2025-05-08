@@ -9,17 +9,26 @@ import SwiftUI
 
 struct RecipeCard: View {
     private var recipe: Recipe
+    @Binding var selectedRecipe: Recipe
+    @Binding var selectedTab: Int
     
-    public init(recipe: Recipe) {
+    public init(recipe: Recipe, selectedRecipe: Binding<Recipe>, selectedTab: Binding<Int>) {
         self.recipe = recipe
+        _selectedRecipe = selectedRecipe
+        _selectedTab = selectedTab
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image(self.recipe.image)
-                .resizable()
-                .frame(width: .infinity)
-                .scaledToFit()
+            Button {
+                selectedRecipe = self.recipe
+                selectedTab = 2
+            } label: {
+                Image(self.recipe.image)
+                    .resizable()
+                    .frame(width: .infinity)
+                    .scaledToFit()
+            }
             Text(self.recipe.name)
                 .font(.title2 .bold() .smallCaps())
                 .padding([.leading, .top])
@@ -27,6 +36,8 @@ struct RecipeCard: View {
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow)
+                    
+                    
                     Text(String(self.recipe.rating))
                 }
                 Text(self.recipe.category.name)
@@ -39,7 +50,7 @@ struct RecipeCard: View {
                 HStack {
                     ForEach(self.recipe.tags, id: \.self) { tag in
                         Button {
-                            print(tag)
+                            
                         } label: {
                             Text(tag)
                         }
@@ -51,11 +62,14 @@ struct RecipeCard: View {
             .padding()
             
         }
-        .border(.primary.opacity(0.5))
         .cornerRadius(20)
+        .overlay {
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.secondary, lineWidth: 1)
+        }
     }
 }
 
 #Preview {
-    RecipeCard(recipe: PizzaMock())
+    RecipeCard(recipe: PizzaMock(), selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
 }

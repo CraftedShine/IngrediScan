@@ -9,16 +9,16 @@ import SwiftUI
 
 struct RecipeListView: View {
     @Environment(\.dismiss) var dismiss
+    @Binding var selectedRecipe: Recipe
+    @Binding var selectedTab: Int
     @State private var searchText: String = ""
-    @Binding var showRecipes: Bool
     
-    private var category: Category
     private var recipes: [Recipe] = []
     
-    public init (category: Category, showRecipes: Binding<Bool>) {
-        self.category = category
-        self.recipes = [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()]
-        _showRecipes = showRecipes
+    public init (recipes: [Recipe], selectedRecipe: Binding<Recipe>, selectedTab: Binding<Int>) {
+        self.recipes = recipes
+        _selectedRecipe = selectedRecipe
+        _selectedTab = selectedTab
     }
     
     
@@ -26,32 +26,25 @@ struct RecipeListView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    ForEach(recipes) { recipe in
-                        RecipeCard(recipe: recipe)
+                    ForEach(searchResults) { recipe in
+                        RecipeCard(recipe: recipe, selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
                             .padding()
                     }
                 }
                 .searchable(text: $searchText)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(self.category.name)
-                        .font(.title .bold() .smallCaps())
-                }
-                ToolbarItem (placement: .topBarTrailing){
-                    Button {
-                        showRecipes.toggle()
-                    } label: {
-                            Image(systemName: "xmark.circle")
-                            .foregroundStyle(Color.primary)
-                    }
-                }
-            }
+        }
+    }
+    
+    var searchResults: [Recipe] {
+        if searchText.isEmpty {
+            return recipes
+        } else {
+            return recipes.filter { $0.name.contains(searchText) }
         }
     }
 }
 
 #Preview {
-    RecipeListView(category: PizzaCategoryMock(), showRecipes: .constant(true))
+    RecipeListView(recipes: [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()], selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
 }

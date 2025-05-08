@@ -33,7 +33,7 @@ class PastaMock: Recipe {
             Ingredient(name: "Pfeffer", amount: 20, unit: "g"),
             Ingredient(name: "Zucker", amount: 1, unit: "Prise")
         ]
-        let steps = [RecipeStep(title: "Teig anmischen", description: "Alle Zutaten in eine Schüssel geben und verühren.", requiredIngredients: ingredients), RecipeStep(title: "Teig ziehen lassgen", description: "Teig im Kühlschrank 24h ziehen lassen", requiredIngredients: [])]
+        let steps = [RecipeStep(title: "Teig anmischen", description: "Alle Zutaten in eine Schüssel geben und verühren.", requiredIngredients: ingredients), RecipeStep(title: "Teig ziehen lassen", description: "Teig im Kühlschrank 24h ziehen lassen", requiredIngredients: [])]
         let category = Category(name: "Pasta", image: "pasta")
         
         super.init(name: "Spaghetti", category: category, image: "pasta", steps: steps, ingredients: ingredients, workingTime: "20 Minuten", difficulty: Difficulty.Easy, calories: 350, rating: 4.2, tags: ["Italienisch", "Einfach"])

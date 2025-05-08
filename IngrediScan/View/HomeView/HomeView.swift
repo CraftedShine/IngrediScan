@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var searchText: String = ""
+    @Binding var selectedRecipe: Recipe
+    @Binding var selectedTab: Int
     
     var body: some View {
         NavigationView {
-            CategoryList(categories: [PizzaCategoryMock(), BurgerCategoryMock()])
+            RecipeListView(recipes: [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()], selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
             
                 .searchable(text: $searchText)
                 .navigationBarTitleDisplayMode(.inline)
@@ -27,5 +29,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
 }
