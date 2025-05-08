@@ -1,12 +1,10 @@
 import SwiftUI
 
 struct CookingScreen: View {
-    @Binding var selectedTab: Int
     private let recipe: Recipe;
     
-    public init(recipe: Recipe, selectedTab: Binding<Int>) {
+    public init(recipe: Recipe) {
         self.recipe = recipe
-        _selectedTab = selectedTab
     }
     
     var body: some View {
@@ -52,32 +50,11 @@ struct CookingScreen: View {
                     }
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        selectedTab = 0
-                    } label: {
-                        HStack {
-                            Image(systemName: "chevron.left")
-                            Text("Back")
-                        }
-                    }
-                    .buttonBorderShape(.capsule)
-                    .buttonStyle(.bordered)
-                    .foregroundStyle(.white)
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    Text(self.recipe.name)
-                        .font(.headline .bold() .smallCaps())
-                }
-            }
             .edgesIgnoringSafeArea(.top)
         }
     }
 }
 
 #Preview {
-    CookingScreen(recipe: BurgerMock(), selectedTab: .constant(2))
+    CookingScreen(recipe: BurgerMock())
 }

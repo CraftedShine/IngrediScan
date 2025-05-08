@@ -26,6 +26,12 @@ struct RecipeListView: View {
         NavigationView {
             VStack {
                 ScrollView {
+                    if (searchResults.isEmpty) {
+                        Text("No Recipes found")
+                            .font(.headline .bold() .smallCaps())
+                            .foregroundStyle(.secondary)
+                            .padding()
+                    }
                     ForEach(searchResults) { recipe in
                         RecipeCard(recipe: recipe, selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
                             .padding()

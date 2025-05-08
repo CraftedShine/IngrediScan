@@ -24,7 +24,7 @@ struct ContentView: View {
                 {
                     Label("Ingredients", systemImage: "cart.fill")
                 }.tag(1)
-            CookingScreen(recipe: selectedRecipe, selectedTab: $selectedTab)
+            CookingScreen(recipe: selectedRecipe)
                 .tabItem {
                     Label("Cooking", systemImage: "frying.pan.fill")
                 }.tag(2)
