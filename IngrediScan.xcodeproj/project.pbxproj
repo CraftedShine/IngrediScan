@@ -22,10 +22,10 @@
 		D5C828AE2DCB686B0006929E /* IngredientListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828912DCB686B0006929E /* IngredientListHeader.swift */; };
 		D5C828AF2DCB686B0006929E /* IngredientsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828922DCB686B0006929E /* IngredientsScreen.swift */; };
 		D5C828B02DCB686B0006929E /* YourIngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828932DCB686B0006929E /* YourIngredientList.swift */; };
-		D5C828B32DCB686B0006929E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828982DCB686B0006929E /* HomeView.swift */; };
+		D5C828B32DCB686B0006929E /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828982DCB686B0006929E /* HomeScreen.swift */; };
 		D5C828B42DCB686B0006929E /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828992DCB686B0006929E /* RecipeCard.swift */; };
 		D5C828B52DCB686B0006929E /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8289A2DCB686B0006929E /* RecipeListView.swift */; };
-		D5C828B62DCB686B0006929E /* FridgeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8289C2DCB686B0006929E /* FridgeScreen.swift */; };
+		D5C828B62DCB686B0006929E /* MyFridgeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8289C2DCB686B0006929E /* MyFridgeScreen.swift */; };
 		D5C828B72DCB686B0006929E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8289F2DCB686B0006929E /* ContentView.swift */; };
 		D5C828B82DCB686B0006929E /* IngrediScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828A02DCB686B0006929E /* IngrediScanApp.swift */; };
 		D5C828BF2DCB91C00006929E /* IngredientSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C828BE2DCB91C00006929E /* IngredientSearchSheet.swift */; };
@@ -66,10 +66,10 @@
 		D5C828912DCB686B0006929E /* IngredientListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListHeader.swift; sourceTree = "<group>"; };
 		D5C828922DCB686B0006929E /* IngredientsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsScreen.swift; sourceTree = "<group>"; };
 		D5C828932DCB686B0006929E /* YourIngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourIngredientList.swift; sourceTree = "<group>"; };
-		D5C828982DCB686B0006929E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D5C828982DCB686B0006929E /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		D5C828992DCB686B0006929E /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
 		D5C8289A2DCB686B0006929E /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
-		D5C8289C2DCB686B0006929E /* FridgeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeScreen.swift; sourceTree = "<group>"; };
+		D5C8289C2DCB686B0006929E /* MyFridgeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFridgeScreen.swift; sourceTree = "<group>"; };
 		D5C8289E2DCB686B0006929E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5C8289F2DCB686B0006929E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D5C828A02DCB686B0006929E /* IngrediScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrediScanApp.swift; sourceTree = "<group>"; };
@@ -128,6 +128,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D58B6A892DCDF21F006EA229 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D5C828992DCB686B0006929E /* RecipeCard.swift */,
+				D5C8289A2DCB686B0006929E /* RecipeListView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D58B6A8A2DCDF2B9006EA229 /* MyFridgeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D5C8289C2DCB686B0006929E /* MyFridgeScreen.swift */,
+			);
+			path = MyFridgeScreen;
+			sourceTree = "<group>";
+		};
 		D5C828852DCB686B0006929E /* MockData */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +177,7 @@
 			path = CookingScreen;
 			sourceTree = "<group>";
 		};
-		D5C828942DCB686B0006929E /* IngredientScreen */ = {
+		D5C828942DCB686B0006929E /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				D5C828932DCB686B0006929E /* YourIngredientList.swift */,
@@ -168,26 +185,25 @@
 				D5C828922DCB686B0006929E /* IngredientsScreen.swift */,
 				D5C828BE2DCB91C00006929E /* IngredientSearchSheet.swift */,
 			);
-			path = IngredientScreen;
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
-		D5C8289B2DCB686B0006929E /* HomeView */ = {
+		D5C8289B2DCB686B0006929E /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				D5C8289A2DCB686B0006929E /* RecipeListView.swift */,
-				D5C828992DCB686B0006929E /* RecipeCard.swift */,
-				D5C828982DCB686B0006929E /* HomeView.swift */,
+				D5C828982DCB686B0006929E /* HomeScreen.swift */,
 			);
-			path = HomeView;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		D5C8289D2DCB686B0006929E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D58B6A892DCDF21F006EA229 /* Component */,
+				D58B6A8A2DCDF2B9006EA229 /* MyFridgeScreen */,
 				D5C828902DCB686B0006929E /* CookingScreen */,
-				D5C828942DCB686B0006929E /* IngredientScreen */,
-				D5C8289B2DCB686B0006929E /* HomeView */,
-				D5C8289C2DCB686B0006929E /* FridgeScreen.swift */,
+				D5C828942DCB686B0006929E /* SearchScreen */,
+				D5C8289B2DCB686B0006929E /* HomeScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -356,10 +372,10 @@
 				D5C828AF2DCB686B0006929E /* IngredientsScreen.swift in Sources */,
 				D5C828B02DCB686B0006929E /* YourIngredientList.swift in Sources */,
 				D58B6A852DCBE9B2006EA229 /* TimelineView.swift in Sources */,
-				D5C828B32DCB686B0006929E /* HomeView.swift in Sources */,
+				D5C828B32DCB686B0006929E /* HomeScreen.swift in Sources */,
 				D5C828B42DCB686B0006929E /* RecipeCard.swift in Sources */,
 				D5C828B52DCB686B0006929E /* RecipeListView.swift in Sources */,
-				D5C828B62DCB686B0006929E /* FridgeScreen.swift in Sources */,
+				D5C828B62DCB686B0006929E /* MyFridgeScreen.swift in Sources */,
 				D5C828B72DCB686B0006929E /* ContentView.swift in Sources */,
 				D5C828B82DCB686B0006929E /* IngrediScanApp.swift in Sources */,
 			);
