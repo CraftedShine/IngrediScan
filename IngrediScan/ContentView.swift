@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let recipes: [Recipe] = [BurgerMock(), PizzaMock()]
+    @State private var selectedRecipe: Recipe = BurgerMock()
     @State private var selectedTab: Int = 0
     
     var body: some View {
-        TabView {
-            OverviewScreen()
+        TabView(selection: $selectedTab) {
+            HomeView(selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
                 .tabItem{
                     Label("Home", systemImage: "house.fill")
-                }.tag(0)
+                }
+                .tag(0)
             IngredientsScreen()
                 .tabItem
                 {
                     Label("Ingredients", systemImage: "cart.fill")
                 }.tag(1)
-            CookingScreen()
+            CookingScreen(recipe: selectedRecipe)
                 .tabItem {
                     Label("Cooking", systemImage: "frying.pan.fill")
                 }.tag(2)
