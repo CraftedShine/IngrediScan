@@ -1,6 +1,7 @@
 # IngrediScan
 
-# Miro: https://miro.com/app/board/uXjVI8_O6PI=/
+## Miro-Board
+https://miro.com/app/board/uXjVI8_O6PI=/
 
 ## Idea
 You have a certain set of Ingredients and want to know which recipes you can cook with them.
