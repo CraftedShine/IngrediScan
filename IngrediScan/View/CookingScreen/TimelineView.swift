@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimelineView: View {
-    var recipe: Recipe
+    @State var recipe: Recipe
     
     @State private var items: [RecipeStep]
     

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CookingScreen: View {
-    private let recipe: Recipe;
+    @State private var recipe: Recipe;
     
     public init(recipe: Recipe) {
         self.recipe = recipe

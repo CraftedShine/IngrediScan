@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D58B6A812DCBD2FE006EA229 /* RecipeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6A802DCBD2FE006EA229 /* RecipeStep.swift */; };
-		D58B6A832DCBD41A006EA229 /* RecipeStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6A822DCBD41A006EA229 /* RecipeStatistic.swift */; };
 		D58B6A852DCBE9B2006EA229 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6A842DCBE9B2006EA229 /* TimelineView.swift */; };
 		D5C828A22DCB686B0006929E /* ItalianPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C828832DCB686B0006929E /* ItalianPizza.json */; };
 		D5C828A32DCB686B0006929E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C8289E2DCB686B0006929E /* Assets.xcassets */; };
@@ -54,7 +53,6 @@
 		D535660F2DBB784B007255D1 /* IngrediScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53566192DBB784B007255D1 /* IngrediScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58B6A802DCBD2FE006EA229 /* RecipeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStep.swift; sourceTree = "<group>"; };
-		D58B6A822DCBD41A006EA229 /* RecipeStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStatistic.swift; sourceTree = "<group>"; };
 		D58B6A842DCBE9B2006EA229 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		D5C828832DCB686B0006929E /* ItalianPizza.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItalianPizza.json; sourceTree = "<group>"; };
 		D5C828842DCB686B0006929E /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -77,6 +75,14 @@
 		D5C828A02DCB686B0006929E /* IngrediScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrediScanApp.swift; sourceTree = "<group>"; };
 		D5C828BE2DCB91C00006929E /* IngredientSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSearchSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D58B6A872DCDEA16006EA229 /* Info */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Info;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D53565FF2DBB7849007255D1 /* Frameworks */ = {
@@ -108,6 +114,7 @@
 			children = (
 				D5C828A12DCB686B0006929E /* IngrediScan */,
 				D53566032DBB7849007255D1 /* Products */,
+				D58B6A872DCDEA16006EA229 /* Info */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,7 +145,6 @@
 				D5C828882DCB686B0006929E /* MyFridge.swift */,
 				D5C828892DCB686B0006929E /* Recipe.swift */,
 				D58B6A802DCBD2FE006EA229 /* RecipeStep.swift */,
-				D58B6A822DCBD41A006EA229 /* RecipeStatistic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,7 +352,6 @@
 				D5C828AB2DCB686B0006929E /* CookingScreen.swift in Sources */,
 				D5C828AC2DCB686B0006929E /* CookingStatistics.swift in Sources */,
 				D5C828AD2DCB686B0006929E /* IngredientList.swift in Sources */,
-				D58B6A832DCBD41A006EA229 /* RecipeStatistic.swift in Sources */,
 				D5C828AE2DCB686B0006929E /* IngredientListHeader.swift in Sources */,
 				D5C828AF2DCB686B0006929E /* IngredientsScreen.swift in Sources */,
 				D5C828B02DCB686B0006929E /* YourIngredientList.swift in Sources */,

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IngredientList: View {
-    private var recipe: Recipe
+    @State private var recipe: Recipe
     
     init(recipe: Recipe) {
         self.recipe = recipe

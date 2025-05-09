@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CookingStatistics: View {
-    private var recipe: Recipe
+    @State private var recipe: Recipe
     
     public init(recipe: Recipe) {
         self.recipe = recipe
