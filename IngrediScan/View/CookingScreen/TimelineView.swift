@@ -23,9 +23,20 @@ struct TimelineView: View {
                 ForEach(items.indices, id: \.self) { index in
                     HStack(alignment: .top) {
                         VStack {
-                            // Button-Kreis
                             Button(action: {
                                 items[index].isDone.toggle()
+                                
+                                if items[index].isDone {
+                                    // Check all previous Steps
+                                    for i in 0...index {
+                                        items[i].isDone = true
+                                    }
+                                } else {
+                                    // Uncheck all following Steps
+                                    for i in index...items.count-1 {
+                                        items[i].isDone = false
+                                    }
+                                }
                             }) {
                                 ZStack {
                                     Circle()

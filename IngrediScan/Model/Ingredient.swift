@@ -12,5 +12,5 @@ struct Ingredient : Identifiable {
     var amount: Double
     var unit: String
     
-    let id = UUID()
+    var id = UUID()
 }

@@ -1,0 +1,38 @@
+{
+  "name": "Caprese Salat",
+  "rating": 4.6,
+  "category": "Salat",
+  "imageName": "caprese",
+  "ingredients": [
+    { "name": "Tomaten", "unit": "g", "amount": 300 },
+    { "name": "Mozzarella", "unit": "g", "amount": 200 },
+    { "name": "Basilikum", "unit": "Blätter", "amount": 10 },
+    { "name": "Olivenöl", "unit": "EL", "amount": 2 },
+    { "name": "Balsamico", "unit": "EL", "amount": 1 },
+    { "name": "Salz", "unit": "Prise", "amount": 1 },
+    { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+  ],
+  "steps": [
+    {
+      "title": "Zutaten vorbereiten",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Tomaten", "unit": "g", "amount": 300 },
+        { "name": "Mozzarella", "unit": "g", "amount": 200 },
+        { "name": "Basilikum", "unit": "Blätter", "amount": 10 }
+      ]
+    },
+    {
+      "title": "Anrichten",
+      "timeMins": 5,
+      "ingredients_required": [
+        { "name": "Olivenöl", "unit": "EL", "amount": 2 },
+        { "name": "Balsamico", "unit": "EL", "amount": 1 },
+        { "name": "Salz", "unit": "Prise", "amount": 1 },
+        { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+      ]
+    }
+  ],
+  "tags": ["Vegetarisch", "Erfrischend", "Italienisch"],
+  "annotations": "Ein klassischer italienischer Vorspeisensalat"
+}

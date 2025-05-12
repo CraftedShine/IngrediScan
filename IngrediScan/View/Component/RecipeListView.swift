@@ -8,49 +8,35 @@
 import SwiftUI
 
 struct RecipeListView: View {
-    @Environment(\.dismiss) var dismiss
-    @Binding var selectedRecipe: Recipe
-    @Binding var selectedTab: Int
-    @State private var searchText: String = ""
-    
-    private var recipes: [Recipe] = []
-    
-    public init (recipes: [Recipe], selectedRecipe: Binding<Recipe>, selectedTab: Binding<Int>) {
-        self.recipes = recipes
-        _selectedRecipe = selectedRecipe
-        _selectedTab = selectedTab
-    }
-    
+    @Binding var searchText: String
+    @Binding var viewModel: AppDataViewModel
     
     var body: some View {
-        NavigationView {
+        ScrollView {
+            if (searchResults.isEmpty) {
+                Text("No Recipes found")
+                    .font(.headline .bold() .smallCaps())
+                    .foregroundStyle(.secondary)
+                    .padding()
+            }
             VStack {
-                ScrollView {
-                    if (searchResults.isEmpty) {
-                        Text("No Recipes found")
-                            .font(.headline .bold() .smallCaps())
-                            .foregroundStyle(.secondary)
-                            .padding()
-                    }
-                    ForEach(searchResults) { recipe in
-                        RecipeCard(recipe: recipe, selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
-                            .padding()
-                    }
+                ForEach(searchResults) { recipe in
+                    RecipeCard(recipe: recipe)
+                        .padding()
                 }
-                .searchable(text: $searchText)
             }
         }
     }
     
     var searchResults: [Recipe] {
         if searchText.isEmpty {
-            return recipes
+            return viewModel.recipes
         } else {
-            return recipes.filter { $0.name.contains(searchText) }
+            return viewModel.recipes.filter { $0.name.contains(searchText) }
         }
     }
 }
 
 #Preview {
-    RecipeListView(recipes: [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()], selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
+    RecipeListView(searchText: .constant(""), viewModel: .constant(AppDataViewModel()))
 }

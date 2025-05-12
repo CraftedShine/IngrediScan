@@ -16,7 +16,7 @@ struct CookingStatistics: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Statistics")
+            Text("Statistiken")
                 .font(.subheadline .smallCaps() .bold())
                 .foregroundColor(.secondary)
             // Working Time

@@ -16,7 +16,7 @@ struct IngredientList: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Ingredients")
+            Text("Zutaten")
                 .font(.subheadline .smallCaps() .bold())
                 .foregroundColor(.secondary)
             

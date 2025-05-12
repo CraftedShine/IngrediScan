@@ -9,22 +9,15 @@ import SwiftUI
 
 struct RecipeCard: View {
     private var recipe: Recipe
-    @Binding var selectedRecipe: Recipe
-    @Binding var selectedTab: Int
     
-    public init(recipe: Recipe, selectedRecipe: Binding<Recipe>, selectedTab: Binding<Int>) {
+    public init(recipe: Recipe) {
         self.recipe = recipe
-        _selectedRecipe = selectedRecipe
-        _selectedTab = selectedTab
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Button {
-                selectedRecipe = self.recipe
-                selectedTab = 2
-            } label: {
-                Image(self.recipe.image)
+            Button {} label: {
+                Image(self.recipe.imageName)
                     .resizable()
                     .frame(width: .infinity)
                     .scaledToFit()
@@ -71,5 +64,5 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    RecipeCard(recipe: PizzaMock(), selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
+    RecipeCard(recipe: BurgerMock())
 }

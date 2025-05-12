@@ -13,13 +13,17 @@ enum Difficulty : String {
     case Hard = "Schwer"
 }
 
-class Recipe : Identifiable
+class Recipe : Identifiable, Equatable
 {
-    let id = UUID()
+    static func == (lhs: Recipe, rhs: Recipe) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    var id = UUID()
     
     var name: String
     var category: Category
-    var image: String
+    var imageName: String
     var steps: [RecipeStep]
     var ingredients: [Ingredient]
     var workingTime: String
@@ -31,7 +35,7 @@ class Recipe : Identifiable
     public init(name: String, category: Category, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
         self.name = name
         self.category = category
-        self.image = image
+        self.imageName = image
         self.steps = steps
         self.ingredients = ingredients
         self.workingTime = workingTime
@@ -40,4 +44,5 @@ class Recipe : Identifiable
         self.rating = rating
         self.tags = tags
     }
+    
 }

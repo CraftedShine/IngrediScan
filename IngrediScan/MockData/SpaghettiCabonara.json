@@ -1,0 +1,48 @@
+{
+  "name": "Spaghetti Carbonara",
+  "rating": 4.9,
+  "category": "Pasta",
+  "imageName": "carbonara",
+  "ingredients": [
+    { "name": "Spaghetti", "unit": "g", "amount": 400 },
+    { "name": "Eier", "unit": "Stk", "amount": 4 },
+    { "name": "Parmesan", "unit": "g", "amount": 100 },
+    { "name": "Guanciale", "unit": "g", "amount": 150 },
+    { "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+    { "name": "Salz", "unit": "Prise", "amount": 1 }
+  ],
+  "steps": [
+    {
+      "title": "Spaghetti kochen",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Spaghetti", "unit": "g", "amount": 400 },
+        { "name": "Salz", "unit": "Prise", "amount": 1 }
+      ]
+    },
+    {
+      "title": "Guanciale anbraten",
+      "timeMins": 5,
+      "ingredients_required": [
+        { "name": "Guanciale", "unit": "g", "amount": 150 }
+      ]
+    },
+    {
+      "title": "Eier-Parmesan-Mischung zubereiten",
+      "timeMins": 3,
+      "ingredients_required": [
+        { "name": "Eier", "unit": "Stk", "amount": 4 },
+        { "name": "Parmesan", "unit": "g", "amount": 100 },
+        { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+      ]
+    },
+    {
+      "title": "Alles vermengen",
+      "timeMins": 2,
+      "ingredients_required": []
+    }
+  ],
+  "tags": ["Klassiker", "Italienisch", "Herzhaft"],
+  "annotations": "Originalrezept ohne Sahne"
+}
+

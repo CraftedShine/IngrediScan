@@ -8,7 +8,7 @@
 import Foundation
 
 struct RecipeStep : Identifiable {
-    let id: UUID = UUID()
+    var id: UUID = UUID()
     
     let title : String
     let description : String
