@@ -12,13 +12,15 @@ struct RecipeStep : Identifiable {
     
     let title : String
     let description : String
+    let duration: String
     let requiredIngredients : [Ingredient]
     
     var isDone : Bool
     
-    public init(title : String, description : String, requiredIngredients: [Ingredient]) {
+    public init(title : String, description : String, duration: String, requiredIngredients: [Ingredient]) {
         self.title = title
         self.description = description
+        self.duration = duration
         self.requiredIngredients = requiredIngredients
         self.isDone = false
     }

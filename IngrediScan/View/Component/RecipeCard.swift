@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct RecipeCard: View {
+    @Binding var viewModel: AppDataViewModel
     private var recipe: Recipe
     
-    public init(recipe: Recipe) {
+    public init(recipe: Recipe, viewModel: Binding<AppDataViewModel>) {
         self.recipe = recipe
+        _viewModel = viewModel
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Button {} label: {
-                Image(self.recipe.imageName)
-                    .resizable()
-                    .frame(width: .infinity)
-                    .scaledToFit()
-            }
+            Image(self.recipe.imageName)
+                .resizable()
+                .frame(width: .infinity)
+                .scaledToFit()
             Text(self.recipe.name)
                 .font(.title2 .bold() .smallCaps())
                 .padding([.leading, .top])
@@ -64,5 +64,5 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    RecipeCard(recipe: BurgerMock())
+    RecipeCard(recipe: BurgerMock(), viewModel: .constant(AppDataViewModel()))
 }

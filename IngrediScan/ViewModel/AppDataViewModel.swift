@@ -11,7 +11,7 @@ import Foundation
 @Observable
 class AppDataViewModel {
     var selectedTab: Int = 0
-    var recipes: [Recipe] = []
+    var recipes: [Recipe] = [PizzaMock(), PastaMock(), BurgerMock(), SushiMock()]
     var favoriteRecipes: [Recipe] = [PizzaMock(), PastaMock(), BurgerMock(), SushiMock()]
     
     func addRecipeToFavorites(_ recipe: Recipe) {

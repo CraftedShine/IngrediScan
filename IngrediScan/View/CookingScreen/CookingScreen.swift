@@ -67,14 +67,14 @@ struct CookingScreen: View {
                         .toolbar {
                             ToolbarItem(placement: .topBarLeading) {
                                 VStack {
-                                    Text("Patties")
+                                    Text("Zubereitung")
                                         .font(.title2 .bold() .smallCaps())
                                     Divider()
                                 }
                             }
                         }
                         .presentationDragIndicator(.visible)
-                        .presentationDetents([.fraction(0.99)])
+                        .presentationDetents([.fraction(0.33)])
                 }
             }
         }

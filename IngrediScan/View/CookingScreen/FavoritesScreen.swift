@@ -15,6 +15,11 @@ struct FavoritesScreen: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
+                    if (self.viewModel.favoriteRecipes.isEmpty) {
+                        Text("No Recipes in Favorites")
+                            .font(.headline .bold() .smallCaps())
+                            .foregroundStyle(.secondary)
+                    }
                     ForEach(self.viewModel.favoriteRecipes) { recipe in
                         NavigationLink(destination: CookingScreen(recipe: recipe)) {
                             MinimalRecipeCard(recipe: recipe)

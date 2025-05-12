@@ -21,7 +21,7 @@ struct RecipeListView: View {
             }
             VStack {
                 ForEach(searchResults) { recipe in
-                    RecipeCard(recipe: recipe)
+                    RecipeCard(recipe: recipe, viewModel: $viewModel)
                         .padding()
                 }
             }

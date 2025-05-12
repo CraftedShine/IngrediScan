@@ -69,7 +69,7 @@ struct TimelineView: View {
                                 .padding(.leading, 8)
                                 .font(.headline .bold() .smallCaps())
                                 .foregroundColor(.primary)
-                            Text(items[index].description)
+                            Text("\(items[index].description) (\(items[index].duration))")
                                 .padding(.leading, 8)
                                 .font(.subheadline .bold())
                                 .foregroundStyle(.secondary)
