@@ -22,7 +22,7 @@ struct ContentView: View {
             IngredientsScreen()
                 .tabItem
                 {
-                    Label("Ingredients", systemImage: "cart.fill")
+                    Label("Search", systemImage: "magnifyingglass")
                 }.tag(1)
             CookingScreen(recipe: selectedRecipe)
                 .tabItem {
