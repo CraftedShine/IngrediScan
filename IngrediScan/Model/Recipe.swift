@@ -7,22 +7,22 @@
 
 import Foundation
 
-enum Difficulty : String {
+enum Difficulty : String, Codable {
     case Easy = "Einfach"
     case Medium = "Mittel"
     case Hard = "Schwer"
 }
 
-class Recipe : Identifiable, Equatable
+class Recipe : Identifiable, Codable, Equatable
 {
     static func == (lhs: Recipe, rhs: Recipe) -> Bool {
         return lhs.id == rhs.id
     }
     
-    var id = UUID()
+    var id: String
     
     var name: String
-    var category: Category
+    var category: String
     var imageName: String
     var steps: [RecipeStep]
     var ingredients: [Ingredient]
@@ -32,7 +32,8 @@ class Recipe : Identifiable, Equatable
     var rating: Double
     var tags: [String]
     
-    public init(name: String, category: Category, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
+    public init(id: String, name: String, category: String, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
+        self.id = id
         self.name = name
         self.category = category
         self.imageName = image

@@ -1,0 +1,41 @@
+{
+  "name": "Focaccia",
+  "rating": 4.7,
+  "category": "Brot",
+  "imageName": "focaccia",
+  "ingredients": [
+    { "name": "Mehl", "unit": "g", "amount": 500 },
+    { "name": "Wasser", "unit": "ml", "amount": 325 },
+    { "name": "Hefe", "unit": "g", "amount": 10 },
+    { "name": "Salz", "unit": "g", "amount": 10 },
+    { "name": "Olivenöl", "unit": "EL", "amount": 3 },
+    { "name": "Rosmarin", "unit": "Zweig", "amount": 2 }
+  ],
+  "steps": [
+    {
+      "title": "Teig zubereiten",
+      "timeMins": 15,
+      "ingredients_required": [
+        { "name": "Mehl", "unit": "g", "amount": 500 },
+        { "name": "Wasser", "unit": "ml", "amount": 325 },
+        { "name": "Hefe", "unit": "g", "amount": 10 },
+        { "name": "Salz", "unit": "g", "amount": 10 }
+      ]
+    },
+    {
+      "title": "Teig ruhen lassen",
+      "timeMins": 120,
+      "ingredients_required": []
+    },
+    {
+      "title": "Backen",
+      "timeMins": 25,
+      "ingredients_required": [
+        { "name": "Olivenöl", "unit": "EL", "amount": 3 },
+        { "name": "Rosmarin", "unit": "Zweig", "amount": 2 }
+      ]
+    }
+  ],
+  "tags": ["Beilage", "Italienisch", "Vegan"],
+  "annotations": "Außen knusprig, innen fluffig"
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Panna Cotta",
+  "rating": 4.8,
+  "category": "Dessert",
+  "imageName": "panna_cotta",
+  "ingredients": [
+    { "name": "Sahne", "unit": "ml", "amount": 500 },
+    { "name": "Zucker", "unit": "g", "amount": 80 },
+    { "name": "Vanilleschote", "unit": "Stk", "amount": 1 },
+    { "name": "Gelatine", "unit": "Blatt", "amount": 3 },
+    { "name": "Erdbeeren", "unit": "g", "amount": 200 },
+    { "name": "Puderzucker", "unit": "TL", "amount": 2 }
+  ],
+  "steps": [
+    {
+      "title": "Sahne erhitzen",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Sahne", "unit": "ml", "amount": 500 },
+        { "name": "Zucker", "unit": "g", "amount": 80 },
+        { "name": "Vanilleschote", "unit": "Stk", "amount": 1 }
+      ]
+    },
+    {
+      "title": "Gelatine einrühren",
+      "timeMins": 5,
+      "ingredients_required": [
+        { "name": "Gelatine", "unit": "Blatt", "amount": 3 }
+      ]
+    },
+    {
+      "title": "Kühlen lassen",
+      "timeMins": 240,
+      "ingredients_required": []
+    },
+    {
+      "title": "Erdbeerspiegel zubereiten",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Erdbeeren", "unit": "g", "amount": 200 },
+        { "name": "Puderzucker", "unit": "TL", "amount": 2 }
+      ]
+    }
+  ],
+  "tags": ["Dessert", "Klassisch", "Cremig"],
+  "annotations": "Mit fruchtigem Erdbeerspiegel servieren"
+}

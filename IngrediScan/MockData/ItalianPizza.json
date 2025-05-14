@@ -1,21 +1,28 @@
 {
+    "id": "1",
     "name": "Italienischer Pizzateig",
     "rating": 4.8,
+    "difficulty": "Einfach",
     "category": "Pizza",
+    "workingTime": "24h",
+    "calories": 2000,
     "imageName": "pizza",
     "ingredients": [
         {
+            "id": "1",
             "name": "Wasser",
             "unit": "ml",
             "amount": 500
         }
     ],
-    steps: [
+    "steps": [
         {
             "title": "Teig anmischen",
-            "timeMins": 15,
-            "ingredients_required": [
+            "description": "Alle Zutaten zusammengeben und verühren",
+            "duration": "15",
+            "requiredIngredients": [
                 {
+                    "id": "1",
                     "name": "Wasser",
                     "unit": "ml",
                     "amount": 500
@@ -24,8 +31,9 @@
         },
         {
             "title": "Teig ruhen lassen",
-            "timeMins": 2910,
-            "ingredients_required": []
+            "description": "Teig im Kühlschrank 24h ruhen lassen",
+            "duration": "2910",
+            "requiredIngredients": []
         }
     ],
     "tags": ["Italienisch", "Einfachs"],

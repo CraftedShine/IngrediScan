@@ -1,0 +1,58 @@
+{
+  "name": "Klassische Lasagne",
+  "rating": 4.9,
+  "category": "Auflauf",
+  "imageName": "lasagne",
+  "ingredients": [
+    { "name": "Lasagneplatten", "unit": "Stk", "amount": 12 },
+    { "name": "Hackfleisch", "unit": "g", "amount": 400 },
+    { "name": "Tomatenpassata", "unit": "ml", "amount": 500 },
+    { "name": "Zwiebel", "unit": "Stk", "amount": 1 },
+    { "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
+    { "name": "Milch", "unit": "ml", "amount": 400 },
+    { "name": "Butter", "unit": "g", "amount": 50 },
+    { "name": "Mehl", "unit": "g", "amount": 50 },
+    { "name": "Parmesan", "unit": "g", "amount": 50 },
+    { "name": "Olivenöl", "unit": "EL", "amount": 2 },
+    { "name": "Salz", "unit": "Prise", "amount": 1 },
+    { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+  ],
+  "steps": [
+    {
+      "title": "Fleischsauce zubereiten",
+      "timeMins": 20,
+      "ingredients_required": [
+        { "name": "Hackfleisch", "unit": "g", "amount": 400 },
+        { "name": "Tomatenpassata", "unit": "ml", "amount": 500 },
+        { "name": "Zwiebel", "unit": "Stk", "amount": 1 },
+        { "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
+        { "name": "Olivenöl", "unit": "EL", "amount": 2 }
+      ]
+    },
+    {
+      "title": "Béchamelsauce zubereiten",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Butter", "unit": "g", "amount": 50 },
+        { "name": "Mehl", "unit": "g", "amount": 50 },
+        { "name": "Milch", "unit": "ml", "amount": 400 }
+      ]
+    },
+    {
+      "title": "Lasagne schichten",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Lasagneplatten", "unit": "Stk", "amount": 12 },
+        { "name": "Parmesan", "unit": "g", "amount": 50 }
+      ]
+    },
+    {
+      "title": "Backen",
+      "timeMins": 40,
+      "ingredients_required": []
+    }
+  ],
+  "tags": ["Klassiker", "Herzhaft", "Ofengericht"],
+  "annotations": "Lässt sich gut vorbereiten"
+}
+

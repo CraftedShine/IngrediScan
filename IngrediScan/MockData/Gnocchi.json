@@ -1,0 +1,45 @@
+{
+  "name": "Gnocchi in Gorgonzolasauce",
+  "rating": 4.6,
+  "category": "Pasta",
+  "imageName": "gnocchi_gorgonzola",
+  "ingredients": [
+    { "name": "Gnocchi", "unit": "g", "amount": 500 },
+    { "name": "Gorgonzola", "unit": "g", "amount": 150 },
+    { "name": "Sahne", "unit": "ml", "amount": 200 },
+    { "name": "Butter", "unit": "EL", "amount": 1 },
+    { "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+    { "name": "Salz", "unit": "Prise", "amount": 1 },
+    { "name": "Walnüsse", "unit": "g", "amount": 30 }
+  ],
+  "steps": [
+    {
+      "title": "Gnocchi kochen",
+      "timeMins": 5,
+      "ingredients_required": [
+        { "name": "Gnocchi", "unit": "g", "amount": 500 }
+      ]
+    },
+    {
+      "title": "Sauce zubereiten",
+      "timeMins": 10,
+      "ingredients_required": [
+        { "name": "Gorgonzola", "unit": "g", "amount": 150 },
+        { "name": "Sahne", "unit": "ml", "amount": 200 },
+        { "name": "Butter", "unit": "EL", "amount": 1 }
+      ]
+    },
+    {
+      "title": "Würzen und garnieren",
+      "timeMins": 2,
+      "ingredients_required": [
+        { "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+        { "name": "Salz", "unit": "Prise", "amount": 1 },
+        { "name": "Walnüsse", "unit": "g", "amount": 30 }
+      ]
+    }
+  ],
+  "tags": ["Vegetarisch", "Cremig", "Schnell"],
+  "annotations": "Mit knackigen Walnüssen für den Biss"
+}
+

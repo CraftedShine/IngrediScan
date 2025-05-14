@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D58B6B502DCDF720006EA229 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B312DCDF720006EA229 /* MockData.swift */; };
 		D58B6B522DCDF720006EA229 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B342DCDF720006EA229 /* Ingredient.swift */; };
 		D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B352DCDF720006EA229 /* MyFridge.swift */; };
 		D58B6B542DCDF720006EA229 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B362DCDF720006EA229 /* Recipe.swift */; };
@@ -32,6 +31,13 @@
 		D58B6B712DD27367006EA229 /* CapreseSalad.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B702DD2735E006EA229 /* CapreseSalad.json */; };
 		D58B6B732DD273D6006EA229 /* SpaghettiCabonara.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B722DD273CB006EA229 /* SpaghettiCabonara.json */; };
 		D58B6B752DD28151006EA229 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B742DD28151006EA229 /* Category.swift */; };
+		D58B6B7D2DD48F43006EA229 /* Tiramisu.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B7C2DD48F3C006EA229 /* Tiramisu.json */; };
+		D58B6B7F2DD48F7B006EA229 /* MinestroneSoup.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B7E2DD48F72006EA229 /* MinestroneSoup.json */; };
+		D58B6B812DD48FA6006EA229 /* Focaccia.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B802DD48FA0006EA229 /* Focaccia.json */; };
+		D58B6B852DD4905D006EA229 /* Bruschetta.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B842DD49053006EA229 /* Bruschetta.json */; };
+		D58B6B872DD49099006EA229 /* Lasagne.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B862DD49093006EA229 /* Lasagne.json */; };
+		D58B6B892DD490E8006EA229 /* PanaCotta.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B882DD490E3006EA229 /* PanaCotta.json */; };
+		D58B6B8D2DD49547006EA229 /* Gnocchi.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B8C2DD49540006EA229 /* Gnocchi.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +62,6 @@
 		D535660F2DBB784B007255D1 /* IngrediScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53566192DBB784B007255D1 /* IngrediScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58B6B302DCDF720006EA229 /* ItalianPizza.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItalianPizza.json; sourceTree = "<group>"; };
-		D58B6B312DCDF720006EA229 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D58B6B342DCDF720006EA229 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		D58B6B352DCDF720006EA229 /* MyFridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFridge.swift; sourceTree = "<group>"; };
 		D58B6B362DCDF720006EA229 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -80,6 +85,13 @@
 		D58B6B702DD2735E006EA229 /* CapreseSalad.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CapreseSalad.json; sourceTree = "<group>"; };
 		D58B6B722DD273CB006EA229 /* SpaghettiCabonara.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpaghettiCabonara.json; sourceTree = "<group>"; };
 		D58B6B742DD28151006EA229 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D58B6B7C2DD48F3C006EA229 /* Tiramisu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tiramisu.json; sourceTree = "<group>"; };
+		D58B6B7E2DD48F72006EA229 /* MinestroneSoup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MinestroneSoup.json; sourceTree = "<group>"; };
+		D58B6B802DD48FA0006EA229 /* Focaccia.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Focaccia.json; sourceTree = "<group>"; };
+		D58B6B842DD49053006EA229 /* Bruschetta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Bruschetta.json; sourceTree = "<group>"; };
+		D58B6B862DD49093006EA229 /* Lasagne.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Lasagne.json; sourceTree = "<group>"; };
+		D58B6B882DD490E3006EA229 /* PanaCotta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PanaCotta.json; sourceTree = "<group>"; };
+		D58B6B8C2DD49540006EA229 /* Gnocchi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Gnocchi.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,11 +140,17 @@
 		D58B6B322DCDF720006EA229 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				D58B6B8C2DD49540006EA229 /* Gnocchi.json */,
+				D58B6B882DD490E3006EA229 /* PanaCotta.json */,
+				D58B6B862DD49093006EA229 /* Lasagne.json */,
+				D58B6B842DD49053006EA229 /* Bruschetta.json */,
+				D58B6B802DD48FA0006EA229 /* Focaccia.json */,
+				D58B6B7E2DD48F72006EA229 /* MinestroneSoup.json */,
+				D58B6B7C2DD48F3C006EA229 /* Tiramisu.json */,
 				D58B6B722DD273CB006EA229 /* SpaghettiCabonara.json */,
 				D58B6B702DD2735E006EA229 /* CapreseSalad.json */,
 				D58B6B6E2DD272DC006EA229 /* MargheritaPizza.json */,
 				D58B6B302DCDF720006EA229 /* ItalianPizza.json */,
-				D58B6B312DCDF720006EA229 /* MockData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -341,10 +359,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58B6B732DD273D6006EA229 /* SpaghettiCabonara.json in Resources */,
+				D58B6B872DD49099006EA229 /* Lasagne.json in Resources */,
 				D58B6B652DCDF720006EA229 /* ItalianPizza.json in Resources */,
 				D58B6B712DD27367006EA229 /* CapreseSalad.json in Resources */,
 				D58B6B6F2DD272E5006EA229 /* MargheritaPizza.json in Resources */,
+				D58B6B7F2DD48F7B006EA229 /* MinestroneSoup.json in Resources */,
+				D58B6B852DD4905D006EA229 /* Bruschetta.json in Resources */,
+				D58B6B8D2DD49547006EA229 /* Gnocchi.json in Resources */,
 				D58B6B662DCDF720006EA229 /* Assets.xcassets in Resources */,
+				D58B6B892DD490E8006EA229 /* PanaCotta.json in Resources */,
+				D58B6B812DD48FA6006EA229 /* Focaccia.json in Resources */,
+				D58B6B7D2DD48F43006EA229 /* Tiramisu.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58B6B6B2DCE75FB006EA229 /* AppDataViewModel.swift in Sources */,
-				D58B6B502DCDF720006EA229 /* MockData.swift in Sources */,
 				D58B6B522DCDF720006EA229 /* Ingredient.swift in Sources */,
 				D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */,
 				D58B6B542DCDF720006EA229 /* Recipe.swift in Sources */,

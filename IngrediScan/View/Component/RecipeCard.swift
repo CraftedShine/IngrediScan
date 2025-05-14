@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeCard: View {
     @Binding var viewModel: AppDataViewModel
     private var recipe: Recipe
+    @State private var favorite: Bool = false
     
     public init(recipe: Recipe, viewModel: Binding<AppDataViewModel>) {
         self.recipe = recipe
@@ -33,7 +34,7 @@ struct RecipeCard: View {
                     
                     Text(String(self.recipe.rating))
                 }
-                Text(self.recipe.category.name)
+                Text(self.recipe.category)
                     .font(.callout .bold() .smallCaps())
                     .foregroundStyle(.secondary)
             }
@@ -64,5 +65,5 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    RecipeCard(recipe: BurgerMock(), viewModel: .constant(AppDataViewModel()))
+    RecipeCard(recipe: AppDataViewModel().recipes[0], viewModel: .constant(AppDataViewModel()))
 }

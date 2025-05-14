@@ -82,5 +82,5 @@ struct CookingScreen: View {
 }
 
 #Preview {
-    CookingScreen(recipe: BurgerMock())
+    CookingScreen(recipe: AppDataViewModel().recipes[0])
 }

@@ -1,37 +1,44 @@
 
 {
+    "id": "2",
     "name": "Margherita Pizza",
+    "workingTime": "ca. 30 Min",
+    "difficulty": "Einfach",
     "rating": 4.7,
     "category": "Pizza",
-    "imageName": "margherita",
+    "calories": 1800,
+    "imageName": "pizza",
     "ingredients": [
-        { "name": "Pizzateig", "unit": "g", "amount": 250 },
-        { "name": "Tomatensauce", "unit": "ml", "amount": 100 },
-        { "name": "Mozzarella", "unit": "g", "amount": 125 },
-        { "name": "Basilikum", "unit": "Blätter", "amount": 5 },
-        { "name": "Olivenöl", "unit": "EL", "amount": 1 }
+        { "id": "pizzateig", "name": "Pizzateig", "unit": "g", "amount": 250 },
+        { "id": "tomatensauce", "name": "Tomatensauce", "unit": "ml", "amount": 100 },
+        { "id": "mozzarella", "name": "Mozzarella", "unit": "g", "amount": 125 },
+        { "id": "basilikum", "name": "Basilikum", "unit": "Blätter", "amount": 5 },
+        { "id": "olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 1 }
     ],
     "steps": [
         {
             "title": "Teig vorbereiten",
-            "timeMins": 10,
-            "ingredients_required": [
-                { "name": "Pizzateig", "unit": "g", "amount": 250 }
+            "description": "Teig ausrollen",
+            "duration": "10Min",
+            "requiredIngredients": [
+                { "id": "pizzateig", "name": "Pizzateig", "unit": "g", "amount": 250 }
             ]
         },
         {
             "title": "Belegen",
-            "timeMins": 5,
-            "ingredients_required": [
-                { "name": "Tomatensauce", "unit": "ml", "amount": 100 },
-                { "name": "Mozzarella", "unit": "g", "amount": 125 },
-                { "name": "Basilikum", "unit": "Blätter", "amount": 5 }
+            "description": "Pizza nach belieben belegen.",
+            "duration": "5Min",
+            "requiredIngredients": [
+                { "id": "tomatensauce", "name": "Tomatensauce", "unit": "ml", "amount": 100 },
+                { "id": "mozzarella", "name": "Mozzarella", "unit": "g", "amount": 125 },
+                { "id": "basilikum", "name": "Basilikum", "unit": "Blätter", "amount": 5 }
             ]
         },
         {
             "title": "Backen",
-            "timeMins": 12,
-            "ingredients_required": []
+            "description": "Pizza bei 180 Grad 12Min im Ofen backen",
+            "duration": "12Min",
+            "requiredIngredients": []
         }
     ],
     "tags": ["Vegetarisch", "Klassiker", "Einfach"],

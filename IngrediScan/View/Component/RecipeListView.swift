@@ -13,16 +13,42 @@ struct RecipeListView: View {
     
     var body: some View {
         ScrollView {
-            if (searchResults.isEmpty) {
-                Text("No Recipes found")
-                    .font(.headline .bold() .smallCaps())
-                    .foregroundStyle(.secondary)
-                    .padding()
-            }
-            VStack {
-                ForEach(searchResults) { recipe in
-                    RecipeCard(recipe: recipe, viewModel: $viewModel)
+            VStack (alignment: .leading) {
+                ScrollView(.horizontal) {
+                    HStack {
+                        Button("Tag 1") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 2") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 3") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 4") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 5") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 6") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                    }
+                    .padding([.leading, .bottom])
+                }
+                
+                if (searchResults.isEmpty) {
+                    Text("No Recipes found")
+                        .font(.headline .bold() .smallCaps())
+                        .foregroundStyle(.secondary)
                         .padding()
+                }
+                VStack {
+                    ForEach(searchResults) { recipe in
+                        RecipeCard(recipe: recipe, viewModel: $viewModel)
+                            .padding()
+                    }
                 }
             }
         }

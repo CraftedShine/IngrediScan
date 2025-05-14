@@ -1,45 +1,52 @@
 {
+  "id": "4",
   "name": "Spaghetti Carbonara",
+  "difficulty": "Einfach",
+  "calories": 450,
+  "workingTime": "20 Min",
   "rating": 4.9,
   "category": "Pasta",
-  "imageName": "carbonara",
+  "imageName": "spaghetti-carbonara",
   "ingredients": [
-    { "name": "Spaghetti", "unit": "g", "amount": 400 },
-    { "name": "Eier", "unit": "Stk", "amount": 4 },
-    { "name": "Parmesan", "unit": "g", "amount": 100 },
-    { "name": "Guanciale", "unit": "g", "amount": 150 },
-    { "name": "Pfeffer", "unit": "Prise", "amount": 1 },
-    { "name": "Salz", "unit": "Prise", "amount": 1 }
+    { "id": "Spaghetti", "name": "Spaghetti", "unit": "g", "amount": 400 },
+    { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 4 },
+    { "id": "Parmesan", "name": "Parmesan", "unit": "g", "amount": 100 },
+    { "id": "Guanciale", "name": "Guanciale", "unit": "g", "amount": 150 },
+    { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+    { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 }
   ],
   "steps": [
     {
       "title": "Spaghetti kochen",
-      "timeMins": 10,
-      "ingredients_required": [
-        { "name": "Spaghetti", "unit": "g", "amount": 400 },
-        { "name": "Salz", "unit": "Prise", "amount": 1 }
+      "description": "Nudeln aldente kochen",
+      "duration": "10 Min",
+      "requiredIngredients": [
+          { "id": "Spaghetti", "name": "Spaghetti", "unit": "g", "amount": 400 },
+          { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 }
       ]
     },
     {
       "title": "Guanciale anbraten",
-      "timeMins": 5,
-      "ingredients_required": [
-        { "name": "Guanciale", "unit": "g", "amount": 150 }
+      "description": "alternativ auch Speck",
+      "duration": "5 Min",
+      "requiredIngredients": [
+          { "id": "Guanciale", "name": "Guanciale", "unit": "g", "amount": 150 }
       ]
     },
     {
       "title": "Eier-Parmesan-Mischung zubereiten",
-      "timeMins": 3,
-      "ingredients_required": [
-        { "name": "Eier", "unit": "Stk", "amount": 4 },
-        { "name": "Parmesan", "unit": "g", "amount": 100 },
-        { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+      "duration": "3 Min",
+      "requiredIngredients": [
+          { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 4 },
+          { "id": "Parmesan", "name": "Parmesan", "unit": "g", "amount": 100 },
+          { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
       ]
     },
     {
       "title": "Alles vermengen",
-      "timeMins": 2,
-      "ingredients_required": []
+      "description": "",
+      "duration": "2 Min",
+      "requiredIngredients": []
     }
   ],
   "tags": ["Klassiker", "Italienisch", "Herzhaft"],

@@ -83,5 +83,5 @@ struct TimelineView: View {
 }
 
 #Preview {
-    TimelineView(recipe: BurgerMock())
+    TimelineView(recipe: AppDataViewModel().recipes[0])
 }

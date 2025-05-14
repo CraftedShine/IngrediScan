@@ -40,7 +40,7 @@ struct MinimalRecipeCard: View {
                     }
                 }
                 HStack {
-                    Text(self.recipe.category.name)
+                    Text(self.recipe.category)
                         .font(.subheadline .bold() .smallCaps())
                         .foregroundStyle(.white.opacity(0.8))
                     Text("⭐ \(String(self.recipe.rating))")
@@ -57,5 +57,5 @@ struct MinimalRecipeCard: View {
 }
 
 #Preview {
-    MinimalRecipeCard(recipe: PizzaMock())
+    MinimalRecipeCard(recipe: AppDataViewModel().recipes[0])
 }

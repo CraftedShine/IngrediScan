@@ -34,5 +34,5 @@ struct IngredientList: View {
 }
 
 #Preview {
-    IngredientList(recipe: BurgerMock())
+    IngredientList(recipe: AppDataViewModel().recipes[0])
 }

@@ -46,5 +46,5 @@ struct CookingStatistics: View {
 }
 
 #Preview {
-    CookingStatistics(recipe: BurgerMock())
+    CookingStatistics(recipe: AppDataViewModel().recipes[0])
 }
