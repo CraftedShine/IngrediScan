@@ -36,7 +36,7 @@
 		D58B6B812DD48FA6006EA229 /* Focaccia.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B802DD48FA0006EA229 /* Focaccia.json */; };
 		D58B6B852DD4905D006EA229 /* Bruschetta.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B842DD49053006EA229 /* Bruschetta.json */; };
 		D58B6B872DD49099006EA229 /* Lasagne.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B862DD49093006EA229 /* Lasagne.json */; };
-		D58B6B892DD490E8006EA229 /* PanaCotta.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B882DD490E3006EA229 /* PanaCotta.json */; };
+		D58B6B892DD490E8006EA229 /* PannaCotta.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B882DD490E3006EA229 /* PannaCotta.json */; };
 		D58B6B8D2DD49547006EA229 /* Gnocchi.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B8C2DD49540006EA229 /* Gnocchi.json */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 		D58B6B802DD48FA0006EA229 /* Focaccia.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Focaccia.json; sourceTree = "<group>"; };
 		D58B6B842DD49053006EA229 /* Bruschetta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Bruschetta.json; sourceTree = "<group>"; };
 		D58B6B862DD49093006EA229 /* Lasagne.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Lasagne.json; sourceTree = "<group>"; };
-		D58B6B882DD490E3006EA229 /* PanaCotta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PanaCotta.json; sourceTree = "<group>"; };
+		D58B6B882DD490E3006EA229 /* PannaCotta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PannaCotta.json; sourceTree = "<group>"; };
 		D58B6B8C2DD49540006EA229 /* Gnocchi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Gnocchi.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				D58B6B8C2DD49540006EA229 /* Gnocchi.json */,
-				D58B6B882DD490E3006EA229 /* PanaCotta.json */,
+				D58B6B882DD490E3006EA229 /* PannaCotta.json */,
 				D58B6B862DD49093006EA229 /* Lasagne.json */,
 				D58B6B842DD49053006EA229 /* Bruschetta.json */,
 				D58B6B802DD48FA0006EA229 /* Focaccia.json */,
@@ -367,7 +367,7 @@
 				D58B6B852DD4905D006EA229 /* Bruschetta.json in Resources */,
 				D58B6B8D2DD49547006EA229 /* Gnocchi.json in Resources */,
 				D58B6B662DCDF720006EA229 /* Assets.xcassets in Resources */,
-				D58B6B892DD490E8006EA229 /* PanaCotta.json in Resources */,
+				D58B6B892DD490E8006EA229 /* PannaCotta.json in Resources */,
 				D58B6B812DD48FA6006EA229 /* Focaccia.json in Resources */,
 				D58B6B7D2DD48F43006EA229 /* Tiramisu.json in Resources */,
 			);

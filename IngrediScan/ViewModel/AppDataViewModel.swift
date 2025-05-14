@@ -20,6 +20,13 @@ class AppDataViewModel {
             readLocalJSONFile(forName: "MargheritaPizza"),
             readLocalJSONFile(forName: "CapreseSalad"),
             readLocalJSONFile(forName: "SpaghettiCabonara"),
+            readLocalJSONFile(forName: "Tiramisu"),
+            readLocalJSONFile(forName: "MinestroneSoup"),
+            readLocalJSONFile(forName: "Focaccia"),
+            readLocalJSONFile(forName: "Bruschetta"),
+            readLocalJSONFile(forName: "Lasagne"),
+            readLocalJSONFile(forName: "PannaCotta"),
+            readLocalJSONFile(forName: "Gnocchi"),
         ]
         
         jsonFiles.forEach { jsonData in
@@ -29,6 +36,8 @@ class AppDataViewModel {
                 }
             }
         }
+        
+        self.favoriteRecipes = self.recipes
         
     }
     

@@ -35,6 +35,7 @@
     },
     {
       "title": "Eier-Parmesan-Mischung zubereiten",
+      "description": "Eier schlagen, in eine Schale kippen und dann den Parmesan dazugeben",
       "duration": "3 Min",
       "requiredIngredients": [
           { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 4 },

@@ -31,6 +31,7 @@ struct MinimalRecipeCard: View {
                         .font(.title)
                         .bold()
                         .foregroundColor(.white)
+                        .lineLimit(1)
                     
                     Button {
                         self.favorite.toggle()

@@ -1,57 +1,65 @@
 {
-  "name": "Minestrone Suppe",
-  "rating": 4.5,
-  "category": "Suppe",
-  "imageName": "minestrone",
-  "ingredients": [
-    { "name": "Karotten", "unit": "g", "amount": 100 },
-    { "name": "Zucchini", "unit": "g", "amount": 100 },
-    { "name": "Sellerie", "unit": "g", "amount": 100 },
-    { "name": "Weiße Bohnen", "unit": "g", "amount": 200 },
-    { "name": "Tomaten", "unit": "g", "amount": 200 },
-    { "name": "Nudeln", "unit": "g", "amount": 100 },
-    { "name": "Gemüsebrühe", "unit": "ml", "amount": 1000 },
-    { "name": "Olivenöl", "unit": "EL", "amount": 2 },
-    { "name": "Salz", "unit": "Prise", "amount": 1 },
-    { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
-  ],
-  "steps": [
-    {
-      "title": "Gemüse vorbereiten",
-      "timeMins": 10,
-      "ingredients_required": [
-        { "name": "Karotten", "unit": "g", "amount": 100 },
-        { "name": "Zucchini", "unit": "g", "amount": 100 },
-        { "name": "Sellerie", "unit": "g", "amount": 100 }
-      ]
-    },
-    {
-      "title": "Gemüse andünsten",
-      "timeMins": 5,
-      "ingredients_required": [
-        { "name": "Olivenöl", "unit": "EL", "amount": 2 }
-      ]
-    },
-    {
-      "title": "Suppe kochen",
-      "timeMins": 20,
-      "ingredients_required": [
-        { "name": "Tomaten", "unit": "g", "amount": 200 },
-        { "name": "Weiße Bohnen", "unit": "g", "amount": 200 },
-        { "name": "Gemüsebrühe", "unit": "ml", "amount": 1000 },
-        { "name": "Nudeln", "unit": "g", "amount": 100 }
-      ]
-    },
-    {
-      "title": "Abschmecken",
-      "timeMins": 2,
-      "ingredients_required": [
-        { "name": "Salz", "unit": "Prise", "amount": 1 },
-        { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
-      ]
-    }
-  ],
-  "tags": ["Vegetarisch", "Gesund", "Saisonal"],
-  "annotations": "Perfekt als wärmende Hauptspeise"
+    "id": "6",
+    "difficulty": "Mittel",
+    "calories": 350,
+    "workingTime": "ca. 35 Min",
+    "name": "Minestrone Suppe",
+    "rating": 4.5,
+    "category": "Suppe",
+    "imageName": "minestrone-soup",
+    "ingredients": [
+        { "id": "Karotten", "name": "Karotten", "unit": "g", "amount": 100 },
+        { "id": "Zucchini", "name": "Zucchini", "unit": "g", "amount": 100 },
+        { "id": "Sellerie", "name": "Sellerie", "unit": "g", "amount": 100 },
+        { "id": "Weiße Bohnen", "name": "Weiße Bohnen", "unit": "g", "amount": 200 },
+        { "id": "Tomaten", "name": "Tomaten", "unit": "g", "amount": 200 },
+        { "id": "Nudeln", "name": "Nudeln", "unit": "g", "amount": 100 },
+        { "id": "Gemüsebrühe", "name": "Gemüsebrühe", "unit": "ml", "amount": 1000 },
+        { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 2 },
+        { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+        { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+    ],
+    "steps": [
+        {
+            "title": "Gemüse vorbereiten",
+            "description": "Gemüse klein schneiden",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Karotten", "name": "Karotten", "unit": "g", "amount": 100 },
+                { "id": "Zucchini", "name": "Zucchini", "unit": "g", "amount": 100 },
+                { "id": "Sellerie", "name": "Sellerie", "unit": "g", "amount": 100 }
+            ]
+        },
+        {
+            "title": "Gemüse andünsten",
+            "description": "Gemüse kurz in der Pfanne andünsten",
+            "duration": "5 Min",
+            "requiredIngredients": [
+                { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 2 },
+            ]
+        },
+        {
+            "title": "Suppe kochen",
+            "description": "Suche 20 Min mit Deckel im Topf kochen",
+            "duration": "20 Min",
+            "requiredIngredients": [
+                { "id": "Weiße Bohnen", "name": "Weiße Bohnen", "unit": "g", "amount": 200 },
+                { "id": "Tomaten", "name": "Tomaten", "unit": "g", "amount": 200 },
+                { "id": "Nudeln", "name": "Nudeln", "unit": "g", "amount": 100 },
+                { "id": "Gemüsebrühe", "name": "Gemüsebrühe", "unit": "ml", "amount": 1000 }
+            ]
+        },
+        {
+            "title": "Abschmecken",
+            "description": "Suppe nach belieben würzen",
+            "duration": "2 Min",
+            "requiredIngredients": [
+                { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+                { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+            ]
+        }
+    ],
+    "tags": ["Vegetarisch", "Gesund", "Saisonal"],
+    "annotations": "Perfekt als wärmende Hauptspeise"
 }
 

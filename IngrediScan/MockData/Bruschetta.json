@@ -1,43 +1,50 @@
 {
-  "name": "Bruschetta mit Tomaten",
-  "rating": 4.6,
-  "category": "Vorspeise",
-  "imageName": "bruschetta",
-  "ingredients": [
-    { "name": "Baguette", "unit": "Scheiben", "amount": 8 },
-    { "name": "Tomaten", "unit": "g", "amount": 300 },
-    { "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
-    { "name": "Basilikum", "unit": "Blätter", "amount": 6 },
-    { "name": "Olivenöl", "unit": "EL", "amount": 2 },
-    { "name": "Salz", "unit": "Prise", "amount": 1 },
-    { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
-  ],
-  "steps": [
-    {
-      "title": "Brot anrösten",
-      "timeMins": 5,
-      "ingredients_required": [
-        { "name": "Baguette", "unit": "Scheiben", "amount": 8 }
-      ]
-    },
-    {
-      "title": "Belag vorbereiten",
-      "timeMins": 10,
-      "ingredients_required": [
-        { "name": "Tomaten", "unit": "g", "amount": 300 },
-        { "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
-        { "name": "Basilikum", "unit": "Blätter", "amount": 6 },
-        { "name": "Olivenöl", "unit": "EL", "amount": 2 },
-        { "name": "Salz", "unit": "Prise", "amount": 1 },
-        { "name": "Pfeffer", "unit": "Prise", "amount": 1 }
-      ]
-    },
-    {
-      "title": "Belegen und servieren",
-      "timeMins": 3,
-      "ingredients_required": []
-    }
-  ],
-  "tags": ["Vegetarisch", "Aperitif", "Schnell"],
-  "annotations": "Kalt serviert, ideal im Sommer"
+    "id": "8",
+    "name": "Bruschetta mit Tomaten",
+    "workingTime": "ca 20 Min",
+    "difficulty": "Einfach",
+    "calories": 200,
+    "rating": 4.6,
+    "category": "Vorspeise",
+    "imageName": "bruschetta",
+    "ingredients": [
+        { "id": "Baguette", "name": "Baguette", "unit": "Scheiben", "amount": 8 },
+        { "id": "Tomaten", "name": "Tomaten", "unit": "g", "amount": 300 },
+        { "id": "Knoblauch", "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
+        { "id": "Basilikum", "name": "Basilikum", "unit": "Blätter", "amount": 6 },
+        { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 2 },
+        { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+        { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+    ],
+    "steps": [
+        {
+            "title": "Brot anrösten",
+            "description": "Das Brot kurz anrösten",
+            "duration": "5 Min",
+            "requiredIngredients": [
+                { "id": "Baguette", "name": "Baguette", "unit": "Scheiben", "amount": 8 },
+            ]
+        },
+        {
+            "title": "Belag vorbereiten",
+            "description": "Tomaten klein schneiden und mit Knoblauch, Basilikum, Öl, sowie Salz & Pfeffer vermengen",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Tomaten", "name": "Tomaten", "unit": "g", "amount": 300 },
+                { "id": "Knoblauch", "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
+                { "id": "Basilikum", "name": "Basilikum", "unit": "Blätter", "amount": 6 },
+                { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 2 },
+                { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+                { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+            ]
+        },
+        {
+            "title": "Belegen und servieren",
+            "description": "Baguette mit dem Belagen belegen",
+            "duration": "3 Min",
+            "requiredIngredients": []
+        }
+    ],
+    "tags": ["Vegetarisch", "Aperitif", "Schnell"],
+    "annotations": "Kalt serviert, ideal im Sommer"
 }

@@ -1,44 +1,52 @@
 {
+  "id": "5",
   "name": "Tiramisu",
   "rating": 4.8,
+  "workingTime": "ca. 20 Min",
+  "difficulty": "Mittel",
+  "calories": 850,
   "category": "Dessert",
   "imageName": "tiramisu",
   "ingredients": [
-    { "name": "Löffelbiskuit", "unit": "g", "amount": 200 },
-    { "name": "Mascarpone", "unit": "g", "amount": 500 },
-    { "name": "Eier", "unit": "Stk", "amount": 3 },
-    { "name": "Zucker", "unit": "g", "amount": 100 },
-    { "name": "Espresso", "unit": "ml", "amount": 200 },
-    { "name": "Kakaopulver", "unit": "EL", "amount": 2 }
+    { "id": "Löffelbiskuit", "name": "Löffelbiskuit", "unit": "g", "amount": 200 },
+    { "id": "Mascarpone", "name": "Mascarpone", "unit": "g", "amount": 500 },
+    { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 3 },
+    { "id": "Zucker", "name": "Zucker", "unit": "g", "amount": 100 },
+    { "id": "Espresso", "name": "Espresso", "unit": "ml", "amount": 200 },
+    { "id": "Kakaopulver", "name": "Kakaopulver", "unit": "EL", "amount": 2 }
   ],
   "steps": [
     {
       "title": "Creme zubereiten",
-      "timeMins": 10,
-      "ingredients_required": [
-        { "name": "Mascarpone", "unit": "g", "amount": 500 },
-        { "name": "Eier", "unit": "Stk", "amount": 3 },
-        { "name": "Zucker", "unit": "g", "amount": 100 }
+      "description": "Eier schlagen und mit Mascarpone, sowie Zucker vermengen",
+      "duration": "10 Min",
+      "requiredIngredients": [
+          { "id": "Mascarpone", "name": "Mascarpone", "unit": "g", "amount": 500 },
+          { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 3 },
+          { "id": "Zucker", "name": "Zucker", "unit": "g", "amount": 100 }
       ]
     },
     {
       "title": "Biskuits tauchen und schichten",
-      "timeMins": 10,
-      "ingredients_required": [
-        { "name": "Löffelbiskuit", "unit": "g", "amount": 200 },
-        { "name": "Espresso", "unit": "ml", "amount": 200 }
+      "description": "Biskuits in Espresso tauchen und aufschichten",
+      "duration": "10 Min",
+      "requiredIngredients": [
+          { "id": "Löffelbiskuit", "name": "Löffelbiskuit", "unit": "g", "amount": 200 },
+          { "id": "Espresso", "name": "Espresso", "unit": "ml", "amount": 200 }
       ]
     },
     {
       "title": "Kühlen",
-      "timeMins": 240,
-      "ingredients_required": []
+      "description": "Das ganze für 3h in den Kühlschrank stellen",
+      "duration": "3h",
+      "requiredIngredients": []
     },
     {
       "title": "Mit Kakao bestreuen",
-      "timeMins": 2,
-      "ingredients_required": [
-        { "name": "Kakaopulver", "unit": "EL", "amount": 2 }
+      "description": "Das Tiramisu mit Kakaopulver bestreuen und genißen.",
+      "duration": "2 Min",
+      "requiredIngredients": [
+          { "id": "Kakaopulver", "name": "Kakaopulver", "unit": "EL", "amount": 2 }
       ]
     }
   ],
