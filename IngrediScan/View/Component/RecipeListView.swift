@@ -38,27 +38,19 @@ struct RecipeListView: View {
                     .padding([.leading, .bottom])
                 }
                 
-                if (searchResults.isEmpty) {
+                if (viewModel.recipes.isEmpty) {
                     Text("No Recipes found")
                         .font(.headline .bold() .smallCaps())
                         .foregroundStyle(.secondary)
                         .padding()
                 }
                 VStack {
-                    ForEach(searchResults) { recipe in
-                        RecipeCard(recipe: recipe, viewModel: $viewModel)
+                    ForEach($viewModel.recipes) { $recipe in
+                        RecipeCard(viewModel: $viewModel, recipe: $recipe)
                             .padding()
                     }
                 }
             }
-        }
-    }
-    
-    var searchResults: [Recipe] {
-        if searchText.isEmpty {
-            return viewModel.recipes
-        } else {
-            return viewModel.recipes.filter { $0.name.contains(searchText) }
         }
     }
 }

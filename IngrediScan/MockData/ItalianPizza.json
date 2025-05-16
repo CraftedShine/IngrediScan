@@ -19,7 +19,7 @@
         {
             "title": "Teig anmischen",
             "description": "Alle Zutaten zusammengeben und verühren",
-            "duration": "15",
+            "duration": "15 Min",
             "requiredIngredients": [
                 {
                     "id": "1",
@@ -32,7 +32,7 @@
         {
             "title": "Teig ruhen lassen",
             "description": "Teig im Kühlschrank 24h ruhen lassen",
-            "duration": "2910",
+            "duration": "3 Tage",
             "requiredIngredients": []
         }
     ],

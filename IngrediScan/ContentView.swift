@@ -22,7 +22,7 @@ struct ContentView: View {
                 {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tag(1)
-            FavoritesScreen()
+            FavoritesScreen(viewModel: $viewModel)
                 .tabItem {
                     Label("Cooking", systemImage: "frying.pan.fill")
                 }.tag(2)

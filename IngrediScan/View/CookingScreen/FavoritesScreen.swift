@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoritesScreen: View {
-    @State var viewModel: AppDataViewModel = .init()
+    @Binding var viewModel: AppDataViewModel
     @State private var searchText: String = ""
     
     var body: some View {
@@ -20,9 +20,9 @@ struct FavoritesScreen: View {
                             .font(.headline .bold() .smallCaps())
                             .foregroundStyle(.secondary)
                     }
-                    ForEach(self.viewModel.favoriteRecipes) { recipe in
+                    ForEach(self.$viewModel.favoriteRecipes) { $recipe in
                         NavigationLink(destination: CookingScreen(recipe: recipe)) {
-                            MinimalRecipeCard(recipe: recipe)
+                            MinimalRecipeCard(viewModel: $viewModel, recipe: $recipe)
                         }
                     }
                 }
@@ -40,5 +40,5 @@ struct FavoritesScreen: View {
 }
 
 #Preview {
-    FavoritesScreen()
+    FavoritesScreen(viewModel: .constant(AppDataViewModel()))
 }

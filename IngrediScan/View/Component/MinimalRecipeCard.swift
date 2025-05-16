@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MinimalRecipeCard: View {
-    @State var favorite: Bool = true
-    let recipe: Recipe
+    @Binding var viewModel: AppDataViewModel
+    @Binding var recipe: Recipe
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -34,9 +34,9 @@ struct MinimalRecipeCard: View {
                         .lineLimit(1)
                     
                     Button {
-                        self.favorite.toggle()
+                        self.viewModel.addFavorite(recipe: self.recipe)
                     } label: {
-                        Image(systemName: self.favorite ? "star.fill" : "star")
+                        Image(systemName: self.viewModel.isFavorite(recipe: self.recipe) ? "star.fill" : "star")
                             .foregroundStyle(.yellow)
                     }
                 }
@@ -58,5 +58,5 @@ struct MinimalRecipeCard: View {
 }
 
 #Preview {
-    MinimalRecipeCard(recipe: AppDataViewModel().recipes[0])
+    MinimalRecipeCard(viewModel: .constant(AppDataViewModel()), recipe: .constant(AppDataViewModel().recipes.first!), )
 }

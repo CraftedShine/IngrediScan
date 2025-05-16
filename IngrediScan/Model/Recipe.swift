@@ -32,6 +32,12 @@ class Recipe : Identifiable, Codable, Equatable
     var rating: Double
     var tags: [String]
     
+    var isFavorite: Bool = false
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, category, imageName, steps, ingredients, workingTime, difficulty, calories, rating, tags
+    }
+    
     public init(id: String, name: String, category: String, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
         self.id = id
         self.name = name

@@ -9,20 +9,23 @@ import SwiftUI
 
 struct RecipeCard: View {
     @Binding var viewModel: AppDataViewModel
-    private var recipe: Recipe
+    @Binding var recipe: Recipe
     @State private var favorite: Bool = false
-    
-    public init(recipe: Recipe, viewModel: Binding<AppDataViewModel>) {
-        self.recipe = recipe
-        _viewModel = viewModel
-    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image(self.recipe.imageName)
-                .resizable()
-                .frame(width: .infinity)
-                .scaledToFit()
+            Button {
+                viewModel.favoriteRecipes.append(self.recipe)
+                self.favorite.toggle()
+            } label: {
+                Image(self.recipe.imageName)
+                    .resizable()
+                    .frame(width: .infinity)
+                    .scaledToFit()
+                    .overlay {
+                        Image(self.favorite ? "star.fill" : "star")
+                    }
+            }
             Text(self.recipe.name)
                 .font(.title2 .bold() .smallCaps())
                 .padding([.leading, .top])
@@ -65,5 +68,5 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    RecipeCard(recipe: AppDataViewModel().recipes[0], viewModel: .constant(AppDataViewModel()))
+    RecipeCard(viewModel: .constant(AppDataViewModel()), recipe: .constant(AppDataViewModel().recipes[0]))
 }

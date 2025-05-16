@@ -15,19 +15,13 @@ class AppDataViewModel {
     var favoriteRecipes: [Recipe] = []
     
     init() {
-        let jsonFiles: [Data?] = [
-            readLocalJSONFile(forName: "ItalianPizza"),
-            readLocalJSONFile(forName: "MargheritaPizza"),
-            readLocalJSONFile(forName: "CapreseSalad"),
-            readLocalJSONFile(forName: "SpaghettiCabonara"),
-            readLocalJSONFile(forName: "Tiramisu"),
-            readLocalJSONFile(forName: "MinestroneSoup"),
-            readLocalJSONFile(forName: "Focaccia"),
-            readLocalJSONFile(forName: "Bruschetta"),
-            readLocalJSONFile(forName: "Lasagne"),
-            readLocalJSONFile(forName: "PannaCotta"),
-            readLocalJSONFile(forName: "Gnocchi"),
-        ]
+        let fileList: [String] = ["ItalianPizza", "MargheritaPizza", "CapreseSalad", "SpaghettiCabonara", "Tiramisu", "MinestroneSoup", "Focaccia", "Bruschetta", "Lasagne", "PannaCotta", "Gnocchi"]
+        
+        var jsonFiles: [Data?] = []
+        
+        fileList.forEach { file in
+            jsonFiles.append(readLocalJSONFile(forName: file))
+        }
         
         jsonFiles.forEach { jsonData in
             if let data = jsonData.self {
@@ -36,9 +30,20 @@ class AppDataViewModel {
                 }
             }
         }
-        
-        self.favoriteRecipes = self.recipes
-        
+    }
+    
+    func addFavorite(recipe: Recipe) {
+        self.favoriteRecipes.append(recipe)
+    }
+    
+    func isFavorite(recipe: Recipe) -> Bool {
+        return (self.favoriteRecipes.firstIndex(of: recipe) != nil)
+    }
+    
+    func removeFavorite(recipe: Recipe) {
+        if let index = self.favoriteRecipes.firstIndex(of: recipe) {
+            self.favoriteRecipes.remove(at: index)
+        }
     }
     
     func parse(jsonData: Data) -> Recipe? {
@@ -64,3 +69,5 @@ class AppDataViewModel {
         return nil
     }
 }
+
+
