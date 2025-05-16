@@ -16,7 +16,7 @@ struct IngredientTemplateListView: View {
         NavigationView {
             List(ingredientTemplates) { template in
                 Button(action: {
-                    let newIngredient = Ingredient(name: template.name, amount: 1.0, unit: "Stück")
+                    let newIngredient = Ingredient(name: template.name, amount: 1.0, unit: "Stück", id: template.name)
                     fridge.addIngredient(newIngredient)
                 }) {
                     HStack {

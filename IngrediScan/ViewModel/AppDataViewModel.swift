@@ -30,6 +30,8 @@ class AppDataViewModel {
                 }
             }
         }
+        
+        favoriteRecipes = recipes
     }
     
     func addFavorite(recipe: Recipe) {
