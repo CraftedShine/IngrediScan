@@ -7,15 +7,19 @@
 
 import Foundation
 
-class MyFridge {
-    private var ingredients: [Ingredient] = []
+class MyFridge: ObservableObject {
+    @Published private var ingredients: [Ingredient] = []
     
-    func addIngredient(_ ingredient: Ingredient) {
-        ingredients.append(ingredient)
+    func addIngredient(_ newIngredient: Ingredient) {
+        if let index = ingredients.firstIndex(where: { $0.name == newIngredient.name }) {
+            ingredients[index].amount += newIngredient.amount
+        } else {
+            ingredients.append(newIngredient)
+        }
     }
     
-    func removeIngredient(_ index: Int) {
-        ingredients.remove(at: index)
+    func removeIngredient(ingredient: Ingredient) {
+        ingredients.removeAll { $0.id == ingredient.id }
     }
     
     func getIngredients() -> [Ingredient] {
