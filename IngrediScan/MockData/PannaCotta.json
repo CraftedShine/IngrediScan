@@ -1,0 +1,55 @@
+{
+    "id": "10",
+    "difficulty": "Einfach",
+    "calories": 500,
+    "workingTime": "ca. 3,5h",
+    "name": "Panna Cotta",
+    "rating": 4.8,
+    "category": "Dessert",
+    "imageName": "panna-cotta",
+    "ingredients": [
+        { "id": "Sahne", "name": "Sahne", "unit": "ml", "amount": 500 },
+        { "id": "Zucker", "name": "Zucker", "unit": "g", "amount": 80 },
+        { "id": "Vanilleschote", "name": "Vanilleschote", "unit": "Stk", "amount": 1 },
+        { "id": "Gelatine", "name": "Gelatine", "unit": "Blatt", "amount": 3 },
+        { "id": "Erdbeeren", "name": "Erdbeeren", "unit": "g", "amount": 200 },
+        { "id": "Puderzucker", "name": "Puderzucker", "unit": "TL", "amount": 2 }
+    ],
+    "steps": [
+        {
+            "title": "Sahne erhitzen",
+            "description": "Sahne erhitzen und mit Zucker & einer Vanilleschote vermischen",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Sahne", "name": "Sahne", "unit": "ml", "amount": 500 },
+                { "id": "Zucker", "name": "Zucker", "unit": "g", "amount": 80 },
+                { "id": "Vanilleschote", "name": "Vanilleschote", "unit": "Stk", "amount": 1 }
+            ]
+        },
+        {
+            "title": "Gelatine einrühren",
+            "description": "Gelantine in die Sahne einrühren",
+            "duration": "5 Min",
+            "requiredIngredients": [
+                { "id": "Gelatine", "name": "Gelatine", "unit": "Blatt", "amount": 3 }
+            ]
+        },
+        {
+            "title": "Kühlen lassen",
+            "description": "Masse 3h im Kühlschrank abkühlen lassen",
+            "duration": "3h",
+            "requiredIngredients": []
+        },
+        {
+            "title": "Erdbeerspiegel zubereiten",
+            "description": "Erdbeeren pürieren & mit Puderzucker dekorieren",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Erdbeeren", "name": "Erdbeeren", "unit": "g", "amount": 200 },
+                { "id": "Puderzucker", "name": "Puderzucker", "unit": "TL", "amount": 2 }
+            ]
+        }
+    ],
+    "tags": ["Dessert", "Klassisch", "Cremig"],
+    "annotations": "Mit fruchtigem Erdbeerspiegel servieren"
+}

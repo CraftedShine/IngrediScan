@@ -8,49 +8,53 @@
 import SwiftUI
 
 struct RecipeListView: View {
-    @Environment(\.dismiss) var dismiss
-    @Binding var selectedRecipe: Recipe
-    @Binding var selectedTab: Int
-    @State private var searchText: String = ""
-    
-    private var recipes: [Recipe] = []
-    
-    public init (recipes: [Recipe], selectedRecipe: Binding<Recipe>, selectedTab: Binding<Int>) {
-        self.recipes = recipes
-        _selectedRecipe = selectedRecipe
-        _selectedTab = selectedTab
-    }
-    
+    @Binding var searchText: String
+    @Binding var viewModel: AppDataViewModel
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ScrollView {
-                    if (searchResults.isEmpty) {
-                        Text("No Recipes found")
-                            .font(.headline .bold() .smallCaps())
-                            .foregroundStyle(.secondary)
-                            .padding()
+        ScrollView {
+            VStack (alignment: .leading) {
+                ScrollView(.horizontal) {
+                    HStack {
+                        Button("Tag 1") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 2") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 3") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 4") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 5") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                        Button("Tag 6") {}
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
                     }
-                    ForEach(searchResults) { recipe in
-                        RecipeCard(recipe: recipe, selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
+                    .padding([.leading, .bottom])
+                }
+                
+                if (viewModel.recipes.isEmpty) {
+                    Text("No Recipes found")
+                        .font(.headline .bold() .smallCaps())
+                        .foregroundStyle(.secondary)
+                        .padding()
+                }
+                VStack {
+                    ForEach($viewModel.recipes) { $recipe in
+                        RecipeCard(viewModel: $viewModel, recipe: $recipe)
                             .padding()
                     }
                 }
-                .searchable(text: $searchText)
             }
-        }
-    }
-    
-    var searchResults: [Recipe] {
-        if searchText.isEmpty {
-            return recipes
-        } else {
-            return recipes.filter { $0.name.contains(searchText) }
         }
     }
 }
 
 #Preview {
-    RecipeListView(recipes: [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()], selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
+    RecipeListView(searchText: .constant(""), viewModel: .constant(AppDataViewModel()))
 }

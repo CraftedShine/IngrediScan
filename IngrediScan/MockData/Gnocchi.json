@@ -1,0 +1,52 @@
+{
+    "id": "11",
+    "difficulty": "Einfach",
+    "workingTime": "ca. 20 Min",
+    "calories": 250,
+    "name": "Gnocchi in Gorgonzolasauce",
+    "rating": 4.6,
+    "category": "Pasta",
+    "imageName": "gnocchi",
+    "ingredients": [
+        { "id": "Gnocchi", "name": "Gnocchi", "unit": "g", "amount": 500 },
+        { "id": "Gorgonzola", "name": "Gorgonzola", "unit": "g", "amount": 150 },
+        { "id": "Sahne", "name": "Sahne", "unit": "ml", "amount": 200 },
+        { "id": "Butter", "name": "Butter", "unit": "EL", "amount": 1 },
+        { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+        { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+        { "id": "Walnüsse", "name": "Walnüsse", "unit": "g", "amount": 30 }
+    ],
+    "steps": [
+        {
+            "title": "Gnocchi kochen",
+            "description": "",
+            "duration": "5 Min",
+            "requiredIngredients": [
+                { "id": "Gnocchi", "name": "Gnocchi", "unit": "g", "amount": 500 },
+            ]
+        },
+        {
+            "title": "Sauce zubereiten",
+            "description": "Sahne, Butter & Gorgonzola vermischen",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Gorgonzola", "name": "Gorgonzola", "unit": "g", "amount": 150 },
+                { "id": "Sahne", "name": "Sahne", "unit": "ml", "amount": 200 },
+                { "id": "Butter", "name": "Butter", "unit": "EL", "amount": 1 }
+            ]
+        },
+        {
+            "title": "Würzen und garnieren",
+            "description": "Nach belieben würzen und mit Walnüssen dekorieren",
+            "duration": "2 Min",
+            "requiredIngredients": [
+                { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+                { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+                { "id": "Walnüsse", "name": "Walnüsse", "unit": "g", "amount": 30 }
+            ]
+        }
+    ],
+    "tags": ["Vegetarisch", "Cremig", "Schnell"],
+    "annotations": "Mit knackigen Walnüssen für den Biss"
+}
+

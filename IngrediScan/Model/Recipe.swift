@@ -7,19 +7,23 @@
 
 import Foundation
 
-enum Difficulty : String {
+enum Difficulty : String, Codable {
     case Easy = "Einfach"
     case Medium = "Mittel"
     case Hard = "Schwer"
 }
 
-class Recipe : Identifiable
+class Recipe : Identifiable, Codable, Equatable
 {
-    let id = UUID()
+    static func == (lhs: Recipe, rhs: Recipe) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    var id: String
     
     var name: String
-    var category: Category
-    var image: String
+    var category: String
+    var imageName: String
     var steps: [RecipeStep]
     var ingredients: [Ingredient]
     var workingTime: String
@@ -28,10 +32,17 @@ class Recipe : Identifiable
     var rating: Double
     var tags: [String]
     
-    public init(name: String, category: Category, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
+    var isFavorite: Bool = false
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, category, imageName, steps, ingredients, workingTime, difficulty, calories, rating, tags
+    }
+    
+    public init(id: String, name: String, category: String, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
+        self.id = id
         self.name = name
         self.category = category
-        self.image = image
+        self.imageName = image
         self.steps = steps
         self.ingredients = ingredients
         self.workingTime = workingTime
@@ -40,4 +51,5 @@ class Recipe : Identifiable
         self.rating = rating
         self.tags = tags
     }
+    
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-class Category : Identifiable {
-    let id: UUID = UUID()
+class Category : Identifiable, Codable {
+    var id: UUID = UUID()
     
     var name: String
     var image: String

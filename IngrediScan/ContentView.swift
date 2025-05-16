@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let recipes: [Recipe] = [BurgerMock(), PizzaMock()]
-    @State private var selectedRecipe: Recipe = BurgerMock()
-    @State private var selectedTab: Int = 0
+    @State private var viewModel = AppDataViewModel()
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            HomeView(selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
+        TabView(selection: $viewModel.selectedTab) {
+            HomeView()
                 .tabItem{
                     Label("Home", systemImage: "house.fill")
                 }
@@ -22,9 +20,9 @@ struct ContentView: View {
             IngredientsScreen()
                 .tabItem
                 {
-                    Label("Ingredients", systemImage: "cart.fill")
+                    Label("Search", systemImage: "magnifyingglass")
                 }.tag(1)
-            CookingScreen(recipe: selectedRecipe)
+            FavoritesScreen(viewModel: $viewModel)
                 .tabItem {
                     Label("Cooking", systemImage: "frying.pan.fill")
                 }.tag(2)
@@ -33,7 +31,7 @@ struct ContentView: View {
                     Label("My Fridge", systemImage: "storefront.fill")
                 }.tag(3)
         }
-        .onAppear{ selectedTab = 0 }
+        .onAppear{ viewModel.selectedTab = 0 }
         .statusBar(hidden: false)
     }
 }

@@ -23,9 +23,20 @@ struct TimelineView: View {
                 ForEach(items.indices, id: \.self) { index in
                     HStack(alignment: .top) {
                         VStack {
-                            // Button-Kreis
                             Button(action: {
                                 items[index].isDone.toggle()
+                                
+                                if items[index].isDone {
+                                    // Check all previous Steps
+                                    for i in 0...index {
+                                        items[i].isDone = true
+                                    }
+                                } else {
+                                    // Uncheck all following Steps
+                                    for i in index...items.count-1 {
+                                        items[i].isDone = false
+                                    }
+                                }
                             }) {
                                 ZStack {
                                     Circle()
@@ -58,7 +69,7 @@ struct TimelineView: View {
                                 .padding(.leading, 8)
                                 .font(.headline .bold() .smallCaps())
                                 .foregroundColor(.primary)
-                            Text(items[index].description)
+                            Text("\(items[index].description) (\(items[index].duration))")
                                 .padding(.leading, 8)
                                 .font(.subheadline .bold())
                                 .foregroundStyle(.secondary)
@@ -72,5 +83,5 @@ struct TimelineView: View {
 }
 
 #Preview {
-    TimelineView(recipe: BurgerMock())
+    TimelineView(recipe: AppDataViewModel().recipes[0])
 }
