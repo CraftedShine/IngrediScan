@@ -19,7 +19,7 @@
 		D58B6B5B2DCDF720006EA229 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B3F2DCDF720006EA229 /* TimelineView.swift */; };
 		D58B6B5C2DCDF720006EA229 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B412DCDF720006EA229 /* HomeScreen.swift */; };
 		D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B442DCDF720006EA229 /* MyFridgeScreen.swift */; };
-		D58B6B612DCDF720006EA229 /* IngredientsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B482DCDF720006EA229 /* IngredientsScreen.swift */; };
+		D58B6B612DCDF720006EA229 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B482DCDF720006EA229 /* SearchScreen.swift */; };
 		D58B6B632DCDF720006EA229 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B4D2DCDF720006EA229 /* ContentView.swift */; };
 		D58B6B642DCDF720006EA229 /* IngrediScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B4E2DCDF720006EA229 /* IngrediScanApp.swift */; };
 		D58B6B652DCDF720006EA229 /* ItalianPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B302DCDF720006EA229 /* ItalianPizza.json */; };
@@ -75,7 +75,7 @@
 		D58B6B3F2DCDF720006EA229 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		D58B6B412DCDF720006EA229 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		D58B6B442DCDF720006EA229 /* MyFridgeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFridgeScreen.swift; sourceTree = "<group>"; };
-		D58B6B482DCDF720006EA229 /* IngredientsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsScreen.swift; sourceTree = "<group>"; };
+		D58B6B482DCDF720006EA229 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		D58B6B4C2DCDF720006EA229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D58B6B4D2DCDF720006EA229 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D58B6B4E2DCDF720006EA229 /* IngrediScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrediScanApp.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		D58B6B4A2DCDF720006EA229 /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				D58B6B482DCDF720006EA229 /* IngredientsScreen.swift */,
+				D58B6B482DCDF720006EA229 /* SearchScreen.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 				D58B6B912DD7270D006EA229 /* MockData.swift in Sources */,
 				D58B6B682DCDF8C9006EA229 /* MinimalRecipeCard.swift in Sources */,
 				D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */,
-				D58B6B612DCDF720006EA229 /* IngredientsScreen.swift in Sources */,
+				D58B6B612DCDF720006EA229 /* SearchScreen.swift in Sources */,
 				D58B6B632DCDF720006EA229 /* ContentView.swift in Sources */,
 				D58B6B642DCDF720006EA229 /* IngrediScanApp.swift in Sources */,
 			);
