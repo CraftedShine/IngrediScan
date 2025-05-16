@@ -1,0 +1,48 @@
+{
+    "id": "7",
+    "name": "Focaccia",
+    "workingTime": "ca. 3h",
+    "difficulty": "Einfach",
+    "calories": 250,
+    "rating": 4.7,
+    "category": "Brot",
+    "imageName": "focaccia",
+    "ingredients": [
+        { "id": "Mehl", "name": "Mehl", "unit": "g", "amount": 500 },
+        { "id": "Wasser", "name": "Wasser", "unit": "ml", "amount": 325 },
+        { "id": "Hefe", "name": "Hefe", "unit": "g", "amount": 10 },
+        { "id": "Salz", "name": "Salz", "unit": "g", "amount": 10 },
+        { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 3 },
+        { "id": "Rosmarin", "name": "Rosmarin", "unit": "Zweig", "amount": 2 }
+    ],
+    "steps": [
+        {
+            "title": "Teig zubereiten",
+            "description": "Alle Zutaten in eine Schüssel geben und vermengen",
+            "duration": "15 Min",
+            "requiredIngredients": [
+                { "id": "Mehl", "name": "Mehl", "unit": "g", "amount": 500 },
+                { "id": "Wasser", "name": "Wasser", "unit": "ml", "amount": 325 },
+                { "id": "Hefe", "name": "Hefe", "unit": "g", "amount": 10 },
+                { "id": "Salz", "name": "Salz", "unit": "g", "amount": 10 }
+            ]
+        },
+        {
+            "title": "Teig ruhen lassen",
+            "description": "Teig 2h im Kühlschrank ruhen lassen",
+            "duration": "2h",
+            "requiredIngredients": []
+        },
+        {
+            "title": "Backen",
+            "description": "Teig im Ofen bei 180 Grand 25 Min backen",
+            "duration": "25 Min",
+            "requiredIngredients": [
+                { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 3 },
+                { "id": "Rosmarin", "name": "Rosmarin", "unit": "Zweig", "amount": 2 }
+            ]
+        }
+    ],
+    "tags": ["Beilage", "Italienisch", "Vegan"],
+    "annotations": "Außen knusprig, innen fluffig"
+}

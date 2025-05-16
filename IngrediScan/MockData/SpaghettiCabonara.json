@@ -1,0 +1,56 @@
+{
+  "id": "4",
+  "name": "Spaghetti Carbonara",
+  "difficulty": "Einfach",
+  "calories": 450,
+  "workingTime": "20 Min",
+  "rating": 4.9,
+  "category": "Pasta",
+  "imageName": "spaghetti-carbonara",
+  "ingredients": [
+    { "id": "Spaghetti", "name": "Spaghetti", "unit": "g", "amount": 400 },
+    { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 4 },
+    { "id": "Parmesan", "name": "Parmesan", "unit": "g", "amount": 100 },
+    { "id": "Guanciale", "name": "Guanciale", "unit": "g", "amount": 150 },
+    { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 },
+    { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 }
+  ],
+  "steps": [
+    {
+      "title": "Spaghetti kochen",
+      "description": "Nudeln aldente kochen",
+      "duration": "10 Min",
+      "requiredIngredients": [
+          { "id": "Spaghetti", "name": "Spaghetti", "unit": "g", "amount": 400 },
+          { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 }
+      ]
+    },
+    {
+      "title": "Guanciale anbraten",
+      "description": "alternativ auch Speck",
+      "duration": "5 Min",
+      "requiredIngredients": [
+          { "id": "Guanciale", "name": "Guanciale", "unit": "g", "amount": 150 }
+      ]
+    },
+    {
+      "title": "Eier-Parmesan-Mischung zubereiten",
+      "description": "Eier schlagen, in eine Schale kippen und dann den Parmesan dazugeben",
+      "duration": "3 Min",
+      "requiredIngredients": [
+          { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 4 },
+          { "id": "Parmesan", "name": "Parmesan", "unit": "g", "amount": 100 },
+          { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+      ]
+    },
+    {
+      "title": "Alles vermengen",
+      "description": "",
+      "duration": "2 Min",
+      "requiredIngredients": []
+    }
+  ],
+  "tags": ["Klassiker", "Italienisch", "Herzhaft"],
+  "annotations": "Originalrezept ohne Sahne"
+}
+

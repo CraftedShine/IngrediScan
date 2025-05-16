@@ -2,7 +2,7 @@
 //  FridgeScreen.swift
 //  IngrediScan
 //
-//  Created by Faramir on 25.04.25.
+//  Created by Fynn Schotten on 25.04.25.
 //
 
 import SwiftUI

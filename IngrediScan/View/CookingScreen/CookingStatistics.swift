@@ -16,7 +16,7 @@ struct CookingStatistics: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Statistics")
+            Text("Statistiken")
                 .font(.subheadline .smallCaps() .bold())
                 .foregroundColor(.secondary)
             // Working Time
@@ -46,5 +46,5 @@ struct CookingStatistics: View {
 }
 
 #Preview {
-    CookingStatistics(recipe: BurgerMock())
+    CookingStatistics(recipe: AppDataViewModel().recipes[0])
 }

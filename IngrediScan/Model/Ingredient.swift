@@ -7,16 +7,11 @@
 
 import Foundation
 
-class Ingredient: Identifiable {
-    var id = UUID()
+struct Ingredient : Identifiable, Codable {
     var name: String
     var amount: Double
     var unit: String
     
-    init(name: String, amount: Double, unit: String) {
-        self.name = name
-        self.amount = amount
-        self.unit = unit
-    }
+    var id: String
 }
 

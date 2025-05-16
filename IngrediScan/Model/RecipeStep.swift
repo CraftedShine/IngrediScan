@@ -7,18 +7,25 @@
 
 import Foundation
 
-struct RecipeStep : Identifiable {
-    let id: UUID = UUID()
+struct RecipeStep : Identifiable, Codable {
+    var id: String?
     
     let title : String
     let description : String
+    let duration: String
     let requiredIngredients : [Ingredient]
     
-    var isDone : Bool
+    var isDone : Bool = false
     
-    public init(title : String, description : String, requiredIngredients: [Ingredient]) {
+    private enum CodingKeys: String, CodingKey {
+        case title, description, duration, requiredIngredients
+    }
+    
+    public init(title : String, description : String, duration: String, requiredIngredients: [Ingredient]) {
+        self.id = UUID().uuidString
         self.title = title
         self.description = description
+        self.duration = duration
         self.requiredIngredients = requiredIngredients
         self.isDone = false
     }

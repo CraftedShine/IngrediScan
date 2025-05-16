@@ -1,0 +1,66 @@
+{
+    "id": "9",
+    "difficulty": "Schwer",
+    "workingTime": "1h 20 Min",
+    "calories": 920,
+    "name": "Klassische Lasagne",
+    "rating": 4.9,
+    "category": "Auflauf",
+    "imageName": "lasagne",
+    "ingredients": [
+        { "id": "Lasagneplatten", "name": "Lasagneplatten", "unit": "Stk", "amount": 12 },
+        { "id": "Hackfleisch", "name": "Hackfleisch", "unit": "g", "amount": 400 },
+        { "id": "Tomatenpassata", "name": "Tomatenpassata", "unit": "ml", "amount": 500 },
+        { "id": "Zwiebel", "name": "Zwiebel", "unit": "Stk", "amount": 1 },
+        { "id": "Knoblauch", "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
+        { "id": "Milch", "name": "Milch", "unit": "ml", "amount": 400 },
+        { "id": "Butter", "name": "Butter", "unit": "g", "amount": 50 },
+        { "id": "Mehl", "name": "Mehl", "unit": "g", "amount": 50 },
+        { "id": "Parmesan", "name": "Parmesan", "unit": "g", "amount": 50 },
+        { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 2 },
+        { "id": "Salz", "name": "Salz", "unit": "Prise", "amount": 1 },
+        { "id": "Pfeffer", "name": "Pfeffer", "unit": "Prise", "amount": 1 }
+    ],
+    "steps": [
+        {
+            "title": "Fleischsauce zubereiten",
+            "description": "Fleisch in der Pfanne anbraten und mit Tomatenpasta, Knoblauch, Zwiebel & Öl verfeinern",
+            "duration": "20 Min",
+            "requiredIngredients": [
+                { "id": "Hackfleisch", "name": "Hackfleisch", "unit": "g", "amount": 400 },
+                { "id": "Tomatenpassata", "name": "Tomatenpassata", "unit": "ml", "amount": 500 },
+                { "id": "Zwiebel", "name": "Zwiebel", "unit": "Stk", "amount": 1 },
+                { "id": "Knoblauch", "name": "Knoblauch", "unit": "Zehe", "amount": 1 },
+                { "id": "Olivenöl", "name": "Olivenöl", "unit": "EL", "amount": 2 }
+            ]
+        },
+        {
+            "title": "Béchamelsauce zubereiten",
+            "description": "Butter, Mehl & Milch miteinander vermengen",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Milch", "name": "Milch", "unit": "ml", "amount": 400 },
+                { "id": "Butter", "name": "Butter", "unit": "g", "amount": 50 },
+                { "id": "Mehl", "name": "Mehl", "unit": "g", "amount": 50 },
+            ]
+        },
+        {
+            "title": "Lasagne schichten",
+            "description": "Nun die Platten aufschichten und die Zwischenräume mit den Saucen füllen",
+            "duration": "10 Min",
+            "requiredIngredients": [
+                { "id": "Lasagneplatten", "name": "Lasagneplatten", "unit": "Stk", "amount": 12 },
+                { "id": "Parmesan", "name": "Parmesan", "unit": "g", "amount": 50 }
+            ]
+        },
+        {
+            "title": "Backen",
+            "description": "Lasagne bei 120 Grad 40Min im Ofen backen",
+            "duration": "40 Min",
+            "requiredIngredients": []
+        }
+    ],
+    "tags": ["Klassiker", "Herzhaft", "Ofengericht"],
+    "annotations": "Lässt sich gut vorbereiten"
+}
+

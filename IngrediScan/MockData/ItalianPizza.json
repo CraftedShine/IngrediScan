@@ -1,80 +1,41 @@
 {
+    "id": "1",
     "name": "Italienischer Pizzateig",
+    "rating": 4.8,
+    "difficulty": "Einfach",
+    "category": "Pizza",
+    "workingTime": "24h",
+    "calories": 2000,
     "imageName": "pizza",
     "ingredients": [
         {
+            "id": "1",
             "name": "Wasser",
             "unit": "ml",
             "amount": 500
-        },
-        {
-            "name": "Olivenöl",
-            "unit": "ml",
-            "amount": 25
-        },
-        {
-            "name": "Frischhefe",
-            "unit": "g",
-            "amount": 40
-        },
-        {
-            "name": "Salz",
-            "unit": "g",
-            "amount": 20
-        },
-        {
-            "name": "Zucker",
-            "unit": "Prise",
-            "amount": 1
-        },
-        {
-            "name": "glattes Mehl",
-            "unit": "g",
-            "amount": 925
         }
     ],
-    steps: [
+    "steps": [
         {
             "title": "Teig anmischen",
-            "timeMins": 15,
-            "ingredients_required": [
+            "description": "Alle Zutaten zusammengeben und verühren",
+            "duration": "15 Min",
+            "requiredIngredients": [
                 {
+                    "id": "1",
                     "name": "Wasser",
                     "unit": "ml",
                     "amount": 500
-                },
-                {
-                    "name": "Olivenöl",
-                    "unit": "ml",
-                    "amount": 25
-                },
-                {
-                    "name": "Frischhefe",
-                    "unit": "g",
-                    "amount": 40
-                },
-                {
-                    "name": "Salz",
-                    "unit": "g",
-                    "amount": 20
-                },
-                {
-                    "name": "Zucker",
-                    "unit": "Prise",
-                    "amount": 1
-                },
-                {
-                    "name": "glattes Mehl",
-                    "unit": "g",
-                    "amount": 925
                 }
             ]
         },
         {
             "title": "Teig ruhen lassen",
-            "timeMins": 2910,
-            "ingredients_required": []
+            "description": "Teig im Kühlschrank 24h ruhen lassen",
+            "duration": "3 Tage",
+            "requiredIngredients": []
         }
     ],
-    "annotations": "Belegen kann man diese nach Belieben, natürlich sollten die Tomatensauce und der Käse nicht fehlen. Ich habe sie schon auf einem Blech sowie auf verschiedenen runden Pizzaformen gebacken. Sie wird immer supertoll und schmeckt original wie von meinem Lieblingsitaliener. Wenn man die Menge entsprechend reduzieren möchte, ist das auch kein Problem. Die Menge der Hefe habe ich jedoch immer bei 40 g gelassen. Am besten gelingt die Pizza, wenn man den Ofen sehr gut auf der höchstmöglichen Temperatur vorheizt!"
+    "tags": ["Italienisch", "Einfachs"],
+    "annotations": ""
 }

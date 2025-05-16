@@ -1,0 +1,55 @@
+{
+  "id": "5",
+  "name": "Tiramisu",
+  "rating": 4.8,
+  "workingTime": "ca. 20 Min",
+  "difficulty": "Mittel",
+  "calories": 850,
+  "category": "Dessert",
+  "imageName": "tiramisu",
+  "ingredients": [
+    { "id": "Löffelbiskuit", "name": "Löffelbiskuit", "unit": "g", "amount": 200 },
+    { "id": "Mascarpone", "name": "Mascarpone", "unit": "g", "amount": 500 },
+    { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 3 },
+    { "id": "Zucker", "name": "Zucker", "unit": "g", "amount": 100 },
+    { "id": "Espresso", "name": "Espresso", "unit": "ml", "amount": 200 },
+    { "id": "Kakaopulver", "name": "Kakaopulver", "unit": "EL", "amount": 2 }
+  ],
+  "steps": [
+    {
+      "title": "Creme zubereiten",
+      "description": "Eier schlagen und mit Mascarpone, sowie Zucker vermengen",
+      "duration": "10 Min",
+      "requiredIngredients": [
+          { "id": "Mascarpone", "name": "Mascarpone", "unit": "g", "amount": 500 },
+          { "id": "Eier", "name": "Eier", "unit": "Stk", "amount": 3 },
+          { "id": "Zucker", "name": "Zucker", "unit": "g", "amount": 100 }
+      ]
+    },
+    {
+      "title": "Biskuits tauchen und schichten",
+      "description": "Biskuits in Espresso tauchen und aufschichten",
+      "duration": "10 Min",
+      "requiredIngredients": [
+          { "id": "Löffelbiskuit", "name": "Löffelbiskuit", "unit": "g", "amount": 200 },
+          { "id": "Espresso", "name": "Espresso", "unit": "ml", "amount": 200 }
+      ]
+    },
+    {
+      "title": "Kühlen",
+      "description": "Das ganze für 3h in den Kühlschrank stellen",
+      "duration": "3h",
+      "requiredIngredients": []
+    },
+    {
+      "title": "Mit Kakao bestreuen",
+      "description": "Das Tiramisu mit Kakaopulver bestreuen und genißen.",
+      "duration": "2 Min",
+      "requiredIngredients": [
+          { "id": "Kakaopulver", "name": "Kakaopulver", "unit": "EL", "amount": 2 }
+      ]
+    }
+  ],
+  "tags": ["Dessert", "Klassiker", "Italienisch"],
+  "annotations": "Klassisches Tiramisu ohne Alkohol"
+}

@@ -9,17 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var searchText: String = ""
-    @Binding var selectedRecipe: Recipe
-    @Binding var selectedTab: Int
+    @State private var viewModel = AppDataViewModel()
     
     var body: some View {
         NavigationView {
-            RecipeListView(recipes: [PizzaMock(), BurgerMock(), PastaMock(), SushiMock()], selectedRecipe: $selectedRecipe, selectedTab: $selectedTab)
-            
-                .searchable(text: $searchText)
+            RecipeListView(searchText: $searchText, viewModel: $viewModel)
                 .navigationBarTitleDisplayMode(.inline)
+                .searchable(text: $searchText)
                 .toolbar {
-                    ToolbarItem(placement: .principal) {
+                    ToolbarItem(placement: .topBarLeading) {
                         Text("Recipes")
                             .font(.title .bold() .smallCaps())
                     }
@@ -29,5 +27,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(selectedRecipe: .constant(BurgerMock()), selectedTab: .constant(0))
+    HomeView()
 }
