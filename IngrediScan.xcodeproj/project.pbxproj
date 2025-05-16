@@ -38,6 +38,7 @@
 		D58B6B872DD49099006EA229 /* Lasagne.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B862DD49093006EA229 /* Lasagne.json */; };
 		D58B6B892DD490E8006EA229 /* PannaCotta.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B882DD490E3006EA229 /* PannaCotta.json */; };
 		D58B6B8D2DD49547006EA229 /* Gnocchi.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B8C2DD49540006EA229 /* Gnocchi.json */; };
+		D58B6B912DD7270D006EA229 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B902DD7270D006EA229 /* MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		D58B6B862DD49093006EA229 /* Lasagne.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Lasagne.json; sourceTree = "<group>"; };
 		D58B6B882DD490E3006EA229 /* PannaCotta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PannaCotta.json; sourceTree = "<group>"; };
 		D58B6B8C2DD49540006EA229 /* Gnocchi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Gnocchi.json; sourceTree = "<group>"; };
+		D58B6B902DD7270D006EA229 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				D58B6B702DD2735E006EA229 /* CapreseSalad.json */,
 				D58B6B6E2DD272DC006EA229 /* MargheritaPizza.json */,
 				D58B6B302DCDF720006EA229 /* ItalianPizza.json */,
+				D58B6B902DD7270D006EA229 /* MockData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				D58B6B5A2DCDF720006EA229 /* IngredientList.swift in Sources */,
 				D58B6B5B2DCDF720006EA229 /* TimelineView.swift in Sources */,
 				D58B6B5C2DCDF720006EA229 /* HomeScreen.swift in Sources */,
+				D58B6B912DD7270D006EA229 /* MockData.swift in Sources */,
 				D58B6B682DCDF8C9006EA229 /* MinimalRecipeCard.swift in Sources */,
 				D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */,
 				D58B6B612DCDF720006EA229 /* IngredientsScreen.swift in Sources */,
