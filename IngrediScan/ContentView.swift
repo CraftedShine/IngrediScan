@@ -19,7 +19,7 @@ struct ContentView: View {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
-            IngredientsScreen()
+            SearchScreen()
                 .tabItem
                 {
                     Label("Search", systemImage: "magnifyingglass")
