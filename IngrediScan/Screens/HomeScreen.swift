@@ -15,6 +15,9 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
+                HStack {
+                    
+                }
                 RecipeListView(searchText: $searchText, recipeViewModel: recipeViewModel, viewModel: viewModel)
                     .navigationBarTitleDisplayMode(.inline)
                     .searchable(text: $searchText)

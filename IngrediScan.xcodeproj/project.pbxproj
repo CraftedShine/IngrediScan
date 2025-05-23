@@ -221,7 +221,6 @@
 		D58B6B4B2DCDF720006EA229 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D598DAD62DE0D1FD0093D5C1 /* FavoritesScreen.swift */,
 				D598DAD82DE0D1FD0093D5C1 /* FilterOptionsView.swift */,
 				D598DADA2DE0D1FD0093D5C1 /* IngredientBoxView.swift */,
 				D598DADB2DE0D1FD0093D5C1 /* IngredientOverlayView.swift */,
@@ -230,7 +229,6 @@
 				D598DADE2DE0D1FD0093D5C1 /* IngredientsScreen.swift */,
 				D598DADF2DE0D1FD0093D5C1 /* IngredientTemplateListView.swift */,
 				D598DAE02DE0D1FD0093D5C1 /* SearchResultsScreen.swift */,
-				D598DAE12DE0D1FD0093D5C1 /* SearchScreen.swift */,
 				D598DAD02DE0D1A30093D5C1 /* RecipeDetailView.swift */,
 				D598DAD12DE0D1A30093D5C1 /* RecipeListView.swift */,
 				D598DAD22DE0D1A30093D5C1 /* RecipeSummaryView.swift */,
@@ -269,6 +267,8 @@
 			children = (
 				D58B6B442DCDF720006EA229 /* MyFridgeScreen.swift */,
 				D598DAEE2DE0D2410093D5C1 /* HomeScreen.swift */,
+				D598DAD62DE0D1FD0093D5C1 /* FavoritesScreen.swift */,
+				D598DAE12DE0D1FD0093D5C1 /* SearchScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
