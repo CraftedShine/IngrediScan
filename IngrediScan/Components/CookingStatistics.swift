@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct CookingStatistics: View {
-    @State private var recipe: Recipe
-    
-    public init(recipe: Recipe) {
-        self.recipe = recipe
-    }
+    @State var recipe: Recipe
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -46,5 +42,5 @@ struct CookingStatistics: View {
 }
 
 #Preview {
-    CookingStatistics(recipe: AppDataViewModel().recipes[0])
+    CookingStatistics(recipe: RecipeViewModel().recipes[0])
 }

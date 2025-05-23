@@ -7,15 +7,8 @@
 
 import SwiftUI
 
-struct TimelineView: View {
-    @State var recipe: Recipe
-    
-    @State private var items: [RecipeStep]
-    
-    init(recipe: Recipe) {
-        self.recipe = recipe
-        self.items = recipe.steps
-    }
+struct StepTimeline: View {
+    @Binding var items: [RecipeStep]
     
     var body: some View {
         ScrollView {
@@ -59,7 +52,7 @@ struct TimelineView: View {
                             // Linie nach unten (außer letzter Eintrag)
                             if index < items.count - 1 {
                                 Rectangle()
-                                    .fill(index < 2 ? Color.blue : Color.gray)
+                                    .fill(index < 0 ? Color.blue : Color.gray)
                                     .frame(width: 2, height: 40)
                             }
                         }
@@ -83,5 +76,5 @@ struct TimelineView: View {
 }
 
 #Preview {
-    TimelineView(recipe: AppDataViewModel().recipes[0])
+    StepTimeline(items: .constant(RecipeViewModel().recipes[0].steps))
 }

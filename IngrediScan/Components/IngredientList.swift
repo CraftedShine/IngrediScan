@@ -34,5 +34,5 @@ struct IngredientList: View {
 }
 
 #Preview {
-    IngredientList(recipe: AppDataViewModel().recipes[0])
+    IngredientList(recipe: RecipeViewModel().recipes[0])
 }

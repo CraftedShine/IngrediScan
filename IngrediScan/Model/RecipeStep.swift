@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeStep : Identifiable, Codable {
+struct RecipeStep : Identifiable, Codable, Hashable {
     var id: String?
     
     let title : String

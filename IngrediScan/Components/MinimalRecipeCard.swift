@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct MinimalRecipeCard: View {
-    @Binding var viewModel: AppDataViewModel
     @Binding var recipe: Recipe
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            
-            
             Image(self.recipe.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -34,9 +31,12 @@ struct MinimalRecipeCard: View {
                         .lineLimit(1)
                     
                     Button {
-                        self.viewModel.addFavorite(recipe: self.recipe)
+                        self.recipe.isFavorite.toggle()
                     } label: {
-                        Image(systemName: self.viewModel.isFavorite(recipe: self.recipe) ? "star.fill" : "star")
+                        Image(systemName: self.recipe.isFavorite ? "bookmark.fill" : "bookmark")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
                             .foregroundStyle(.yellow)
                     }
                 }
@@ -44,19 +44,22 @@ struct MinimalRecipeCard: View {
                     Text(self.recipe.category)
                         .font(.subheadline .bold() .smallCaps())
                         .foregroundStyle(.white.opacity(0.8))
-                    Text("⭐ \(String(self.recipe.rating))")
-                        .font(.subheadline .bold())
-                        .foregroundStyle(.white.opacity(0.8))
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                        Text(String(self.recipe.rating))
+                            .font(.subheadline .bold())
+                            .foregroundStyle(.white.opacity(0.8))
+                    }
                 }
             }
             .padding()
         }
         .cornerRadius(16)
         .shadow(radius: 5)
-        .padding()
     }
 }
 
 #Preview {
-    MinimalRecipeCard(viewModel: .constant(AppDataViewModel()), recipe: .constant(AppDataViewModel().recipes.first!), )
+    MinimalRecipeCard(recipe: .constant(RecipeViewModel().recipes.first! ))
 }

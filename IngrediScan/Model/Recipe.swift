@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 
 enum Difficulty : String, Codable {
     case Easy = "Einfach"
@@ -13,12 +14,7 @@ enum Difficulty : String, Codable {
     case Hard = "Schwer"
 }
 
-class Recipe : Identifiable, Codable, Equatable
-{
-    static func == (lhs: Recipe, rhs: Recipe) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
+struct Recipe : Identifiable, Codable, Hashable {
     var id: String
     
     var name: String
@@ -37,19 +33,4 @@ class Recipe : Identifiable, Codable, Equatable
     private enum CodingKeys: String, CodingKey {
         case id, name, category, imageName, steps, ingredients, workingTime, difficulty, calories, rating, tags
     }
-    
-    public init(id: String, name: String, category: String, image: String, steps: [RecipeStep], ingredients: [Ingredient], workingTime: String, difficulty: Difficulty, calories: Int, rating: Double, tags: [String]) {
-        self.id = id
-        self.name = name
-        self.category = category
-        self.imageName = image
-        self.steps = steps
-        self.ingredients = ingredients
-        self.workingTime = workingTime
-        self.difficulty = difficulty
-        self.calories = calories
-        self.rating = rating
-        self.tags = tags
-    }
-    
 }
