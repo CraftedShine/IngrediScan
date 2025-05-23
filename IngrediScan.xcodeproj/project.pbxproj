@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D46E3EB2DDE123100343684 /* FilterOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46E3EA2DDE123100343684 /* FilterOptionsView.swift */; };
+		9D46E3EF2DDE139600343684 /* IngredientSearchPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46E3EE2DDE139600343684 /* IngredientSearchPickerView.swift */; };
+		9D46E3F12DDE14E100343684 /* IngredientSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46E3F02DDE14E100343684 /* IngredientSelectionView.swift */; };
 		9D5947F82DD4E7D300A7CAB0 /* IngredientBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5947F72DD4E7D300A7CAB0 /* IngredientBoxView.swift */; };
 		9D5947FA2DD4E85500A7CAB0 /* IngredientOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5947F92DD4E85500A7CAB0 /* IngredientOverlayView.swift */; };
 		9D5947FC2DD4F5E000A7CAB0 /* IngredientTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5947FB2DD4F5CF00A7CAB0 /* IngredientTemplate.swift */; };
@@ -65,6 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D46E3EA2DDE123100343684 /* FilterOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsView.swift; sourceTree = "<group>"; };
+		9D46E3EE2DDE139600343684 /* IngredientSearchPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSearchPickerView.swift; sourceTree = "<group>"; };
+		9D46E3F02DDE14E100343684 /* IngredientSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSelectionView.swift; sourceTree = "<group>"; };
 		9D5947F72DD4E7D300A7CAB0 /* IngredientBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientBoxView.swift; sourceTree = "<group>"; };
 		9D5947F92DD4E85500A7CAB0 /* IngredientOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientOverlayView.swift; sourceTree = "<group>"; };
 		9D5947FB2DD4F5CF00A7CAB0 /* IngredientTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTemplate.swift; sourceTree = "<group>"; };
@@ -230,6 +236,9 @@
 			children = (
 				D58B6B942DD72B48006EA229 /* SearchScreen.swift */,
 				9DF33E9C2DD650DF00CB1F62 /* SearchResultsScreen.swift */,
+				9D46E3EA2DDE123100343684 /* FilterOptionsView.swift */,
+				9D46E3EE2DDE139600343684 /* IngredientSearchPickerView.swift */,
+				9D46E3F02DDE14E100343684 /* IngredientSelectionView.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -417,6 +426,7 @@
 			files = (
 				D58B6B6B2DCE75FB006EA229 /* AppDataViewModel.swift in Sources */,
 				D58B6B972DD72D4B006EA229 /* FavoritesScreen.swift in Sources */,
+				9D46E3EB2DDE123100343684 /* FilterOptionsView.swift in Sources */,
 				D58B6B522DCDF720006EA229 /* Ingredient.swift in Sources */,
 				D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */,
 				D58B6B542DCDF720006EA229 /* Recipe.swift in Sources */,
@@ -424,6 +434,7 @@
 				9D5947FE2DD4F68900A7CAB0 /* IngredientTemplateList.swift in Sources */,
 				D58B6B952DD72B4C006EA229 /* SearchScreen.swift in Sources */,
 				9D5948022DD4FB4500A7CAB0 /* IngredientTemplateListView.swift in Sources */,
+				9D46E3EF2DDE139600343684 /* IngredientSearchPickerView.swift in Sources */,
 				D58B6B552DCDF720006EA229 /* RecipeStep.swift in Sources */,
 				D58B6B562DCDF720006EA229 /* RecipeCard.swift in Sources */,
 				D58B6B572DCDF720006EA229 /* RecipeListView.swift in Sources */,
@@ -436,6 +447,7 @@
 				D58B6B912DD7270D006EA229 /* MockData.swift in Sources */,
 				D58B6B682DCDF8C9006EA229 /* MinimalRecipeCard.swift in Sources */,
 				D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */,
+				9D46E3F12DDE14E100343684 /* IngredientSelectionView.swift in Sources */,
 				9D5947FC2DD4F5E000A7CAB0 /* IngredientTemplate.swift in Sources */,
 				D58B6B632DCDF720006EA229 /* ContentView.swift in Sources */,
 				9DF33E9D2DD650DF00CB1F62 /* SearchResultsScreen.swift in Sources */,
