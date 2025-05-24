@@ -9,31 +9,30 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var searchText: String = ""
-    @StateObject var viewModel: AppDataViewModel
     @StateObject var recipeViewModel: RecipeViewModel
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                HStack {
-                    
-                }
-                RecipeListView(searchText: $searchText, recipeViewModel: recipeViewModel, viewModel: viewModel)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .searchable(text: $searchText)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Text("Rezepte")
-                                .font(.title .bold() .smallCaps())
-                        }
+            ScrollView {
+                VStack(spacing: 0) {
+                    ForEach($recipeViewModel.recipes) { $recipe in
+                        RecipeCard(recipe: $recipe)
+                            .padding()
                     }
-                    .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("Rezepte")
+                            .font(.title .bold() .smallCaps())
+                    }
+                }
+                .searchable(text: $searchText)
             }
         }
     }
 }
 
 #Preview {
-    HomeView(viewModel: AppDataViewModel(), recipeViewModel: RecipeViewModel())
+    HomeView(recipeViewModel: RecipeViewModel())
 }

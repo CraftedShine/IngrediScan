@@ -11,66 +11,73 @@ struct StepTimeline: View {
     @Binding var items: [RecipeStep]
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                ForEach(items.indices, id: \.self) { index in
-                    HStack(alignment: .top) {
-                        VStack {
-                            Button(action: {
-                                items[index].isDone.toggle()
-                                
-                                if items[index].isDone {
-                                    // Check all previous Steps
-                                    for i in 0...index {
-                                        items[i].isDone = true
-                                    }
-                                } else {
-                                    // Uncheck all following Steps
-                                    for i in index...items.count-1 {
-                                        items[i].isDone = false
-                                    }
-                                }
-                            }) {
-                                ZStack {
-                                    Circle()
-                                        .fill(items[index].isDone ? Color.blue : Color.clear)
-                                        .frame(width: 24, height: 24)
-                                        .overlay(
-                                            Circle()
-                                                .stroke(Color.blue, lineWidth: 2)
-                                        )
+        VStack(alignment: .leading) {
+            Text("Zubereitung")
+                .font(.callout .bold() .smallCaps())
+                .foregroundStyle(.secondary)
+                .padding(.leading)
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(items.indices, id: \.self) { index in
+                        HStack(alignment: .top) {
+                            VStack {
+                                Button(action: {
+                                    items[index].isDone.toggle()
                                     
                                     if items[index].isDone {
-                                        Image(systemName: "checkmark")
-                                            .foregroundColor(.white)
-                                            .padding(2)
+                                        // Check all previous Steps
+                                        for i in 0...index {
+                                            items[i].isDone = true
+                                        }
+                                    } else {
+                                        // Uncheck all following Steps
+                                        for i in index...items.count-1 {
+                                            items[i].isDone = false
+                                        }
+                                    }
+                                }) {
+                                    ZStack {
+                                        Circle()
+                                            .fill(items[index].isDone ? Color.blue : Color.clear)
+                                            .frame(width: 24, height: 24)
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(Color.blue, lineWidth: 2)
+                                            )
+                                        
+                                        if items[index].isDone {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.white)
+                                                .padding(2)
+                                        }
                                     }
                                 }
+                                .buttonStyle(PlainButtonStyle()) // Entfernt Standardanimationen
+                                
+                                // Linie nach unten (außer letzter Eintrag)
+                                if index < items.count - 1 {
+                                    Rectangle()
+                                        .fill(index < 0 ? Color.blue : Color.gray)
+                                        .frame(width: 2, height: 40)
+                                }
                             }
-                            .buttonStyle(PlainButtonStyle()) // Entfernt Standardanimationen
                             
-                            // Linie nach unten (außer letzter Eintrag)
-                            if index < items.count - 1 {
-                                Rectangle()
-                                    .fill(index < 0 ? Color.blue : Color.gray)
-                                    .frame(width: 2, height: 40)
+                            VStack(alignment: .leading) {
+                                Text(items[index].title)
+                                    .padding(.leading, 8)
+                                    .font(.headline .bold() .smallCaps())
+                                    .foregroundColor(.primary)
+                                Text("\(items[index].description) (\(items[index].duration))")
+                                    .padding(.leading, 8)
+                                    .font(.subheadline .bold())
+                                    .foregroundStyle(.secondary)
                             }
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text(items[index].title)
-                                .padding(.leading, 8)
-                                .font(.headline .bold() .smallCaps())
-                                .foregroundColor(.primary)
-                            Text("\(items[index].description) (\(items[index].duration))")
-                                .padding(.leading, 8)
-                                .font(.subheadline .bold())
-                                .foregroundStyle(.secondary)
                         }
                     }
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }

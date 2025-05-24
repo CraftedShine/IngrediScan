@@ -14,10 +14,8 @@ struct TagList : View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(self.tags, id: \.self) { tag in
-                    Button {
-                        
-                    } label: {
-                        Text(tag)
+                    Button(tag) {
+                        print(tag)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)

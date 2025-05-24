@@ -1,28 +1,29 @@
+//
+//  CookingView.swift
+//  IngrediScan
+//
+//  Created by Faramir on 24.05.25.
+//
+
 import SwiftUI
 
-struct RecipeDetailView: View {
+struct CookingView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
-    @State private var detailedCooking: Bool = false
     
     var body: some View {
         ScrollView {
             ZStack(alignment: .topLeading) {
                 VStack {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 0) {
                         RecipeImage(recipe: $recipe)
-                        TagList(tags: recipe.tags)
-                        CookingStatistics(recipe: recipe)
-                            .padding()
                         IngredientList(recipe: recipe)
                             .padding()
+                        StepTimeline(items: $recipe.steps)
                     }
                     
-                    Button {
-                        detailedCooking.toggle()
-                    } label: {
-                        Text("Kochen starten")
-                            .font(.callout .bold() .smallCaps())
+                    Button("Fertig") {
+                        
                     }
                     .buttonStyle(.borderedProminent)
                     .padding(.bottom)
@@ -36,14 +37,9 @@ struct RecipeDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .sheet(isPresented: $detailedCooking) {
-            CookingView(recipe: $recipe)
-                .presentationDetents([.fraction(0.99)])
-                .presentationBackground(.clear)
-        }
     }
 }
 
 #Preview {
-    RecipeDetailView(recipe: .constant(RecipeViewModel().recipes[4]))
+    CookingView(recipe: .constant(RecipeViewModel().recipes[7]))
 }

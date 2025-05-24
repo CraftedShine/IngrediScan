@@ -1,78 +1,86 @@
 //
-//  RecipeCard.swift
+//  MinimalRecipeCard.swift
 //  IngrediScan
 //
-//  Created by Faramir on 07.05.25.
+//  Created by Faramir on 09.05.25.
 //
 
 import SwiftUI
 
-struct RecipeCard: View {
-    @State private var isSummaryShown: Bool = false
+struct CardBackground: View {
+    @Binding var recipe: Recipe
     
+    var body: some View {
+        Image(self.recipe.imageName)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(height: 100)
+            .clipped()
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.black.opacity(0.4))
+            }
+    }
+}
+
+struct CardText: View {
     @Binding var recipe: Recipe
     
     var body: some View {
         VStack(alignment: .leading) {
-            ZStack(alignment: .topLeading) {
-                Image(self.recipe.imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .overlay(Color.black.opacity(0.2))
-                
-                Button {
-                    self.recipe.isFavorite.toggle()
-                } label: {
-                    Image(systemName: self.recipe.isFavorite ? "bookmark.fill" : "bookmark")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40)
-                        .foregroundStyle(.yellow)
-                        .padding(20)
-                }
-            }
+            // Title
             Text(self.recipe.name)
-                .font(.title2 .bold() .smallCaps())
-                .padding([.leading, .top])
+                .font(.title)
+                .bold()
+                .foregroundColor(.white)
+                .lineLimit(1)
+            
+            // Rating
             HStack {
+                Text(self.recipe.category)
+                    .font(.subheadline .bold() .smallCaps())
+                    .foregroundStyle(.white.opacity(0.8))
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow)
-                    
-                    
                     Text(String(self.recipe.rating))
+                        .font(.subheadline .bold())
+                        .foregroundStyle(.white.opacity(0.8))
                 }
-                Text(self.recipe.category)
-                    .font(.callout .bold() .smallCaps())
-                    .foregroundStyle(.secondary)
             }
-            .padding([.leading, .top])
+        }
+    }
+}
+
+struct RecipeCard: View {
+    @Binding var recipe: Recipe
+    @State var detailedView: Bool = false
+    
+    var body: some View {
+        ZStack(alignment: .trailing) {
             
-            TagList(tags: self.recipe.tags)
+            Button {
+                detailedView.toggle()
+            } label: {
+                ZStack(alignment: .leading) {
+                    CardBackground(recipe: $recipe)
+                    CardText(recipe: $recipe)
+                        .padding(.leading)
+                }
+            }
+            .cornerRadius(20)
+            .shadow(radius: 5)
+            .sheet(isPresented: $detailedView) {
+                RecipeDetailView(recipe: self.$recipe)
+                    .presentationDetents([.fraction(0.99)])
+                    .presentationBackground(.clear)
+            }
+            
+            ToggleFavoriteButton(recipe: $recipe)
         }
-        .background(Color(uiColor: UIColor.secondarySystemBackground))
-        .cornerRadius(20)
-        .overlay {
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(uiColor: UIColor.secondarySystemFill), lineWidth: 1)
-        }
-        .onTapGesture {
-            self.isSummaryShown.toggle()
-        }
-        .sheet(isPresented: $isSummaryShown) {
-            RecipeSummaryView(recipe: self.$recipe)
-                .presentationDragIndicator(.visible)
-                .presentationCornerRadius(20)
-                .presentationBackgroundInteraction(.enabled)
-                .presentationDetents([.fraction(0.22),.fraction(0.75)])
-                .padding(.horizontal)
-                .edgesIgnoringSafeArea(.bottom)
-        }
-        .padding()
-        .shadow(radius: 5)
     }
 }
 
 #Preview {
-    RecipeCard(recipe: .constant(RecipeViewModel().recipes[2]))
+    RecipeCard(recipe: .constant(RecipeViewModel().recipes.first! ))
 }
