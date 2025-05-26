@@ -72,8 +72,8 @@ struct RecipeCard: View {
             .shadow(radius: 5)
             .sheet(isPresented: $detailedView) {
                 RecipeDetailView(recipe: self.$recipe)
-                    .presentationDetents([.fraction(0.99)])
                     .presentationBackground(.clear)
+                    .presentationDetents([.fraction(0.99)])
             }
             
             ToggleFavoriteButton(recipe: $recipe)

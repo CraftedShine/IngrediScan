@@ -23,7 +23,7 @@ struct CookingView: View {
                     }
                     
                     Button("Fertig") {
-                        
+                       dismiss()
                     }
                     .buttonStyle(.borderedProminent)
                     .padding(.bottom)

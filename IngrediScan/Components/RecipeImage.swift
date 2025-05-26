@@ -15,7 +15,6 @@ struct RecipeImage : View {
                 Image(recipe.imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: .infinity)
                     .scaledToFit()
                     .overlay(Color.black.opacity(0.3))
                 
@@ -30,4 +29,8 @@ struct RecipeImage : View {
             ToggleFavoriteButton(recipe: $recipe)
         }
     }
+}
+
+#Preview {
+    RecipeImage(recipe: .constant(RecipeViewModel().recipes[7]))
 }
