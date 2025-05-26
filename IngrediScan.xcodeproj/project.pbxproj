@@ -64,6 +64,12 @@
 		D598DAF12DE0D2DF0093D5C1 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF02DE0D2DF0093D5C1 /* RecipeViewModel.swift */; };
 		D598DAF32DE0D2F50093D5C1 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF22DE0D2F50093D5C1 /* MockData.swift */; };
 		D598DAF52DE0D30A0093D5C1 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF42DE0D30A0093D5C1 /* RecipeService.swift */; };
+		D598DB002DE4E1BF0093D5C1 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAFF2DE4E1BF0093D5C1 /* DatabaseService.swift */; };
+		D598DB022DE4EED70093D5C1 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB012DE4EED70093D5C1 /* Unit.swift */; };
+		D598DB042DE4F0600093D5C1 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB032DE4F05E0093D5C1 /* Tag.swift */; };
+		D598DB062DE4F2B60093D5C1 /* hasSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB052DE4F2B30093D5C1 /* hasSteps.swift */; };
+		D598DB082DE4F2FD0093D5C1 /* hasTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB072DE4F2F90093D5C1 /* hasTags.swift */; };
+		D598DB0A2DE4F32B0093D5C1 /* usesIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB092DE4F3250093D5C1 /* usesIngredients.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +139,12 @@
 		D598DAF02DE0D2DF0093D5C1 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		D598DAF22DE0D2F50093D5C1 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D598DAF42DE0D30A0093D5C1 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		D598DAFF2DE4E1BF0093D5C1 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		D598DB012DE4EED70093D5C1 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		D598DB032DE4F05E0093D5C1 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D598DB052DE4F2B30093D5C1 /* hasSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hasSteps.swift; sourceTree = "<group>"; };
+		D598DB072DE4F2F90093D5C1 /* hasTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hasTags.swift; sourceTree = "<group>"; };
+		D598DB092DE4F3250093D5C1 /* usesIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usesIngredients.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +218,10 @@
 		D58B6B382DCDF720006EA229 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D598DB092DE4F3250093D5C1 /* usesIngredients.swift */,
+				D598DB072DE4F2F90093D5C1 /* hasTags.swift */,
+				D598DB052DE4F2B30093D5C1 /* hasSteps.swift */,
+				D598DB032DE4F05E0093D5C1 /* Tag.swift */,
 				9D5947FD2DD4F67F00A7CAB0 /* IngredientTemplateList.swift */,
 				9D5947FB2DD4F5CF00A7CAB0 /* IngredientTemplate.swift */,
 				D58B6B342DCDF720006EA229 /* Ingredient.swift */,
@@ -213,6 +229,7 @@
 				D58B6B352DCDF720006EA229 /* MyFridge.swift */,
 				D58B6B362DCDF720006EA229 /* Recipe.swift */,
 				D58B6B372DCDF720006EA229 /* RecipeStep.swift */,
+				D598DB012DE4EED70093D5C1 /* Unit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				D598DAF42DE0D30A0093D5C1 /* RecipeService.swift */,
+				D598DAFF2DE4E1BF0093D5C1 /* DatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -455,6 +473,8 @@
 				D598DAE22DE0D1FD0093D5C1 /* IngredientsScreen.swift in Sources */,
 				D598DAE32DE0D1FD0093D5C1 /* IngredientTemplateListView.swift in Sources */,
 				D598DAE42DE0D1FD0093D5C1 /* IngredientSelectionView.swift in Sources */,
+				D598DB002DE4E1BF0093D5C1 /* DatabaseService.swift in Sources */,
+				D598DB0A2DE4F32B0093D5C1 /* usesIngredients.swift in Sources */,
 				D598DAE52DE0D1FD0093D5C1 /* SearchResultsScreen.swift in Sources */,
 				D598DAF52DE0D30A0093D5C1 /* RecipeService.swift in Sources */,
 				D598DAE62DE0D1FD0093D5C1 /* SearchScreen.swift in Sources */,
@@ -466,16 +486,20 @@
 				D598DACB2DE0D1690093D5C1 /* MinimalRecipeCard.swift in Sources */,
 				D598DACC2DE0D1690093D5C1 /* TagList.swift in Sources */,
 				D598DACD2DE0D1690093D5C1 /* CookingStatistics.swift in Sources */,
+				D598DB022DE4EED70093D5C1 /* Unit.swift in Sources */,
 				D598DACE2DE0D1690093D5C1 /* RecipeCard.swift in Sources */,
 				D598DAD32DE0D1A30093D5C1 /* RecipeListView.swift in Sources */,
 				D598DAD42DE0D1A30093D5C1 /* RecipeSummaryView.swift in Sources */,
 				D598DAD52DE0D1A30093D5C1 /* RecipeDetailView.swift in Sources */,
 				D598DACF2DE0D1690093D5C1 /* IngredientList.swift in Sources */,
+				D598DB042DE4F0600093D5C1 /* Tag.swift in Sources */,
 				D58B6B522DCDF720006EA229 /* Ingredient.swift in Sources */,
 				D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */,
+				D598DB082DE4F2FD0093D5C1 /* hasTags.swift in Sources */,
 				D58C19852DDF2F7D00151F36 /* (null) in Sources */,
 				D58B6B542DCDF720006EA229 /* Recipe.swift in Sources */,
 				9D5947FE2DD4F68900A7CAB0 /* IngredientTemplateList.swift in Sources */,
+				D598DB062DE4F2B60093D5C1 /* hasSteps.swift in Sources */,
 				D58B6B952DD72B4C006EA229 /* (null) in Sources */,
 				D598DAF32DE0D2F50093D5C1 /* MockData.swift in Sources */,
 				D58B6B552DCDF720006EA229 /* RecipeStep.swift in Sources */,

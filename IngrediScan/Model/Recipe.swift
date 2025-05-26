@@ -15,22 +15,23 @@ enum Difficulty : String, Codable {
 }
 
 struct Recipe : Identifiable, Codable, Hashable {
-    var id: String
+    let id: Int
     
     var name: String
-    var category: String
-    var imageName: String
-    var steps: [RecipeStep]
-    var ingredients: [Ingredient]
+    var category: Category
+    var imageUrl: String
     var workingTime: String
     var difficulty: Difficulty
     var calories: Int
     var rating: Double
     var tags: [String]
+    var annotation: String?
     
+    var steps: [RecipeStep]
+    var ingredients: [Ingredient]
     var isFavorite: Bool = false
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, category, imageName, steps, ingredients, workingTime, difficulty, calories, rating, tags
+        case id, name, category, imageUrl, steps, ingredients, workingTime, difficulty, calories, rating, tags, annotation
     }
 }
