@@ -57,4 +57,36 @@ class DatabaseService {
         }
         return []
     }
+    
+    func loadHasSteps() async -> [hasSteps] {
+        do {
+            let result: [hasSteps] = try await supabase.from("hasSteps").select().execute().value
+            return result
+        } catch {
+            print("Error while trying to fetch hasSteps: \(error)")
+        }
+        return []
+    }
+    
+    func loadHasTags() async -> [hasTags] {
+        do {
+            let result: [hasTags] = try await supabase.from("hasTags").select().execute().value
+            return result
+        } catch {
+            print("Error while trying to fetch hasTags: \(error)")
+        }
+        return []
+    }
+    
+    func loadHasIngredients() async -> [usesIngredients] {
+        do {
+            let result: [usesIngredients] = try await supabase.from("usesIngredients").select().execute().value
+            return result
+        } catch {
+            print("Error while trying to fetch hasIngredients: \(error)")
+        }
+        return []
+    }
+    
+    // Only mapping is missing
 }

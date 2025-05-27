@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUICore
 
-enum Difficulty : String, Codable {
+enum Difficulty : String, Decodable, Hashable {
     case Easy = "Einfach"
     case Medium = "Mittel"
     case Hard = "Schwer"
 }
 
-struct Recipe : Identifiable, Codable, Hashable {
+struct Recipe : Identifiable, Decodable, Hashable {
     let id: Int
     
     var name: String
@@ -27,11 +27,11 @@ struct Recipe : Identifiable, Codable, Hashable {
     var tags: [String]
     var annotation: String?
     
-    var steps: [RecipeStep]
-    var ingredients: [Ingredient]
+    var steps: [RecipeStep] = []
+    var ingredients: [Ingredient] = []
     var isFavorite: Bool = false
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, category, imageUrl, steps, ingredients, workingTime, difficulty, calories, rating, tags, annotation
+        case id, name, category, imageUrl, workingTime, difficulty, calories, rating, tags, annotation
     }
 }
