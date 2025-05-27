@@ -10,17 +10,18 @@ import SwiftUI
 struct IngredientTemplateListView: View {
     @ObservedObject var fridge: MyFridge
     @Environment(\.dismiss) var dismiss
-    @State private var ingredientTemplates: [IngredientTemplate] = IngredientTemplateListMock().getIngredientTemplates()
+    public var ingredientTemplateList: [String] = ["a","b","c","d","e","f","g","h","i","j"]
     
     var body: some View {
         NavigationView {
-            List(ingredientTemplates) { template in
+            List(ingredientTemplateList, id: \.self) { template in
                 Button(action: {
-                    let newIngredient = Ingredient(name: template.name, amount: 1.0, unit: "Stück", id: template.name)
+                    let unit = Unit(id: 100, name: "Stk")
+                    let newIngredient = Ingredient(id: 8, name: template, unit: unit, amount: 1)
                     fridge.addIngredient(newIngredient)
                 }) {
                     HStack {
-                        Text(template.name)
+                        Text(template)
                         Spacer()
                         Text("Standardmenge: 1 Stück")
                             .foregroundColor(.gray)

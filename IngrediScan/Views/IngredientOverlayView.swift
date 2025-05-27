@@ -29,7 +29,7 @@ struct IngredientOverlayView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.leading)
                 
-                Text(ingredient.unit)
+                Text(ingredient.unit.name)
                     .padding(.trailing)
             }
 
