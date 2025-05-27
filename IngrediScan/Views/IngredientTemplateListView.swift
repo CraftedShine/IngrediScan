@@ -10,7 +10,7 @@ import SwiftUI
 struct IngredientTemplateListView: View {
     @ObservedObject var fridge: MyFridge
     @Environment(\.dismiss) var dismiss
-    public var ingredientTemplateList: [String] = ["a","b","c","d","e","f","g","h","i","j"]
+    let ingredientTemplateList: [String] = ["a","b","c","d","e","f","g","h","i","j"]
     
     var body: some View {
         NavigationView {

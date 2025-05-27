@@ -6,7 +6,7 @@ struct RecipeDetailView: View {
     
     var body: some View {
         ScrollView {
-            Image(self.recipe.imageName)
+            Image(self.recipe.imageUrl)
                 .resizable()
                 .scaledToFill()
                 .frame(maxHeight: 250)
