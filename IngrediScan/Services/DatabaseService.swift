@@ -38,6 +38,16 @@ class DatabaseService {
         return []
     }
     
+    func loadRecipeSteps() async -> [RecipeStep] {
+        do {
+            let recipeSteps: [RecipeStep] = try await supabase.from("RecipeSteps").select().execute().value
+            return recipeSteps
+        } catch {
+            print("Error while trying to fetch RecipeSteps: \(error)")
+        }
+        return []
+    }
+    
     func loadIngredients() async -> [Ingredient] {
         do {
             let ingredients: [Ingredient] = try await supabase.from("Ingredients").select().execute().value
@@ -88,5 +98,35 @@ class DatabaseService {
         return []
     }
     
-    // Only mapping is missing
+    func MapIngredientsToRecipes(recipes: inout [Recipe], ingredients: [Ingredient], hasIngredients: [usesIngredients]) {
+        for i in 0..<recipes.count {
+                let mappings = hasIngredients.filter { $0.recipe == recipes[i].id }
+                
+                for mapping in mappings {
+                    var ingredient = ingredients.first(where: { $0.id == mapping.ingredient }) ?? Ingredient(id: -1, name: "Error", unit: Unit(id: 0, name: "Error"))
+                    ingredient.amount = Double(mapping.amount)
+                    recipes[i].ingredients.append(ingredient)
+                }
+            }
+    }
+    
+    func MapTagsToRecipes(recipes: inout [Recipe], tags: [Tag], hasTags: [hasTags]) {
+        for i in 0..<recipes.count {
+            let mappings = hasTags.filter { $0.recipe == recipes[i].id }
+            
+            for mapping in mappings {
+                recipes[i].tags.append(tags.first(where: { $0.id == mapping.tag }) ?? Tag(id: -1, name: "Error"))
+            }
+        }
+    }
+    
+    func MapRecipeStepsToRecipes(recipes: inout [Recipe], recipeSteps: [RecipeStep], hasRecipeSteps: [hasSteps]) {
+        for i in 0..<recipes.count {
+            let mappings = hasRecipeSteps.filter { $0.recipe == recipes[i].id }
+            
+            for mapping in mappings {
+                recipes[i].steps.append(recipeSteps.first(where: { $0.id == mapping.step }) ?? RecipeStep(id: -1, title: "Error", description: "Error", duration: "Error", requiredIngredients: []))
+            }
+        }
+    }
 }

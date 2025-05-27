@@ -5,7 +5,7 @@
 //  Created by Faramir on 26.05.25.
 //
 
-struct Tag: Decodable, Identifiable {
+struct Tag: Decodable, Identifiable, Hashable {
     let id: Int
     let name: String
 }

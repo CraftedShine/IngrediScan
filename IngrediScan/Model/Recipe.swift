@@ -24,14 +24,14 @@ struct Recipe : Identifiable, Decodable, Hashable {
     var difficulty: Difficulty
     var calories: Int
     var rating: Double
-    var tags: [String]
     var annotation: String?
     
+    var tags: [Tag] = []
     var steps: [RecipeStep] = []
     var ingredients: [Ingredient] = []
     var isFavorite: Bool = false
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, category, imageUrl, workingTime, difficulty, calories, rating, tags, annotation
+        case id, name, category, imageUrl, workingTime, difficulty, calories, rating, annotation
     }
 }
