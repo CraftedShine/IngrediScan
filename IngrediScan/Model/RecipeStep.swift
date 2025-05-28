@@ -12,12 +12,11 @@ struct RecipeStep : Identifiable, Decodable, Hashable {
     
     let title : String
     let description : String?
-    let duration: String
-    let requiredIngredients : [Ingredient]
+    let duration: Int
     
     var isDone : Bool = false
     
     private enum CodingKeys: String, CodingKey {
-        case id, title, description, duration, requiredIngredients
+        case id, title, description, duration
     }
 }

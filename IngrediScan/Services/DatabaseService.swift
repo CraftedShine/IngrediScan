@@ -100,14 +100,14 @@ class DatabaseService {
     
     func MapIngredientsToRecipes(recipes: inout [Recipe], ingredients: [Ingredient], hasIngredients: [usesIngredients]) {
         for i in 0..<recipes.count {
-                let mappings = hasIngredients.filter { $0.recipe == recipes[i].id }
-                
-                for mapping in mappings {
-                    var ingredient = ingredients.first(where: { $0.id == mapping.ingredient }) ?? Ingredient(id: -1, name: "Error", unit: Unit(id: 0, name: "Error"))
-                    ingredient.amount = Double(mapping.amount)
-                    recipes[i].ingredients.append(ingredient)
-                }
+            let mappings = hasIngredients.filter { $0.recipe == recipes[i].id }
+            
+            for mapping in mappings {
+                var ingredient = ingredients.first(where: { $0.id == mapping.ingredient }) ?? Ingredient(id: -1, name: "Error", unit: Unit(id: 0, name: "Error"))
+                ingredient.amount = Double(mapping.amount)
+                recipes[i].ingredients.append(ingredient)
             }
+        }
     }
     
     func MapTagsToRecipes(recipes: inout [Recipe], tags: [Tag], hasTags: [hasTags]) {
@@ -125,7 +125,7 @@ class DatabaseService {
             let mappings = hasRecipeSteps.filter { $0.recipe == recipes[i].id }
             
             for mapping in mappings {
-                recipes[i].steps.append(recipeSteps.first(where: { $0.id == mapping.step }) ?? RecipeStep(id: -1, title: "Error", description: "Error", duration: "Error", requiredIngredients: []))
+                recipes[i].steps.append(recipeSteps.first(where: { $0.id == mapping.step }) ?? RecipeStep(id: -1, title: "Error", description: "Error", duration: -1))
             }
         }
     }
