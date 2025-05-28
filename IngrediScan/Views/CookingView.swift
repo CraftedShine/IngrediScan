@@ -23,7 +23,7 @@ struct CookingView: View {
                     }
                     
                     Button("Fertig") {
-                       dismiss()
+                        dismiss()
                     }
                     .buttonStyle(.borderedProminent)
                     .padding(.bottom)
@@ -32,11 +32,11 @@ struct CookingView: View {
                 .cornerRadius(20)
                 .padding()
                 .shadow(radius: 5)
-                
-                DismissButton()
             }
         }
         .scrollIndicators(.hidden)
+        .edgesIgnoringSafeArea(.top)
+        .background(.clear)
     }
 }
 

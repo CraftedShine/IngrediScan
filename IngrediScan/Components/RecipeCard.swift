@@ -74,6 +74,7 @@ struct RecipeCard: View {
                 RecipeDetailView(recipe: self.$recipe)
                     .presentationBackground(.clear)
                     .presentationDetents([.fraction(0.99)])
+                    .edgesIgnoringSafeArea(.top)
             }
             
             ToggleFavoriteButton(recipe: $recipe)

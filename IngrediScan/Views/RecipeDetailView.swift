@@ -27,21 +27,21 @@ struct RecipeDetailView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .padding(.bottom)
+                        .sheet(isPresented: $detailedCooking) {
+                            CookingView(recipe: $recipe)
+                                .presentationBackground(.clear)
+                                .presentationDetents([.fraction(0.99)])
+                                .edgesIgnoringSafeArea(.top)
+                        }
                     }
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(20)
                     .padding()
                     .shadow(radius: 5)
-                    
-                    DismissButton()
                 }
             }
             .scrollIndicators(.hidden)
-            .navigationDestination(isPresented: $detailedCooking, destination: {
-                CookingView(recipe: $recipe)
-                    .presentationDetents([.fraction(0.99)])
-                    .presentationBackground(.clear)
-            })
+            .edgesIgnoringSafeArea(.top)
         }
     }
 }
