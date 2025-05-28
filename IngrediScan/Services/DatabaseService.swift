@@ -103,9 +103,11 @@ class DatabaseService {
             let mappings = hasIngredients.filter { $0.recipe == recipes[i].id }
             
             for mapping in mappings {
-                var ingredient = ingredients.first(where: { $0.id == mapping.ingredient }) ?? Ingredient(id: -1, name: "Error", unit: Unit(id: 0, name: "Error"))
-                ingredient.amount = Double(mapping.amount)
-                recipes[i].ingredients.append(ingredient)
+                var ingredient = ingredients.first(where: { $0.id == mapping.ingredient })
+                if (ingredient != nil) {
+                    ingredient?.amount = Double(mapping.amount)
+                    recipes[i].ingredients.append(ingredient!)
+                }
             }
         }
     }
@@ -115,7 +117,11 @@ class DatabaseService {
             let mappings = hasTags.filter { $0.recipe == recipes[i].id }
             
             for mapping in mappings {
-                recipes[i].tags.append(tags.first(where: { $0.id == mapping.tag }) ?? Tag(id: -1, name: "Error"))
+                let tag = tags.first(where: { $0.id == mapping.tag })
+                
+                if(tag != nil) {
+                    recipes[i].tags.append(tag!)
+                }
             }
         }
     }
@@ -125,7 +131,10 @@ class DatabaseService {
             let mappings = hasRecipeSteps.filter { $0.recipe == recipes[i].id }
             
             for mapping in mappings {
-                recipes[i].steps.append(recipeSteps.first(where: { $0.id == mapping.step }) ?? RecipeStep(id: -1, title: "Error", description: "Error", duration: -1))
+                let step = recipeSteps.first(where: { $0.id == mapping.step })
+                if (step != nil) {
+                    recipes[i].steps.append(step!)
+                }
             }
         }
     }
