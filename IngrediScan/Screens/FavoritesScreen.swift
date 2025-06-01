@@ -44,7 +44,7 @@ struct FavoritesScreen: View {
         $viewModel.recipes.indices.compactMap { index in
             let recipe = $viewModel.recipes[index]
             
-            if searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText) || !recipe.tags.wrappedValue.filter({$0 .localizedCaseInsensitiveContains(searchText)}).isEmpty {
+            if (searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText)) {
                 return recipe
             } else {
                 return nil

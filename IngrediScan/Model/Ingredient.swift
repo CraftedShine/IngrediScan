@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct Ingredient : Identifiable, Codable, Hashable {
+struct Ingredient : Identifiable, Decodable, Hashable {
+    let id: Int
     var name: String
-    var amount: Double
-    var unit: String
+    var unit: Unit
     
-    var id: String
+    var amount: Double = 0
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, unit
+    }
 }
 

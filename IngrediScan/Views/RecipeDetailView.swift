@@ -6,36 +6,28 @@ struct RecipeDetailView: View {
     @State private var detailedCooking: Bool = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ZStack(alignment: .topLeading) {
-                    VStack {
-                        VStack(alignment: .leading) {
-                            RecipeImage(recipe: $recipe)
-                            TagList(tags: recipe.tags)
-                            CookingStatistics(recipe: recipe)
-                                .padding()
-                            IngredientList(recipe: recipe)
-                                .padding()
-                        }
-                        
-                        Button {
-                            detailedCooking.toggle()
-                        } label: {
-                            Text("Kochen starten")
-                                .font(.callout .bold() .smallCaps())
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding(.bottom)
-                        .sheet(isPresented: $detailedCooking) {
-                            CookingView(recipe: $recipe)
-                                .presentationBackground(.clear)
-                                .presentationDetents([.fraction(0.99)])
-                                .edgesIgnoringSafeArea(.top)
-                        }
+        ScrollView {
+            Image(self.recipe.imageUrl)
+                .resizable()
+                .scaledToFill()
+                .frame(maxHeight: 250)
+                .clipped()
+                .overlay{
+                    ZStack {
+                        Rectangle()
+                            .foregroundStyle(.black.opacity(0.4))
+                        Text(self.recipe.name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black, radius: 10, x: 0, y:2)
                     }
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(20)
+                }
+            
+            // Preparation Title
+            VStack(alignment: .leading, spacing: 8) {
+                
+                CookingStatistics(recipe: self.recipe)
                     .padding()
                     .shadow(radius: 5)
                 }

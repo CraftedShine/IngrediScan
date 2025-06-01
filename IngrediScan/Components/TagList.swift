@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct TagList : View {
-    @State var tags: [String]
+    @State var tags: [Tag]
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(self.tags, id: \.self) { tag in
-                    Button(tag) {
-                        print(tag)
+                    Button {
+                        
+                    } label: {
+                        Text(tag.name)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)

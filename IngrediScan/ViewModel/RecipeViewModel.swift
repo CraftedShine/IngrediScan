@@ -10,9 +10,7 @@ import SwiftUI
 
 class RecipeViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
-    @Published var categories: [Category] = [Category(name: "Pizza"), Category(name: "Pasta"), Category(name: "Salat"), Category(name: "Dessert"), Category(name: "Auflauf")]
-    @State var searchText: String = ""
-    
+    @Published var categories: [Category] = []
     private var service: RecipeService = RecipeService()
     
     init() {
