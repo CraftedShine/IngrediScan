@@ -32,12 +32,11 @@ struct CookingView: View {
                 .cornerRadius(20)
                 .padding()
                 .shadow(radius: 5)
+                
+                DismissButton()
             }
-            
-            DismissButton()
         }
         .scrollIndicators(.hidden)
-        .edgesIgnoringSafeArea(.top)
         .background(.clear)
     }
 }

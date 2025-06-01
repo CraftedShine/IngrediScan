@@ -30,8 +30,6 @@ struct RecipeDetailView: View {
                         .fullScreenCover(isPresented: $detailedCooking) {
                             CookingView(recipe: $recipe)
                                 .presentationBackground(.clear)
-                                .presentationDetents([.fraction(0.99)])
-                                .edgesIgnoringSafeArea(.top)
                         }
                     }
                     .background(Color(UIColor.secondarySystemBackground))
@@ -43,7 +41,6 @@ struct RecipeDetailView: View {
                 }
             }
             .scrollIndicators(.hidden)
-            .edgesIgnoringSafeArea(.top)
         }
     }
 }
