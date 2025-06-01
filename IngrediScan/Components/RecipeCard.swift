@@ -15,7 +15,7 @@ struct RecipeCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .topLeading) {
-                Image(self.recipe.imageName)
+                Image(self.recipe.imageUrl)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .overlay(Color.black.opacity(0.2))
@@ -42,7 +42,7 @@ struct RecipeCard: View {
                     
                     Text(String(self.recipe.rating))
                 }
-                Text(self.recipe.category)
+                Text(self.recipe.category.name)
                     .font(.callout .bold() .smallCaps())
                     .foregroundStyle(.secondary)
             }

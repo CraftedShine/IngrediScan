@@ -33,9 +33,8 @@ struct RecipeListView: View {
     var filteredRecipes: [Binding<Recipe>] {
         $recipeViewModel.recipes.indices.compactMap { index in
             let recipe = $recipeViewModel.recipes[index]
-            print(recipe.wrappedValue.name)
             
-            if searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText) || !recipe.tags.wrappedValue.filter({$0 .localizedCaseInsensitiveContains(searchText)}).isEmpty {
+            if (searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText)) {
                 return recipe
             } else {
                 return nil

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TagList : View {
-    @State var tags: [String]
+    @State var tags: [Tag]
     
     var body: some View {
         ScrollView(.horizontal) {
@@ -17,7 +17,7 @@ struct TagList : View {
                     Button {
                         
                     } label: {
-                        Text(tag)
+                        Text(tag.name)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)

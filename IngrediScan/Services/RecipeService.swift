@@ -9,6 +9,10 @@ import Foundation
 
 class RecipeService {
     func loadRecipes() -> [Recipe] {
+        #if targetEnvironment(simulator)
+        return MockData().recipes
+        #else
+        
         let fileList: [String] = ["ItalianPizza", "MargheritaPizza", "CapreseSalad", "SpaghettiCabonara", "Tiramisu", "MinestroneSoup", "Focaccia", "Bruschetta", "Lasagne", "PannaCotta", "Gnocchi"]
         
         var jsonFiles: [Data?] = []
@@ -28,6 +32,7 @@ class RecipeService {
         }
         
         return recipes
+        #endif
     }
     
     

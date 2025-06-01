@@ -9,7 +9,7 @@ import Foundation
 
 class RecipeViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
-    @Published var categories: [Category] = [Category(name: "Pizza"), Category(name: "Pasta"), Category(name: "Salat"), Category(name: "Dessert")]
+    @Published var categories: [Category] = []
     private var service: RecipeService = RecipeService()
     
     init() {

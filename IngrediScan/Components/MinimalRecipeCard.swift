@@ -12,7 +12,7 @@ struct MinimalRecipeCard: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image(self.recipe.imageName)
+            Image(self.recipe.imageUrl)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 100)
@@ -41,7 +41,7 @@ struct MinimalRecipeCard: View {
                     }
                 }
                 HStack {
-                    Text(self.recipe.category)
+                    Text(self.recipe.category.name)
                         .font(.subheadline .bold() .smallCaps())
                         .foregroundStyle(.white.opacity(0.8))
                     HStack {
