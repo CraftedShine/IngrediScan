@@ -53,6 +53,7 @@ struct CardText: View {
 }
 
 struct RecipeCard: View {
+    @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
     @State var detailedView: Bool = false
     
@@ -70,11 +71,9 @@ struct RecipeCard: View {
             }
             .cornerRadius(20)
             .shadow(radius: 5)
-            .sheet(isPresented: $detailedView) {
+            .fullScreenCover(isPresented: $detailedView) {
                 RecipeDetailView(recipe: self.$recipe)
                     .presentationBackground(.clear)
-                    .presentationDetents([.fraction(0.99)])
-                    .edgesIgnoringSafeArea(.top)
             }
             
             ToggleFavoriteButton(recipe: $recipe)

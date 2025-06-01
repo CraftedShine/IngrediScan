@@ -33,6 +33,8 @@ struct CookingView: View {
                 .padding()
                 .shadow(radius: 5)
             }
+            
+            DismissButton()
         }
         .scrollIndicators(.hidden)
         .edgesIgnoringSafeArea(.top)

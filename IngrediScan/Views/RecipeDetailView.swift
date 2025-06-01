@@ -27,7 +27,7 @@ struct RecipeDetailView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .padding(.bottom)
-                        .sheet(isPresented: $detailedCooking) {
+                        .fullScreenCover(isPresented: $detailedCooking) {
                             CookingView(recipe: $recipe)
                                 .presentationBackground(.clear)
                                 .presentationDetents([.fraction(0.99)])
@@ -38,6 +38,8 @@ struct RecipeDetailView: View {
                     .cornerRadius(20)
                     .padding()
                     .shadow(radius: 5)
+                    
+                    DismissButton()
                 }
             }
             .scrollIndicators(.hidden)
