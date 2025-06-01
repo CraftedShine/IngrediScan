@@ -214,13 +214,13 @@
 		D58B6B382DCDF720006EA229 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D5EC9EBE2DEC9C41004C0D3D /* Local */,
 				D598DB092DE4F3250093D5C1 /* usesIngredients.swift */,
 				D598DB072DE4F2F90093D5C1 /* hasTags.swift */,
 				D598DB052DE4F2B30093D5C1 /* hasSteps.swift */,
 				D598DB032DE4F05E0093D5C1 /* Tag.swift */,
 				D58B6B342DCDF720006EA229 /* Ingredient.swift */,
 				D58B6B742DD28151006EA229 /* Category.swift */,
-				D58B6B352DCDF720006EA229 /* MyFridge.swift */,
 				D58B6B362DCDF720006EA229 /* Recipe.swift */,
 				D58B6B372DCDF720006EA229 /* RecipeStep.swift */,
 				D598DB012DE4EED70093D5C1 /* Unit.swift */,
@@ -303,6 +303,14 @@
 				D598DAFF2DE4E1BF0093D5C1 /* DatabaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D5EC9EBE2DEC9C41004C0D3D /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				D58B6B352DCDF720006EA229 /* MyFridge.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
