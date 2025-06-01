@@ -68,7 +68,7 @@ struct StepTimeline: View {
                                     .padding(.leading, 8)
                                     .font(.headline .bold() .smallCaps())
                                     .foregroundColor(.primary)
-                                Text("\(items[index].description) (\(items[index].duration))")
+                                Text(items[index].description ?? "")
                                     .padding(.leading, 8)
                                     .font(.subheadline .bold())
                                     .foregroundStyle(.secondary)

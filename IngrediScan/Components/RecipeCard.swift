@@ -11,7 +11,7 @@ struct CardBackground: View {
     @Binding var recipe: Recipe
     
     var body: some View {
-        Image(self.recipe.imageName)
+        Image(self.recipe.imageUrl)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(height: 100)
@@ -37,7 +37,7 @@ struct CardText: View {
             
             // Rating
             HStack {
-                Text(self.recipe.category)
+                Text(self.recipe.category.name)
                     .font(.subheadline .bold() .smallCaps())
                     .foregroundStyle(.white.opacity(0.8))
                 HStack {
