@@ -37,10 +37,10 @@ struct CookingView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .background(.clear)
+        .background(.black.opacity(0.5))
     }
 }
 
 #Preview {
-    CookingView(recipe: .constant(RecipeViewModel().recipes[7]))
+    CookingView(recipe: .constant(RecipeViewModel().recipes[0]))
 }

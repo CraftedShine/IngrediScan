@@ -29,7 +29,6 @@ struct RecipeDetailView: View {
                         .padding(.bottom)
                         .fullScreenCover(isPresented: $detailedCooking) {
                             CookingView(recipe: $recipe)
-                                .presentationBackground(.black.opacity(0.5))
                         }
                     }
                     .background(Color(UIColor.secondarySystemBackground))

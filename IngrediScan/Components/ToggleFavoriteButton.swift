@@ -17,7 +17,7 @@ struct ToggleFavoriteButton: View {
             Image(systemName: recipe.isFavorite ? "star.fill" : "star")
                 .foregroundColor(recipe.isFavorite ? .yellow : .white)
                 .padding(10)
-                .background(Color.black.opacity(0.6))
+                .background(Color.black.opacity(0.5))
                 .clipShape(Circle())
         }
         .padding(10)

@@ -72,7 +72,6 @@ struct RecipeCard: View {
             .shadow(radius: 5)
             .fullScreenCover(isPresented: $detailedView) {
                 RecipeDetailView(recipe: self.$recipe)
-                    .presentationBackground(.clear)
             }
             
             ToggleFavoriteButton(recipe: $recipe)
