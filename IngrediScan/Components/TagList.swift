@@ -13,18 +13,45 @@ struct TagList : View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 10, height: 10)
+                        .padding(5)
+                }
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.circle)
+                
                 ForEach(self.tags, id: \.self) { tag in
-                    Button {
-                        
-                    } label: {
-                        Text(tag.name)
+                    if(tag.id == 1) {
+                        Button {
+                            
+                        } label: {
+                            Text(tag.name)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
+                    } else {
+                        Button {
+                            
+                        } label: {
+                            Text(tag.name)
+                        }
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.capsule)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.capsule)
+                    
                 }
             }
         }
         .scrollIndicators(.hidden)
         .padding()
     }
+}
+
+#Preview {
+    TagList(tags: [Tag(id: 1, name: "Tag 1"), Tag(id: 2, name: "Tag 2")])
 }

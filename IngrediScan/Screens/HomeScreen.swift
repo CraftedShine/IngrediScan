@@ -16,6 +16,7 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
+                    TagList(tags: viewModel.tags)
                     ForEach(self.filteredRecipes) { $recipe in
                         RecipeCard(recipe: $recipe)
                             .padding()
