@@ -29,7 +29,7 @@ struct RecipeDetailView: View {
                         .padding(.bottom)
                         .fullScreenCover(isPresented: $detailedCooking) {
                             CookingView(recipe: $recipe)
-                                .presentationBackground(.clear)
+                                .presentationBackground(.black.opacity(0.5))
                         }
                     }
                     .background(Color(UIColor.secondarySystemBackground))
@@ -37,14 +37,15 @@ struct RecipeDetailView: View {
                     .padding()
                     .shadow(radius: 5)
                     
-                    DismissButton()
+                    DismissButton(dismiss: _dismiss)
                 }
             }
             .scrollIndicators(.hidden)
+            .background(.black.opacity(0.5))
         }
     }
 }
 
 #Preview {
-    RecipeDetailView(recipe: .constant(RecipeViewModel().recipes[4]))
+    RecipeDetailView(recipe: .constant(MockData().recipes[0]))
 }

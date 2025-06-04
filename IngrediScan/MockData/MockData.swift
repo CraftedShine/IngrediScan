@@ -19,9 +19,9 @@ class MockFridge: MyFridge {
 }
 
 struct MockData {
-    let stk = Unit(id: 1, name: "Stk")
-    let gramm = Unit(id: 2, name: "g")
-    let prise = Unit(id: 3, name: "Prise")
+    private let stk = Unit(id: 1, name: "Stk")
+    private let gramm = Unit(id: 2, name: "g")
+    private let prise = Unit(id: 3, name: "Prise")
     var recipes: [Recipe] = []
     
     init() {

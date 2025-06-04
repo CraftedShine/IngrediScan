@@ -53,7 +53,6 @@ struct CardText: View {
 }
 
 struct RecipeCard: View {
-    @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
     @State var detailedView: Bool = false
     
