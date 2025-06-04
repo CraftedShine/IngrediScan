@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var filterScreenPresented: Bool = false
     @State private var searchText: String = ""
     @StateObject var viewModel: RecipeViewModel
     
@@ -25,6 +26,22 @@ struct HomeView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Text("Rezepte")
                             .font(.title .bold() .smallCaps())
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            self.filterScreenPresented.toggle()
+                        } label: {
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
+                                .padding(.vertical)
+                        }
+                        .sheet(isPresented: $filterScreenPresented) {
+                            FilterView()
+                                .presentationDetents([.medium])
+                                .presentationDragIndicator(.visible)
+                        }
                     }
                 }
                 .searchable(text: $searchText)

@@ -76,6 +76,7 @@ struct RecipeCard: View {
             
             ToggleFavoriteButton(recipe: $recipe)
         }
+        .shadow(radius: 5)
     }
 }
 

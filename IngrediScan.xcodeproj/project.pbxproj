@@ -69,6 +69,7 @@
 		D598DB062DE4F2B60093D5C1 /* hasSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB052DE4F2B30093D5C1 /* hasSteps.swift */; };
 		D598DB082DE4F2FD0093D5C1 /* hasTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB072DE4F2F90093D5C1 /* hasTags.swift */; };
 		D598DB0A2DE4F32B0093D5C1 /* usesIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DB092DE4F3250093D5C1 /* usesIngredients.swift */; };
+		D5EC9EC22DF04BB7004C0D3D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EC12DF04BB7004C0D3D /* FilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		D598DB052DE4F2B30093D5C1 /* hasSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hasSteps.swift; sourceTree = "<group>"; };
 		D598DB072DE4F2F90093D5C1 /* hasTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hasTags.swift; sourceTree = "<group>"; };
 		D598DB092DE4F3250093D5C1 /* usesIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usesIngredients.swift; sourceTree = "<group>"; };
+		D5EC9EC12DF04BB7004C0D3D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				D598DADE2DE0D1FD0093D5C1 /* IngredientsScreen.swift */,
 				D598DADF2DE0D1FD0093D5C1 /* IngredientTemplateListView.swift */,
 				D598DAE02DE0D1FD0093D5C1 /* SearchResultsScreen.swift */,
+				D5EC9EC12DF04BB7004C0D3D /* FilterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				D598DAE52DE0D1FD0093D5C1 /* SearchResultsScreen.swift in Sources */,
 				D598DAF52DE0D30A0093D5C1 /* RecipeService.swift in Sources */,
 				D598DAE62DE0D1FD0093D5C1 /* SearchScreen.swift in Sources */,
+				D5EC9EC22DF04BB7004C0D3D /* FilterView.swift in Sources */,
 				D598DAE72DE0D1FD0093D5C1 /* FavoritesScreen.swift in Sources */,
 				D598DAE82DE0D1FD0093D5C1 /* FilterOptionsView.swift in Sources */,
 				D598DAE92DE0D1FD0093D5C1 /* IngredientBoxView.swift in Sources */,
