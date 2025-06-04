@@ -25,12 +25,10 @@ struct RecipeImage : View {
                     .foregroundColor(.white)
                     .padding()
             }
-            
-            ToggleFavoriteButton(recipe: $recipe)
         }
     }
 }
 
 #Preview {
-    RecipeImage(recipe: .constant(RecipeViewModel().recipes[7]))
+    RecipeImage(recipe: .constant(RecipeViewModel().recipes[0]))
 }

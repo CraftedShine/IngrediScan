@@ -7,6 +7,27 @@
 
 import SwiftUI
 
+struct CardTagList: View {
+    var tags: [Tag]
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(self.tags, id: \.self) { tag in
+                    Button {
+                        
+                    } label: {
+                        Text(tag.name)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
+                }
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+}
+
 struct CardBackground: View {
     @Binding var recipe: Recipe
     

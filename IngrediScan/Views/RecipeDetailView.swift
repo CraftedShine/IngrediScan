@@ -8,39 +8,57 @@ struct RecipeDetailView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                ZStack(alignment: .topLeading) {
-                    VStack {
-                        VStack(alignment: .leading) {
-                            RecipeImage(recipe: $recipe)
-                            TagList(tags: recipe.tags)
-                            CookingStatistics(recipe: recipe)
-                                .padding()
-                            IngredientList(recipe: recipe)
-                                .padding()
-                        }
+                VStack(alignment: .leading) {
+                    
+                    ZStack(alignment: .top) {
+                        RecipeImage(recipe: $recipe)
                         
-                        Button {
-                            detailedCooking.toggle()
-                        } label: {
-                            Text("Kochen starten")
-                                .font(.callout .bold() .smallCaps())
+                        HStack {
+                            DismissButton(dismiss: _dismiss)
+                            Spacer()
+                            Text("Details")
+                                .font(.title .bold() .smallCaps())
+                            Spacer()
+                            ToggleFavoriteButton(recipe: $recipe)
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding(.bottom)
-                        .fullScreenCover(isPresented: $detailedCooking) {
-                            CookingView(recipe: $recipe)
+                        .foregroundStyle(.white)
+                    }
+                    
+                    CardTagList(tags: recipe.tags)
+                        .padding(.horizontal)
+                    
+                    CookingStatistics(recipe: recipe)
+                        .padding()
+                    
+                    Divider()
+                    
+                    IngredientList(recipe: recipe)
+                        .padding()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        VStack {
+                            Divider()
+                            Button {
+                                detailedCooking.toggle()
+                            } label: {
+                                Text("Kochen starten")
+                                    .font(.callout .bold() .smallCaps())
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding(.top)
+                            .sheet(isPresented: $detailedCooking) {
+                                CookingView(recipe: $recipe)
+                                    .presentationDetents([.large])
+                                    .presentationCornerRadius(16)
+                            }
                         }
                     }
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(20)
-                    .padding()
-                    .shadow(radius: 5)
-                    
-                    DismissButton(dismiss: _dismiss)
                 }
+                .toolbarBackgroundVisibility(.hidden, for: .navigationBar, .bottomBar)
             }
+            .cornerRadius(16)
             .scrollIndicators(.hidden)
-            .background(.black.opacity(0.5))
         }
     }
 }

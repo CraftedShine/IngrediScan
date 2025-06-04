@@ -22,7 +22,6 @@
 		D58B6B642DCDF720006EA229 /* IngrediScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B4E2DCDF720006EA229 /* IngrediScanApp.swift */; };
 		D58B6B652DCDF720006EA229 /* ItalianPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B302DCDF720006EA229 /* ItalianPizza.json */; };
 		D58B6B662DCDF720006EA229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B4C2DCDF720006EA229 /* Assets.xcassets */; };
-		D58B6B6B2DCE75FB006EA229 /* AppDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B6A2DCE75FB006EA229 /* AppDataViewModel.swift */; };
 		D58B6B6F2DD272E5006EA229 /* MargheritaPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B6E2DD272DC006EA229 /* MargheritaPizza.json */; };
 		D58B6B712DD27367006EA229 /* CapreseSalad.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B702DD2735E006EA229 /* CapreseSalad.json */; };
 		D58B6B732DD273D6006EA229 /* SpaghettiCabonara.json in Resources */ = {isa = PBXBuildFile; fileRef = D58B6B722DD273CB006EA229 /* SpaghettiCabonara.json */; };
@@ -102,7 +101,6 @@
 		D58B6B4C2DCDF720006EA229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D58B6B4D2DCDF720006EA229 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D58B6B4E2DCDF720006EA229 /* IngrediScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrediScanApp.swift; sourceTree = "<group>"; };
-		D58B6B6A2DCE75FB006EA229 /* AppDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataViewModel.swift; sourceTree = "<group>"; };
 		D58B6B6E2DD272DC006EA229 /* MargheritaPizza.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MargheritaPizza.json; sourceTree = "<group>"; };
 		D58B6B702DD2735E006EA229 /* CapreseSalad.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CapreseSalad.json; sourceTree = "<group>"; };
 		D58B6B722DD273CB006EA229 /* SpaghettiCabonara.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpaghettiCabonara.json; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				D598DAF02DE0D2DF0093D5C1 /* RecipeViewModel.swift */,
-				D58B6B6A2DCE75FB006EA229 /* AppDataViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -475,7 +472,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D58B6B6B2DCE75FB006EA229 /* AppDataViewModel.swift in Sources */,
 				D598DAFA2DE25A4F0093D5C1 /* RecipeImage.swift in Sources */,
 				D58B6B972DD72D4B006EA229 /* (null) in Sources */,
 				D598DACA2DE0D1690093D5C1 /* StepTimeline.swift in Sources */,

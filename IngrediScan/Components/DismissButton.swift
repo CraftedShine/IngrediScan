@@ -11,15 +11,18 @@ struct DismissButton: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        Image(systemName: "x.circle")
-            .resizable()
-            .foregroundStyle(.background)
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 30, height: 30)
-            .padding(30)
-            .onTapGesture {
-                dismiss()
-            }
+        Button {
+            dismiss()
+        } label: {
+            Text("X")
+                .font(.title .bold())
+                .frame(width: 20, height: 20)
+                .foregroundStyle(.white)
+                .padding(10)
+                .background(Color.black.opacity(0.5))
+                .clipShape(Circle())
+        }
+        .padding(30)
     }
 }
 

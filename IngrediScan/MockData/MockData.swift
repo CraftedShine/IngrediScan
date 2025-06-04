@@ -10,7 +10,7 @@ import Foundation
 class MockFridge: MyFridge {
     public override init() {
         super.init()
-        let ingredients: [Ingredient] = RecipeViewModel().recipes.first!.ingredients
+        let ingredients: [Ingredient] = MockData().recipes.first!.ingredients
         
         ingredients.forEach { ingredient in
             self.addIngredient(ingredient)

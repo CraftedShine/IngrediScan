@@ -12,32 +12,50 @@ struct CookingView: View {
     @Binding var recipe: Recipe
     
     var body: some View {
-        ScrollView {
-            ZStack(alignment: .topLeading) {
-                VStack {
-                    VStack(alignment: .leading, spacing: 0) {
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ZStack(alignment: .top) {
                         RecipeImage(recipe: $recipe)
-                        IngredientList(recipe: recipe)
-                            .padding()
-                        StepTimeline(items: $recipe.steps)
+                        GeometryReader { geometry in
+                            HStack {
+                                DismissButton()
+                                    .frame(width: geometry.size.width * 0.25)
+                                Text("Kochen")
+                                    .font(.title .bold() .smallCaps())
+                                    .frame(width: geometry.size.width * 0.5)
+                                Spacer()
+                                    .frame(width: geometry.size.width * 0.25)
+                            }
+                            .foregroundStyle(.white)
+                        }
                     }
+                    IngredientList(recipe: recipe)
+                        .padding()
                     
-                    Button("Fertig") {
-                        dismiss()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding(.bottom)
+                    Divider()
+                    
+                    StepTimeline(items: $recipe.steps)
+                        .padding(.top)
                 }
-                .background(Color(UIColor.secondarySystemBackground))
-                .cornerRadius(20)
-                .padding()
-                .shadow(radius: 5)
-                
-                DismissButton()
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        VStack {
+                            Divider()
+                            Button("Fertig") {
+                                dismiss()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding(.top)
+                        }
+                    }
+                }
+                .toolbarBackgroundVisibility(.hidden, for: .bottomBar)
             }
+            .background(.clear)
+            .cornerRadius(16)
+            .scrollIndicators(.hidden)
         }
-        .scrollIndicators(.hidden)
-        .background(.black.opacity(0.5))
     }
 }
 

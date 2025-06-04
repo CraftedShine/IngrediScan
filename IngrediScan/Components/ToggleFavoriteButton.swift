@@ -15,12 +15,15 @@ struct ToggleFavoriteButton: View {
             recipe.isFavorite.toggle()
         } label: {
             Image(systemName: recipe.isFavorite ? "star.fill" : "star")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 20, height: 20)
                 .foregroundColor(recipe.isFavorite ? .yellow : .white)
                 .padding(10)
                 .background(Color.black.opacity(0.5))
                 .clipShape(Circle())
         }
-        .padding(10)
+        .padding(30)
     }
 }
 
