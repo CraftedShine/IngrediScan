@@ -20,7 +20,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
-            HomeView(recipeViewModel: recipeViewModel)
+            HomeView(viewModel: recipeViewModel)
                 .tabItem{
                     Label("Home", systemImage: "house.fill")
                 }

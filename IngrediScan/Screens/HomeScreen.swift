@@ -9,13 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var searchText: String = ""
-    @StateObject var recipeViewModel: RecipeViewModel
+    @StateObject var viewModel: RecipeViewModel
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach($recipeViewModel.recipes) { $recipe in
+                    ForEach(self.filteredRecipes) { $recipe in
                         RecipeCard(recipe: $recipe)
                             .padding()
                     }
@@ -31,8 +31,20 @@ struct HomeView: View {
             }
         }
     }
+    
+    var filteredRecipes: [Binding<Recipe>] {
+        $viewModel.recipes.indices.compactMap { index in
+            let recipe = $viewModel.recipes[index]
+            
+            if (searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText)) {
+                return recipe
+            } else {
+                return nil
+            }
+        }
+    }
 }
 
 #Preview {
-    HomeView(recipeViewModel: RecipeViewModel())
+    HomeView(viewModel: RecipeViewModel())
 }
