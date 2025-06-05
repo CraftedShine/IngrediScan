@@ -34,9 +34,9 @@ struct CookingView: View {
                         .padding()
                     
                     Divider()
+                        .padding(.bottom)
                     
                     StepTimeline(items: $recipe.steps)
-                        .padding(.top)
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {

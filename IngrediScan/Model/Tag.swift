@@ -5,7 +5,15 @@
 //  Created by Faramir on 26.05.25.
 //
 
-struct Tag: Decodable, Identifiable, Hashable {
+import Foundation
+
+struct Tag: Identifiable, Decodable, Hashable {
     let id: Int
-    let name: String
+    var name: String
+    
+    var isSelected: Bool = false
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name
+    }
 }

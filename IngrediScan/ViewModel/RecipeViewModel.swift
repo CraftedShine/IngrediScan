@@ -22,6 +22,9 @@ class RecipeViewModel: ObservableObject {
     init() {}
     
     func loadRecipes() async {
+        #if targetEnvironment(simulator)
+        self.recipes = MockData().recipes
+        #else
         do {
             let response: [Recipe] = try await supabase
                 .from("Recipes")
@@ -38,5 +41,6 @@ class RecipeViewModel: ObservableObject {
         } catch {
             print("Error while trying to fetch Recipes: \(error)")
         }
+        #endif
     }
 }
