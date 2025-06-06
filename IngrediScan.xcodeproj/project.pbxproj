@@ -13,6 +13,7 @@
 		9D6715FB2DE4D02B000173B1 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6715FA2DE4D02B000173B1 /* Realtime */; };
 		9D6715FD2DE4D02B000173B1 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6715FC2DE4D02B000173B1 /* Storage */; };
 		9D6715FF2DE4D02B000173B1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6715FE2DE4D02B000173B1 /* Supabase */; };
+		9D76633C2DF1FFD30091BB9A /* IngredientTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76633B2DF1FFD30091BB9A /* IngredientTemplateView.swift */; };
 		D58B6B522DCDF720006EA229 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B342DCDF720006EA229 /* Ingredient.swift */; };
 		D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B352DCDF720006EA229 /* MyFridge.swift */; };
 		D58B6B542DCDF720006EA229 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B362DCDF720006EA229 /* Recipe.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D76633B2DF1FFD30091BB9A /* IngredientTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTemplateView.swift; sourceTree = "<group>"; };
 		D53566022DBB7849007255D1 /* IngrediScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IngrediScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D535660F2DBB784B007255D1 /* IngrediScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53566192DBB784B007255D1 /* IngrediScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D76633A2DF1B9130091BB9A /* FridgeScreenViews */ = {
+			isa = PBXGroup;
+			children = (
+				D598DADB2DE0D1FD0093D5C1 /* IngredientOverlayView.swift */,
+				D598DADF2DE0D1FD0093D5C1 /* IngredientTemplateListView.swift */,
+				D598DADA2DE0D1FD0093D5C1 /* IngredientBoxView.swift */,
+				9D76633B2DF1FFD30091BB9A /* IngredientTemplateView.swift */,
+			);
+			path = FridgeScreenViews;
+			sourceTree = "<group>";
+		};
 		D53565F92DBB7849007255D1 = {
 			isa = PBXGroup;
 			children = (
@@ -244,13 +257,11 @@
 		D58B6B4B2DCDF720006EA229 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D76633A2DF1B9130091BB9A /* FridgeScreenViews */,
 				D598DAD82DE0D1FD0093D5C1 /* FilterOptionsView.swift */,
-				D598DADA2DE0D1FD0093D5C1 /* IngredientBoxView.swift */,
-				D598DADB2DE0D1FD0093D5C1 /* IngredientOverlayView.swift */,
 				D598DADC2DE0D1FD0093D5C1 /* IngredientSearchPickerView.swift */,
 				D598DADD2DE0D1FD0093D5C1 /* IngredientSelectionView.swift */,
 				D598DADE2DE0D1FD0093D5C1 /* IngredientsScreen.swift */,
-				D598DADF2DE0D1FD0093D5C1 /* IngredientTemplateListView.swift */,
 				D598DAE02DE0D1FD0093D5C1 /* SearchResultsScreen.swift */,
 				D598DAD02DE0D1A30093D5C1 /* RecipeDetailView.swift */,
 				D598DAD12DE0D1A30093D5C1 /* RecipeListView.swift */,
@@ -492,6 +503,7 @@
 				D598DACE2DE0D1690093D5C1 /* RecipeCard.swift in Sources */,
 				D598DAD32DE0D1A30093D5C1 /* RecipeListView.swift in Sources */,
 				D598DAD42DE0D1A30093D5C1 /* RecipeSummaryView.swift in Sources */,
+				9D76633C2DF1FFD30091BB9A /* IngredientTemplateView.swift in Sources */,
 				D598DAD52DE0D1A30093D5C1 /* RecipeDetailView.swift in Sources */,
 				D598DACF2DE0D1690093D5C1 /* IngredientList.swift in Sources */,
 				D598DB042DE4F0600093D5C1 /* Tag.swift in Sources */,

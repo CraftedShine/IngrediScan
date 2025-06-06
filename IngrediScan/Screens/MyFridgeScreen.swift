@@ -18,6 +18,8 @@ struct FridgeScreen: View {
         NavigationView {
             ZStack {
                 VStack {
+                    
+                    // List of ingredients formatted in box views
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 25) {
                             ForEach(fridge.getIngredients()) { ingredient in
@@ -25,7 +27,9 @@ struct FridgeScreen: View {
                                     fridge.removeIngredient(ingredient: ingredient)
                                 })
                                 .onTapGesture {
-                                    selectedIngredient = ingredient
+                                    if !isEditing {
+                                        selectedIngredient = ingredient
+                                    }
                                     isEditing = false
                                 }
                             }
@@ -33,11 +37,14 @@ struct FridgeScreen: View {
                         .padding()
                     }
                     
+                    // add button -> opens a sheet
                     HStack {
                         Spacer()
                         Button(action: {
+                            if !isEditing {
+                                showIngredientSheet = true
+                            }
                             isEditing = false
-                            showIngredientSheet = true
                         }) {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
@@ -52,6 +59,7 @@ struct FridgeScreen: View {
                     }
                 }
                 
+                // overlay view after tapping on an ingredient box
                 if let ingredient = selectedIngredient {
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all)
@@ -60,16 +68,15 @@ struct FridgeScreen: View {
                         }
                     
                     IngredientOverlayView(
-                        ingredient: Binding(
-                            get: { ingredient },
-                            set: { selectedIngredient = $0 }
-                        ),
-                        size: boxSize,
+                        ingredient: ingredient, fridge: fridge,
                         onClose: { selectedIngredient = nil }
                     )
                 }
             }
             .navigationTitle("My Fridge")
+            .onTapGesture {
+                isEditing = false
+            }
         }
     }
 }
