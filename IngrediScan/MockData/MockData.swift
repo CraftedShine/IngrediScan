@@ -10,7 +10,7 @@ import Foundation
 class MockFridge: MyFridge {
     public override init() {
         super.init()
-        var ingredients: [Ingredient] = MockIngredients().ingredients
+        var ingredients: [Ingredient] = MockData().recipes.first!.ingredients
         
         for i in 0...ingredients.count-1 {
             ingredients[i].amount = 1
@@ -29,9 +29,9 @@ class MockIngredients {
 }
 
 struct MockData {
-    let stk = Unit(id: 1, name: "Stk")
-    let gramm = Unit(id: 2, name: "g")
-    let prise = Unit(id: 3, name: "Prise")
+    private let stk = Unit(id: 1, name: "Stk")
+    private let gramm = Unit(id: 2, name: "g")
+    private let prise = Unit(id: 3, name: "Prise")
     var recipes: [Recipe] = []
     
     init() {

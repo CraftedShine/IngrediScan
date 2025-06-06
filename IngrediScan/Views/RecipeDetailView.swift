@@ -1,59 +1,68 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
-    @State var recipe: Recipe
+    @Environment(\.dismiss) var dismiss
+    @Binding var recipe: Recipe
     @State private var detailedCooking: Bool = false
     
     var body: some View {
-        ScrollView {
-            Image(self.recipe.imageUrl)
-                .resizable()
-                .scaledToFill()
-                .frame(maxHeight: 250)
-                .clipped()
-                .overlay{
-                    ZStack {
-                        Rectangle()
-                            .foregroundStyle(.black.opacity(0.4))
-                        Text(self.recipe.name)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .shadow(color: Color.black, radius: 10, x: 0, y:2)
-                    }
-                }
-            
-            // Preparation Title
-            VStack(alignment: .leading, spacing: 8) {
-                
-                CookingStatistics(recipe: self.recipe)
-                    .padding()
-                
-                Divider()
-                
-                IngredientList(recipe: self.recipe)
-                    .padding()
-                
-                Divider()
-                    .padding(.bottom)
-                
-                // Cooking Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Zubereitung")
-                        .font(.callout .bold() .smallCaps())
-                        .foregroundStyle(.secondary)
-                        .padding(.leading)
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading) {
                     
-                    StepTimeline(items: self.$recipe.steps)
+                    ZStack(alignment: .top) {
+                        RecipeImage(recipe: $recipe)
+                        
+                        HStack {
+                            DismissButton(dismiss: _dismiss)
+                            Spacer()
+                            Text("Details")
+                                .font(.title .bold() .smallCaps())
+                            Spacer()
+                            ToggleFavoriteButton(recipe: $recipe)
+                        }
+                        .foregroundStyle(.white)
+                    }
+                    
+                    CardTagList(tags: recipe.tags)
+                        .padding(.horizontal)
+                    
+                    CookingStatistics(recipe: recipe)
+                        .padding()
                     
                     Divider()
+                    
+                    IngredientList(recipe: recipe)
+                        .padding()
                 }
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        VStack {
+                            Divider()
+                            Button {
+                                detailedCooking.toggle()
+                            } label: {
+                                Text("Kochen starten")
+                                    .font(.callout .bold() .smallCaps())
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding(.top)
+                            .sheet(isPresented: $detailedCooking) {
+                                CookingView(recipe: $recipe)
+                                    .presentationDetents([.large])
+                                    .presentationCornerRadius(16)
+                            }
+                        }
+                    }
+                }
+                .toolbarBackgroundVisibility(.hidden, for: .navigationBar, .bottomBar)
             }
+            .cornerRadius(16)
+            .scrollIndicators(.hidden)
         }
-        .edgesIgnoringSafeArea(.top)
     }
 }
 
 #Preview {
-    RecipeDetailView(recipe: RecipeViewModel().recipes[4])
+    RecipeDetailView(recipe: .constant(MockData().recipes[0]))
 }

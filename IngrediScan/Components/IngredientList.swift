@@ -24,7 +24,7 @@ struct IngredientList: View {
                 HStack {
                     Text(ingredient.name + ":")
                         .font(.headline .bold() .smallCaps())
-                    Text("\(String(ingredient.amount)) \(ingredient.unit)")
+                    Text("\(String(ingredient.amount)) \(ingredient.unit.name)")
                         .font(.subheadline .bold())
                         .foregroundStyle(.secondary)
                 }

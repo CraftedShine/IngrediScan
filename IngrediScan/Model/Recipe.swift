@@ -9,13 +9,13 @@ import Foundation
 import SwiftUICore
 
 enum Difficulty : String, Decodable, Hashable {
-        case Easy = "Einfach"
-        case Medium = "Mittel"
-        case Hard = "Schwer"
-    }
+    case Easy = "Einfach"
+    case Medium = "Mittel"
+    case Hard = "Schwer"
+}
 
-    struct Recipe : Identifiable, Decodable, Hashable {
-        let id: Int
+struct Recipe : Identifiable, Decodable, Hashable {
+    let id: Int
     
     var name: String
     var category: Category

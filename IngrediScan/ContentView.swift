@@ -9,8 +9,8 @@ import SwiftUI
 import Supabase
 
 struct ContentView: View {
-    @State private var viewModel = AppDataViewModel()
-    @State private var recipeViewModel = RecipeViewModel()
+    @State private var selectedTab: Int = 0
+    @StateObject private var viewModel = RecipeViewModel()
     @State var units: [Unit] = []
     
     let supabase = SupabaseClient(
@@ -19,8 +19,8 @@ struct ContentView: View {
     )
     
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
-            HomeView(viewModel: viewModel, recipeViewModel: recipeViewModel)
+        TabView(selection: $selectedTab) {
+            HomeView(viewModel: viewModel)
                 .tabItem{
                     Label("Home", systemImage: "house.fill")
                 }
@@ -30,7 +30,7 @@ struct ContentView: View {
             {
                 Label("Search", systemImage: "magnifyingglass")
             }.tag(1)
-            FavoritesScreen(viewModel: recipeViewModel)
+            FavoritesScreen(viewModel: viewModel)
                 .tabItem {
                     Label("Favorites", systemImage: "bookmark")
                 }.tag(2)
@@ -40,30 +40,10 @@ struct ContentView: View {
                 }.tag(3)
         }
         .task {
-            do {
-                units = try await supabase.from("Units").select().execute().value
-                
-                print(units)
-            } catch {
-                debugPrint(error)
-            }
+            await viewModel.loadRecipes()
         }
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
-        .onAppear {
-            viewModel.selectedTab = 0
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.secondarySystemBackground
-            appearance.stackedLayoutAppearance.normal.iconColor = .gray
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray]
-            
-            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.accentColor)
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(Color.accentColor)]
-            
-            UITabBar.appearance().standardAppearance = appearance
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
         .statusBar(hidden: false)
     }
 }

@@ -8,30 +8,14 @@
 import Foundation
 
 class RecipeService {
-    func loadRecipes() -> [Recipe] {
+    private var databaseService: DatabaseService = .init()
+    
+    func loadRecipes() async -> [Recipe] {
         #if targetEnvironment(simulator)
         return MockData().recipes
         #else
         
-        let fileList: [String] = ["ItalianPizza", "MargheritaPizza", "CapreseSalad", "SpaghettiCabonara", "Tiramisu", "MinestroneSoup", "Focaccia", "Bruschetta", "Lasagne", "PannaCotta", "Gnocchi"]
-        
-        var jsonFiles: [Data?] = []
-        
-        fileList.forEach { file in
-            jsonFiles.append(readLocalJSONFile(forName: file))
-        }
-        
-        var recipes: [Recipe] = []
-        
-        jsonFiles.forEach { jsonData in
-            if let data = jsonData.self {
-                if let recipe = parse(jsonData: data) {
-                    recipes.append(recipe)
-                }
-            }
-        }
-        
-        return recipes
+        return await databaseService.loadRecipes()
         #endif
     }
     
