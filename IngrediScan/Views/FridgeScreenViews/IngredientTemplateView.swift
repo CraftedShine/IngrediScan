@@ -19,11 +19,11 @@ struct IngredientTemplateView: View {
                 .frame(maxWidth: 100, alignment: .leading)
             
             TextField("Menge", text: $newAmount)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .frame(width: 80)
-            .keyboardType(.decimalPad)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 80)
+                .keyboardType(.decimalPad)
             
-            Text(ingredient.unit.name)
+            Text("Stk") // Needs to Refactored
                 .frame(maxWidth: 32, alignment: .leading)
             
             Button(action: {
@@ -44,14 +44,14 @@ struct IngredientTemplateView: View {
     func addToFridge(ingredient: Ingredient) {
         if !newAmount.isEmpty {
             if let amount = Double(newAmount), amount > 0 {
-                fridge.addIngredient(Ingredient(id: ingredient.id, name: ingredient.name, unit: ingredient.unit, amount: amount))
+                fridge.addIngredient(Ingredient(id: ingredient.id, name: ingredient.name))
             }
         }
     }
 }
 
 #Preview {
-    IngredientTemplateView(ingredient: Ingredient(id: 1, name: "Test", unit: Unit(id: 1, name: "kg"), amount: 1), fridge: MockFridge())
+    IngredientTemplateView(ingredient: Ingredient(id: 1, name: "Test"), fridge: MockFridge())
 }
 
 

@@ -30,13 +30,19 @@ struct CookingView: View {
                             .foregroundStyle(.white)
                         }
                     }
-                    IngredientList(recipe: recipe)
-                        .padding()
+                    
+                    if let ingredients = recipe.usesIngredients {
+                        IngredientList(ingredientUsage: ingredients)
+                            .padding()
+                    }
                     
                     Divider()
                         .padding(.bottom)
                     
-                    StepTimeline(items: $recipe.steps)
+                    if let steps = recipe.hasSteps {
+                        StepTimeline(steps: steps)
+                    }
+                    
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
@@ -60,5 +66,5 @@ struct CookingView: View {
 }
 
 #Preview {
-    CookingView(recipe: .constant(RecipeViewModel().recipes[0]))
+    CookingView(recipe: .constant(ViewModel().recipes[0]))
 }

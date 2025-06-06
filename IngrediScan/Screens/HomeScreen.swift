@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var filterScreenPresented: Bool = false
     @State private var searchText: String = ""
-    @StateObject var viewModel: RecipeViewModel
+    @StateObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {
@@ -64,5 +64,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(viewModel: RecipeViewModel())
+    HomeView(viewModel: ViewModel())
 }

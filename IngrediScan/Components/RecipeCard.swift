@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CardTagList: View {
-    var tags: [Tag]
+    var hasTags: [TagRelation]
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(self.tags, id: \.self) { tag in
+                ForEach(hasTags, id: \.id) { tagRelation in
                     Button {
                         
                     } label: {
-                        Text(tag.name)
+                        Text(tagRelation.Tag.name)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)
@@ -32,7 +32,7 @@ struct CardBackground: View {
     @Binding var recipe: Recipe
     
     var body: some View {
-        Image(self.recipe.imageUrl)
+        Image(self.recipe.imageUrl!)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(height: 100)
@@ -58,15 +58,18 @@ struct CardText: View {
             
             // Rating
             HStack {
-                Text(self.recipe.category.name)
-                    .font(.subheadline .bold() .smallCaps())
-                    .foregroundStyle(.white.opacity(0.8))
-                HStack {
-                    Image(systemName: "star.fill")
-                        .foregroundStyle(.yellow)
-                    Text(String(self.recipe.rating))
-                        .font(.subheadline .bold())
+                if let category = recipe.category {
+                    
+                    Text(category.name)
+                        .font(.subheadline .bold() .smallCaps())
                         .foregroundStyle(.white.opacity(0.8))
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                        Text(String(self.recipe.rating!))
+                            .font(.subheadline .bold())
+                            .foregroundStyle(.white.opacity(0.8))
+                    }
                 }
             }
         }
@@ -102,5 +105,5 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    RecipeCard(recipe: .constant(RecipeViewModel().recipes.first! ))
+    RecipeCard(recipe: .constant(ViewModel().recipes.first! ))
 }

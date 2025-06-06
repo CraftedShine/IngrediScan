@@ -24,16 +24,21 @@ struct RecipeDetailView: View {
                         .foregroundStyle(.white)
                     }
                     
-                    CardTagList(tags: recipe.tags)
-                        .padding(.horizontal)
+                    if let tags = recipe.hasTags {
+                        CardTagList(hasTags: tags)
+                            .padding(.horizontal)
+                    }
                     
                     CookingStatistics(recipe: recipe)
                         .padding()
                     
                     Divider()
                     
-                    IngredientList(recipe: recipe)
-                        .padding()
+                    if let ingredients = recipe.usesIngredients {
+                        IngredientList(ingredientUsage: ingredients)
+                            .padding()
+                    }
+                    
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {

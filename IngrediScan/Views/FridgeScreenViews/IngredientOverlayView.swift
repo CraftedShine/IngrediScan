@@ -27,12 +27,12 @@ struct IngredientOverlayView: View {
 
                 Spacer()
                 HStack {
-                    TextField(String(format: "%.2f", ingredient.amount).replacingOccurrences(of: ".00", with: ""),text: $newAmount)
+                    TextField(String(format: "%.2f", 0).replacingOccurrences(of: ".00", with: ""),text: $newAmount) // Need to be refactored
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    Text(ingredient.unit.name)
+                    Text("Stk") // Need to be refactored
                         .padding(.trailing)
                 }
 
@@ -42,7 +42,7 @@ struct IngredientOverlayView: View {
                     Button("Speichern") {
                         if let amount = Double(newAmount) {
                             if amount > 0 {
-                                let ingredientToAdd = Ingredient(id: ingredient.id, name: ingredient.name, unit: ingredient.unit, amount: amount - ingredient.amount)
+                                let ingredientToAdd = Ingredient(id: ingredient.id, name: ingredient.name)
                                 fridge.addIngredient(ingredientToAdd)
                             } else {
                                 fridge.removeIngredient(ingredient: ingredient)

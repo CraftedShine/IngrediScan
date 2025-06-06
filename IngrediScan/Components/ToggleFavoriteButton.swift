@@ -28,5 +28,5 @@ struct ToggleFavoriteButton: View {
 }
 
 #Preview {
-    ToggleFavoriteButton(recipe: .constant(RecipeViewModel().recipes.first!))
+    ToggleFavoriteButton(recipe: .constant(ViewModel().recipes.first!))
 }

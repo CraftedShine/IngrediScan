@@ -10,13 +10,7 @@ import Supabase
 
 struct ContentView: View {
     @State private var selectedTab: Int = 0
-    @StateObject private var viewModel = RecipeViewModel()
-    @State var units: [Unit] = []
-    
-    let supabase = SupabaseClient(
-        supabaseURL: URL(string: "https://zglesyibcbwjoalbzdjp.supabase.co")!,
-        supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnbGVzeWliY2J3am9hbGJ6ZGpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczNzgxMzcsImV4cCI6MjA2Mjk1NDEzN30.zYi1Bxd8I0mbQfrW2WPya53fWsVqk8EdTTtbzqLZt5Q"
-    )
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -38,9 +32,6 @@ struct ContentView: View {
                 .tabItem{
                     Label("My Fridge", systemImage: "storefront.fill")
                 }.tag(3)
-        }
-        .task {
-            await viewModel.loadRecipes()
         }
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)

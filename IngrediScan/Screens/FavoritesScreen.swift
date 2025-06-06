@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoritesScreen: View {
-    @StateObject var viewModel: RecipeViewModel
+    @StateObject var viewModel: ViewModel
     @State private var searchText: String = ""
     
     var body: some View {
@@ -54,5 +54,5 @@ struct FavoritesScreen: View {
 }
 
 #Preview {
-    FavoritesScreen(viewModel: RecipeViewModel())
+    FavoritesScreen(viewModel: ViewModel())
 }

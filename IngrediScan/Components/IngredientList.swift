@@ -8,31 +8,34 @@
 import SwiftUI
 
 struct IngredientList: View {
-    @State private var recipe: Recipe
-    
-    init(recipe: Recipe) {
-        self.recipe = recipe
-    }
+    let ingredientUsage: [UsesIngredient]
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 8) {
             Text("Zutaten")
-                .font(.subheadline .smallCaps() .bold())
+                .font(.subheadline.smallCaps().bold())
                 .foregroundColor(.secondary)
             
-            ForEach(self.recipe.ingredients) { ingredient in
+            ForEach(ingredientUsage) { item in
                 HStack {
-                    Text(ingredient.name + ":")
-                        .font(.headline .bold() .smallCaps())
-                    Text("\(String(ingredient.amount)) \(ingredient.unit.name)")
-                        .font(.subheadline .bold())
-                        .foregroundStyle(.secondary)
+                    Text("\(item.amount.cleanString())")
+                    Text("\(item.Unit.name)")
+                    Text("\(item.Ingredient.name)")
                 }
             }
         }
     }
 }
 
+extension Float {
+    func cleanString() -> String {
+        self.truncatingRemainder(dividingBy: 1) == 0 ?
+        String(format: "%.0f", self) : String(self)
+    }
+}
+
 #Preview {
-    IngredientList(recipe: RecipeViewModel().recipes[0])
+    let ingredientUsage = [UsesIngredient(id: 1, amount: 1, Ingredient: Ingredient(id: 1, name: "Spaghetti"), Unit: Unit(id: 1, name: "Stk"))]
+    IngredientList(ingredientUsage: ingredientUsage)
 }

@@ -19,7 +19,7 @@ struct CookingStatistics: View {
             HStack {
                 Text("Arbeitszeit:")
                     .font(.headline .smallCaps() .bold())
-                Text(String(recipe.duration))
+                Text(String(recipe.duration!))
                     .font(.subheadline .bold())
                     .foregroundStyle(.secondary)
             }
@@ -33,7 +33,7 @@ struct CookingStatistics: View {
             HStack {
                 Text("kcal pro Portion:")
                     .font(.headline .smallCaps() .bold())
-                Text("\(recipe.calories) kcal")
+                Text("\(recipe.calories!) kcal")
                     .font(.subheadline .bold())
                     .foregroundStyle(.secondary)
             }
@@ -42,5 +42,5 @@ struct CookingStatistics: View {
 }
 
 #Preview {
-    CookingStatistics(recipe: RecipeViewModel().recipes[0])
+    CookingStatistics(recipe: ViewModel().recipes[0])
 }

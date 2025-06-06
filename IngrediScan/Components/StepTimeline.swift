@@ -8,80 +8,84 @@
 import SwiftUI
 
 struct StepTimeline: View {
-    @Binding var items: [RecipeStep]
+    var steps: [StepRelation]
+    
+    @State private var completedSteps: Set<Int> = []
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 20) {
             Text("Zubereitung")
-                .font(.callout .bold() .smallCaps())
-                .foregroundStyle(.secondary)
-                .padding(.leading)
+                .font(.title2)
+                .bold()
             
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(items.indices, id: \.self) { index in
-                        HStack(alignment: .top) {
-                            VStack {
-                                Button(action: {
-                                    items[index].isDone.toggle()
-                                    
-                                    if items[index].isDone {
-                                        // Check all previous Steps
-                                        for i in 0...index {
-                                            items[i].isDone = true
-                                        }
-                                    } else {
-                                        // Uncheck all following Steps
-                                        for i in index...items.count-1 {
-                                            items[i].isDone = false
-                                        }
-                                    }
-                                }) {
-                                    ZStack {
-                                        Circle()
-                                            .fill(items[index].isDone ? Color.blue : Color.clear)
-                                            .frame(width: 24, height: 24)
-                                            .overlay(
-                                                Circle()
-                                                    .stroke(Color.blue, lineWidth: 2)
-                                            )
-                                        
-                                        if items[index].isDone {
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.white)
-                                                .padding(2)
-                                        }
-                                    }
-                                }
-                                .buttonStyle(PlainButtonStyle()) // Entfernt Standardanimationen
-                                
-                                // Linie nach unten (außer letzter Eintrag)
-                                if index < items.count - 1 {
-                                    Rectangle()
-                                        .fill(index < 0 ? Color.blue : Color.gray)
-                                        .frame(width: 2, height: 40)
+            ForEach(Array(steps.enumerated()), id: \.element.id) { index, stepRelation in
+                let step = stepRelation.RecipeStep
+                let isCompleted = completedSteps.contains(step.id)
+                
+                HStack(alignment: .top, spacing: 12) {
+                    // Timeline indicator (clickable)
+                    VStack {
+                        Button(action: {
+                            toggleStep(step.id)
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(isCompleted ? Color.green : Color.blue)
+                                    .frame(width: 20, height: 20)
+                                if isCompleted {
+                                    Image(systemName: "checkmark")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(.white)
                                 }
                             }
-                            
-                            VStack(alignment: .leading) {
-                                Text(items[index].title)
-                                    .padding(.leading, 8)
-                                    .font(.headline .bold() .smallCaps())
-                                    .foregroundColor(.primary)
-                                Text(items[index].description ?? "")
-                                    .padding(.leading, 8)
-                                    .font(.subheadline .bold())
-                                    .foregroundStyle(.secondary)
-                            }
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        if index < steps.count - 1 {
+                            Rectangle()
+                                .fill(Color.blue)
+                                .frame(width: 2, height: 40)
+                        }
+                    }
+                    
+                    // Step content
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Schritt \(index + 1): \(step.title)")
+                            .fontWeight(.semibold)
+                            .strikethrough(isCompleted, color: .gray)
+                        
+                        if let desc = step.description {
+                            Text(desc)
+                                .foregroundColor(isCompleted ? .gray : .primary)
+                        }
+                        
+                        if let duration = step.duration {
+                            Text("Dauer: \(duration) Min")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
                         }
                     }
                 }
-                .padding()
+                .opacity(isCompleted ? 0.6 : 1.0)
             }
+        }
+        .padding()
+    }
+    
+    private func toggleStep(_ id: Int) {
+        if completedSteps.contains(id) {
+            completedSteps.remove(id)
+        } else {
+            completedSteps.insert(id)
         }
     }
 }
 
 #Preview {
-    StepTimeline(items: .constant(RecipeViewModel().recipes[0].steps))
+    let stepRelation = [
+        StepRelation(id: 1, RecipeStep: RecipeStep(id: 1, title: "Zutaten vorbereiten", description: "Alles klein schneiden und abwiegen.", duration: 10)),
+        StepRelation(id: 2, RecipeStep: RecipeStep(id: 2, title: "Anbraten", description: "Fleisch scharf anbraten.", duration: 5)),
+        StepRelation(id: 3, RecipeStep: RecipeStep(id: 3, title: "Soße köcheln", description: "Tomaten und Gewürze hinzufügen, dann 15 Minuten köcheln lassen.", duration: 15))
+    ]
+    StepTimeline(steps: stepRelation)
 }

@@ -12,7 +12,7 @@ struct RecipeImage : View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack {
-                Image(recipe.imageUrl)
+                Image(recipe.imageUrl!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()
@@ -30,5 +30,5 @@ struct RecipeImage : View {
 }
 
 #Preview {
-    RecipeImage(recipe: .constant(RecipeViewModel().recipes[0]))
+    RecipeImage(recipe: .constant(ViewModel().recipes[0]))
 }

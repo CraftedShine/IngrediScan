@@ -11,8 +11,8 @@ class MyFridge: ObservableObject {
     @Published private var ingredients: [Ingredient] = []
     
     func addIngredient(_ newIngredient: Ingredient) {
-        if let index = ingredients.firstIndex(where: { $0.name == newIngredient.name }) {
-            ingredients[index].amount += newIngredient.amount
+        if ingredients.firstIndex(where: { $0.name == newIngredient.name }) != nil {
+            // ingredients[index].amount += newIngredient.amount
         } else {
             ingredients.append(newIngredient)
         }
