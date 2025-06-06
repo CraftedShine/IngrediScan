@@ -40,7 +40,7 @@ struct HomeView: View {
                         }
                         .sheet(isPresented: $filterScreenPresented) {
                             FilterView()
-                                .presentationDetents([.medium])
+                                .presentationDetents([.large])
                                 .presentationDragIndicator(.visible)
                         }
                     }
