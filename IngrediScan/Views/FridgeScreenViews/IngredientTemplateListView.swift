@@ -34,15 +34,26 @@ struct IngredientTemplateListView: View {
                     IngredientTemplateView(ingredient: ingredient, fridge: fridge)
                 }
             }
-            .navigationTitle("Zutaten hinzufügen")
-            .navigationBarItems(trailing: Button(action: {
-                dismiss()
-            }) {
-                Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.red)
-                    .scaleEffect(1.75)
-                    .padding(5)
-            })
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Spacer()
+                        Text("Zutaten hinzufügen")
+                            .font(.title)
+                        Spacer()
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.red)
+                                .scaleEffect(1.4)
+                                .padding(5)
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
