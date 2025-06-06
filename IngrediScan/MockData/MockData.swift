@@ -10,7 +10,7 @@ import Foundation
 class MockFridge: MyFridge {
     public override init() {
         super.init()
-        let ingredients: [Ingredient] = MockData().recipes.first!.ingredients
+        var ingredients: [Ingredient] = MockData().recipes.first!.ingredients
         
         for i in 0...ingredients.count-1 {
             ingredients[i].amount = 1
