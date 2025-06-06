@@ -12,9 +12,19 @@ class MockFridge: MyFridge {
         super.init()
         let ingredients: [Ingredient] = MockData().recipes.first!.ingredients
         
-        ingredients.forEach { ingredient in
-            self.addIngredient(ingredient)
+        for i in 0...ingredients.count-1 {
+            ingredients[i].amount = 1
+            self.addIngredient(ingredients[i])
         }
+    }
+}
+
+class MockIngredients {
+    let stk = Unit(id: 1, name: "Stk")
+    public let ingredients: [Ingredient]
+    
+    public init(){
+        ingredients = [Ingredient(id: 1, name: "a", unit: stk), Ingredient(id: 2, name: "b", unit: stk), Ingredient(id: 3, name: "c", unit: stk), Ingredient(id: 4, name: "d", unit: stk), Ingredient(id: 5, name: "e", unit: stk), Ingredient(id: 6, name: "f", unit: stk), Ingredient(id: 7, name: "g", unit: stk), Ingredient(id: 8, name: "h", unit: stk), Ingredient(id: 9, name: "i", unit: stk), Ingredient(id: 10, name: "j", unit: stk)]
     }
 }
 
