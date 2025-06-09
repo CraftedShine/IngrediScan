@@ -65,4 +65,25 @@ class DatabaseService {
             return []
         }
     }
+    
+    func fetchCategories() async -> [Category] {
+        do {
+            let response = try await supabase
+                .from("Categories")
+                .select("*")
+                .execute()
+            
+            print("#### Fetching Categories from Supabase ####")
+            print("Status: \(response.status)")
+            print("Fetched: \(response.data)")
+            
+            let categories = try JSONDecoder().decode([Category].self, from: response.data)
+            print(categories)
+            
+            return categories
+        } catch {
+            print(error)
+            return []
+        }
+    }
 }

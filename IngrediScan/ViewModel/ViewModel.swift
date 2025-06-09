@@ -18,7 +18,12 @@ class ViewModel: ObservableObject {
     init() {
         Task {
             await loadRecipes()
+        }
+        Task {
             await loadTags()
+        }
+        Task {
+            await loadCategories()
         }
     }
     
@@ -28,5 +33,9 @@ class ViewModel: ObservableObject {
     
     func loadTags() async {
         self.tags = await DatabaseService.shared.fetchTags()
+    }
+    
+    func loadCategories() async {
+        self.categories = await DatabaseService.shared.fetchCategories()
     }
 }
