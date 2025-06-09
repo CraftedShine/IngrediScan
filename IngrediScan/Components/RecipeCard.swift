@@ -59,7 +59,6 @@ struct CardText: View {
             // Rating
             HStack {
                 if let category = recipe.category {
-                    
                     Text(category.name)
                         .font(.subheadline .bold() .smallCaps())
                         .foregroundStyle(.white.opacity(0.8))

@@ -16,29 +16,50 @@ class DatabaseService {
         supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnbGVzeWliY2J3am9hbGJ6ZGpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczNzgxMzcsImV4cCI6MjA2Mjk1NDEzN30.zYi1Bxd8I0mbQfrW2WPya53fWsVqk8EdTTtbzqLZt5Q"
     )
     
-    func loadRecipes() async throws -> [Recipe] {
-        return try await supabase
-            .from("Recipes")
-            .select("""
-            *,
-            category:Categories!Recipes_category_fkey(*),
-            usesIngredients(*, ingredient(*), unit(*)),
-            hasSteps(*, RecipeStep(*)),
-            hasTags(*, Tags(*))
-            """)
-            .execute()
-            .value
+    func fetchRecipes() async -> [Recipe] {
+        do {
+            let response = try await supabase
+                .from("Recipes")
+                .select("""
+                *,
+                category:Categories!Recipes_categoryId_fkey(*),
+                usesIngredients:usesIngredients!usesIngredients_recipeId_fkey(*,
+                    ingredient:Ingredients!usesIngredients_ingredientId_fkey(*),
+                    unit:Units!usesIngredients_unitId_fkey(*)
+                ),
+                hasSteps:hasSteps!hasSteps_recipeId_fkey(*,RecipeStep:RecipeStep!hasSteps_stepId_fkey(*)),
+                hasTags:hasTags!hasTags_recipeId_fkey(*,Tag:Tags!hasTags_tagId_fkey(*))
+                """)
+                .execute()
+            print("#### Fetching Recipes from Supabase ####")
+            print("Status: \(response.status)")
+            print("Fetched: \(response.data)")
+            
+            let recipes = try JSONDecoder().decode([Recipe].self, from: response.data)
+            print(recipes)
+            
+            return recipes
+        } catch {
+            print(error)
+            return []
+        }
     }
     
-    func loadTags() async -> [Tag] {
+    func fetchTags() async -> [Tag] {
         do {
-            let result: [Tag] = try await supabase
+            let response = try await supabase
                 .from("Tags")
                 .select("*")
                 .execute()
-                .value
             
-            return result
+            print("#### Fetching Tags from Supabase ####")
+            print("Status: \(response.status)")
+            print("Fetched: \(response.data)")
+            
+            let tags = try JSONDecoder().decode([Tag].self, from: response.data)
+            print(tags)
+            
+            return tags
         } catch {
             print(error)
             return []

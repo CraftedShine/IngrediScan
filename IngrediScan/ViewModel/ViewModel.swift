@@ -15,25 +15,18 @@ class ViewModel: ObservableObject {
     @Published var categories: [Category] = []
     @Published var tags: [Tag] = []
     
-    private var service: DatabaseService = DatabaseService()
-
     init() {
         Task {
-            await loadRecipesFromDb()
-            await loadTagsFromDb()
+            await loadRecipes()
+            await loadTags()
         }
     }
     
-    func loadRecipesFromDb() async {
-        do {
-            let data = try await DatabaseService.shared.loadRecipes()
-            self.recipes = data
-        } catch {
-            print(error)
-        }
+    func loadRecipes() async {
+        self.recipes = await DatabaseService.shared.fetchRecipes()
     }
     
-    func loadTagsFromDb() async {
-        self.tags = await service.loadTags()
+    func loadTags() async {
+        self.tags = await DatabaseService.shared.fetchTags()
     }
 }

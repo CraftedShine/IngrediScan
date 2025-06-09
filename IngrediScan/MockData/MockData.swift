@@ -31,9 +31,9 @@ struct MockData {
     private let category = Category(id: 1, name: "Pasta")
     private let difficulty = "Einfach"
     
-    private let tagsRelation: [TagRelation] = [TagRelation(id: 1, Tag: Tag(id: 1, name: "TestTag"))]
-    private let stepsRelation: [StepRelation] = [StepRelation(id: 1, RecipeStep: RecipeStep(id: 1, title: "Test", description: "Test", duration: 20))]
-    private let usesIngredients: [UsesIngredient] = [UsesIngredient(id: 1, amount: 1, Ingredient: Ingredient(id: 1, name: "Spaghetti"), Unit: Unit(id: 1, name: "Stk"))]
+    private let tagsRelation: [TagRelation] = [TagRelation(id: 1, tagId: 1, Tag: Tag(id: 1, name: "TestTag"))]
+    private let stepsRelation: [StepRelation] = [StepRelation(id: 1, stepId: 1, RecipeStep: RecipeStep(id: 1, title: "Test", description: "Test", duration: 20))]
+    private let usesIngredients: [UsesIngredient] = [UsesIngredient(id: 1, amount: 1, ingredientId: 1, ingredient: Ingredient(id: 1, name: "Spaghetti"), unitId: 1, unit: Unit(id: 1, name: "Stk"))]
     
     var recipes: [Recipe] = []
     

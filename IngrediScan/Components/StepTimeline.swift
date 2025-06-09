@@ -83,9 +83,9 @@ struct StepTimeline: View {
 
 #Preview {
     let stepRelation = [
-        StepRelation(id: 1, RecipeStep: RecipeStep(id: 1, title: "Zutaten vorbereiten", description: "Alles klein schneiden und abwiegen.", duration: 10)),
-        StepRelation(id: 2, RecipeStep: RecipeStep(id: 2, title: "Anbraten", description: "Fleisch scharf anbraten.", duration: 5)),
-        StepRelation(id: 3, RecipeStep: RecipeStep(id: 3, title: "Soße köcheln", description: "Tomaten und Gewürze hinzufügen, dann 15 Minuten köcheln lassen.", duration: 15))
+        StepRelation(id: 1, stepId: 1, RecipeStep: RecipeStep(id: 1, title: "Zutaten vorbereiten", description: "Alles klein schneiden und abwiegen.", duration: 10)),
+        StepRelation(id: 2, stepId: 2, RecipeStep: RecipeStep(id: 2, title: "Anbraten", description: "Fleisch scharf anbraten.", duration: 5)),
+        StepRelation(id: 3, stepId: 3, RecipeStep: RecipeStep(id: 3, title: "Soße köcheln", description: "Tomaten und Gewürze hinzufügen, dann 15 Minuten köcheln lassen.", duration: 15))
     ]
     StepTimeline(steps: stepRelation)
 }

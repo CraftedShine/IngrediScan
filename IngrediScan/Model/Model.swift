@@ -18,14 +18,15 @@ struct Recipe: Decodable, Identifiable {
     let difficulty: String?
     let categoryId: Int?
     
-    let category: Category?
-    let usesIngredients: [UsesIngredient]?
-    let hasSteps: [StepRelation]?
-    let hasTags: [TagRelation]?
+    var category: Category?
+    var usesIngredients: [UsesIngredient]?
+    var hasSteps: [StepRelation]?
+    var hasTags: [TagRelation]?
+    var isFavorite: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id, name, rating, duration, calories, annotation, difficulty
-        case imageUrl = "imageUrl"
+        case imageUrl
         case categoryId
         case category
         case usesIngredients
@@ -33,7 +34,6 @@ struct Recipe: Decodable, Identifiable {
         case hasTags
     }
     
-    var isFavorite: Bool = false
 }
 
 struct Category: Codable {
@@ -44,8 +44,19 @@ struct Category: Codable {
 struct UsesIngredient: Codable, Hashable, Identifiable {
     let id: Int
     let amount: Float
-    let Ingredient: Ingredient
-    let Unit: Unit
+    let ingredientId: Int
+    let ingredient: Ingredient
+    let unitId: Int
+    let unit: Unit
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case amount
+        case ingredientId
+        case ingredient
+        case unitId
+        case unit
+    }
 }
 
 struct Ingredient: Codable, Hashable, Identifiable {
@@ -60,6 +71,7 @@ struct Unit: Codable, Hashable {
 
 struct StepRelation: Codable {
     let id: Int
+    let stepId: Int
     let RecipeStep: RecipeStep
 }
 
@@ -72,6 +84,7 @@ struct RecipeStep: Codable {
 
 struct TagRelation: Codable, Hashable {
     let id: Int
+    let tagId: Int
     let Tag: Tag
 }
 
