@@ -8,16 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var filterScreenPresented: Bool = false
+    @State private var randomRecipeVisible: Bool = false
     @State private var searchText: String = ""
     @StateObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                ForEach($viewModel.recipes) { $recipe in
-                    RecipeCard(recipe: $recipe)
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    VStack {
+                        SectionView(recipes: .constant(viewModel.recipes.shuffled()), title: "Empfohlen für dich")
+                        SectionView(recipes: .constant(viewModel.recipes.shuffled()), title: "Klassiker")
+                        SectionView(recipes: .constant(viewModel.recipes.shuffled()), title: "Vegetarisch")
+                    }
                 }
+                
+                Button {
+                    randomRecipeVisible.toggle()
+                } label: {
+                    Image(systemName: "shuffle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .padding(10)
+                        .foregroundStyle(.white)
+                        .background(Color.orange.opacity(0.75))
+                        .clipShape(Circle())
+                }
+                .sheet(isPresented: $randomRecipeVisible) {
+                    RecipeDetailView(recipe: $viewModel.recipes.shuffled().first!)
+                }
+                .padding()
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -28,18 +49,6 @@ struct HomeView: View {
                         Divider()
                     }
                 }
-            }
-        }
-    }
-    
-    var filteredRecipes: [Binding<Recipe>] {
-        $viewModel.recipes.indices.compactMap { index in
-            let recipe = $viewModel.recipes[index]
-            
-            if (searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText)) {
-                return recipe
-            } else {
-                return nil
             }
         }
     }

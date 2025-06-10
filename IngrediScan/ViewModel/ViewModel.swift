@@ -17,7 +17,7 @@ class ViewModel: ObservableObject {
     
     init() {
         #if targetEnvironment(simulator)
-        recipes = [Recipe.spaghettiCarbonara, Recipe.pizzaMargherita, Recipe.caesarSalad, Recipe.cheesecake]
+        recipes = [Recipe.spaghettiCarbonara, Recipe.pizzaMargherita, Recipe.caesarSalad, Recipe.cheesecake].shuffled()
         tags = [Tag.italian, Tag.fast, Tag.vegetarian, Tag.light, Tag.sweet, Tag.oven]
         categories = [Category.pasta, Category.pizza, Category.salad, Category.dessert]
         #else
