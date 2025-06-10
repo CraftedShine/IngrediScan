@@ -26,7 +26,7 @@ struct ContentView: View {
             }.tag(1)
             FavoritesScreen(viewModel: viewModel)
                 .tabItem {
-                    Label("Favorites", systemImage: "bookmark")
+                    Label("Favorites", systemImage: "star.fill")
                 }.tag(2)
             FridgeScreen()
                 .tabItem{

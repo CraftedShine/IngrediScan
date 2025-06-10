@@ -16,6 +16,11 @@ class ViewModel: ObservableObject {
     @Published var tags: [Tag] = []
     
     init() {
+        #if targetEnvironment(simulator)
+        recipes = [Recipe.spaghettiCarbonara, Recipe.pizzaMargherita, Recipe.caesarSalad, Recipe.cheesecake]
+        tags = [Tag.italian, Tag.fast, Tag.vegetarian, Tag.light, Tag.sweet, Tag.oven]
+        categories = [Category.pasta, Category.pizza, Category.salad, Category.dessert]
+        #else
         Task {
             await loadRecipes()
         }
@@ -25,6 +30,7 @@ class ViewModel: ObservableObject {
         Task {
             await loadCategories()
         }
+        #endif
     }
     
     func loadRecipes() async {

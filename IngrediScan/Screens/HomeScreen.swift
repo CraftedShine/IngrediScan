@@ -14,39 +14,32 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 0) {
-                    TagList(tags: viewModel.tags)
-                    ForEach(self.filteredRecipes) { $recipe in
-                        RecipeCard(recipe: $recipe)
-                            .padding()
-                    }
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Text("Rezepte")
-                            .font(.title .bold() .smallCaps())
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            self.filterScreenPresented.toggle()
-                        } label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
-                                .padding(.vertical)
-                        }
-                        .sheet(isPresented: $filterScreenPresented) {
-                            FilterView()
-                                .presentationDetents([.large])
-                                .presentationDragIndicator(.visible)
+            VStack {
+                //MARK: Recommended Section
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Empfohlen für dich")
+                        .font(.title2 .bold() .smallCaps())
+                        .foregroundStyle(.secondary)
+                        .padding(.leading)
+                    TabView {
+                        ForEach($viewModel.recipes.shuffled().prefix(3)) { $recipe in
+                            RecipeCard(recipe: $recipe)
+                                .scaledToFit()
+                                .frame(maxWidth: 400)
                         }
                     }
+                    .tabViewStyle(.page)
+                    .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 }
-                .searchable(text: $searchText)
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Rezepte")
+                        .font(.title .bold() .smallCaps())
+                }
+            }
+            .searchable(text: $searchText)
         }
     }
     

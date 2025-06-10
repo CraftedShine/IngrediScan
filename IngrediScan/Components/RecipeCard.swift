@@ -34,8 +34,9 @@ struct CardBackground: View {
     var body: some View {
         Image(self.recipe.imageUrl!)
             .resizable()
+            .scaledToFit()
             .aspectRatio(contentMode: .fill)
-            .frame(height: 100)
+            .frame(height: 150)
             .clipped()
             .overlay {
                 RoundedRectangle(cornerRadius: 16)
@@ -48,26 +49,48 @@ struct CardText: View {
     @Binding var recipe: Recipe
     
     var body: some View {
-        VStack(alignment: .leading) {
-            // Title
-            Text(self.recipe.name)
-                .font(.title)
-                .bold()
-                .foregroundColor(.white)
-                .lineLimit(1)
+        VStack(alignment: .leading, spacing: 0) {
+            //MARK: Title Bar
+            HStack(spacing: 0) {
+                Text(self.recipe.name)
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+                
+                ToggleFavoriteButton(recipe: $recipe)
+            }
             
-            // Rating
+            //MARK: Bottom Bar Information
             HStack {
                 if let category = recipe.category {
-                    Text(category.name)
-                        .font(.subheadline .bold() .smallCaps())
-                        .foregroundStyle(.white.opacity(0.8))
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.yellow)
-                        Text(String(self.recipe.rating!))
-                            .font(.subheadline .bold())
+                    HStack(spacing: 16) {
+                        Text(category.name)
+                            .font(.subheadline .bold() .smallCaps())
                             .foregroundStyle(.white.opacity(0.8))
+                        HStack {
+                            Image(systemName: "star.fill")
+                                .foregroundStyle(.yellow)
+                            Text(String(self.recipe.rating!))
+                                .font(.subheadline .bold())
+                                .foregroundStyle(.white)
+                        }
+                        HStack {
+                            Image(systemName: "clock")
+                                .foregroundStyle(.white)
+                            Text(String(self.recipe.duration!) + "min")
+                                .font(.subheadline .bold())
+                                .foregroundStyle(.white)
+                        }
+                        HStack {
+                           Image(systemName: "chart.bar.xaxis.ascending")
+                                .foregroundStyle(.white)
+                            Text(self.recipe.difficulty!)
+                                .font(.subheadline .bold())
+                                .foregroundStyle(.white)
+                        }
                     }
                 }
             }
@@ -92,17 +115,14 @@ struct RecipeCard: View {
                 }
             }
             .cornerRadius(20)
-            .shadow(radius: 5)
             .fullScreenCover(isPresented: $detailedView) {
                 RecipeDetailView(recipe: self.$recipe)
             }
-            
-            ToggleFavoriteButton(recipe: $recipe)
         }
-        .shadow(radius: 5)
+        .padding()
     }
 }
 
 #Preview {
-    RecipeCard(recipe: .constant(ViewModel().recipes.first! ))
+    RecipeCard(recipe: .constant(Recipe.caesarSalad))
 }

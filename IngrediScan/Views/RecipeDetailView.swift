@@ -69,5 +69,5 @@ struct RecipeDetailView: View {
 }
 
 #Preview {
-    RecipeDetailView(recipe: .constant(MockData().recipes[0]))
+    RecipeDetailView(recipe: .constant(Recipe.pizzaMargherita))
 }
