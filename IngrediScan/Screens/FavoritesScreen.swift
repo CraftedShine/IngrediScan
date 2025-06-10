@@ -24,15 +24,18 @@ struct FavoritesScreen: View {
                     ForEach(self.filteredRecipes, id: \.wrappedValue.id) { $recipe in
                         if($recipe.wrappedValue.isFavorite) {
                             RecipeCard(recipe: $recipe)
-                                .padding()
                         }
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Text("Favoriten")
-                            .font(.title .bold() .smallCaps())
+                    ToolbarItem(placement: .principal) {
+                        VStack {
+                            Text("Favoriten")
+                                .font(.title .bold() .smallCaps())
+                            Divider()
+                        }
+                        .padding(.bottom)
                     }
                 }
                 .searchable(text: $searchText)

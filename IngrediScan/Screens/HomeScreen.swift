@@ -14,32 +14,21 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                //MARK: Recommended Section
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Empfohlen für dich")
-                        .font(.title2 .bold() .smallCaps())
-                        .foregroundStyle(.secondary)
-                        .padding(.leading)
-                    TabView {
-                        ForEach($viewModel.recipes.shuffled().prefix(3)) { $recipe in
-                            RecipeCard(recipe: $recipe)
-                                .scaledToFit()
-                                .frame(maxWidth: 400)
-                        }
-                    }
-                    .tabViewStyle(.page)
-                    .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+            ScrollView {
+                ForEach($viewModel.recipes) { $recipe in
+                    RecipeCard(recipe: $recipe)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Rezepte")
-                        .font(.title .bold() .smallCaps())
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("Rezepte")
+                            .font(.title .bold() .smallCaps())
+                        Divider()
+                    }
                 }
             }
-            .searchable(text: $searchText)
         }
     }
     
