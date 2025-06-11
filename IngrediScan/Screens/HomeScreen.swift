@@ -17,9 +17,9 @@ struct HomeView: View {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        SectionView(recipes: .constant(viewModel.recipes.shuffled()), title: "Empfohlen für dich")
-                        SectionView(recipes: .constant(viewModel.recipes.shuffled()), title: "Klassiker")
-                        SectionView(recipes: .constant(viewModel.recipes.shuffled()), title: "Vegetarisch")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Empfohlen für dich")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Klassiker")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Vegetarisch")
                     }
                 }
                 

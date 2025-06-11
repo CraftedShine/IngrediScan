@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SectionView: View {
     @State var selectedPage: Int = 0
-    @Binding var recipes: [Recipe]
+    @Binding  var recipes: [Binding<Recipe>]
     let title: String
     
     var body: some View {
@@ -18,7 +18,7 @@ struct SectionView: View {
                 .font(.title3 .bold() .smallCaps())
             TabView(selection: $selectedPage) {
                 ForEach($recipes.indices, id: \.self) { index in
-                    RecipeCard(recipe: $recipes[index])
+                    RecipeCard(recipe: recipes[index])
                         .tag(index)
                 }
             }
@@ -47,7 +47,7 @@ struct SectionView: View {
 #Preview {
     @Previewable @StateObject var viewModel: ViewModel = ViewModel()
     
-    var recipes = viewModel.recipes.shuffled()
+    var recipes = $viewModel.recipes.shuffled()
     
     SectionView(recipes: .constant(recipes), title: "Empfohlen für dich")
 }
