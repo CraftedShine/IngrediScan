@@ -55,7 +55,6 @@
 		D598DAF12DE0D2DF0093D5C1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF02DE0D2DF0093D5C1 /* ViewModel.swift */; };
 		D598DAF32DE0D2F50093D5C1 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF22DE0D2F50093D5C1 /* MockData.swift */; };
 		D598DAF52DE0D30A0093D5C1 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF42DE0D30A0093D5C1 /* DatabaseService.swift */; };
-		D598DAF82DE252270093D5C1 /* CookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF72DE252270093D5C1 /* CookingView.swift */; };
 		D598DAFA2DE25A4F0093D5C1 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAF92DE25A4A0093D5C1 /* RecipeImage.swift */; };
 		D598DAFC2DE267850093D5C1 /* ToggleFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAFB2DE267850093D5C1 /* ToggleFavoriteButton.swift */; };
 		D598DAFE2DE271200093D5C1 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598DAFD2DE271200093D5C1 /* DismissButton.swift */; };
@@ -122,7 +121,6 @@
 		D598DAF02DE0D2DF0093D5C1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D598DAF22DE0D2F50093D5C1 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D598DAF42DE0D30A0093D5C1 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
-		D598DAF72DE252270093D5C1 /* CookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingView.swift; sourceTree = "<group>"; };
 		D598DAF92DE25A4A0093D5C1 /* RecipeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		D598DAFB2DE267850093D5C1 /* ToggleFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleFavoriteButton.swift; sourceTree = "<group>"; };
 		D598DAFD2DE271200093D5C1 /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				D598DAD02DE0D1A30093D5C1 /* RecipeDetailView.swift */,
-				D598DAF72DE252270093D5C1 /* CookingView.swift */,
 				9D76633A2DF1B9130091BB9A /* FridgeScreenViews */,
 				D598DAD82DE0D1FD0093D5C1 /* FilterOptionsView.swift */,
 				D598DADC2DE0D1FD0093D5C1 /* IngredientSearchPickerView.swift */,
@@ -485,7 +482,6 @@
 				D58C19852DDF2F7D00151F36 /* (null) in Sources */,
 				D58B6B952DD72B4C006EA229 /* (null) in Sources */,
 				D598DAF32DE0D2F50093D5C1 /* MockData.swift in Sources */,
-				D598DAF82DE252270093D5C1 /* CookingView.swift in Sources */,
 				D598DAF12DE0D2DF0093D5C1 /* ViewModel.swift in Sources */,
 				D5EC9EC42DF2D945004C0D3D /* Model.swift in Sources */,
 				D58C197F2DDDFA5B00151F36 /* (null) in Sources */,

@@ -1,5 +1,28 @@
 import SwiftUI
 
+struct CardTagList: View {
+    var hasTags: [TagRelation]
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(hasTags, id: \.id) { tagRelation in
+                    Button {
+                        
+                    } label: {
+                        Text(tagRelation.Tag.name)
+                    }
+                    .padding(10)
+                    .buttonStyle(.plain)
+                    .background(.orange)
+                    .clipShape(Capsule())
+                }
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+}
+
 struct RecipeDetailView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
@@ -39,6 +62,12 @@ struct RecipeDetailView: View {
                             .padding()
                     }
                     
+                    Divider()
+                    
+                    if let steps = recipe.hasSteps {
+                        StepTimeline(steps: steps)
+                    }
+                    
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
@@ -50,13 +79,10 @@ struct RecipeDetailView: View {
                                 Text("Kochen starten")
                                     .font(.callout .bold() .smallCaps())
                             }
-                            .buttonStyle(.borderedProminent)
-                            .padding(.top)
-                            .sheet(isPresented: $detailedCooking) {
-                                CookingView(recipe: $recipe)
-                                    .presentationDetents([.large])
-                                    .presentationCornerRadius(16)
-                            }
+                            .padding()
+                            .buttonStyle(.plain)
+                            .background(.orange)
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
                         }
                     }
                 }
