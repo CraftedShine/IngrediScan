@@ -49,8 +49,10 @@ struct RecipeDetailView: View {
                     
                     if let tags = recipe.hasTags {
                         CardTagList(hasTags: tags)
-                            .padding(.horizontal)
+                            .padding()
                     }
+                    
+                    Divider()
                     
                     CookingStatistics(recipe: recipe)
                         .padding()
@@ -79,10 +81,11 @@ struct RecipeDetailView: View {
                                 Text("Kochen starten")
                                     .font(.callout .bold() .smallCaps())
                             }
-                            .padding()
+                            .padding(5)
                             .buttonStyle(.plain)
                             .background(.orange)
                             .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+                            .padding(.top)
                         }
                     }
                 }
