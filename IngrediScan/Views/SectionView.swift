@@ -11,6 +11,7 @@ struct SectionView: View {
     @State var selectedPage: Int = 0
     @Binding  var recipes: [Binding<Recipe>]
     let title: String
+    let timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -35,6 +36,13 @@ struct SectionView: View {
                             .frame(width: 10, height: 10)
                     }
                     .padding(8)
+                }
+            }
+            .onReceive(timer) {_ in
+                if selectedPage + 1 >= recipes.count {
+                    selectedPage = 0
+                } else {
+                    selectedPage += 1
                 }
             }
             .background(.secondary.opacity(0.3))
