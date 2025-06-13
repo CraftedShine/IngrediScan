@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 struct CardTagList: View {
     var hasTags: [TagRelation]
@@ -26,73 +27,82 @@ struct CardTagList: View {
 struct RecipeDetailView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
-    @State private var detailedCooking: Bool = false
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    
-                    ZStack(alignment: .top) {
-                        RecipeImage(recipe: $recipe)
+            ZStack(alignment: .top) {
+                ScrollView {
+                    VStack(alignment: .leading) {
                         
-                        HStack {
-                            DismissButton(dismiss: _dismiss)
-                            Spacer()
-                            Text("Details")
-                                .font(.title .bold() .smallCaps())
-                            Spacer()
-                            ToggleFavoriteButton(recipe: $recipe)
-                        }
-                        .foregroundStyle(.white)
-                    }
-                    
-                    if let tags = recipe.hasTags {
-                        CardTagList(hasTags: tags)
-                            .padding()
-                    }
-                    
-                    Divider()
-                    
-                    CookingStatistics(recipe: recipe)
-                        .padding()
-                    
-                    Divider()
-                    
-                    if let ingredients = recipe.usesIngredients {
-                        IngredientList(ingredientUsage: ingredients)
-                            .padding()
-                    }
-                    
-                    Divider()
-                    
-                    if let steps = recipe.hasSteps {
-                        StepTimeline(steps: steps)
-                    }
-                    
-                }
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        VStack {
-                            Divider()
-                            Button {
-                                detailedCooking.toggle()
-                            } label: {
-                                Text("Kochen starten")
-                                    .font(.callout .bold() .smallCaps())
+                        ZStack(alignment: .top) {
+                            RecipeImage(recipe: $recipe)
+                            
+                            HStack {
+                                DismissButton(dismiss: _dismiss)
+                                Spacer()
+                                Text("Details")
+                                    .font(.title .bold() .smallCaps())
+                                Spacer()
+                                ToggleFavoriteButton(recipe: $recipe)
                             }
-                            .padding(5)
-                            .buttonStyle(.plain)
-                            .background(.orange)
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
-                            .padding(.top)
+                            .foregroundStyle(.white)
+                        }
+                        
+                        if let tags = recipe.hasTags {
+                            CardTagList(hasTags: tags)
+                                .padding()
+                        }
+                        
+                        Divider()
+                        
+                        CookingStatistics(recipe: recipe)
+                            .padding()
+                        
+                        Divider()
+                        
+                        if let ingredients = recipe.usesIngredients {
+                            IngredientList(ingredientUsage: ingredients)
+                                .padding()
+                        }
+                        
+                        Divider()
+                        
+                        if let steps = recipe.hasSteps {
+                            StepTimeline(steps: steps)
+                        }
+                        
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                            VStack {
+                                Divider()
+                                
+                                Button {
+                                    
+                                } label: {
+                                    Text("Kochen starten")
+                                        .font(.callout .bold() .smallCaps())
+                                }
+                                .padding(5)
+                                .buttonStyle(.plain)
+                                .background(.orange)
+                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+                                .padding(.top)
+                                .sheet(isPresented: .constant(true)) {
+                                    if let steps = recipe.hasSteps {
+                                        let timerDuration = steps.first!.RecipeStep.duration!
+                                        
+                                        CookingTimer(totalTime: Double(timerDuration))
+                                    }
+                                }
+                            }
                         }
                     }
+                    .toolbarBackgroundVisibility(.hidden, for: .navigationBar, .bottomBar)
                 }
-                .toolbarBackgroundVisibility(.hidden, for: .navigationBar, .bottomBar)
+                .cornerRadius(16)
+                .scrollIndicators(.hidden)
             }
-            .cornerRadius(16)
-            .scrollIndicators(.hidden)
         }
     }
 }
