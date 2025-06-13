@@ -66,6 +66,27 @@ class DatabaseService {
         }
     }
     
+    func fetchIngredients() async -> [Ingredient] {
+        do {
+            let response = try await supabase
+                .from("Ingredients")
+                .select("*")
+                .execute()
+            
+            print("#### Fetching Ingredients from Supabase ####")
+            print("Status: \(response.status)")
+            print("Fetched: \(response.data)")
+            
+            let ingredients = try JSONDecoder().decode([Ingredient].self, from: response.data)
+            print(ingredients)
+            
+            return ingredients
+        } catch {
+            print(error)
+            return []
+        }
+    }
+    
     func fetchCategories() async -> [Category] {
         do {
             let response = try await supabase

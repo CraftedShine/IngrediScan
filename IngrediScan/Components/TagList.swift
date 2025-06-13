@@ -43,7 +43,7 @@ struct TagList : View {
                             .padding(.horizontal, 10)
                     }
                     .buttonStyle(.bordered)
-                    .tint(tags[index].isSelected ? .blue : .gray)
+                    .tint(tags[index].isSelected ? .orange : .gray)
                     .buttonBorderShape(.capsule)
                 }
             }

@@ -7,69 +7,52 @@
 
 import SwiftUI
 
-struct StepTimeline: View {
-    var steps: [StepRelation]
-    
-    @State private var completedSteps: Set<Int> = []
+struct StepContent: View {
+    let index: Int
+    var step: RecipeStep
+    @Binding var isCompleted: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Zubereitung")
-                .font(.title2)
-                .bold()
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Schritt \(index + 1): \(step.title)")
+                .fontWeight(.semibold)
+                .strikethrough(isCompleted, color: .gray)
             
-            ForEach(Array(steps.enumerated()), id: \.element.id) { index, stepRelation in
-                let step = stepRelation.RecipeStep
-                let isCompleted = completedSteps.contains(step.id)
-                
-                HStack(alignment: .top, spacing: 12) {
-                    // Timeline indicator (clickable)
-                    VStack {
-                        Button(action: {
-                            toggleStep(step.id)
-                        }) {
-                            ZStack {
-                                Circle()
-                                    .fill(isCompleted ? Color.green : Color.blue)
-                                    .frame(width: 20, height: 20)
-                                if isCompleted {
-                                    Image(systemName: "checkmark")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(.white)
-                                }
-                            }
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        
-                        if index < steps.count - 1 {
-                            Rectangle()
-                                .fill(Color.blue)
-                                .frame(width: 2, height: 40)
-                        }
-                    }
-                    
-                    // Step content
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Schritt \(index + 1): \(step.title)")
-                            .fontWeight(.semibold)
-                            .strikethrough(isCompleted, color: .gray)
-                        
-                        if let desc = step.description {
-                            Text(desc)
-                                .foregroundColor(isCompleted ? .gray : .primary)
-                        }
-                        
-                        if let duration = step.duration {
-                            Text("Dauer: \(duration) Min")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .opacity(isCompleted ? 0.6 : 1.0)
+            if let desc = step.description {
+                Text(desc)
+                    .foregroundColor(isCompleted ? .gray : .primary)
+            }
+            
+            if let duration = step.duration {
+                Text("Dauer: \(duration) Min")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
             }
         }
-        .padding()
+    }
+}
+
+struct TimelineIndicator: View {
+    @Binding var completedSteps: Set<Int>
+    @Binding var step: RecipeStep
+    @Binding var isCompleted: Bool
+    
+    var body: some View {
+        Button {
+            toggleStep(step.id)
+        } label: {
+            ZStack {
+                Circle()
+                    .fill(isCompleted ? Color.green : Color.orange)
+                    .frame(width: 25, height: 25)
+                
+                Image(systemName: "checkmark")
+                    .font(.system(size: 15))
+                    .foregroundColor(.white)
+                
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
     }
     
     private func toggleStep(_ id: Int) {
@@ -78,6 +61,45 @@ struct StepTimeline: View {
         } else {
             completedSteps.insert(id)
         }
+    }
+}
+
+struct StepTimeline: View {
+    var steps: [StepRelation]
+    
+    @State private var completedSteps: Set<Int> = []
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Zubereitung")
+                .font(.subheadline.smallCaps().bold())
+                .foregroundColor(.secondary)
+            
+            ForEach(Array(steps.enumerated()), id: \.element.id) { index, stepRelation in
+                let step = stepRelation.RecipeStep
+                let isCompleted = completedSteps.contains(step.id)
+                
+                HStack(alignment: .top) {
+                    VStack(spacing: 12) {
+                        //MARK: Timeline indicator
+                        TimelineIndicator(completedSteps: $completedSteps, step: .constant(step), isCompleted: .constant(isCompleted))
+                        
+                        //MARK: Line between Indicators
+                        if index < steps.count - 1 {
+                            Rectangle()
+                                .fill(.gray)
+                                .frame(maxWidth: 2, maxHeight: .infinity)
+                        }
+                    }
+                    
+                    // Step content
+                    StepContent(index: index, step: step, isCompleted: .constant(isCompleted))
+                    
+                }
+                .opacity(isCompleted ? 0.6 : 1.0)
+            }
+        }
+        .padding()
     }
 }
 

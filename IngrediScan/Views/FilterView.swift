@@ -22,7 +22,10 @@ struct StarRatingView: View {
 }
 
 struct FilterView: View {
+    let tags: [Tag]
     @Environment(\.dismiss) var dismiss
+    
+    @State private var selectedTags: [Tag] = []
     @State private var rating: Int = 0
     @State private var minCalories: Double = 0
     @State private var maxCalories: Double = 5000
@@ -89,8 +92,7 @@ struct FilterView: View {
                         
                     }
                     
-                    Toggle("Show Favorites", isOn: $showFavorites)
-                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                    TagList(tags: tags)
                     
                     Spacer()
                     
@@ -131,5 +133,5 @@ struct FilterView: View {
 }
 
 #Preview {
-    FilterView()
+    FilterView(tags: ViewModel().tags)
 }

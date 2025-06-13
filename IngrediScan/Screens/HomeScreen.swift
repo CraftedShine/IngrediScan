@@ -8,58 +8,87 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var filterScreenPresented: Bool = false
+    @State private var bestRatedRecipeVisible: Bool = false
+    @State private var randomRecipeVisible: Bool = false
     @State private var searchText: String = ""
     @StateObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 0) {
-                    TagList(tags: viewModel.tags)
-                    ForEach(self.filteredRecipes) { $recipe in
-                        RecipeCard(recipe: $recipe)
-                            .padding()
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    VStack {
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Empfohlen für dich")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled().filter {
+                            containsTag(recipe: $0.wrappedValue, tag: "Klassiker")
+                        }), title: "Klassiker")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled().filter {
+                            containsTag(recipe: $0.wrappedValue, tag: "Vegetarisch")
+                        }), title: "Vegetarisch")
                     }
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Text("Rezepte")
-                            .font(.title .bold() .smallCaps())
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                //MARK: Best Rated Recipe
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        bestRatedRecipeVisible.toggle()
+                    } label: {
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .padding(10)
+                            .foregroundStyle(.white)
+                            .background(Color.orange.opacity(0.75))
+                            .clipShape(Circle())
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            self.filterScreenPresented.toggle()
-                        } label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
-                                .padding(.vertical)
-                        }
-                        .sheet(isPresented: $filterScreenPresented) {
-                            FilterView()
-                                .presentationDetents([.large])
-                                .presentationDragIndicator(.visible)
-                        }
+                    .sheet(isPresented: $bestRatedRecipeVisible) {
+                        let bestRatedRecipe = $viewModel.recipes.sorted {
+                            $0.wrappedValue.rating! > $1.wrappedValue.rating!
+                        }.first
+
+                        RecipeDetailView(recipe: bestRatedRecipe!)
                     }
                 }
-                .searchable(text: $searchText)
+                
+                //MARK: Title
+                ToolbarItem(placement: .principal) {
+                    Text("Rezepte")
+                        .font(.title .bold() .smallCaps())
+                }
+                
+                //MARK: Random Recipe
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        randomRecipeVisible.toggle()
+                    } label: {
+                        Image(systemName: "shuffle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .padding(10)
+                            .foregroundStyle(.white)
+                            .background(Color.orange.opacity(0.75))
+                            .clipShape(Circle())
+                    }
+                    .sheet(isPresented: $randomRecipeVisible) {
+                        RecipeDetailView(recipe: $viewModel.recipes.shuffled().first!)
+                    }
+                }
             }
         }
     }
     
-    var filteredRecipes: [Binding<Recipe>] {
-        $viewModel.recipes.indices.compactMap { index in
-            let recipe = $viewModel.recipes[index]
-            
-            if (searchText.isEmpty || recipe.name.wrappedValue.localizedCaseInsensitiveContains(searchText)) {
-                return recipe
-            } else {
-                return nil
-            }
+    private func containsTag(recipe: Recipe, tag: String) -> Bool {
+        if (recipe.hasTags == nil) {
+            return false
         }
+        
+        return !recipe.hasTags!.filter {
+            $0.Tag.name == tag
+        }.isEmpty
     }
 }
 

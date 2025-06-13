@@ -1,5 +1,28 @@
 import SwiftUI
 
+struct CardTagList: View {
+    var hasTags: [TagRelation]
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(hasTags, id: \.id) { tagRelation in
+                    Button {
+                        
+                    } label: {
+                        Text(tagRelation.Tag.name)
+                    }
+                    .padding(10)
+                    .buttonStyle(.plain)
+                    .background(.orange)
+                    .clipShape(Capsule())
+                }
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+}
+
 struct RecipeDetailView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
@@ -26,8 +49,10 @@ struct RecipeDetailView: View {
                     
                     if let tags = recipe.hasTags {
                         CardTagList(hasTags: tags)
-                            .padding(.horizontal)
+                            .padding()
                     }
+                    
+                    Divider()
                     
                     CookingStatistics(recipe: recipe)
                         .padding()
@@ -37,6 +62,12 @@ struct RecipeDetailView: View {
                     if let ingredients = recipe.usesIngredients {
                         IngredientList(ingredientUsage: ingredients)
                             .padding()
+                    }
+                    
+                    Divider()
+                    
+                    if let steps = recipe.hasSteps {
+                        StepTimeline(steps: steps)
                     }
                     
                 }
@@ -50,13 +81,11 @@ struct RecipeDetailView: View {
                                 Text("Kochen starten")
                                     .font(.callout .bold() .smallCaps())
                             }
-                            .buttonStyle(.borderedProminent)
+                            .padding(5)
+                            .buttonStyle(.plain)
+                            .background(.orange)
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
                             .padding(.top)
-                            .sheet(isPresented: $detailedCooking) {
-                                CookingView(recipe: $recipe)
-                                    .presentationDetents([.large])
-                                    .presentationCornerRadius(16)
-                            }
                         }
                     }
                 }
@@ -69,5 +98,5 @@ struct RecipeDetailView: View {
 }
 
 #Preview {
-    RecipeDetailView(recipe: .constant(MockData().recipes[0]))
+    RecipeDetailView(recipe: .constant(Recipe.pizzaMargherita))
 }
