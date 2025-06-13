@@ -24,7 +24,7 @@ struct IngredientList: View {
                     Text("\(item.amount.cleanString())")
                         .font(.subheadline .bold())
                         .foregroundStyle(.secondary)
-                    Text("\(item.unit.name)")
+                    Text("\(item.ingredient.unit.name)")
                         .font(.subheadline .bold())
                         .foregroundStyle(.secondary)
                 }
@@ -41,6 +41,6 @@ extension Float {
 }
 
 #Preview {
-    let ingredientUsage = [UsesIngredient(id: 1, amount: 1, ingredientId: 1, ingredient: Ingredient(id: 1, name: "Spaghetti"), unitId: 1, unit: Unit(id: 1, name: "Stk"))]
+    let ingredientUsage = [UsesIngredient(id: 1, amount: 1, ingredientId: 1, ingredient: Ingredient(id: 1, name: "Spaghetti", unitId: 1, unit: Unit(id: 1, name: "Stk")))]
     IngredientList(ingredientUsage: ingredientUsage)
 }

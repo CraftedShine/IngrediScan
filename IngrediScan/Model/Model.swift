@@ -46,22 +46,20 @@ struct UsesIngredient: Codable, Hashable, Identifiable {
     let amount: Float
     let ingredientId: Int
     let ingredient: Ingredient
-    let unitId: Int
-    let unit: Unit
     
     enum CodingKeys: String, CodingKey {
         case id
         case amount
         case ingredientId
         case ingredient
-        case unitId
-        case unit
     }
 }
 
 struct Ingredient: Codable, Hashable, Identifiable {
     let id: Int
     let name: String
+    var unitId: Int
+    var unit: Unit
 }
 
 struct Unit: Codable, Hashable {

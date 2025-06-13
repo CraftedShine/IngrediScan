@@ -11,7 +11,7 @@ class MockFridge: MyFridge {
     var ingredients: [Ingredient]
     
     public override init() {
-        self.ingredients = [Ingredient(id: 1, name: "Tomaten"), Ingredient(id: 2, name: "Zwiebeln")]
+        self.ingredients = []
     }
 }
 
@@ -20,7 +20,7 @@ class MockIngredients {
     public let ingredients: [Ingredient]
     
     public init(){
-        ingredients = [Ingredient(id: 1, name: "Tomaten"), Ingredient(id: 2, name: "Zwiebeln")]
+        ingredients = []
     }
 }
 
@@ -88,17 +88,16 @@ extension Recipe {
                     id: 1,
                     amount: 250,
                     ingredientId: 1,
-                    ingredient: Ingredient(id: 1, name: "Spaghetti"),
-                    unitId: 1,
-                    unit: Unit(id: 1, name: "g")
+                    ingredient: Ingredient(id: 1, name: "Spaghetti", unitId: 1,
+                                           unit: Unit(id: 1, name: "g"))
                 ),
                 UsesIngredient(
                     id: 2,
                     amount: 100,
                     ingredientId: 2,
-                    ingredient: Ingredient(id: 2, name: "Speck"),
-                    unitId: 1,
-                    unit: Unit(id: 1, name: "g")
+                    ingredient: Ingredient(id: 2, name: "Speck", unitId: 1,
+                                           unit: Unit(id: 1, name: "g"))
+                    
                 )
             ],
             
@@ -135,9 +134,9 @@ extension Recipe {
             categoryId: 2,
             category: Category(id: 2, name: "Pizza"),
             usesIngredients: [
-                UsesIngredient(id: 3, amount: 500, ingredientId: 3, ingredient: Ingredient(id: 3, name: "Mehl"), unitId: 1, unit: Unit(id: 1, name: "g")),
-                UsesIngredient(id: 4, amount: 300, ingredientId: 4, ingredient: Ingredient(id: 4, name: "Tomatensauce"), unitId: 2, unit: Unit(id: 2, name: "ml")),
-                UsesIngredient(id: 5, amount: 125, ingredientId: 5, ingredient: Ingredient(id: 5, name: "Mozzarella"), unitId: 1, unit: Unit(id: 1, name: "g"))
+                UsesIngredient(id: 3, amount: 500, ingredientId: 3, ingredient: Ingredient(id: 3, name: "Mehl", unitId: 1, unit: Unit(id: 1, name: "g"))),
+                UsesIngredient(id: 4, amount: 300, ingredientId: 4, ingredient: Ingredient(id: 4, name: "Tomatensauce", unitId: 2, unit: Unit(id: 2, name: "ml"))),
+                UsesIngredient(id: 5, amount: 125, ingredientId: 5, ingredient: Ingredient(id: 5, name: "Mozzarella", unitId: 1, unit: Unit(id: 1, name: "g")))
             ],
             hasSteps: [
                 StepRelation(id: 3, stepId: 3, RecipeStep: RecipeStep(id: 3, title: "Teig zubereiten", description: "Hefe, Mehl und Wasser zu einem Teig kneten.", duration: 20)),
@@ -163,9 +162,9 @@ extension Recipe {
             categoryId: 3,
             category: Category(id: 3, name: "Salat"),
             usesIngredients: [
-                UsesIngredient(id: 6, amount: 200, ingredientId: 6, ingredient: Ingredient(id: 6, name: "Römersalat"), unitId: 1, unit: Unit(id: 1, name: "g")),
-                UsesIngredient(id: 7, amount: 50, ingredientId: 7, ingredient: Ingredient(id: 7, name: "Croutons"), unitId: 1, unit: Unit(id: 1, name: "g")),
-                UsesIngredient(id: 8, amount: 30, ingredientId: 8, ingredient: Ingredient(id: 8, name: "Parmesan"), unitId: 1, unit: Unit(id: 1, name: "g"))
+                UsesIngredient(id: 6, amount: 200, ingredientId: 6, ingredient: Ingredient(id: 6, name: "Römersalat", unitId: 1, unit: Unit(id: 1, name: "g"))),
+                UsesIngredient(id: 7, amount: 50, ingredientId: 7, ingredient: Ingredient(id: 7, name: "Croutons", unitId: 1, unit: Unit(id: 1, name: "g"))),
+                UsesIngredient(id: 8, amount: 30, ingredientId: 8, ingredient: Ingredient(id: 8, name: "Parmesan", unitId: 1, unit: Unit(id: 1, name: "g")))
             ],
             hasSteps: [
                 StepRelation(id: 5, stepId: 5, RecipeStep: RecipeStep(id: 5, title: "Salat waschen", description: "Römersalat gründlich waschen und klein zupfen.", duration: 5)),
@@ -191,9 +190,9 @@ extension Recipe {
             categoryId: 4,
             category: Category(id: 4, name: "Dessert"),
             usesIngredients: [
-                UsesIngredient(id: 9, amount: 500, ingredientId: 9, ingredient: Ingredient(id: 9, name: "Quark"), unitId: 1, unit: Unit(id: 1, name: "g")),
-                UsesIngredient(id: 10, amount: 200, ingredientId: 10, ingredient: Ingredient(id: 10, name: "Zucker"), unitId: 1, unit: Unit(id: 1, name: "g")),
-                UsesIngredient(id: 11, amount: 3, ingredientId: 11, ingredient: Ingredient(id: 11, name: "Eier"), unitId: 3, unit: Unit(id: 3, name: "Stück"))
+                UsesIngredient(id: 9, amount: 500, ingredientId: 9, ingredient: Ingredient(id: 9, name: "Quark", unitId: 1, unit: Unit(id: 1, name: "g"))),
+                UsesIngredient(id: 10, amount: 200, ingredientId: 10, ingredient: Ingredient(id: 10, name: "Zucker", unitId: 1, unit: Unit(id: 1, name: "g"))),
+                UsesIngredient(id: 11, amount: 3, ingredientId: 11, ingredient: Ingredient(id: 11, name: "Eier", unitId: 3, unit: Unit(id: 3, name: "Stück")))
             ],
             hasSteps: [
                 StepRelation(id: 7, stepId: 7, RecipeStep: RecipeStep(id: 7, title: "Teigboden vorbereiten", description: "Mürbeteig kneten und in Form drücken.", duration: 20)),
