@@ -24,8 +24,8 @@ class DatabaseService {
                 *,
                 category:Categories!Recipes_categoryId_fkey(*),
                 usesIngredients:usesIngredients!usesIngredients_recipeId_fkey(*,
-                    ingredient:Ingredients!usesIngredients_ingredientId_fkey(*),
-                    unit:Units!usesIngredients_unitId_fkey(*)
+                    ingredient:Ingredients!usesIngredients_ingredientId_fkey(*,
+                        unit:Units!Ingredients_unitId_fkey(*))
                 ),
                 hasSteps:hasSteps!hasSteps_recipeId_fkey(*,RecipeStep:RecipeStep!hasSteps_stepId_fkey(*)),
                 hasTags:hasTags!hasTags_recipeId_fkey(*,Tag:Tags!hasTags_tagId_fkey(*))
