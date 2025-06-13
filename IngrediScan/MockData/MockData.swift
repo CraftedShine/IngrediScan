@@ -47,8 +47,8 @@ extension Tag {
         Tag(id: 1, name: "Italienisch")
     }
     
-    static var fast: Tag {
-        Tag(id: 2, name: "Schnell")
+    static var classic: Tag {
+        Tag(id: 2, name: "Klassiker")
     }
     
     static var vegetarian: Tag {
@@ -116,8 +116,8 @@ extension Recipe {
             ],
             
             hasTags: [
-                TagRelation(id: 1, tagId: 1, Tag: Tag(id: 1, name: "Italienisch")),
-                TagRelation(id: 2, tagId: 2, Tag: Tag(id: 2, name: "Schnell"))
+                TagRelation(id: 1, tagId: 1, Tag: Tag.italian),
+                TagRelation(id: 2, tagId: 2, Tag: Tag.classic)
             ]
         )
     }
@@ -144,8 +144,8 @@ extension Recipe {
                 StepRelation(id: 4, stepId: 4, RecipeStep: RecipeStep(id: 4, title: "Backen", description: "Pizza bei 250 °C ca. 10 Minuten backen.", duration: 10))
             ],
             hasTags: [
-                TagRelation(id: 3, tagId: 3, Tag: Tag(id: 3, name: "Vegetarisch")),
-                TagRelation(id: 4, tagId: 4, Tag: Tag(id: 1, name: "Italienisch"))
+                TagRelation(id: 3, tagId: 3, Tag: Tag.vegetarian),
+                TagRelation(id: 4, tagId: 4, Tag: Tag.italian)
             ]
         )
     }
@@ -172,8 +172,8 @@ extension Recipe {
                 StepRelation(id: 6, stepId: 6, RecipeStep: RecipeStep(id: 6, title: "Dressing hinzufügen", description: "Salat mit Caesar-Dressing vermengen.", duration: 5))
             ],
             hasTags: [
-                TagRelation(id: 5, tagId: 5, Tag: Tag(id: 2, name: "Schnell")),
-                TagRelation(id: 6, tagId: 6, Tag: Tag(id: 6, name: "Leicht"))
+                TagRelation(id: 5, tagId: 5, Tag: Tag.classic),
+                TagRelation(id: 6, tagId: 6, Tag: Tag.light)
             ]
         )
     }
@@ -200,8 +200,8 @@ extension Recipe {
                 StepRelation(id: 8, stepId: 8, RecipeStep: RecipeStep(id: 8, title: "Backen", description: "Bei 180 °C ca. 60 Minuten backen.", duration: 60))
             ],
             hasTags: [
-                TagRelation(id: 7, tagId: 7, Tag: Tag(id: 7, name: "Süß")),
-                TagRelation(id: 8, tagId: 8, Tag: Tag(id: 8, name: "Ofen"))
+                TagRelation(id: 7, tagId: 7, Tag: Tag.sweet),
+                TagRelation(id: 8, tagId: 8, Tag: Tag.oven)
             ]
         )
     }

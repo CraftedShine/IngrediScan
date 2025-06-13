@@ -10,6 +10,7 @@ import SwiftUI
 struct FavoritesScreen: View {
     @StateObject var viewModel: ViewModel
     @State private var searchText: String = ""
+    @State private var filterVisible: Bool = false
     
     var body: some View {
         NavigationView {
@@ -30,12 +31,38 @@ struct FavoritesScreen: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        VStack {
-                            Text("Favoriten")
-                                .font(.title .bold() .smallCaps())
-                            Divider()
+                        Text("Favoriten")
+                            .font(.title .bold() .smallCaps())
+                            .padding(.bottom)
+                    }
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button {
+                            filterVisible.toggle()
+                        } label: {
+                            Image(systemName: "line.3.horizontal.decrease")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .padding(10)
+                                .foregroundStyle(.white)
+                                .background(Color.orange.opacity(0.75))
+                                .clipShape(Circle())
+                                .padding(.bottom)
                         }
-                        .padding(.bottom)
+                        .sheet(isPresented: $filterVisible) {
+                            FilterView(tags: viewModel.tags)
+                        }
+                    }
+                    ToolbarItem(placement: .confirmationAction) {
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .padding(10)
+                            .foregroundStyle(.white)
+                            .background(Color.orange.opacity(0.75))
+                            .clipShape(Circle())
+                            .padding(.bottom)
                     }
                 }
                 .searchable(text: $searchText)

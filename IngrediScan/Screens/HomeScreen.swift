@@ -19,8 +19,12 @@ struct HomeView: View {
                 ScrollView {
                     VStack {
                         SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Empfohlen für dich")
-                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Klassiker")
-                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Vegetarisch")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled().filter {
+                            containsTag(recipe: $0.wrappedValue, tag: "Klassiker")
+                        }), title: "Klassiker")
+                        SectionView(recipes: .constant($viewModel.recipes.shuffled().filter {
+                            containsTag(recipe: $0.wrappedValue, tag: "Vegetarisch")
+                        }), title: "Vegetarisch")
                     }
                 }
             }
@@ -75,6 +79,16 @@ struct HomeView: View {
                 }
             }
         }
+    }
+    
+    private func containsTag(recipe: Recipe, tag: String) -> Bool {
+        if (recipe.hasTags == nil) {
+            return false
+        }
+        
+        return !recipe.hasTags!.filter {
+            $0.Tag.name == tag
+        }.isEmpty
     }
 }
 
