@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FridgeScreen: View {
     @StateObject private var fridge: MyFridge = MockFridge()
-    @State private var selectedIngredient: Ingredient?
+    @State private var selectedIngredient: IngredientInFridge?
     @State private var showIngredientSheet = false
     @State private var isEditing = false
     @State private var boxSize: CGSize = CGSize(width: 350, height: 350)

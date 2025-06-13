@@ -8,10 +8,11 @@
 import Foundation
 
 class MockFridge: MyFridge {
-    var ingredients: [Ingredient]
+    var ingredients: [IngredientInFridge]
     
     public override init() {
-        self.ingredients = []
+        let stk = Unit(id: 1, name: "Stk")
+        self.ingredients = [IngredientInFridge(id: 1, name: "Eier", amount: 0, Unit: stk),IngredientInFridge(id: 1, name: "Milch", amount: 1, Unit: stk)]
     }
 }
 
@@ -20,7 +21,7 @@ class MockIngredients {
     public let ingredients: [Ingredient]
     
     public init(){
-        ingredients = []
+        ingredients = [Ingredient(id: 0, name: "Eier", unitId: 1, unit: stk),Ingredient(id: 1, name: "Milch", unitId: 1, unit: stk),Ingredient(id: 2, name: "Käse", unitId: 1, unit: stk),Ingredient(id: 3, name: "Tomaten", unitId: 1, unit: stk),Ingredient(id: 4, name: "Zwiebeln", unitId: 1, unit: stk),Ingredient(id: 5, name: "Knoblauch", unitId: 1, unit: stk),Ingredient(id: 6, name: "Garam ma Sala", unitId: 1, unit: stk),Ingredient(id: 7, name: "Salat", unitId: 1, unit: stk),Ingredient(id: 8, name: "Zucker", unitId: 1, unit: stk),Ingredient(id: 9, name: "Mehl", unitId: 1, unit: stk),Ingredient(id: 10, name: "Pfeffer", unitId: 1, unit: stk),Ingredient(id: 11, name: "Bananen", unitId: 1, unit: stk)]
     }
 }
 

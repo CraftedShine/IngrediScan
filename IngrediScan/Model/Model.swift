@@ -36,6 +36,13 @@ struct Recipe: Decodable, Identifiable {
     
 }
 
+struct IngredientInFridge: Codable, Identifiable {
+    let id: Int
+    let name: String
+    var amount: Float
+    let Unit: Unit
+}
+
 struct Category: Codable, Identifiable {
     let id: Int
     let name: String
