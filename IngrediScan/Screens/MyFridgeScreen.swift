@@ -12,7 +12,6 @@ struct FridgeScreen: View {
     @State private var selectedIngredient: IngredientInFridge?
     @State private var showIngredientSheet = false
     @State private var isEditing = false
-    @State private var boxSize: CGSize = CGSize(width: 350, height: 350)
     
     var body: some View {
         NavigationView {
@@ -21,7 +20,7 @@ struct FridgeScreen: View {
                     
                     // List of ingredients formatted in box views
                     ScrollView {
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 25) {
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 20) {
                             ForEach(fridge.getIngredients()) { ingredient in
                                 IngredientBoxView(ingredient: ingredient, isEditing: $isEditing, onDelete: {
                                     fridge.removeIngredient(ingredient: ingredient)

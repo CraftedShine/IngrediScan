@@ -7,64 +7,89 @@
 
 import SwiftUI
 
+//serach ideen: Raiting, zeit, schwierigkeit, kategorien, kalorien, zutaten im kühlschrank
+
 struct SearchScreen: View {
-    @State private var isSearching: Bool = false
-    @State private var searchOnlyWithAvailableIngredients: Bool = true
-    @State private var selectedFilters: Set<String> = []
-    @State private var selectedIngredients: Set<String> = ["Tomate", "Zwiebel", "Rinderhackfleisch", "Käse", "Salz & Pfeffer", "Olivenöl", "Knoblauch", "Paprika", "Mehl", "Milch"]
+    @State private var scrollProxy: ScrollViewProxy?
     
-    let ingredientOptions = ["Tomate", "Zwiebel", "Rinderhackfleisch", "Käse", "Salz & Pfeffer", "Olivenöl", "Knoblauch", "Paprika", "Mehl", "Milch"]
-
+    @StateObject var viewModel: ViewModel
+    @State var resultList: [Recipe] = ViewModel().recipes
+    
     var body: some View {
-        NavigationView {
-            ZStack {
+        NavigationView{
+            ScrollViewReader { proxy in
                 ScrollView {
-                    VStack(spacing: 20) {
-                        Text("Ingredient Search")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding(.top, 20)
+                    VStack(spacing: 0) {
                         
-                        Divider()
-
-                        FilterOptionsView(selectedFilters: $selectedFilters)
-
-                        Divider()
-
-                        IngredientSearchPickerView(searchOnlyWithAvailableIngredients: $searchOnlyWithAvailableIngredients)
-
-                        if searchOnlyWithAvailableIngredients {
-                            Divider()
-                            IngredientSelectionView(selectedIngredients: $selectedIngredients, ingredientOptions: ingredientOptions)
+                        //Search
+                        VStack {
+                            Text("Obere Box")
+                                .font(.title)
+                                .padding()
+                            
+                            Button("Nach unten scrollen") {
+                                withAnimation {
+                                    proxy.scrollTo("Result", anchor: .top)
+                                }
+                            }
+                            .buttonStyle(.borderedProminent)
+                        }
+                        .frame(height: 750)
+                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.blue.opacity(0.1)))
+                        .id("topBox")
+                        
+                        Text("Result")
+                            .font(.title)
+                            .padding(.top, 30)
+                            .id("Result")
+                        
+                        //Result
+                        ForEach(resultList) { recipe in
+                            RecipeCard(recipe: bindingForRecipe(recipe))
                         }
                     }
-                    .padding()
+                }
+                .onAppear {
+                    scrollProxy = proxy
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Rezept Suche")
+                        .font(.title .bold() .smallCaps())
                 }
                 
-                // Floating Search Button mit NavigationLink
-                VStack {
-                    Spacer()
-                    NavigationLink(destination: SearchResultsScreen(), isActive: $isSearching) { EmptyView() }
-                    Button(action: {
-                        isSearching = true
-                    }) {
-                        Text("Search")
-                            .font(.title)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 30)
-                            .padding(.horizontal, 40)
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            scrollProxy?.scrollTo("topBox", anchor: .top)
+                        }
+                    } label: {
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .padding(10)
+                            .foregroundStyle(.white)
+                            .background(Color.orange.opacity(0.75))
+                            .clipShape(Circle())
                     }
-                    .padding(.bottom, 20)
                 }
             }
         }
+        
+    }
+    
+    func bindingForRecipe(_ recipe: Recipe) -> Binding<Recipe> {
+        guard let index = viewModel.recipes.firstIndex(where: { $0.id == recipe.id }) else {
+            return .constant(recipe)
+        }
+        return $viewModel.recipes[index]
     }
 }
 
 #Preview {
-    SearchScreen()
+    SearchScreen(viewModel: ViewModel())
 }
+

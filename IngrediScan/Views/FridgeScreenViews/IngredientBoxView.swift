@@ -20,7 +20,7 @@ struct IngredientBoxView: View {
                 .font(.headline)
                 .padding()
             
-                .frame(width: 100, height: 100)
+                .frame(width: 170, height: 100)
                 .background(Color.white)
                 .cornerRadius(20)
                 .shadow(radius: 5)
@@ -41,7 +41,7 @@ struct IngredientBoxView: View {
                         .scaleEffect(1.4)
                         .padding(5)
                 }
-                .offset(x: 37, y: -37)
+                .offset(x: 69, y: -37)
             }
         }
     }

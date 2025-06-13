@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct IngredientOverlayView: View {
-    let ingredient: Ingredient
+    let ingredient: IngredientInFridge
     @ObservedObject var fridge: MyFridge
     
     let size: CGSize = CGSize(width: 350, height: 350)
@@ -27,12 +27,12 @@ struct IngredientOverlayView: View {
 
                 Spacer()
                 HStack {
-                    TextField(String(format: "%.2f", 0).replacingOccurrences(of: ".00", with: ""),text: $newAmount) // Need to be refactored
+                    TextField(String(format: "%.2f", ingredient.amount).replacingOccurrences(of: ".00", with: ""),text: $newAmount)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    Text("Stk") // Need to be refactored
+                    Text(ingredient.Unit.name)
                         .padding(.trailing)
                 }
 
@@ -42,7 +42,7 @@ struct IngredientOverlayView: View {
                     Button("Speichern") {
                         if let amount = Double(newAmount) {
                             if amount > 0 {
-                                let ingredientToAdd = Ingredient(id: ingredient.id, name: ingredient.name, unitId: 1, unit: Unit(id: 1, name: "Stk")) //TODO
+                                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount) - ingredient.amount, Unit: ingredient.Unit)
                                 fridge.addIngredient(ingredientToAdd)
                             } else {
                                 fridge.removeIngredient(ingredient: ingredient)

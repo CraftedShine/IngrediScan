@@ -23,7 +23,7 @@ struct IngredientTemplateView: View {
                 .frame(width: 80)
                 .keyboardType(.decimalPad)
             
-            Text("Stk") // Needs to Refactored
+            Text(ingredient.unit.name)
                 .frame(maxWidth: 32, alignment: .leading)
             
             Button(action: {
@@ -44,7 +44,7 @@ struct IngredientTemplateView: View {
     func addToFridge(ingredient: Ingredient) {
         if !newAmount.isEmpty {
             if let amount = Double(newAmount), amount > 0 {
-                fridge.addIngredient(Ingredient(id: ingredient.id, name: ingredient.name, unitId: 1, unit: Unit(id: 1, name: "Stk")))
+                fridge.addIngredient(IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), Unit: ingredient.unit))
             }
         }
     }
