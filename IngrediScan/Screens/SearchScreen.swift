@@ -5,9 +5,8 @@
 //  Created by Jan Keller on 14.05.25.
 //
 
-import SwiftUI
 
-//serach ideen: Raiting, zeit, schwierigkeit, kategorien, kalorien, zutaten im kühlschrank
+import SwiftUI
 
 struct SearchScreen: View {
     @State private var scrollProxy: ScrollViewProxy?

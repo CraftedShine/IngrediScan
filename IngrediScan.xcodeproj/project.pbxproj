@@ -14,6 +14,7 @@
 		9D6715FD2DE4D02B000173B1 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6715FC2DE4D02B000173B1 /* Storage */; };
 		9D6715FF2DE4D02B000173B1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9D6715FE2DE4D02B000173B1 /* Supabase */; };
 		9D76633C2DF1FFD30091BB9A /* IngredientTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76633B2DF1FFD30091BB9A /* IngredientTemplateView.swift */; };
+		9D76637B2DFD73A90091BB9A /* SearchForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76637A2DFD73A90091BB9A /* SearchForm.swift */; };
 		D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B352DCDF720006EA229 /* MyFridge.swift */; };
 		D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B442DCDF720006EA229 /* MyFridgeScreen.swift */; };
 		D58B6B632DCDF720006EA229 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B6B4D2DCDF720006EA229 /* ContentView.swift */; };
@@ -81,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		9D76633B2DF1FFD30091BB9A /* IngredientTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTemplateView.swift; sourceTree = "<group>"; };
+		9D76637A2DFD73A90091BB9A /* SearchForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForm.swift; sourceTree = "<group>"; };
 		D53566022DBB7849007255D1 /* IngrediScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IngrediScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D535660F2DBB784B007255D1 /* IngrediScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53566192DBB784B007255D1 /* IngrediScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngrediScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 		9D7663772DFCBED60091BB9A /* SearchScreenViews */ = {
 			isa = PBXGroup;
 			children = (
+				9D76637A2DFD73A90091BB9A /* SearchForm.swift */,
 			);
 			path = SearchScreenViews;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				D598DACA2DE0D1690093D5C1 /* StepTimeline.swift in Sources */,
 				D598DAE22DE0D1FD0093D5C1 /* IngredientsScreen.swift in Sources */,
 				D598DAE32DE0D1FD0093D5C1 /* IngredientTemplateListView.swift in Sources */,
+				9D76637B2DFD73A90091BB9A /* SearchForm.swift in Sources */,
 				D598DAE42DE0D1FD0093D5C1 /* IngredientSelectionView.swift in Sources */,
 				D598DAFC2DE267850093D5C1 /* ToggleFavoriteButton.swift in Sources */,
 				D598DAF52DE0D30A0093D5C1 /* DatabaseService.swift in Sources */,
