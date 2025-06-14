@@ -22,9 +22,7 @@ struct SearchScreen: View {
                         
                         //Search
                         VStack {
-                            Text("Obere Box")
-                                .font(.title)
-                                .padding()
+                            SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, fridge: MockFridge())
                             
                             Button("Nach unten scrollen") {
                                 withAnimation {

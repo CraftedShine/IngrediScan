@@ -25,4 +25,23 @@ class MyFridge: ObservableObject {
     func getIngredients() -> [IngredientInFridge] {
         return ingredients.map { $0 }
     }
+    
+    func ingredientsMissing(recipe: Recipe) -> Int {
+        var missingCount = 0
+        
+        guard let requiredIngredients = recipe.usesIngredients else {
+            return missingCount
+        }
+        
+        for requiredIngredient in requiredIngredients {
+            if let fridgeIngredient = ingredients.first(where: { $0.id == requiredIngredient.ingredientId }) {
+                if fridgeIngredient.amount < requiredIngredient.amount {
+                    missingCount += 1
+                }
+            } else {
+                missingCount += 1
+            }
+        }
+        return missingCount
+    }
 }
