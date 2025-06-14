@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 class MockFridge: MyFridge {
     override init() {
@@ -16,6 +17,10 @@ class MockFridge: MyFridge {
         addIngredient(IngredientInFridge(id: 1, name: "Milch", amount: 1, Unit: stk))
         addIngredient(IngredientInFridge(id: 2, name: "Käse", amount: 0.5, Unit: stk))
     }
+    
+    required init(backingData: any SwiftData.BackingData<MyFridge>) {
+        fatalError("init(backingData:) has not been implemented")
+    }
 }
 
 class MockIngredients {
@@ -23,7 +28,7 @@ class MockIngredients {
     public let ingredients: [Ingredient]
     
     public init(){
-        ingredients = [Ingredient(id: 0, name: "Eier", unitId: 1, unit: stk),Ingredient(id: 1, name: "Milch", unitId: 1, unit: stk),Ingredient(id: 2, name: "Käse", unitId: 1, unit: stk),Ingredient(id: 3, name: "Tomaten", unitId: 1, unit: stk),Ingredient(id: 4, name: "Zwiebeln", unitId: 1, unit: stk),Ingredient(id: 5, name: "Knoblauch", unitId: 1, unit: stk),Ingredient(id: 6, name: "Garam ma Sala", unitId: 1, unit: stk),Ingredient(id: 7, name: "Salat", unitId: 1, unit: stk),Ingredient(id: 8, name: "Zucker", unitId: 1, unit: stk),Ingredient(id: 9, name: "Mehl", unitId: 1, unit: stk),Ingredient(id: 10, name: "Pfeffer", unitId: 1, unit: stk),Ingredient(id: 11, name: "Bananen", unitId: 1, unit: stk)]
+        ingredients = [Ingredient(id: 0, name: "Eier", unitId: 1, unit: stk),Ingredient(id: 3, name: "Tomaten", unitId: 1, unit: stk),Ingredient(id: 4, name: "Zwiebeln", unitId: 1, unit: stk),Ingredient(id: 5, name: "Knoblauch", unitId: 1, unit: stk),Ingredient(id: 6, name: "Garam ma Sala", unitId: 1, unit: stk),Ingredient(id: 7, name: "Salat", unitId: 1, unit: stk),Ingredient(id: 8, name: "Zucker", unitId: 1, unit: stk),Ingredient(id: 9, name: "Mehl", unitId: 1, unit: stk),Ingredient(id: 10, name: "Pfeffer", unitId: 1, unit: stk),Ingredient(id: 11, name: "Bananen", unitId: 1, unit: stk), Ingredient(id: 1, name: "Spaghetti", unitId: 1, unit: Unit(id: 1, name: "g")), Ingredient(id: 2, name: "Speck", unitId: 1, unit: Unit(id: 1, name: "g"))]
     }
 }
 

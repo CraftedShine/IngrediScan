@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 class MyFridge: ObservableObject {
-    @Published private var ingredients: [IngredientInFridge] = []
+    var ingredients: [IngredientInFridge] = []
     
     func addIngredient(_ newIngredient: IngredientInFridge) {
         if let index = ingredients.firstIndex(where: { $0.id == newIngredient.id }) {
@@ -44,4 +46,14 @@ class MyFridge: ObservableObject {
         }
         return missingCount
     }
+    
+    init() {
+    }
+}
+
+struct IngredientInFridge: Codable, Identifiable {
+    let id: Int
+    let name: String
+    var amount: Float
+    let Unit: Unit
 }

@@ -6,13 +6,17 @@
 //
 
 
+// create swift data for fridge
+// refactor local data structures
+
 import SwiftUI
 
 struct SearchScreen: View {
     @State private var scrollProxy: ScrollViewProxy?
     
     @StateObject var viewModel: ViewModel
-    @State var resultList: [Recipe] = ViewModel().recipes
+    @State var resultList: [Recipe] = []
+    var fridge: MyFridge
     
     var body: some View {
         NavigationView{
@@ -21,19 +25,12 @@ struct SearchScreen: View {
                     VStack(spacing: 0) {
                         
                         //Search
-                        VStack {
-                            SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, fridge: MockFridge())
-                            
-                            Button("Nach unten scrollen") {
-                                withAnimation {
-                                    proxy.scrollTo("Result", anchor: .top)
-                                }
-                            }
-                            .buttonStyle(.borderedProminent)
-                        }
-                        .frame(height: 750)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.blue.opacity(0.1)))
-                        .id("topBox")
+                        SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, fridge: fridge, onButtonPress: {withAnimation {
+                            scrollProxy?.scrollTo("Result", anchor: .top)
+                        }})
+                            .frame(height: 750)
+                            .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.05)))
+                            .id("topBox")
                         
                         Text("Result")
                             .font(.title)
@@ -87,6 +84,6 @@ struct SearchScreen: View {
 }
 
 #Preview {
-    SearchScreen(viewModel: ViewModel())
+    SearchScreen(viewModel: ViewModel(), fridge: MockFridge())
 }
 

@@ -22,7 +22,11 @@ struct StarRatingView: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(number <= rating ? onColor : offColor)
                     .onTapGesture {
-                        rating = number
+                        if number == rating {
+                            rating = 0
+                        } else {
+                            rating = number
+                        }
                     }
             }
         }

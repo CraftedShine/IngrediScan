@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct IngredientBoxView: View {
     let ingredient: IngredientInFridge
