@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @State private var bestRatedRecipeVisible: Bool = false
     @State private var randomRecipeVisible: Bool = false
     @State private var searchText: String = ""
-    @StateObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        SectionView(recipes: .constant($viewModel.recipes.shuffled()), title: "Empfohlen für dich")
-                        SectionView(recipes: .constant($viewModel.recipes.shuffled().filter {
-                            containsTag(recipe: $0.wrappedValue, tag: "Klassiker")
-                        }), title: "Klassiker")
-                        SectionView(recipes: .constant($viewModel.recipes.shuffled().filter {
-                            containsTag(recipe: $0.wrappedValue, tag: "Vegetarisch")
-                        }), title: "Vegetarisch")
+                        SectionView(recipes: viewModel.recipes.shuffled(), title: "Empfohlen für dich")
+                        SectionView(recipes: viewModel.recipes.shuffled().filter {
+                            containsTag(recipe: $0, tag: "Klassiker")
+                        }, title: "Klassiker")
+                        SectionView(recipes: viewModel.recipes.shuffled().filter {
+                            containsTag(recipe: $0, tag: "Vegetarisch")
+                        }, title: "Vegetarisch")
                     }
                 }
             }
@@ -46,9 +46,9 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $bestRatedRecipeVisible) {
                         let bestRatedRecipe = $viewModel.recipes.sorted {
-                            $0.wrappedValue.rating! > $1.wrappedValue.rating!
+                            $0.wrappedValue.rating > $1.wrappedValue.rating
                         }.first
-
+                        
                         RecipeDetailView(recipe: bestRatedRecipe!)
                     }
                 }
@@ -82,16 +82,12 @@ struct HomeView: View {
     }
     
     private func containsTag(recipe: Recipe, tag: String) -> Bool {
-        if (recipe.hasTags == nil) {
-            return false
-        }
-        
-        return !recipe.hasTags!.filter {
+        return recipe.hasTags.filter {
             $0.Tag.name == tag
         }.isEmpty
     }
 }
 
 #Preview {
-    HomeView(viewModel: ViewModel())
+    HomeView()
 }

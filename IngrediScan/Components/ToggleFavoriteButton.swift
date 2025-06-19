@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ToggleFavoriteButton: View {
+    @EnvironmentObject var viewModel: ViewModel
     @Binding var recipe: Recipe
     
     var body: some View {
         Button {
-            recipe.isFavorite.toggle()
+            viewModel.toggleFavorite(for: recipe)
         } label: {
-            Image(systemName: recipe.isFavorite ? "star.fill" : "star")
+            Image(systemName: self.viewModel.isFavorite(self.recipe) ? "star.fill" : "star")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20, height: 20)
-                .foregroundColor(recipe.isFavorite ? .yellow : .white)
+                .foregroundColor(self.viewModel.isFavorite(self.recipe) ? .yellow : .white)
                 .padding(10)
                 .background(Color.black.opacity(0.5))
                 .clipShape(Circle())
@@ -28,5 +29,6 @@ struct ToggleFavoriteButton: View {
 }
 
 #Preview {
-    ToggleFavoriteButton(recipe: .constant(ViewModel().recipes.first!))
+    ToggleFavoriteButton(recipe: .constant(Recipe.caesarSalad))
+        .environmentObject(ViewModel())
 }

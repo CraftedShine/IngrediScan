@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct Recipe: Decodable, Identifiable {
-    let id: Int
+struct Recipe: Codable, Identifiable {
+    let id: String
     var name: String
-    let imageUrl: String?
-    let rating: Float?
-    let duration: Int?
-    let calories: Int?
-    let annotation: String?
-    let difficulty: String?
-    let categoryId: Int?
+    let imageUrl: String
+    let rating: Float
+    let duration: Int
+    let calories: Int
+    let annotation: String
+    let difficulty: String
+    let categoryId: String
     
-    var category: Category?
-    var usesIngredients: [UsesIngredient]?
-    var hasSteps: [StepRelation]?
-    var hasTags: [TagRelation]?
+    var category: Category
+    var usesIngredients: [UsesIngredient]
+    var hasSteps: [StepRelation]
+    var hasTags: [TagRelation]
     var isFavorite: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -37,14 +37,14 @@ struct Recipe: Decodable, Identifiable {
 }
 
 struct Category: Codable, Identifiable {
-    let id: Int
+    let id: String
     let name: String
 }
 
 struct UsesIngredient: Codable, Hashable, Identifiable {
-    let id: Int
+    let id: String
     let amount: Float
-    let ingredientId: Int
+    let ingredientId: String
     let ingredient: Ingredient
     
     enum CodingKeys: String, CodingKey {
@@ -56,38 +56,47 @@ struct UsesIngredient: Codable, Hashable, Identifiable {
 }
 
 struct Ingredient: Codable, Hashable, Identifiable {
-    let id: Int
+    let id: String
     let name: String
-    var unitId: Int
+    var unitId: String
     var unit: Unit
 }
 
 struct Unit: Codable, Hashable {
-    let id: Int
+    let id: String
     let name: String
 }
 
 struct StepRelation: Codable {
-    let id: Int
-    let stepId: Int
-    let RecipeStep: RecipeStep
+    let id: String
+    let stepId: String
+    var RecipeStep: RecipeStep
 }
 
-struct RecipeStep: Codable {
-    let id: Int
+struct RecipeStep: Codable, Hashable {
+    let id: String
     let title: String
-    let description: String?
-    let duration: Int?
+    let description: String
+    var duration: Int
+    
+    var isCompleted: Bool = false
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case title
+        case description
+        case duration
+    }
 }
 
 struct TagRelation: Codable, Hashable {
-    let id: Int
-    let tagId: Int
+    let id: String
+    let tagId: String
     let Tag: Tag
 }
 
 struct Tag: Codable, Hashable {
-    let id: Int
+    let id: String
     let name: String
     
     var isSelected: Bool = false

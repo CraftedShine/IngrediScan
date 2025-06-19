@@ -55,5 +55,5 @@ struct TagList : View {
 }
 
 #Preview {
-    TagList(tags: [Tag(id: 1, name: "Tag 1"), Tag(id: 2, name: "Tag 2")])
+    TagList(tags: [Tag(id: "1", name: "Tag 1"), Tag(id: "2", name: "Tag 2")])
 }
