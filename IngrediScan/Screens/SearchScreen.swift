@@ -16,7 +16,6 @@ struct SearchScreen: View {
     @State private var scrollProxy: ScrollViewProxy?
     
     @State var resultList: [Recipe] = []
-    let fridge: MyFridge
     
     var body: some View {
         NavigationView{
@@ -25,7 +24,7 @@ struct SearchScreen: View {
                     VStack(spacing: 0) {
                         
                         //Search
-                        SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, fridge: fridge, onButtonPress: {withAnimation {
+                        SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, onButtonPress: {withAnimation {
                             scrollProxy?.scrollTo("Result", anchor: .top)
                         }})
                             .frame(height: 750)
@@ -84,7 +83,7 @@ struct SearchScreen: View {
 }
 
 #Preview {
-    SearchScreen(fridge: MockFridge())
+    SearchScreen()
         .environmentObject(ViewModel())
 }
 

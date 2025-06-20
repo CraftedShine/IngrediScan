@@ -11,8 +11,6 @@ import Supabase
 struct ContentView: View {
     @State private var selectedTab: Int = 0
     
-    private var fridge = MyFridge()
-    
     var body: some View {
         TabView(selection: $selectedTab) {
             HomeView()
@@ -20,7 +18,7 @@ struct ContentView: View {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
-            SearchScreen(fridge: fridge)
+            SearchScreen()
                 .tabItem
             {
                 Label("Search", systemImage: "magnifyingglass")
@@ -29,7 +27,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Favorites", systemImage: "star.fill")
                 }.tag(2)
-            FridgeScreen(fridge: fridge)
+            FridgeScreen()
                 .tabItem{
                     Label("My Fridge", systemImage: "storefront.fill")
                 }.tag(3)

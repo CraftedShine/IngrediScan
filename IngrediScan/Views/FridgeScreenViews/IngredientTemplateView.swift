@@ -9,8 +9,8 @@ import SwiftUI
 
 struct IngredientTemplateView: View {
     
+    @EnvironmentObject var viewModel: ViewModel
     let ingredient: Ingredient
-    @State var fridge: MyFridge
     @State private var newAmount: String = ""
     
     
@@ -45,14 +45,15 @@ struct IngredientTemplateView: View {
     func addToFridge(ingredient: Ingredient) {
         if !newAmount.isEmpty {
             if let amount = Double(newAmount), amount > 0 {
-                fridge.addIngredient(IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), Unit: ingredient.unit))
+                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), Unit: ingredient.unit)
+                viewModel.editIngredientInFridge(ingredientId: ingredientToAdd.id, amount: Float(amount), ingredient: ingredientToAdd)
             }
         }
     }
 }
 
 #Preview {
-    IngredientTemplateView(ingredient: Ingredient(id: "1", name: "Test", unitId: "1", unit: Unit(id: "1", name: "Stk")), fridge: MockFridge())
+    IngredientTemplateView(ingredient: Ingredient(id: "1", name: "Test", unitId: "1", unit: Unit(id: "1", name: "Stk")))
 }
 
 
