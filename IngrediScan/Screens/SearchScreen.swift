@@ -16,7 +16,7 @@ struct SearchScreen: View {
     
     @StateObject var viewModel: ViewModel
     @State var resultList: [Recipe] = []
-    var fridge: MyFridge
+    let fridge: MyFridge
     
     var body: some View {
         NavigationView{

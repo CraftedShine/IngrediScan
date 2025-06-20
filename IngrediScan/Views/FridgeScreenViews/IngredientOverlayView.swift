@@ -7,13 +7,11 @@
 
 
 import SwiftUI
-import SwiftData
 
 struct IngredientOverlayView: View {
     
-    @Environment(\.modelContext) private var modelContext
     let ingredient: IngredientInFridge
-    @Bindable var fridge: MyFridge
+    @State var fridge: MyFridge
     
     let size: CGSize = CGSize(width: 350, height: 350)
     let onClose: () -> Void
@@ -52,7 +50,6 @@ struct IngredientOverlayView: View {
                             }
                         }
                         onClose()
-                        try? modelContext.save()
                     }
                     .padding()
                     .background(Color.blue)
@@ -65,7 +62,6 @@ struct IngredientOverlayView: View {
                     Button("Löschen") {
                         fridge.removeIngredient(ingredient: ingredient)
                         onClose()
-                        try? modelContext.save()
                     }
                     .padding()
                 }

@@ -6,12 +6,10 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct FridgeScreen: View {
     
-    @Environment(\.modelContext) private var modelContext
-    @Bindable var fridge: MyFridge
+    @State var fridge: MyFridge
     @State private var selectedIngredient: IngredientInFridge?
     @State private var showIngredientSheet = false
     @State private var isEditing = false
@@ -27,7 +25,6 @@ struct FridgeScreen: View {
                             ForEach(fridge.getIngredients()) { ingredient in
                                 IngredientBoxView(ingredient: ingredient, isEditing: $isEditing, onDelete: {
                                     fridge.removeIngredient(ingredient: ingredient)
-                                    try? modelContext.save()
                                 })
                                 .onTapGesture {
                                     if !isEditing {

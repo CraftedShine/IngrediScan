@@ -7,15 +7,12 @@
 
 import SwiftUI
 import Supabase
-import SwiftData
 
 struct ContentView: View {
     @State private var selectedTab: Int = 0
     @StateObject private var viewModel = ViewModel()
     
-    @Environment(\.modelContext) private var modelContext
     private var fridge = MyFridge()
-
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -41,10 +38,6 @@ struct ContentView: View {
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
         .statusBar(hidden: false)
-        .onAppear {
-            modelContext.insert(fridge)
-            try? modelContext.save()
-        }
     }
 }
 

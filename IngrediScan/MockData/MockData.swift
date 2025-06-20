@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftData
 
 class MockFridge: MyFridge {
     override init() {
@@ -16,10 +15,6 @@ class MockFridge: MyFridge {
         addIngredient(IngredientInFridge(id: 0, name: "Eier", amount: 6, Unit: stk))
         addIngredient(IngredientInFridge(id: 1, name: "Milch", amount: 1, Unit: stk))
         addIngredient(IngredientInFridge(id: 2, name: "Käse", amount: 0.5, Unit: stk))
-    }
-    
-    required init(backingData: any SwiftData.BackingData<MyFridge>) {
-        fatalError("init(backingData:) has not been implemented")
     }
 }
 

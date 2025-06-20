@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SwiftData
 
-@Model
+
 class MyFridge: ObservableObject {
     var ingredients: [IngredientInFridge] = []
     
@@ -45,9 +44,6 @@ class MyFridge: ObservableObject {
             }
         }
         return missingCount
-    }
-    
-    init() {
     }
 }
 

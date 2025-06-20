@@ -6,13 +6,11 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct IngredientTemplateView: View {
     
-    @Environment(\.modelContext) private var modelContext
     let ingredient: Ingredient
-    @Bindable var fridge: MyFridge
+    @State var fridge: MyFridge
     @State private var newAmount: String = ""
     
     
@@ -31,7 +29,6 @@ struct IngredientTemplateView: View {
             
             Button(action: {
                 addToFridge(ingredient: ingredient)
-                try? modelContext.save()
             }) {
                 Text("->")
                     .font(.callout)

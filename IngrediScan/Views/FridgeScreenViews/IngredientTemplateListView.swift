@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct IngredientTemplateListView: View {
     
-    @Bindable var fridge: MyFridge
+    @State var fridge: MyFridge
     @Environment(\.dismiss) var dismiss
     var ingredientTemplates: [Ingredient] = MockIngredients().ingredients
     @State private var searchText = ""
