@@ -86,7 +86,7 @@ struct FridgeScreen: View {
 
 
 #Preview {
-    var fridge = MyFridge()
+    var fridge = MockFridge()
     FridgeScreen(fridge: fridge)
 }
 

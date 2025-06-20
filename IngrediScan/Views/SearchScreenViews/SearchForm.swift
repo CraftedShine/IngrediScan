@@ -105,7 +105,7 @@ struct SearchForm: View {
                 Text("Show Recipes")
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.blue)
+                    .background(Color.orange)
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }

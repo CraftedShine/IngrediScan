@@ -37,7 +37,7 @@ struct IngredientTemplateView: View {
                     .font(.callout)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(Color.blue)
+                    .background(Color.orange)
                     .foregroundColor(.white)
                     .cornerRadius(5)
             }
