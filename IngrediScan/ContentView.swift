@@ -20,7 +20,7 @@ struct ContentView: View {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
-            SearchScreen(viewModel: viewModel, fridge: fridge)
+            SearchScreen(fridge: fridge)
                 .tabItem
             {
                 Label("Search", systemImage: "magnifyingglass")

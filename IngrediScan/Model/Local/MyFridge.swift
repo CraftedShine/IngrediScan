@@ -29,10 +29,7 @@ class MyFridge: ObservableObject {
     
     func ingredientsMissing(recipe: Recipe) -> Int {
         var missingCount = 0
-        
-        guard let requiredIngredients = recipe.usesIngredients else {
-            return missingCount
-        }
+        let requiredIngredients = recipe.usesIngredients
         
         for requiredIngredient in requiredIngredients {
             if let fridgeIngredient = ingredients.first(where: { $0.id == requiredIngredient.ingredientId }) {
@@ -48,7 +45,7 @@ class MyFridge: ObservableObject {
 }
 
 struct IngredientInFridge: Codable, Identifiable {
-    let id: Int
+    let id: String
     let name: String
     var amount: Float
     let Unit: Unit

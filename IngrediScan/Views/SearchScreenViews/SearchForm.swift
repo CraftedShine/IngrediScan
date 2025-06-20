@@ -121,12 +121,12 @@ struct SearchForm: View {
         
         //filter by difficulty
         if !search.selectedDifficulty.isEmpty {
-            searchResult = searchResult.filter { search.selectedDifficulty.contains($0.difficulty ?? "") }
+            searchResult = searchResult.filter { search.selectedDifficulty.contains($0.difficulty) }
         }
         
         //filter by rating
         if search.selectedRating > 0 {
-            searchResult = searchResult.filter { Int(($0.rating ?? 0).rounded()) == search.selectedRating }
+            searchResult = searchResult.filter { Int($0.rating.rounded()) == search.selectedRating }
         }
         
         //filter/ sort by fridge
@@ -146,14 +146,14 @@ struct SearchForm: View {
         let sortByDuration = search.selectedSortCategories.contains("Kochzeit") ? 1 : 0
         
         searchResult = searchResult.sorted {
-            let rating1 = ($0.rating ?? 0) * Float(sortByRating) * 200
-            let calories1 = Float($0.calories ?? 0) * Float(sortByCalories)
-            let duration1 = Float($0.duration ?? 0) * Float(sortByDuration) * 10
+            let rating1 = ($0.rating) * Float(sortByRating) * 200
+            let calories1 = Float($0.calories) * Float(sortByCalories)
+            let duration1 = Float($0.duration) * Float(sortByDuration) * 10
             let score1 = rating1 - calories1 - duration1
             
-            let rating2 = ($1.rating ?? 0) * Float(sortByRating) * 200
-            let calories2 = Float($1.calories ?? 0) * Float(sortByCalories)
-            let duration2 = Float($1.duration ?? 0) * Float(sortByDuration) * 10
+            let rating2 = ($1.rating) * Float(sortByRating) * 200
+            let calories2 = Float($1.calories) * Float(sortByCalories)
+            let duration2 = Float($1.duration) * Float(sortByDuration) * 10
             let score2 = rating2 - calories2 - duration2
             
             return score1 > score2
