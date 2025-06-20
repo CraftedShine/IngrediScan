@@ -44,19 +44,19 @@ class ViewModel: ObservableObject {
     }
     
     private func loadRecipes() async {
-        self.recipes = await DatabaseService.shared.fetchRecipes()
+        self.recipes = await DatabaseService.fetchRecipes()
     }
     
     private func loadTags() async {
-        self.tags = await DatabaseService.shared.fetchTags()
+        self.tags = await DatabaseService.fetchTags()
     }
     
     private func loadCategories() async {
-        self.categories = await DatabaseService.shared.fetchCategories()
+        self.categories = await DatabaseService.fetchCategories()
     }
     
     private func loadIngredients() async {
-        self.ingredients = await DatabaseService.shared.fetchIngredients()
+        self.ingredients = await DatabaseService.fetchIngredients()
     }
     
     private func loadFavorites() {

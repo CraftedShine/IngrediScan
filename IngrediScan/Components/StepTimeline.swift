@@ -9,8 +9,8 @@ import SwiftUI
 
 struct StepContent: View {
     let index: Int
-    var step: RecipeStep
-    @Binding var isCompleted: Bool
+    @ObservedObject var cookingService = CookingService.shared
+    @Binding var step: RecipeStep
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -26,13 +26,19 @@ struct StepContent: View {
                 .foregroundColor(.gray)
             
         }
+        .padding()
+        .background(.gray.opacity(0.3))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+    
+    var isCompleted: Bool {
+        return cookingService.isCompleted(stepId: step.id)
     }
 }
 
 struct TimelineIndicator: View {
-    @Binding var completedSteps: Set<String>
+    @ObservedObject var cookingService = CookingService.shared
     @Binding var step: RecipeStep
-    @Binding var isCompleted: Bool
     
     var body: some View {
         Button {
@@ -52,50 +58,59 @@ struct TimelineIndicator: View {
         .buttonStyle(PlainButtonStyle())
     }
     
-    private func toggleStep(_ id: String) {
-        if completedSteps.contains(id) {
-            completedSteps.remove(id)
+    func toggleStep(_ id: String) {
+        if isCompleted {
+            cookingService.uncompleteStep(stepId: id)
+            cookingService.previousStep()
         } else {
-            completedSteps.insert(id)
+            cookingService.completeStep(stepId: step.id)
+            cookingService.nextStep()
         }
+    }
+    
+    var isCompleted: Bool {
+        return cookingService.isCompleted(stepId: step.id)
     }
 }
 
 struct StepTimeline: View {
-    @Binding var steps: [StepRelation]
-    
-    @State private var completedSteps: Set<String> = []
+    @ObservedObject var cookingService = CookingService.shared
+    @Binding var steps: [RecipeStep]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            ForEach(Array(steps.enumerated()), id: \.element.id) { index, stepRelation in
-                let step = stepRelation.RecipeStep
-                let isCompleted = completedSteps.contains(step.id)
+            let stepsArray = Array($steps.enumerated())
+            
+            ForEach(stepsArray, id: \.element.id) { index, $step in
+                let isCompleted = cookingService.isCompleted(stepId: step.id)
                 
                 HStack(alignment: .top) {
                     VStack(spacing: 12) {
                         //MARK: Timeline indicator
-                        TimelineIndicator(completedSteps: $completedSteps, step: .constant(step), isCompleted: .constant(isCompleted))
+                        TimelineIndicator(step: $step)
                         
                         //MARK: Line between Indicators
                         if index < steps.count - 1 {
                             Rectangle()
                                 .fill(.gray)
-                                .frame(maxWidth: 2, maxHeight: .infinity)
+                                .frame(maxWidth: 2, maxHeight: 200)
                         }
                     }
                     
                     // Step content
-                    StepContent(index: index, step: step, isCompleted: .constant(isCompleted))
+                    StepContent(index: index, step: $step)
                     
                 }
                 .opacity(isCompleted ? 0.6 : 1.0)
             }
+        }
+        .onAppear {
+            cookingService.startCooking(steps: steps)
         }
         .padding()
     }
 }
 
 #Preview {
-    StepTimeline(steps: .constant(Recipe.caesarSalad.hasSteps))
+    StepTimeline(steps: .constant(Recipe.caesarSalad.hasSteps.compactMap {$0.RecipeStep}))
 }

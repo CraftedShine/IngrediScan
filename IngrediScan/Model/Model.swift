@@ -73,7 +73,7 @@ struct StepRelation: Codable {
     var RecipeStep: RecipeStep
 }
 
-struct RecipeStep: Codable, Hashable {
+struct RecipeStep: Codable, Hashable, Identifiable {
     let id: String
     let title: String
     let description: String

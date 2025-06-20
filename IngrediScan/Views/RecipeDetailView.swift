@@ -2,6 +2,7 @@ import SwiftUI
 import Combine
 
 struct RecipeDetailView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
     @Binding var recipe: Recipe
     @State private var isCooking: Bool = false
@@ -24,6 +25,7 @@ struct RecipeDetailView: View {
                                 Spacer()
                                 Text("Details")
                                     .font(.title .bold() .smallCaps())
+                                    .padding(.top, 25)
                                 Spacer()
                                 ToggleFavoriteButton(recipe: $recipe)
                             }
@@ -45,13 +47,14 @@ struct RecipeDetailView: View {
                         
                         Divider()
                         
-                        CookingView(recipe: $recipe)
+                        CookingView(recipe: recipe)
+                            .padding()
                     }
                 }
                 .cornerRadius(16)
                 .scrollIndicators(.hidden)
             }
-            .edgesIgnoringSafeArea(.bottom)
+            .edgesIgnoringSafeArea(.vertical)
         }
         .toolbarBackgroundVisibility(.hidden, for: .navigationBar, .bottomBar)
     }
@@ -59,4 +62,5 @@ struct RecipeDetailView: View {
 
 #Preview {
     RecipeDetailView(recipe: .constant(Recipe.pizzaMargherita))
+        .environmentObject(ViewModel())
 }
