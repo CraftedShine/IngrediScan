@@ -9,9 +9,11 @@ import SwiftUI
 
 struct IngredientTemplateListView: View {
     
-    @State var fridge: MyFridge
+    @EnvironmentObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
-    var ingredientTemplates: [Ingredient] = MockIngredients().ingredients
+    var ingredientTemplates: [Ingredient] {
+        viewModel.ingredients
+    }
     @State private var searchText = ""
 
     var filteredIngredients: [Ingredient] {
@@ -30,7 +32,7 @@ struct IngredientTemplateListView: View {
                     .padding()
                 
                 List(filteredIngredients) { ingredient in
-                    IngredientTemplateView(ingredient: ingredient, fridge: fridge)
+                    IngredientTemplateView(ingredient: ingredient)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -62,7 +64,8 @@ struct IngredientTemplateListView: View {
 
 struct IngredientTemplateListView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientTemplateListView(fridge: MockFridge())
+        IngredientTemplateListView()
+            .environmentObject(ViewModel())
     }
 }
 

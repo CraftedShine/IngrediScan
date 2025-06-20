@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FridgeScreen: View {
     
-    @State var fridge: MyFridge
+    @EnvironmentObject var viewModel: ViewModel
     @State private var selectedIngredient: IngredientInFridge?
     @State private var showIngredientSheet = false
     @State private var isEditing = false
@@ -22,9 +22,9 @@ struct FridgeScreen: View {
                     // List of ingredients formatted in box views
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 20) {
-                            ForEach(fridge.getIngredients()) { ingredient in
+                            ForEach(viewModel.fridge.getIngredients()) { ingredient in
                                 IngredientBoxView(ingredient: ingredient, isEditing: $isEditing, onDelete: {
-                                    fridge.removeIngredient(ingredient: ingredient)
+                                    viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredient)
                                 })
                                 .onTapGesture {
                                     if !isEditing {
@@ -53,7 +53,7 @@ struct FridgeScreen: View {
                                 .padding(.trailing, 20)
                         }
                         .sheet(isPresented: $showIngredientSheet) {
-                            IngredientTemplateListView(fridge: fridge)
+                            IngredientTemplateListView()
                         }
                         
                     }
@@ -68,7 +68,7 @@ struct FridgeScreen: View {
                         }
                     
                     IngredientOverlayView(
-                        ingredient: ingredient, fridge: fridge,
+                        ingredient: ingredient,
                         onClose: { selectedIngredient = nil }
                     )
                 }
@@ -83,8 +83,8 @@ struct FridgeScreen: View {
 
 
 #Preview {
-    var fridge = MockFridge()
-    FridgeScreen(fridge: fridge)
+    FridgeScreen()
+        .environmentObject(ViewModel())
 }
 
 

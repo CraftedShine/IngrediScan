@@ -32,7 +32,7 @@ class MyFridge: ObservableObject {
         let requiredIngredients = recipe.usesIngredients
         
         for requiredIngredient in requiredIngredients {
-            if let fridgeIngredient = ingredients.first(where: { $0.id == requiredIngredient.ingredientId }) {
+            if let fridgeIngredient = ingredients.first(where: { $0.id == requiredIngredient.ingredientId }){
                 if fridgeIngredient.amount < requiredIngredient.amount {
                     missingCount += 1
                 }

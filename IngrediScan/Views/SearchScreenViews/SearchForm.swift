@@ -10,10 +10,10 @@ import SwiftUI
 
 struct SearchForm: View {
     
+    @EnvironmentObject var viewModel: ViewModel
     @State private var search: Search = Search()
     @Binding var searchResult: [Recipe]
     let recipeList: [Recipe]
-    let fridge: MyFridge
     var onButtonPress: () -> Void
     
     var body: some View {
@@ -132,11 +132,11 @@ struct SearchForm: View {
         //filter/ sort by fridge
         if search.searchWithFridge == 0 {
             searchResult = searchResult.filter { recipe in
-                fridge.ingredientsMissing(recipe: recipe) == 0
+                viewModel.fridge.ingredientsMissing(recipe: recipe) == 0
             }
         } else if search.searchWithFridge == 2 {
             searchResult = searchResult.sorted {
-                fridge.ingredientsMissing(recipe: $0) < fridge.ingredientsMissing(recipe: $1)
+                viewModel.fridge.ingredientsMissing(recipe: $0) < viewModel.fridge.ingredientsMissing(recipe: $1)
             }
         }
         
@@ -161,7 +161,7 @@ struct SearchForm: View {
         
         if search.searchWithFridge == 1 {
             searchResult = searchResult.sorted {
-                fridge.ingredientsMissing(recipe: $0) < fridge.ingredientsMissing(recipe: $1)
+                viewModel.fridge.ingredientsMissing(recipe: $0) < viewModel.fridge.ingredientsMissing(recipe: $1)
             }
         }
     }
@@ -169,5 +169,6 @@ struct SearchForm: View {
 
 #Preview {
     @Previewable @State var searchResult: [Recipe] = []
-    SearchForm(searchResult: $searchResult, recipeList: ViewModel().recipes, fridge: MockFridge(), onButtonPress: {})
+    SearchForm(searchResult: $searchResult, recipeList: ViewModel().recipes, onButtonPress: {})
+        .environmentObject(ViewModel())
 }

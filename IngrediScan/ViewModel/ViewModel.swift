@@ -13,12 +13,16 @@ import Supabase
 @MainActor
 class ViewModel: ObservableObject {
     private let favoritesKey = "favoriteRecipes"
+    private let fridgeIngredientsKeys = "fridgeIngredientsKeys"
     
     @Published var recipes: [Recipe] = []
-    @Published var favoriteIDs: [String] = []
     @Published var categories: [Category] = []
     @Published var ingredients: [Ingredient] = []
     @Published var tags: [Tag] = []
+    @Published var fridge: MyFridge = MyFridge()
+    
+    @Published var favoriteIDs: [String] = []
+    @Published var fridgeIngredientsIDs: [String: Float] = [:]
     
     init() {
 #if targetEnvironment(simulator)
@@ -27,6 +31,7 @@ class ViewModel: ObservableObject {
         categories = [Category.pasta, Category.pizza, Category.salad, Category.dessert]
         ingredients = [Ingredient(id: "9", name: "Quark", unitId: "2", unit: Unit(id: "2", name: "g")), Ingredient(id: "10", name: "Zucker", unitId: "1", unit: Unit(id: "1", name: "Prise")), Ingredient(id: "11", name: "Eier", unitId: "1", unit: Unit(id: "1", name: "Stk"))]
         self.loadFavorites()
+        self.loadFridge()
 #else
         Task {
             await loadRecipes()
@@ -87,4 +92,52 @@ class ViewModel: ObservableObject {
     var favoriteRecipes: [Recipe] {
         recipes.filter { favoriteIDs.contains($0.id) }
     }
+    
+    private func loadFridge() {
+        if let savedData = UserDefaults.standard.dictionary(forKey: fridgeIngredientsKeys) as? [String: Float] {
+            fridgeIngredientsIDs = savedData
+            fridge.ingredients.removeAll()
+            
+            for ingredient in ingredients {
+                if let amount = fridgeIngredientsIDs[ingredient.id] {
+                    let fridgeIngredient = IngredientInFridge(
+                        id: ingredient.id,
+                        name: ingredient.name,
+                        amount: amount,
+                        Unit: ingredient.unit
+                    )
+                    fridge.addIngredient(fridgeIngredient)
+                }
+            }
+        }
+    }
+    
+    private func saveFridge() {
+        UserDefaults.standard.set(fridgeIngredientsIDs, forKey: fridgeIngredientsKeys)
+    }
+    
+    public func editIngredientInFridge(ingredientId: String, amount: Float, ingredient: IngredientInFridge) {
+        guard amount != 0 else { return }
+
+        if let currentAmount = fridgeIngredientsIDs[ingredientId] {
+            let newAmount = currentAmount + amount
+
+            if newAmount <= 0 {
+                fridgeIngredientsIDs.removeValue(forKey: ingredientId)
+                fridge.removeIngredient(ingredient: ingredient)
+            } else {
+                fridgeIngredientsIDs[ingredientId] = newAmount
+                fridge.addIngredient(ingredient)
+            }
+        } else if amount > 0 {
+            fridgeIngredientsIDs[ingredientId] = amount
+            fridge.addIngredient(ingredient)
+        } else {
+            return
+        }
+
+        saveFridge()
+    }
+
+
 }
