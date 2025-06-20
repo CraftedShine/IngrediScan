@@ -12,9 +12,9 @@
 import SwiftUI
 
 struct SearchScreen: View {
+    @EnvironmentObject var viewModel: ViewModel
     @State private var scrollProxy: ScrollViewProxy?
     
-    @StateObject var viewModel: ViewModel
     @State var resultList: [Recipe] = []
     let fridge: MyFridge
     
@@ -39,7 +39,7 @@ struct SearchScreen: View {
                         
                         //Result
                         ForEach(resultList) { recipe in
-                            RecipeCard(recipe: bindingForRecipe(recipe))
+                            RecipeCard(recipe: recipe)
                         }
                     }
                 }
@@ -84,6 +84,7 @@ struct SearchScreen: View {
 }
 
 #Preview {
-    SearchScreen(viewModel: ViewModel(), fridge: MockFridge())
+    SearchScreen(fridge: MockFridge())
+        .environmentObject(ViewModel())
 }
 

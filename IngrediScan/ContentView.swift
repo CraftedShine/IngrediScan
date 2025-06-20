@@ -10,23 +10,22 @@ import Supabase
 
 struct ContentView: View {
     @State private var selectedTab: Int = 0
-    @StateObject private var viewModel = ViewModel()
     
     private var fridge = MyFridge()
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeView(viewModel: viewModel)
+            HomeView()
                 .tabItem{
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
-            SearchScreen(viewModel: viewModel, fridge: fridge)
+            SearchScreen(fridge: fridge)
                 .tabItem
             {
                 Label("Search", systemImage: "magnifyingglass")
             }.tag(1)
-            FavoritesScreen(viewModel: viewModel)
+            FavoritesScreen()
                 .tabItem {
                     Label("Favorites", systemImage: "star.fill")
                 }.tag(2)
@@ -43,4 +42,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(ViewModel())
 }

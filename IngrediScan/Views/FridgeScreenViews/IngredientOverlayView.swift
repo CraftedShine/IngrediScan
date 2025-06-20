@@ -43,7 +43,7 @@ struct IngredientOverlayView: View {
                     Button("Speichern") {
                         if let amount = Double(newAmount) {
                             if amount > 0 {
-                                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount) - ingredient.amount, Unit: ingredient.Unit)
+                                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), Unit: ingredient.Unit)
                                 fridge.addIngredient(ingredientToAdd)
                             } else {
                                 fridge.removeIngredient(ingredient: ingredient)

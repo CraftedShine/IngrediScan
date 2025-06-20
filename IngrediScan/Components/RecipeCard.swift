@@ -11,7 +11,7 @@ struct CardBackground: View {
     @Binding var recipe: Recipe
     
     var body: some View {
-        Image(self.recipe.imageUrl!)
+        Image(self.recipe.imageUrl)
             .resizable()
             .scaledToFit()
             .aspectRatio(contentMode: .fill)
@@ -44,32 +44,30 @@ struct CardText: View {
             
             //MARK: Bottom Bar Information
             HStack {
-                if let category = recipe.category {
-                    HStack(spacing: 16) {
-                        Text(category.name)
-                            .font(.subheadline .bold() .smallCaps())
-                            .foregroundStyle(.white.opacity(0.8))
-                        HStack {
-                            Image(systemName: "star.fill")
-                                .foregroundStyle(.yellow)
-                            Text(String(self.recipe.rating!))
-                                .font(.subheadline .bold())
-                                .foregroundStyle(.white)
-                        }
-                        HStack {
-                            Image(systemName: "clock")
-                                .foregroundStyle(.white)
-                            Text(String(self.recipe.duration!) + "min")
-                                .font(.subheadline .bold())
-                                .foregroundStyle(.white)
-                        }
-                        HStack {
-                           Image(systemName: "chart.bar.xaxis.ascending")
-                                .foregroundStyle(.white)
-                            Text(self.recipe.difficulty!)
-                                .font(.subheadline .bold())
-                                .foregroundStyle(.white)
-                        }
+                HStack(spacing: 16) {
+                    Text(recipe.category.name)
+                        .font(.subheadline .bold() .smallCaps())
+                        .foregroundStyle(.white.opacity(0.8))
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                        Text(String(self.recipe.rating))
+                            .font(.subheadline .bold())
+                            .foregroundStyle(.white)
+                    }
+                    HStack {
+                        Image(systemName: "clock")
+                            .foregroundStyle(.white)
+                        Text(String(self.recipe.duration) + "min")
+                            .font(.subheadline .bold())
+                            .foregroundStyle(.white)
+                    }
+                    HStack {
+                        Image(systemName: "chart.bar.xaxis.ascending")
+                            .foregroundStyle(.white)
+                        Text(self.recipe.difficulty)
+                            .font(.subheadline .bold())
+                            .foregroundStyle(.white)
                     }
                 }
             }
@@ -77,8 +75,31 @@ struct CardText: View {
     }
 }
 
+struct CardTagList: View {
+    var hasTags: [TagRelation]
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(hasTags, id: \.id) { tagRelation in
+                    Button {
+                        
+                    } label: {
+                        Text(tagRelation.Tag.name)
+                    }
+                    .padding(10)
+                    .buttonStyle(.plain)
+                    .background(.orange)
+                    .clipShape(Capsule())
+                }
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+}
+
 struct RecipeCard: View {
-    @Binding var recipe: Recipe
+    @State var recipe: Recipe
     @State var detailedView: Bool = false
     
     var body: some View {
@@ -103,5 +124,5 @@ struct RecipeCard: View {
 }
 
 #Preview {
-    RecipeCard(recipe: .constant(Recipe.caesarSalad))
+    RecipeCard(recipe: Recipe.caesarSalad)
 }

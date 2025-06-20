@@ -9,14 +9,12 @@ import Foundation
 import Supabase
 
 class DatabaseService {
-    static let shared = DatabaseService()
-    
-    let supabase: SupabaseClient = SupabaseClient(
+    private static let supabase: SupabaseClient = SupabaseClient(
         supabaseURL: URL(string: "https://zglesyibcbwjoalbzdjp.supabase.co")!,
         supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnbGVzeWliY2J3am9hbGJ6ZGpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczNzgxMzcsImV4cCI6MjA2Mjk1NDEzN30.zYi1Bxd8I0mbQfrW2WPya53fWsVqk8EdTTtbzqLZt5Q"
     )
     
-    func fetchRecipes() async -> [Recipe] {
+    static func fetchRecipes() async -> [Recipe] {
         do {
             let response = try await supabase
                 .from("Recipes")
@@ -45,7 +43,7 @@ class DatabaseService {
         }
     }
     
-    func fetchTags() async -> [Tag] {
+    static func fetchTags() async -> [Tag] {
         do {
             let response = try await supabase
                 .from("Tags")
@@ -66,7 +64,7 @@ class DatabaseService {
         }
     }
     
-    func fetchIngredients() async -> [Ingredient] {
+    static func fetchIngredients() async -> [Ingredient] {
         do {
             let response = try await supabase
                 .from("Ingredients")
@@ -87,7 +85,7 @@ class DatabaseService {
         }
     }
     
-    func fetchCategories() async -> [Category] {
+    static func fetchCategories() async -> [Category] {
         do {
             let response = try await supabase
                 .from("Categories")

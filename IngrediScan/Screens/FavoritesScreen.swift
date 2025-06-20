@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoritesScreen: View {
-    @StateObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: ViewModel
     @State private var searchText: String = ""
     @State private var filterVisible: Bool = false
     
@@ -16,16 +16,14 @@ struct FavoritesScreen: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
-                    if(self.viewModel.recipes.filter{$0.isFavorite}.isEmpty) {
+                    if(self.viewModel.favoriteRecipes.isEmpty) {
                         Text("No Recipes marked as Favorite")
                             .font(.callout .bold() .smallCaps())
                             .foregroundStyle(.secondary)
                     }
                     
-                    ForEach(self.filteredRecipes, id: \.wrappedValue.id) { $recipe in
-                        if($recipe.wrappedValue.isFavorite) {
-                            RecipeCard(recipe: $recipe)
-                        }
+                    ForEach(self.viewModel.favoriteRecipes) { recipe in
+                        RecipeCard(recipe: recipe)
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -84,5 +82,5 @@ struct FavoritesScreen: View {
 }
 
 #Preview {
-    FavoritesScreen(viewModel: ViewModel())
+    FavoritesScreen()
 }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct StepContent: View {
     let index: Int
-    var step: RecipeStep
-    @Binding var isCompleted: Bool
+    @ObservedObject var cookingService = CookingService.shared
+    @Binding var step: RecipeStep
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -18,24 +18,27 @@ struct StepContent: View {
                 .fontWeight(.semibold)
                 .strikethrough(isCompleted, color: .gray)
             
-            if let desc = step.description {
-                Text(desc)
-                    .foregroundColor(isCompleted ? .gray : .primary)
-            }
+            Text(step.description)
+                .foregroundColor(isCompleted ? .gray : .primary)
             
-            if let duration = step.duration {
-                Text("Dauer: \(duration) Min")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-            }
+            Text("Dauer: \(step.duration) Min")
+                .font(.footnote)
+                .foregroundColor(.gray)
+            
         }
+        .padding()
+        .background(.gray.opacity(0.3))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+    
+    var isCompleted: Bool {
+        return cookingService.isCompleted(stepId: step.id)
     }
 }
 
 struct TimelineIndicator: View {
-    @Binding var completedSteps: Set<Int>
+    @ObservedObject var cookingService = CookingService.shared
     @Binding var step: RecipeStep
-    @Binding var isCompleted: Bool
     
     var body: some View {
         Button {
@@ -55,59 +58,59 @@ struct TimelineIndicator: View {
         .buttonStyle(PlainButtonStyle())
     }
     
-    private func toggleStep(_ id: Int) {
-        if completedSteps.contains(id) {
-            completedSteps.remove(id)
+    func toggleStep(_ id: String) {
+        if isCompleted {
+            cookingService.uncompleteStep(stepId: id)
+            cookingService.previousStep()
         } else {
-            completedSteps.insert(id)
+            cookingService.completeStep(stepId: step.id)
+            cookingService.nextStep()
         }
+    }
+    
+    var isCompleted: Bool {
+        return cookingService.isCompleted(stepId: step.id)
     }
 }
 
 struct StepTimeline: View {
-    var steps: [StepRelation]
-    
-    @State private var completedSteps: Set<Int> = []
+    @ObservedObject var cookingService = CookingService.shared
+    @Binding var steps: [RecipeStep]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Zubereitung")
-                .font(.subheadline.smallCaps().bold())
-                .foregroundColor(.secondary)
+            let stepsArray = Array($steps.enumerated())
             
-            ForEach(Array(steps.enumerated()), id: \.element.id) { index, stepRelation in
-                let step = stepRelation.RecipeStep
-                let isCompleted = completedSteps.contains(step.id)
+            ForEach(stepsArray, id: \.element.id) { index, $step in
+                let isCompleted = cookingService.isCompleted(stepId: step.id)
                 
                 HStack(alignment: .top) {
                     VStack(spacing: 12) {
                         //MARK: Timeline indicator
-                        TimelineIndicator(completedSteps: $completedSteps, step: .constant(step), isCompleted: .constant(isCompleted))
+                        TimelineIndicator(step: $step)
                         
                         //MARK: Line between Indicators
                         if index < steps.count - 1 {
                             Rectangle()
                                 .fill(.gray)
-                                .frame(maxWidth: 2, maxHeight: .infinity)
+                                .frame(maxWidth: 2, maxHeight: 200)
                         }
                     }
                     
                     // Step content
-                    StepContent(index: index, step: step, isCompleted: .constant(isCompleted))
+                    StepContent(index: index, step: $step)
                     
                 }
                 .opacity(isCompleted ? 0.6 : 1.0)
             }
+        }
+        .onAppear {
+            cookingService.startCooking(steps: steps)
         }
         .padding()
     }
 }
 
 #Preview {
-    let stepRelation = [
-        StepRelation(id: 1, stepId: 1, RecipeStep: RecipeStep(id: 1, title: "Zutaten vorbereiten", description: "Alles klein schneiden und abwiegen.", duration: 10)),
-        StepRelation(id: 2, stepId: 2, RecipeStep: RecipeStep(id: 2, title: "Anbraten", description: "Fleisch scharf anbraten.", duration: 5)),
-        StepRelation(id: 3, stepId: 3, RecipeStep: RecipeStep(id: 3, title: "Soße köcheln", description: "Tomaten und Gewürze hinzufügen, dann 15 Minuten köcheln lassen.", duration: 15))
-    ]
-    StepTimeline(steps: stepRelation)
+    StepTimeline(steps: .constant(Recipe.caesarSalad.hasSteps.compactMap {$0.RecipeStep}))
 }
