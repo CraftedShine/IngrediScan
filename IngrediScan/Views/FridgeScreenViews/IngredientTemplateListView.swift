@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct IngredientTemplateListView: View {
-    @ObservedObject var fridge: MyFridge
+    
+    @State var fridge: MyFridge
     @Environment(\.dismiss) var dismiss
     var ingredientTemplates: [Ingredient] = MockIngredients().ingredients
     @State private var searchText = ""
