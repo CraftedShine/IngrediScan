@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct IngredientOverlayView: View {
-    let ingredient: Ingredient
-    @ObservedObject var fridge: MyFridge
+    
+    let ingredient: IngredientInFridge
+    @State var fridge: MyFridge
     
     let size: CGSize = CGSize(width: 350, height: 350)
     let onClose: () -> Void
@@ -27,12 +28,12 @@ struct IngredientOverlayView: View {
 
                 Spacer()
                 HStack {
-                    TextField(String(format: "%.2f", 0).replacingOccurrences(of: ".00", with: ""),text: $newAmount) // Need to be refactored
+                    TextField(String(format: "%.2f", ingredient.amount).replacingOccurrences(of: ".00", with: ""),text: $newAmount)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    Text("Stk") // Need to be refactored
+                    Text(ingredient.Unit.name)
                         .padding(.trailing)
                 }
 

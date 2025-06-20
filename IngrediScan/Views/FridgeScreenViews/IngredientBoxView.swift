@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IngredientBoxView: View {
-    let ingredient: Ingredient
+    let ingredient: IngredientInFridge
     @Binding var isEditing: Bool
     let onDelete: () -> Void
     @State private var rotationAngle: Double = 0
@@ -20,7 +20,7 @@ struct IngredientBoxView: View {
                 .font(.headline)
                 .padding()
             
-                .frame(width: 100, height: 100)
+                .frame(width: 170, height: 100)
                 .background(Color.white)
                 .cornerRadius(20)
                 .shadow(radius: 5)
@@ -41,7 +41,7 @@ struct IngredientBoxView: View {
                         .scaleEffect(1.4)
                         .padding(5)
                 }
-                .offset(x: 37, y: -37)
+                .offset(x: 69, y: -37)
             }
         }
     }
@@ -71,11 +71,12 @@ struct IngredientBoxView_Previews: PreviewProvider {
 
 struct IngredientBoxPreviewWrapper: View {
     @State private var isEditing = false
+    let ingredient = MockIngredients().ingredients.first!
     
     var body: some View {
         VStack {
             IngredientBoxView(
-                ingredient: MockIngredients().ingredients.first!,
+                ingredient: IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk")),
                 isEditing: $isEditing,
                 onDelete: { }
             )

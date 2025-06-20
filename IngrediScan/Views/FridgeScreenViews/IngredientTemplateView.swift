@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct IngredientTemplateView: View {
+    
     let ingredient: Ingredient
-    @ObservedObject var fridge: MyFridge
+    @State var fridge: MyFridge
     @State private var newAmount: String = ""
     
     
@@ -23,7 +24,7 @@ struct IngredientTemplateView: View {
                 .frame(width: 80)
                 .keyboardType(.decimalPad)
             
-            Text("Stk") // Needs to Refactored
+            Text(ingredient.unit.name)
                 .frame(maxWidth: 32, alignment: .leading)
             
             Button(action: {
@@ -33,7 +34,7 @@ struct IngredientTemplateView: View {
                     .font(.callout)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(Color.blue)
+                    .background(Color.orange)
                     .foregroundColor(.white)
                     .cornerRadius(5)
             }

@@ -7,22 +7,49 @@
 
 import Foundation
 
+
 class MyFridge: ObservableObject {
-    @Published private var ingredients: [Ingredient] = []
+    var ingredients: [IngredientInFridge] = []
     
-    func addIngredient(_ newIngredient: Ingredient) {
-        if ingredients.firstIndex(where: { $0.name == newIngredient.name }) != nil {
-            // ingredients[index].amount += newIngredient.amount
+    func addIngredient(_ newIngredient: IngredientInFridge) {
+        if let index = ingredients.firstIndex(where: { $0.id == newIngredient.id }) {
+            ingredients[index].amount += newIngredient.amount
         } else {
             ingredients.append(newIngredient)
         }
     }
     
-    func removeIngredient(ingredient: Ingredient) {
+    func removeIngredient(ingredient: IngredientInFridge) {
         ingredients.removeAll { $0.id == ingredient.id }
     }
     
-    func getIngredients() -> [Ingredient] {
-        return ingredients
+    func getIngredients() -> [IngredientInFridge] {
+        return ingredients.map { $0 }
     }
+    
+    func ingredientsMissing(recipe: Recipe) -> Int {
+        var missingCount = 0
+        
+        guard let requiredIngredients = recipe.usesIngredients else {
+            return missingCount
+        }
+        
+        for requiredIngredient in requiredIngredients {
+            if let fridgeIngredient = ingredients.first(where: { $0.id == requiredIngredient.ingredientId }) {
+                if fridgeIngredient.amount < requiredIngredient.amount {
+                    missingCount += 1
+                }
+            } else {
+                missingCount += 1
+            }
+        }
+        return missingCount
+    }
+}
+
+struct IngredientInFridge: Codable, Identifiable {
+    let id: Int
+    let name: String
+    var amount: Float
+    let Unit: Unit
 }
