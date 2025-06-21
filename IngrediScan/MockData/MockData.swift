@@ -170,8 +170,8 @@ extension Recipe {
                 UsesIngredient(id: "8", amount: 30, ingredientId: "8", ingredient: Ingredient(id: "8", name: "Parmesan", unitId: "1", unit: Unit(id: "1", name: "g")))
             ],
             hasSteps: [
-                StepRelation(id: "5", stepId: "5", RecipeStep: RecipeStep(id: "5", title: "Salat waschen", description: "Römersalat gründlich waschen und klein zupfen.", duration: 5)),
-                StepRelation(id: "6", stepId: "6", RecipeStep: RecipeStep(id: "6", title: "Dressing hinzufügen", description: "Salat mit Caesar-Dressing vermengen.", duration: 5))
+                StepRelation(id: "5", stepId: "5", RecipeStep: RecipeStep(id: "5", title: "Salat waschen", description: "Römersalat gründlich waschen und klein zupfen.", duration: 1)),
+                StepRelation(id: "6", stepId: "6", RecipeStep: RecipeStep(id: "6", title: "Dressing hinzufügen", description: "Salat mit Caesar-Dressing vermengen.", duration: 2))
             ],
             hasTags: [
                 TagRelation(id: "5", tagId: "5", Tag: Tag.classic),

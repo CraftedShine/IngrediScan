@@ -16,14 +16,16 @@ protocol StylizedButton {
 
 struct CircularButton: View, StylizedButton {
     var title: String? = nil
+    var contentColor: Color?
     var color: Color
     var image: String?
     var action: () -> Void
     
-    init(color: Color, image: String, action: @escaping () -> Void) {
+    init(color: Color, contentColor: Color?, image: String, action: @escaping () -> Void) {
         self.color = color
         self.image = image
         self.action = action
+        self.contentColor = contentColor
     }
     
     var body: some View {
@@ -34,7 +36,7 @@ struct CircularButton: View, StylizedButton {
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .padding(20)
-                    .foregroundStyle(.white)
+                    .foregroundStyle((contentColor != nil) ? contentColor! : .white)
             }
         }
         .background(color)
@@ -69,7 +71,7 @@ struct RoundedRectangularButton: View, StylizedButton {
 }
 
 #Preview {
-    CircularButton(color: .orange, image: "play.fill") {
+    CircularButton(color: .orange, contentColor: .white, image: "play.fill") {
         print("Test")
     }
     

@@ -65,8 +65,12 @@
 		D5EC9EC82DF86E47004C0D3D /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EC72DF86E47004C0D3D /* SectionView.swift */; };
 		D5EC9ECF2E0099F7004C0D3D /* CookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9ECE2E0099F7004C0D3D /* CookingView.swift */; };
 		D5EC9ED12E009F77004C0D3D /* StylizedButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9ED02E009F77004C0D3D /* StylizedButtons.swift */; };
-		D5EC9ED32E01EDA0004C0D3D /* CookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9ED22E01EDA0004C0D3D /* CookingService.swift */; };
-		D5EC9ED72E045D39004C0D3D /* CookingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9ED62E045D39004C0D3D /* CookingTimer.swift */; };
+		D5EC9ED32E01EDA0004C0D3D /* CookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9ED22E01EDA0004C0D3D /* CookingViewModel.swift */; };
+		D5EC9EDF2E06AB32004C0D3D /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EDE2E06AB32004C0D3D /* TimerViewModel.swift */; };
+		D5EC9EE12E06AB63004C0D3D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EE02E06AB63004C0D3D /* TimerView.swift */; };
+		D5EC9EE32E06B1EE004C0D3D /* VibrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EE22E06B1EE004C0D3D /* VibrationService.swift */; };
+		D5EC9EE52E06C6BF004C0D3D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EE42E06C6BF004C0D3D /* NotificationService.swift */; };
+		D5EC9EE92E06D1FC004C0D3D /* AdjustableTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EE82E06D1FC004C0D3D /* AdjustableTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,8 +141,12 @@
 		D5EC9EC72DF86E47004C0D3D /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		D5EC9ECE2E0099F7004C0D3D /* CookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingView.swift; sourceTree = "<group>"; };
 		D5EC9ED02E009F77004C0D3D /* StylizedButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylizedButtons.swift; sourceTree = "<group>"; };
-		D5EC9ED22E01EDA0004C0D3D /* CookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingService.swift; sourceTree = "<group>"; };
-		D5EC9ED62E045D39004C0D3D /* CookingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingTimer.swift; sourceTree = "<group>"; };
+		D5EC9ED22E01EDA0004C0D3D /* CookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingViewModel.swift; sourceTree = "<group>"; };
+		D5EC9EDE2E06AB32004C0D3D /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		D5EC9EE02E06AB63004C0D3D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		D5EC9EE22E06B1EE004C0D3D /* VibrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationService.swift; sourceTree = "<group>"; };
+		D5EC9EE42E06C6BF004C0D3D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		D5EC9EE82E06D1FC004C0D3D /* AdjustableTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +257,6 @@
 				D598DAFB2DE267850093D5C1 /* ToggleFavoriteButton.swift */,
 				D598DAFD2DE271200093D5C1 /* DismissButton.swift */,
 				D5EC9ED02E009F77004C0D3D /* StylizedButtons.swift */,
-				D5EC9ED62E045D39004C0D3D /* CookingTimer.swift */,
 				9D76637C2DFE13B40091BB9A /* StarRatingView.swift */,
 			);
 			path = Components;
@@ -268,6 +275,7 @@
 				D5EC9EC12DF04BB7004C0D3D /* FilterView.swift */,
 				D5EC9EC72DF86E47004C0D3D /* SectionView.swift */,
 				D5EC9ECE2E0099F7004C0D3D /* CookingView.swift */,
+				D5EC9EE02E06AB63004C0D3D /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				D598DAF02DE0D2DF0093D5C1 /* ViewModel.swift */,
+				D5EC9EDE2E06AB32004C0D3D /* TimerViewModel.swift */,
+				D5EC9ED22E01EDA0004C0D3D /* CookingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -313,6 +323,9 @@
 			children = (
 				D5EC9ED22E01EDA0004C0D3D /* CookingService.swift */,
 				D598DAF42DE0D30A0093D5C1 /* DatabaseService.swift */,
+				D5EC9EE22E06B1EE004C0D3D /* VibrationService.swift */,
+				D5EC9EE42E06C6BF004C0D3D /* NotificationService.swift */,
+				D5EC9EE82E06D1FC004C0D3D /* AdjustableTimer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -482,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EC9EE92E06D1FC004C0D3D /* AdjustableTimer.swift in Sources */,
 				9D76637D2DFE13B40091BB9A /* StarRatingView.swift in Sources */,
 				D598DAFA2DE25A4F0093D5C1 /* RecipeImage.swift in Sources */,
 				D58B6B972DD72D4B006EA229 /* (null) in Sources */,
@@ -490,9 +504,11 @@
 				D598DAE32DE0D1FD0093D5C1 /* IngredientTemplateListView.swift in Sources */,
 				9D76637B2DFD73A90091BB9A /* SearchForm.swift in Sources */,
 				D598DAE42DE0D1FD0093D5C1 /* IngredientSelectionView.swift in Sources */,
+				D5EC9EE32E06B1EE004C0D3D /* VibrationService.swift in Sources */,
 				D598DAFC2DE267850093D5C1 /* ToggleFavoriteButton.swift in Sources */,
 				D598DAE52DE0D1FD0093D5C1 /* SearchResultsScreen.swift in Sources */,
-				D5EC9ED32E01EDA0004C0D3D /* CookingService.swift in Sources */,
+				D5EC9ED32E01EDA0004C0D3D /* CookingViewModel.swift in Sources */,
+				D5EC9EDF2E06AB32004C0D3D /* TimerViewModel.swift in Sources */,
 				D598DAF52DE0D30A0093D5C1 /* DatabaseService.swift in Sources */,
 				D598DAE62DE0D1FD0093D5C1 /* SearchScreen.swift in Sources */,
 				D5EC9EC22DF04BB7004C0D3D /* FilterView.swift in Sources */,
@@ -505,6 +521,7 @@
 				D598DACC2DE0D1690093D5C1 /* TagList.swift in Sources */,
 				D598DACD2DE0D1690093D5C1 /* CookingStatistics.swift in Sources */,
 				9D76633C2DF1FFD30091BB9A /* IngredientTemplateView.swift in Sources */,
+				D5EC9EE52E06C6BF004C0D3D /* NotificationService.swift in Sources */,
 				D598DAD52DE0D1A30093D5C1 /* RecipeDetailView.swift in Sources */,
 				D598DACF2DE0D1690093D5C1 /* IngredientList.swift in Sources */,
 				D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */,
@@ -517,10 +534,11 @@
 				D58C197F2DDDFA5B00151F36 /* (null) in Sources */,
 				D58C197A2DDDF67F00151F36 /* (null) in Sources */,
 				D5EC9ED72E045D39004C0D3D /* CookingTimer.swift in Sources */,
+				D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */,
+				D5EC9EE12E06AB63004C0D3D /* TimerView.swift in Sources */,
 				9D76637F2DFE16FB0091BB9A /* Search.swift in Sources */,
 				D598DAEF2DE0D2410093D5C1 /* HomeScreen.swift in Sources */,
 				D5EC9ED12E009F77004C0D3D /* StylizedButtons.swift in Sources */,
-				D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */,
 				D58B6B5E2DCDF720006EA229 /* FridgeScreen.swift in Sources */,
 				D5EC9EC82DF86E47004C0D3D /* SectionView.swift in Sources */,
 				D58B6B632DCDF720006EA229 /* ContentView.swift in Sources */,

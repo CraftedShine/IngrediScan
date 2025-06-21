@@ -10,6 +10,7 @@ import Supabase
 
 struct ContentView: View {
     @State private var selectedTab: Int = 0
+    private var fridge = MyFridge()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -40,5 +41,14 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
+}
+
+extension View {
+    func withPreviewEnvironmentObjects() -> some View {
+        self
+            .environmentObject(ViewModel())
+            .environmentObject(CookingViewModel())
+            .environmentObject(TimerViewModel())
+    }
 }
