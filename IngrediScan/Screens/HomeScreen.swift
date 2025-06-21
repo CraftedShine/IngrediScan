@@ -75,6 +75,7 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $randomRecipeVisible) {
                         RecipeDetailView(recipe: $viewModel.recipes.shuffled().first!)
+                            .presentationBackgroundInteraction(.disabled)
                     }
                 }
             }
