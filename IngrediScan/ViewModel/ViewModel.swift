@@ -21,8 +21,6 @@ class ViewModel: ObservableObject {
     @Published var ingredients: [Ingredient] = []
     @Published var tags: [Tag] = []
     @Published var fridge: MyFridge = MyFridge()
-    
-    @Published var favoriteIDs: [String] = []
     @Published var fridgeIngredientsIDs: [String: Float] = [:]
     
     init() {
@@ -69,12 +67,12 @@ class ViewModel: ObservableObject {
         favoriteIDs = UserDefaults.standard.stringArray(forKey: favoritesKey) ?? []
     }
     
-    // MARK: - Favoriten speichern
+    // MARK: - Save Favorites
     private func saveFavorites() {
         UserDefaults.standard.set(favoriteIDs, forKey: favoritesKey)
     }
     
-    // MARK: - Favorit hinzufügen/entfernen
+    // MARK: - Add / Remove Favorite
     func toggleFavorite(for recipe: Recipe) {
         if let index = favoriteIDs.firstIndex(of: recipe.id) {
             favoriteIDs.remove(at: index)
@@ -84,12 +82,12 @@ class ViewModel: ObservableObject {
         saveFavorites()
     }
     
-    // MARK: - Ist Rezept ein Favorit?
+    // MARK: - Is Favorite?
     func isFavorite(_ recipe: Recipe) -> Bool {
         favoriteIDs.contains(recipe.id)
     }
     
-    // MARK: - Gefilterte Favoritenrezepte
+    // MARK: - Filtered Recipes
     var favoriteRecipes: [Recipe] {
         recipes.filter { favoriteIDs.contains($0.id) }
     }
@@ -115,35 +113,6 @@ class ViewModel: ObservableObject {
     
     private func saveFridge() {
         UserDefaults.standard.set(fridgeIngredientsIDs, forKey: fridgeIngredientsKeys)
-    }
-    
-    private func loadFavorites() {
-        favoriteIDs = UserDefaults.standard.stringArray(forKey: favoritesKey) ?? []
-    }
-    
-    // MARK: - Favoriten speichern
-    private func saveFavorites() {
-        UserDefaults.standard.set(favoriteIDs, forKey: favoritesKey)
-    }
-    
-    // MARK: - Favorit hinzufügen/entfernen
-    func toggleFavorite(for recipe: Recipe) {
-        if let index = favoriteIDs.firstIndex(of: recipe.id) {
-            favoriteIDs.remove(at: index)
-        } else {
-            favoriteIDs.append(recipe.id)
-        }
-        saveFavorites()
-    }
-    
-    // MARK: - Ist Rezept ein Favorit?
-    func isFavorite(_ recipe: Recipe) -> Bool {
-        favoriteIDs.contains(recipe.id)
-    }
-    
-    // MARK: - Gefilterte Favoritenrezepte
-    var favoriteRecipes: [Recipe] {
-        recipes.filter { favoriteIDs.contains($0.id) }
     }
     
     public func editIngredientInFridge(ingredientId: String, amount: Float, ingredient: IngredientInFridge) {
