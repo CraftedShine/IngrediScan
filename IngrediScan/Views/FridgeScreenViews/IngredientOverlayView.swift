@@ -48,7 +48,7 @@ struct IngredientOverlayView: View {
                         onClose()
                     }
                     .padding()
-                    .background(Color.blue)
+                    .background(Color.orange)
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .padding()
@@ -61,6 +61,7 @@ struct IngredientOverlayView: View {
                         onClose()
                     }
                     .padding()
+                    .foregroundColor(.orange)
                 }
             }
             
@@ -70,7 +71,7 @@ struct IngredientOverlayView: View {
                     Spacer()
                     Button(action: { onClose() }) {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.red)
+                            .foregroundColor(.orange)
                             .scaleEffect(2)
                     }
                     .padding()
@@ -79,7 +80,7 @@ struct IngredientOverlayView: View {
             }
         }
         .frame(width: size.width, height: size.height)
-        .background(Color.white)
+        .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(25)
         .shadow(radius: 10)
     }

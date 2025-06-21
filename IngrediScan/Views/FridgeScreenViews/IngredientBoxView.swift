@@ -21,7 +21,7 @@ struct IngredientBoxView: View {
                 .padding()
             
                 .frame(width: 170, height: 100)
-                .background(Color.white)
+                .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(20)
                 .shadow(radius: 5)
                 .rotationEffect(.degrees(rotationAngle))
