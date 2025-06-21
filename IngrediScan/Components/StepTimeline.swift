@@ -62,6 +62,10 @@ struct TimelineIndicator: View {
     var isCompleted: Bool {
         return cookingViewModel.isCompleted(stepId: step.id)
     }
+    
+    var isCompleted: Bool {
+        return cookingService.isCompleted(stepId: step.id)
+    }
 }
 
 struct StepTimeline: View {
