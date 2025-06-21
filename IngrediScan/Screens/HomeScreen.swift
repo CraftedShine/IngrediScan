@@ -18,13 +18,19 @@ struct HomeView: View {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        SectionView(recipes: viewModel.recipes.shuffled(), title: "Empfohlen für dich")
-                        SectionView(recipes: viewModel.recipes.shuffled().filter {
+                        let recommended = self.viewModel.recipes.shuffled()
+                        SectionView(recipes: recommended, title: "Empfohlen für dich")
+                        
+                        let classics = self.viewModel.recipes.shuffled().filter {
                             containsTag(recipe: $0, tag: "Klassiker")
-                        }, title: "Klassiker")
-                        SectionView(recipes: viewModel.recipes.shuffled().filter {
+                        }
+                        
+                        SectionView(recipes: classics, title: "Klassiker")
+                        
+                        let vegetarian = self.viewModel.recipes.shuffled().filter {
                             containsTag(recipe: $0, tag: "Vegetarisch")
-                        }, title: "Vegetarisch")
+                        }
+                        SectionView(recipes: vegetarian, title: "Vegetarisch")
                     }
                 }
             }
@@ -83,9 +89,7 @@ struct HomeView: View {
     }
     
     private func containsTag(recipe: Recipe, tag: String) -> Bool {
-        return recipe.hasTags.filter {
-            $0.Tag.name == tag
-        }.isEmpty
+        return recipe.hasTags.contains { $0.Tag.name == tag }
     }
 }
 

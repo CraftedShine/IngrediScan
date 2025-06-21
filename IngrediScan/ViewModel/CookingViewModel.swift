@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
+@MainActor
 class CookingViewModel: ObservableObject {
     @Published private var completedSteps: Set<Int> = []
     @Published private var recipeSteps: [RecipeStep] = []
