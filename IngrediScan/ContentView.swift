@@ -42,5 +42,14 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
+}
+
+extension View {
+    func withPreviewEnvironmentObjects() -> some View {
+        self
+            .environmentObject(ViewModel())
+            .environmentObject(CookingViewModel())
+            .environmentObject(TimerViewModel())
+    }
 }

@@ -62,5 +62,5 @@ struct RecipeDetailView: View {
 
 #Preview {
     RecipeDetailView(recipe: .constant(Recipe.pizzaMargherita))
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
 }

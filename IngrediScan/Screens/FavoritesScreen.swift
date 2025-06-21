@@ -83,4 +83,5 @@ struct FavoritesScreen: View {
 
 #Preview {
     FavoritesScreen()
+        .withPreviewEnvironmentObjects()
 }
