@@ -110,7 +110,7 @@ struct StepTimeline: View {
 }
 
 #Preview {
-    let steps: [RecipeStep] = [RecipeStep(id: "1", title: "Beispiel", description: "Das ist ein Beispielschritt", duration: 10), RecipeStep(id: "1", title: "Beispiel", description: "Das ist ein Beispielschritt", duration: 10)]
+    let steps: [RecipeStep] = Recipe.spaghettiCarbonara.hasSteps.compactMap { $0.RecipeStep }
     
     StepTimeline(steps: .constant(steps))
         .withPreviewEnvironmentObjects()

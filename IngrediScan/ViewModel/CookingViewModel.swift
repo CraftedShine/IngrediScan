@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 class CookingViewModel: ObservableObject {
-    @Published private var completedSteps: Set<String> = []
+    @Published private var completedSteps: Set<Int> = []
     @Published private var recipeSteps: [RecipeStep] = []
     @Published private var currentStepIndex: Int = 0
     
@@ -28,11 +28,11 @@ class CookingViewModel: ObservableObject {
         currentStepIndex = 0
     }
     
-    func isCompleted(stepId: String) -> Bool {
+    func isCompleted(stepId: Int) -> Bool {
         return completedSteps.contains(stepId)
     }
     
-    func toggleStep(_ stepId: String) {
+    func toggleStep(_ stepId: Int) {
         if completedSteps.contains(stepId) {
             completedSteps.remove(stepId)
             previousStep()

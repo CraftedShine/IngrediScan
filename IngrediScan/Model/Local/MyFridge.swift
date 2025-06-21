@@ -45,7 +45,7 @@ class MyFridge: ObservableObject {
 }
 
 struct IngredientInFridge: Codable, Identifiable {
-    let id: String
+    let id: Int
     let name: String
     var amount: Float
     let Unit: Unit

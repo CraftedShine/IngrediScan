@@ -8,7 +8,7 @@
 import Foundation
 
 struct Recipe: Codable, Identifiable {
-    let id: String
+    let id: Int
     var name: String
     let imageUrl: String
     let rating: Float
@@ -16,7 +16,7 @@ struct Recipe: Codable, Identifiable {
     let calories: Int
     let annotation: String
     let difficulty: String
-    let categoryId: String
+    let categoryId: Int
     
     var category: Category
     var usesIngredients: [UsesIngredient]
@@ -37,14 +37,14 @@ struct Recipe: Codable, Identifiable {
 }
 
 struct Category: Codable, Identifiable {
-    let id: String
+    let id: Int
     let name: String
 }
 
 struct UsesIngredient: Codable, Hashable, Identifiable {
-    let id: String
+    let id: Int
     let amount: Float
-    let ingredientId: String
+    let ingredientId: Int
     let ingredient: Ingredient
     
     enum CodingKeys: String, CodingKey {
@@ -56,25 +56,25 @@ struct UsesIngredient: Codable, Hashable, Identifiable {
 }
 
 struct Ingredient: Codable, Hashable, Identifiable {
-    let id: String
+    let id: Int
     let name: String
-    var unitId: String
+    var unitId: Int
     var unit: Unit
 }
 
 struct Unit: Codable, Hashable {
-    let id: String
+    let id: Int
     let name: String
 }
 
 struct StepRelation: Codable {
-    let id: String
-    let stepId: String
+    let id: Int
+    let stepId: Int
     var RecipeStep: RecipeStep
 }
 
 struct RecipeStep: Codable, Hashable, Identifiable {
-    let id: String
+    let id: Int
     let title: String
     let description: String
     var duration: Int
@@ -90,13 +90,13 @@ struct RecipeStep: Codable, Hashable, Identifiable {
 }
 
 struct TagRelation: Codable, Hashable {
-    let id: String
-    let tagId: String
+    let id: Int
+    let tagId: Int
     let Tag: Tag
 }
 
 struct Tag: Codable, Hashable {
-    let id: String
+    let id: Int
     let name: String
     
     var isSelected: Bool = false

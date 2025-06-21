@@ -16,19 +16,19 @@ class ViewModel: ObservableObject {
     private let fridgeIngredientsKeys = "fridgeIngredientsKeys"
     
     @Published var recipes: [Recipe] = []
-    @Published var favoriteIDs: [String] = []
+    @Published var favoriteIDs: [Int] = []
     @Published var categories: [Category] = []
     @Published var ingredients: [Ingredient] = []
     @Published var tags: [Tag] = []
     @Published var fridge: MyFridge = MyFridge()
-    @Published var fridgeIngredientsIDs: [String: Float] = [:]
+    @Published var fridgeIngredientsIDs: [Int: Float] = [:]
     
     init() {
 #if targetEnvironment(simulator)
         recipes = [Recipe.spaghettiCarbonara, Recipe.pizzaMargherita, Recipe.caesarSalad, Recipe.cheesecake].shuffled()
         tags = [Tag.italian, Tag.classic, Tag.vegetarian, Tag.light, Tag.sweet, Tag.oven]
         categories = [Category.pasta, Category.pizza, Category.salad, Category.dessert]
-        ingredients = [Ingredient(id: "9", name: "Quark", unitId: "2", unit: Unit(id: "2", name: "g")), Ingredient(id: "10", name: "Zucker", unitId: "1", unit: Unit(id: "1", name: "Prise")), Ingredient(id: "11", name: "Eier", unitId: "1", unit: Unit(id: "1", name: "Stk"))]
+        ingredients = [Ingredient(id: 9, name: "Quark", unitId: 2, unit: Unit(id: 2, name: "g")), Ingredient(id: 10, name: "Zucker", unitId: 1, unit: Unit(id: 1, name: "Prise")), Ingredient(id: 11, name: "Eier", unitId: 1, unit: Unit(id: 1, name: "Stk"))]
         self.loadFavorites()
         self.loadFridge()
 #else
@@ -64,7 +64,7 @@ class ViewModel: ObservableObject {
     }
     
     private func loadFavorites() {
-        favoriteIDs = UserDefaults.standard.stringArray(forKey: favoritesKey) ?? []
+        favoriteIDs = UserDefaults.standard.array(forKey: favoritesKey) as? [Int] ?? []
     }
     
     // MARK: - Save Favorites
@@ -93,7 +93,7 @@ class ViewModel: ObservableObject {
     }
     
     private func loadFridge() {
-        if let savedData = UserDefaults.standard.dictionary(forKey: fridgeIngredientsKeys) as? [String: Float] {
+        if let savedData = UserDefaults.standard.dictionary(forKey: fridgeIngredientsKeys) as? [Int: Float] {
             fridgeIngredientsIDs = savedData
             fridge.ingredients.removeAll()
             
@@ -115,7 +115,7 @@ class ViewModel: ObservableObject {
         UserDefaults.standard.set(fridgeIngredientsIDs, forKey: fridgeIngredientsKeys)
     }
     
-    public func editIngredientInFridge(ingredientId: String, amount: Float, ingredient: IngredientInFridge) {
+    public func editIngredientInFridge(ingredientId: Int, amount: Float, ingredient: IngredientInFridge) {
         guard amount != 0 else { return }
 
         if let currentAmount = fridgeIngredientsIDs[ingredientId] {

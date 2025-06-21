@@ -41,6 +41,5 @@ extension Float {
 }
 
 #Preview {
-    let ingredientUsage = [UsesIngredient(id: "1", amount: 1, ingredientId: "1", ingredient: Ingredient(id: "1", name: "Spaghetti", unitId: "1", unit: Unit(id: "1", name: "Stk")))]
-    IngredientList(ingredientUsage: ingredientUsage)
+    IngredientList(ingredientUsage: Recipe.cheesecake.usesIngredients)
 }
