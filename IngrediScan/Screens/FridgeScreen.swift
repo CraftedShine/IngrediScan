@@ -50,7 +50,7 @@ struct FridgeScreen: View {
                                 .resizable()
                                 .frame(width: 60, height: 60)
                                 .foregroundColor(.orange)
-                                .padding(.trailing, 20)
+                                .padding(.trailing, 4)
                         }
                         .padding()
                         .sheet(isPresented: $showIngredientSheet) {
