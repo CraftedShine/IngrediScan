@@ -321,6 +321,7 @@
 		D58C197D2DDDFA4300151F36 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D5EC9ED22E01EDA0004C0D3D /* CookingService.swift */,
 				D598DAF42DE0D30A0093D5C1 /* DatabaseService.swift */,
 				D5EC9EE22E06B1EE004C0D3D /* VibrationService.swift */,
 				D5EC9EE42E06C6BF004C0D3D /* NotificationService.swift */,
@@ -505,6 +506,7 @@
 				D598DAE42DE0D1FD0093D5C1 /* IngredientSelectionView.swift in Sources */,
 				D5EC9EE32E06B1EE004C0D3D /* VibrationService.swift in Sources */,
 				D598DAFC2DE267850093D5C1 /* ToggleFavoriteButton.swift in Sources */,
+				D598DAE52DE0D1FD0093D5C1 /* SearchResultsScreen.swift in Sources */,
 				D5EC9ED32E01EDA0004C0D3D /* CookingViewModel.swift in Sources */,
 				D5EC9EDF2E06AB32004C0D3D /* TimerViewModel.swift in Sources */,
 				D598DAF52DE0D30A0093D5C1 /* DatabaseService.swift in Sources */,
@@ -531,11 +533,12 @@
 				D5EC9EC42DF2D945004C0D3D /* Model.swift in Sources */,
 				D58C197F2DDDFA5B00151F36 /* (null) in Sources */,
 				D58C197A2DDDF67F00151F36 /* (null) in Sources */,
+				D5EC9ED72E045D39004C0D3D /* CookingTimer.swift in Sources */,
+				D58B6B5E2DCDF720006EA229 /* MyFridgeScreen.swift in Sources */,
 				D5EC9EE12E06AB63004C0D3D /* TimerView.swift in Sources */,
 				9D76637F2DFE16FB0091BB9A /* Search.swift in Sources */,
 				D598DAEF2DE0D2410093D5C1 /* HomeScreen.swift in Sources */,
 				D5EC9ED12E009F77004C0D3D /* StylizedButtons.swift in Sources */,
-				D58B6B5E2DCDF720006EA229 /* FridgeScreen.swift in Sources */,
 				D58B6B5E2DCDF720006EA229 /* FridgeScreen.swift in Sources */,
 				D5EC9EC82DF86E47004C0D3D /* SectionView.swift in Sources */,
 				D58B6B632DCDF720006EA229 /* ContentView.swift in Sources */,

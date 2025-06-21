@@ -10,8 +10,8 @@ import SwiftUI
 
 struct IngredientOverlayView: View {
     
+    @EnvironmentObject var viewModel: ViewModel
     let ingredient: IngredientInFridge
-    @State var fridge: MyFridge
     
     let size: CGSize = CGSize(width: 350, height: 350)
     let onClose: () -> Void
@@ -41,13 +41,9 @@ struct IngredientOverlayView: View {
                 // save button
                 HStack {
                     Button("Speichern") {
-                        if let amount = Double(newAmount) {
-                            if amount > 0 {
-                                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), Unit: ingredient.Unit)
-                                fridge.addIngredient(ingredientToAdd)
-                            } else {
-                                fridge.removeIngredient(ingredient: ingredient)
-                            }
+                        if let amount = Float(newAmount) {
+                            let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: amount-ingredient.amount, Unit: ingredient.Unit)
+                            viewModel.editIngredientInFridge(ingredientId: ingredientToAdd.id, amount: ingredientToAdd.amount, ingredient: ingredientToAdd)
                         }
                         onClose()
                     }
@@ -60,7 +56,8 @@ struct IngredientOverlayView: View {
                     
                     // delete button
                     Button("Löschen") {
-                        fridge.removeIngredient(ingredient: ingredient)
+                        let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: ingredient.amount * -1, Unit: ingredient.Unit)
+                        viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredientToAdd)
                         onClose()
                     }
                     .padding()
