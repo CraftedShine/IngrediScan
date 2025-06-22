@@ -11,6 +11,7 @@ struct ShoppingListScreen: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var shoppingListViewModel: ShoppingListViewModel
     @State private var showConfirmation: Bool = false
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         NavigationView {
@@ -26,10 +27,18 @@ struct ShoppingListScreen: View {
                 
                 ShoppingItemForm()
                     .padding(.bottom)
+                    .focused($isTextFieldFocused)
             }
             .padding(.top)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    
+                    Button("Fertig") {
+                        isTextFieldFocused = false
+                    }
+                }
                 ToolbarItem(placement: .principal) {
                     Text("Einkaufsliste")
                         .font(.title .bold() .smallCaps())

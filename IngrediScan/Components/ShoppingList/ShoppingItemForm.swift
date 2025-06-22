@@ -12,6 +12,7 @@ struct ShoppingItemForm: View {
     @EnvironmentObject private var shoppingListViewModel: ShoppingListViewModel
     @State private var selection: Int = 9
     @State private var selectedAmount: Int?
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -40,6 +41,7 @@ struct ShoppingItemForm: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.subheadline .bold())
                     .foregroundStyle(.secondary)
+                    .focused($isTextFieldFocused)
                 
                 if let ingredient = viewModel.getIngredient(selection) {
                     Text(ingredient.unit.name)
@@ -53,6 +55,8 @@ struct ShoppingItemForm: View {
                             let newItem = ShoppingItem(ingredientId: selection, amount: amount)
                             
                             shoppingListViewModel.addItem(newItem)
+                            isTextFieldFocused = false
+                            selectedAmount = nil
                         }
                         
                     } label: {
