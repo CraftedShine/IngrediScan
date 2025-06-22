@@ -74,6 +74,7 @@
 		D5EC9EF32E080997004C0D3D /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF22E080997004C0D3D /* ShoppingListViewModel.swift */; };
 		D5EC9EF62E082537004C0D3D /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF52E08252F004C0D3D /* ShoppingListItem.swift */; };
 		D5EC9EF82E082BE7004C0D3D /* ShoppingItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF72E082BE1004C0D3D /* ShoppingItemForm.swift */; };
+		D5EC9EFA2E086D93004C0D3D /* AppLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF92E086D93004C0D3D /* AppLoadingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		D5EC9EF22E080997004C0D3D /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
 		D5EC9EF52E08252F004C0D3D /* ShoppingListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
 		D5EC9EF72E082BE1004C0D3D /* ShoppingItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemForm.swift; sourceTree = "<group>"; };
+		D5EC9EF92E086D93004C0D3D /* AppLoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 				D598DAD62DE0D1FD0093D5C1 /* FavoritesScreen.swift */,
 				D598DAE12DE0D1FD0093D5C1 /* SearchScreen.swift */,
 				D5EC9EEE2E08087B004C0D3D /* ShoppingListScreen.swift */,
+				D5EC9EF92E086D93004C0D3D /* AppLoadingScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				D598DAEC2DE0D1FD0093D5C1 /* IngredientSearchPickerView.swift in Sources */,
 				D598DACB2DE0D1690093D5C1 /* RecipeCard.swift in Sources */,
 				D598DACC2DE0D1690093D5C1 /* TagList.swift in Sources */,
+				D5EC9EFA2E086D93004C0D3D /* AppLoadingScreen.swift in Sources */,
 				D5EC9EF32E080997004C0D3D /* ShoppingListViewModel.swift in Sources */,
 				D598DACD2DE0D1690093D5C1 /* CookingStatistics.swift in Sources */,
 				9D76633C2DF1FFD30091BB9A /* IngredientTemplateView.swift in Sources */,

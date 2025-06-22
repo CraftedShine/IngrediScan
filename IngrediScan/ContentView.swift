@@ -8,42 +8,60 @@
 import SwiftUI
 import Supabase
 
-struct ContentView: View {
-    @EnvironmentObject var viewModel: ViewModel
+struct MainView: View {
     @State private var selectedTab: Int = 0
     private var fridge = MyFridge()
-    
     var body: some View {
         TabView(selection: $selectedTab) {
-            if !viewModel.recipes.isEmpty {
-                HomeView()
-                    .tabItem{
-                        Label("Home", systemImage: "house.fill")
-                    }
-                    .tag(0)
-                SearchScreen()
-                    .tabItem
-                {
-                    Label("Suche", systemImage: "magnifyingglass")
-                }.tag(1)
-                ShoppingListScreen()
-                    .tabItem {
-                        Label("Einkaufsliste", systemImage: "cart.fill")
-                    }
-                    .tag(2)
-                FavoritesScreen()
-                    .tabItem {
-                        Label("Favoriten", systemImage: "star.fill")
-                    }.tag(3)
-                FridgeScreen()
-                    .tabItem{
-                        Label("Kühlschrank", systemImage: "storefront.fill")
-                    }.tag(4)
-            }
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
+            SearchScreen()
+                .tabItem
+            {
+                Label("Suche", systemImage: "magnifyingglass")
+            }.tag(1)
+            ShoppingListScreen()
+                .tabItem {
+                    Label("Einkaufsliste", systemImage: "cart.fill")
+                }
+                .tag(2)
+            FavoritesScreen()
+                .tabItem {
+                    Label("Favoriten", systemImage: "star.fill")
+                }.tag(3)
+            FridgeScreen()
+                .tabItem {
+                    Label("Kühlschrank", systemImage: "storefront.fill")
+                }.tag(4)
         }
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
         .statusBar(hidden: false)
+    }
+}
+
+struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @State private var showLoadingScreen: Bool = true
+    
+    var body: some View {
+        ZStack {
+            if !showLoadingScreen && !viewModel.recipes.isEmpty {
+                MainView()
+            } else {
+                AppLoadingScreen()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    showLoadingScreen = false
+                }
+            }
+        }
     }
 }
 
