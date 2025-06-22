@@ -189,7 +189,7 @@ extension Recipe {
             duration: 90,
             calories: 1200,
             annotation: "Cremiger Klassiker",
-            difficulty: "Schwierig",
+            difficulty: "Schwer",
             categoryId: 4,
             category: Category(id: 4, name: "Dessert"),
             usesIngredients: [

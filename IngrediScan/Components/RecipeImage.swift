@@ -12,11 +12,31 @@ struct RecipeImage : View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack {
-                Image(recipe.imageUrl)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaledToFit()
-                    .overlay(Color.black.opacity(0.3))
+                AsyncImage(url: URL(string: recipe.imageUrl)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .overlay(Color.black.opacity(0.3))
+                    case .failure(_):
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .overlay(Color.black.opacity(0.3))
+                    @unknown default:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .overlay(Color.black.opacity(0.3))
+                    }
+                }
+                
                 
                 Text(recipe.name)
                     .font(.largeTitle .bold() .smallCaps())
