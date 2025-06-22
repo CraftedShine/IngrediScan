@@ -38,17 +38,8 @@ struct HomeView: View {
             .toolbar {
                 //MARK: Best Rated Recipe
                 ToolbarItem(placement: .cancellationAction) {
-                    Button {
+                    CircularButton(size: 20, padding: 10, color: Color.orange.opacity(0.75), image: "heart.fill") {
                         bestRatedRecipeVisible.toggle()
-                    } label: {
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
                     }
                     .sheet(isPresented: $bestRatedRecipeVisible) {
                         let bestRatedRecipe = $viewModel.recipes.sorted {
@@ -67,17 +58,8 @@ struct HomeView: View {
                 
                 //MARK: Random Recipe
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
+                    CircularButton(size: 20, padding: 10, color: Color.orange.opacity(0.75), image: "shuffle") {
                         randomRecipeVisible.toggle()
-                    } label: {
-                        Image(systemName: "shuffle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
                     }
                     .sheet(isPresented: $randomRecipeVisible) {
                         RecipeDetailView(recipe: $viewModel.recipes.shuffled().first!)

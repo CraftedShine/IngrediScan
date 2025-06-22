@@ -65,11 +65,6 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .withPreviewEnvironmentObjects()
-}
-
 extension View {
     func withPreviewEnvironmentObjects() -> some View {
         self
@@ -79,3 +74,9 @@ extension View {
             .environmentObject(ShoppingListViewModel())
     }
 }
+
+#Preview {
+    ContentView()
+        .withPreviewEnvironmentObjects()
+}
+

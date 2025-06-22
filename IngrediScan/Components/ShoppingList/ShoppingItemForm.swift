@@ -50,7 +50,7 @@ struct ShoppingItemForm: View {
                     
                     Spacer()
                     
-                    Button {
+                    CircularButton(size: 20, padding: 10,color: .green, image: "plus") {
                         if let amount = selectedAmount {
                             let newItem = ShoppingItem(ingredientId: selection, amount: amount)
                             
@@ -58,14 +58,7 @@ struct ShoppingItemForm: View {
                             isTextFieldFocused = false
                             selectedAmount = nil
                         }
-                        
-                    } label: {
-                        Image(systemName: "plus")
-                            .padding(12)
-                            .background(.green)
-                            .clipShape(Circle())
                     }
-                    .foregroundStyle(.white)
                 }
             }
         }

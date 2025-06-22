@@ -35,27 +35,15 @@ struct ShoppingListItem: View {
                 Spacer()
                 
                 //MARK: Toggle Item
-                Button {
+                CircularButton(size: 20, padding: 10, color: item.isBought ? .red : .green, image: item.isBought ? "xmark" : "checkmark") {
                     shoppingListViewModel.toggleItem(item)
-                } label: {
-                    Image(systemName: item.isBought ? "xmark" : "checkmark")
-                        .padding(12)
-                        .background(item.isBought ? .red : .green)
-                        .clipShape(Circle())
                 }
-                .foregroundStyle(.white)
                 
                 //MARK: Delete Item
                 if item.isBought {
-                    Button {
+                    CircularButton(size: 20, padding: 10, color: item.isBought ? .red : .green, image: "trash") {
                         shoppingListViewModel.deleteItem(item)
-                    } label: {
-                        Image(systemName: "trash")
-                            .padding(12)
-                            .background(item.isBought ? .red : .green)
-                            .clipShape(Circle())
                     }
-                    .foregroundStyle(.white)
                 }
             }
             .padding()

@@ -44,17 +44,8 @@ struct ShoppingListScreen: View {
                         .font(.title .bold() .smallCaps())
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
+                    CircularButton(size: 20, padding: 10, color: .orange, image: "xmark") {
                         showConfirmation.toggle()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
                     }
                     .confirmationDialog("Möchtest du Liste wirklich leeren?", isPresented: $showConfirmation, titleVisibility: .visible) {
                         Button("Löschen", role: .destructive) {
