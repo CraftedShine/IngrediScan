@@ -28,7 +28,7 @@ class ViewModel: ObservableObject {
         recipes = [Recipe.spaghettiCarbonara, Recipe.pizzaMargherita, Recipe.caesarSalad, Recipe.cheesecake].shuffled()
         tags = [Tag.italian, Tag.classic, Tag.vegetarian, Tag.light, Tag.sweet, Tag.oven]
         categories = [Category.pasta, Category.pizza, Category.salad, Category.dessert]
-        ingredients = [Ingredient(id: 9, name: "Quark", unitId: 2, unit: Unit(id: 2, name: "g")), Ingredient(id: 10, name: "Zucker", unitId: 1, unit: Unit(id: 1, name: "Prise")), Ingredient(id: 11, name: "Eier", unitId: 1, unit: Unit(id: 1, name: "Stk"))]
+        ingredients = [Ingredient(id: 9, name: "Quark", unitId: 2, unit: Unit(id: 2, name: "g")), Ingredient(id: 10, name: "Zucker", unitId: 2, unit: Unit(id: 2, name: "g")), Ingredient(id: 11, name: "Eier", unitId: 1, unit: Unit(id: 1, name: "Stk"))]
 #else
         Task {
             await loadRecipes()
@@ -65,6 +65,10 @@ class ViewModel: ObservableObject {
     
     func loadFavorites() {
         favoriteIDs = UserDefaults.standard.array(forKey: favoritesKey) as? [Int] ?? []
+    }
+    
+    func getIngredient(_ id: Int) -> Ingredient? {
+        return ingredients.first(where: { $0.id == id })
     }
     
     // MARK: - Save Favorites

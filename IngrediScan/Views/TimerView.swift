@@ -11,7 +11,7 @@ struct InlineTimerView: View {
     @EnvironmentObject private var viewModel: TimerViewModel
     
     var body: some View {
-        HStack(spacing: 30) {
+        HStack {
             VStack(alignment: .leading) {
                 Text(formatTime(viewModel.remainingTime))
                     .font(.largeTitle)
@@ -23,6 +23,8 @@ struct InlineTimerView: View {
                         .foregroundColor(.gray)
                 }
             }
+            
+            Spacer()
             
             ZStack {
                 Circle()
@@ -36,24 +38,17 @@ struct InlineTimerView: View {
                 
                 //MARK: Play/Pause Button
                 
-                Button {
+                CircularButton(size: 20, padding: 15, color: .clear, contentColor: isRunning ? .orange : .green, image: isRunning ? "pause.fill" : "play.fill") {
                     if !isRunning {
                         viewModel.start()
                     } else {
                         viewModel.pause()
                     }
-                } label: {
-                    Image(systemName: isRunning ? "pause.fill" : "play.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .padding(15)
-                        .foregroundStyle(isRunning ? .orange : .green)
                 }
-                .background(.clear)
-                .clipShape(Circle())
             }
             .frame(width: 20, height: 20)
+            
+            Spacer()
             
             HStack {
                 RoundedRectangularButton(title: "Neustarten", color: .orange) {
@@ -65,6 +60,7 @@ struct InlineTimerView: View {
         .padding()
         .background(Color(uiColor: UIColor.secondarySystemFill))
         .clipShape(RoundedRectangle(cornerRadius: 16))
+        .frame(width: .infinity)
     }
     
     var isRunning: Bool {

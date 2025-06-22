@@ -27,7 +27,7 @@ struct CookingView: View {
                 .font(.subheadline.smallCaps().bold())
                 .foregroundColor(.secondary)
             
-            VStack {
+            VStack(alignment: .leading) {
                 if !cookingViewModel.isFinished {
                     InlineTimerView()
                 }
@@ -46,6 +46,8 @@ struct CookingView: View {
             }
         }
         .onAppear {
+            NotificationService.shared.requestPermission()
+            
             if let firstStep = self.recipeSteps.first {
                 timerViewModel.setTime(to: TimeInterval(firstStep.duration * 60))
                 self.isCooking = true

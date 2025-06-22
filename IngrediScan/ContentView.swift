@@ -8,33 +8,34 @@
 import SwiftUI
 import Supabase
 
-struct ContentView: View {
-    @EnvironmentObject var viewModel: ViewModel
+struct MainView: View {
     @State private var selectedTab: Int = 0
     private var fridge = MyFridge()
-    
     var body: some View {
         TabView(selection: $selectedTab) {
-            if !viewModel.recipes.isEmpty {
-                HomeView()
-                    .tabItem{
-                        Label("Home", systemImage: "house.fill")
-                    }
-                    .tag(0)
-                SearchScreen()
-                    .tabItem
-                {
-                    Label("Search", systemImage: "magnifyingglass")
-                }.tag(1)
-                FavoritesScreen()
-                    .tabItem {
-                        Label("Favorites", systemImage: "star.fill")
-                    }.tag(2)
-                FridgeScreen()
-                    .tabItem{
-                        Label("My Fridge", systemImage: "storefront.fill")
-                    }.tag(3)
-            }
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
+            SearchScreen()
+                .tabItem
+            {
+                Label("Suche", systemImage: "magnifyingglass")
+            }.tag(1)
+            ShoppingListScreen()
+                .tabItem {
+                    Label("Einkaufsliste", systemImage: "cart.fill")
+                }
+                .tag(2)
+            FavoritesScreen()
+                .tabItem {
+                    Label("Favoriten", systemImage: "star.fill")
+                }.tag(3)
+            FridgeScreen()
+                .tabItem {
+                    Label("Kühlschrank", systemImage: "storefront.fill")
+                }.tag(4)
         }
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
@@ -42,9 +43,26 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .withPreviewEnvironmentObjects()
+struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @State private var showLoadingScreen: Bool = true
+    
+    var body: some View {
+        ZStack {
+            if !showLoadingScreen && !viewModel.recipes.isEmpty {
+                MainView()
+            } else {
+                AppLoadingScreen()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    showLoadingScreen = false
+                }
+            }
+        }
+    }
 }
 
 extension View {
@@ -53,5 +71,12 @@ extension View {
             .environmentObject(ViewModel())
             .environmentObject(CookingViewModel())
             .environmentObject(TimerViewModel())
+            .environmentObject(ShoppingListViewModel())
     }
 }
+
+#Preview {
+    ContentView()
+        .withPreviewEnvironmentObjects()
+}
+

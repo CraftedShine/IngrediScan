@@ -44,21 +44,9 @@ struct TimelineIndicator: View {
     @Binding var step: RecipeStep
     
     var body: some View {
-        Button {
+        CircularButton(size: 15, padding: 5, color: isCompleted ? .green : .orange, image: "checkmark") {
             cookingViewModel.toggleStep(step.id)
-        } label: {
-            ZStack {
-                Circle()
-                    .fill(isCompleted ? Color.green : Color.orange)
-                    .frame(width: 25, height: 25)
-                
-                Image(systemName: "checkmark")
-                    .font(.system(size: 15))
-                    .foregroundColor(.white)
-                
-            }
         }
-        .buttonStyle(PlainButtonStyle())
     }
     
     var isCompleted: Bool {

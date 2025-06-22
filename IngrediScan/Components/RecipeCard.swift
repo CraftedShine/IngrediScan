@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct CardImagePlaceholder: View {
+    var body: some View {
+        Image(systemName: "photo")
+            .resizable()
+            .scaledToFit()
+            .aspectRatio(contentMode: .fill)
+            .frame(height: 150)
+            .clipped()
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.black.opacity(0.4))
+            }
+    }
+}
+
 struct CardBackground: View {
     @Binding var recipe: Recipe
     
@@ -28,28 +43,10 @@ struct CardBackground: View {
                             .foregroundStyle(.black.opacity(0.4))
                     }
                 
-            case .failure(let error):
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 150)
-                    .clipped()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.black.opacity(0.4))
-                    }
+            case .failure(_):
+                CardImagePlaceholder()
             @unknown default:
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 150)
-                    .clipped()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.black.opacity(0.4))
-                    }
+                CardImagePlaceholder()
             }
         }
         
