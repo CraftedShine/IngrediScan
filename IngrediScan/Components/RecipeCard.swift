@@ -28,7 +28,7 @@ struct CardBackground: View {
                             .foregroundStyle(.black.opacity(0.4))
                     }
                 
-            case .failure(let error):
+            case .failure(_):
                 Image(systemName: "photo")
                     .resizable()
                     .scaledToFit()

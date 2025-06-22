@@ -24,16 +24,21 @@ struct ContentView: View {
                 SearchScreen()
                     .tabItem
                 {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Suche", systemImage: "magnifyingglass")
                 }.tag(1)
+                ShoppingListScreen()
+                    .tabItem {
+                        Label("Einkaufsliste", systemImage: "cart.fill")
+                    }
+                    .tag(2)
                 FavoritesScreen()
                     .tabItem {
-                        Label("Favorites", systemImage: "star.fill")
-                    }.tag(2)
+                        Label("Favoriten", systemImage: "star.fill")
+                    }.tag(3)
                 FridgeScreen()
                     .tabItem{
-                        Label("My Fridge", systemImage: "storefront.fill")
-                    }.tag(3)
+                        Label("Kühlschrank", systemImage: "storefront.fill")
+                    }.tag(4)
             }
         }
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
@@ -53,5 +58,6 @@ extension View {
             .environmentObject(ViewModel())
             .environmentObject(CookingViewModel())
             .environmentObject(TimerViewModel())
+            .environmentObject(ShoppingListViewModel())
     }
 }

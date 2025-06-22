@@ -12,6 +12,7 @@ struct IngrediScanApp: App {
     @StateObject private var viewModel = ViewModel()
     @StateObject private var timerViewModel = TimerViewModel()
     @StateObject private var cookingViewModel = CookingViewModel()
+    @StateObject private var shoppingListViewModel = ShoppingListViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +20,7 @@ struct IngrediScanApp: App {
                 .environmentObject(viewModel)
                 .environmentObject(timerViewModel)
                 .environmentObject(cookingViewModel)
+                .environmentObject(shoppingListViewModel)
         }
     }
 }
