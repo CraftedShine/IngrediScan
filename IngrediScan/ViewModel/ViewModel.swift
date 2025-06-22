@@ -24,8 +24,6 @@ class ViewModel: ObservableObject {
     @Published var fridgeIngredientsIDs: [Int: Float] = [:]
     
     init() {
-        self.loadFavorites()
-        self.loadFridge()
 #if targetEnvironment(simulator)
         recipes = [Recipe.spaghettiCarbonara, Recipe.pizzaMargherita, Recipe.caesarSalad, Recipe.cheesecake].shuffled()
         tags = [Tag.italian, Tag.classic, Tag.vegetarian, Tag.light, Tag.sweet, Tag.oven]
@@ -45,25 +43,27 @@ class ViewModel: ObservableObject {
             await loadIngredients()
         }
 #endif
+        self.loadFavorites()
+        self.loadFridge()
     }
     
-    private func loadRecipes() async {
-        self.recipes = await DatabaseService.fetchRecipes()
+    func loadRecipes() async {
+        self.recipes = await DatabaseService.shared.fetchRecipes()
     }
     
-    private func loadTags() async {
-        self.tags = await DatabaseService.fetchTags()
+    func loadTags() async {
+        self.tags = await DatabaseService.shared.fetchTags()
     }
     
-    private func loadCategories() async {
-        self.categories = await DatabaseService.fetchCategories()
+    func loadCategories() async {
+        self.categories = await DatabaseService.shared.fetchCategories()
     }
     
-    private func loadIngredients() async {
-        self.ingredients = await DatabaseService.fetchIngredients()
+    func loadIngredients() async {
+        self.ingredients = await DatabaseService.shared.fetchIngredients()
     }
     
-    private func loadFavorites() {
+    func loadFavorites() {
         favoriteIDs = UserDefaults.standard.array(forKey: favoritesKey) as? [Int] ?? []
     }
     
@@ -92,7 +92,7 @@ class ViewModel: ObservableObject {
         recipes.filter { favoriteIDs.contains($0.id) }
     }
     
-    private func loadFridge() {
+    func loadFridge() {
         if let savedData = UserDefaults.standard.dictionary(forKey: fridgeIngredientsKeys) as? [Int: Float] {
             fridgeIngredientsIDs = savedData
             fridge.ingredients.removeAll()
@@ -117,10 +117,10 @@ class ViewModel: ObservableObject {
     
     public func editIngredientInFridge(ingredientId: Int, amount: Float, ingredient: IngredientInFridge) {
         guard amount != 0 else { return }
-
+        
         if let currentAmount = fridgeIngredientsIDs[ingredientId] {
             let newAmount = currentAmount + amount
-
+            
             if newAmount <= 0 {
                 fridgeIngredientsIDs.removeValue(forKey: ingredientId)
                 fridge.removeIngredient(ingredient: ingredient)
@@ -134,9 +134,9 @@ class ViewModel: ObservableObject {
         } else {
             return
         }
-
+        
         saveFridge()
     }
-
-
+    
+    
 }

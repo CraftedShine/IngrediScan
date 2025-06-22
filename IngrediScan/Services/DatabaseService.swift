@@ -9,12 +9,14 @@ import Foundation
 import Supabase
 
 class DatabaseService {
-    private static let supabase: SupabaseClient = SupabaseClient(
+    static let shared = DatabaseService()
+    
+    private let supabase: SupabaseClient = SupabaseClient(
         supabaseURL: URL(string: "https://zglesyibcbwjoalbzdjp.supabase.co")!,
         supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnbGVzeWliY2J3am9hbGJ6ZGpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczNzgxMzcsImV4cCI6MjA2Mjk1NDEzN30.zYi1Bxd8I0mbQfrW2WPya53fWsVqk8EdTTtbzqLZt5Q"
     )
     
-    static func fetchRecipes() async -> [Recipe] {
+    func fetchRecipes() async -> [Recipe] {
         do {
             let response = try await supabase
                 .from("Recipes")
@@ -34,7 +36,7 @@ class DatabaseService {
             print("Fetched: \(response.data)")
             
             let recipes = try JSONDecoder().decode([Recipe].self, from: response.data)
-            print(recipes)
+            //print(recipes)
             
             return recipes
         } catch {
@@ -43,7 +45,7 @@ class DatabaseService {
         }
     }
     
-    static func fetchTags() async -> [Tag] {
+    func fetchTags() async -> [Tag] {
         do {
             let response = try await supabase
                 .from("Tags")
@@ -55,7 +57,7 @@ class DatabaseService {
             print("Fetched: \(response.data)")
             
             let tags = try JSONDecoder().decode([Tag].self, from: response.data)
-            print(tags)
+            //print(tags)
             
             return tags
         } catch {
@@ -64,11 +66,11 @@ class DatabaseService {
         }
     }
     
-    static func fetchIngredients() async -> [Ingredient] {
+    func fetchIngredients() async -> [Ingredient] {
         do {
             let response = try await supabase
                 .from("Ingredients")
-                .select("*")
+                .select("*, unit:Units!Ingredients_unitId_fkey(*)")
                 .execute()
             
             print("#### Fetching Ingredients from Supabase ####")
@@ -76,7 +78,7 @@ class DatabaseService {
             print("Fetched: \(response.data)")
             
             let ingredients = try JSONDecoder().decode([Ingredient].self, from: response.data)
-            print(ingredients)
+            //print(ingredients)
             
             return ingredients
         } catch {
@@ -85,7 +87,7 @@ class DatabaseService {
         }
     }
     
-    static func fetchCategories() async -> [Category] {
+    func fetchCategories() async -> [Category] {
         do {
             let response = try await supabase
                 .from("Categories")
@@ -97,7 +99,7 @@ class DatabaseService {
             print("Fetched: \(response.data)")
             
             let categories = try JSONDecoder().decode([Category].self, from: response.data)
-            print(categories)
+            //print(categories)
             
             return categories
         } catch {

@@ -11,16 +11,48 @@ struct CardBackground: View {
     @Binding var recipe: Recipe
     
     var body: some View {
-        Image(self.recipe.imageUrl)
-            .resizable()
-            .scaledToFit()
-            .aspectRatio(contentMode: .fill)
-            .frame(height: 150)
-            .clipped()
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(.black.opacity(0.4))
+        AsyncImage(url: URL(string: self.recipe.imageUrl))
+        { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 150)
+                    .clipped()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.black.opacity(0.4))
+                    }
+                
+            case .failure(let error):
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 150)
+                    .clipped()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.black.opacity(0.4))
+                    }
+            @unknown default:
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 150)
+                    .clipped()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.black.opacity(0.4))
+                    }
             }
+        }
+        
     }
 }
 
@@ -125,4 +157,5 @@ struct RecipeCard: View {
 
 #Preview {
     RecipeCard(recipe: Recipe.caesarSalad)
+        .withPreviewEnvironmentObjects()
 }

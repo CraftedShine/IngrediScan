@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 class TimerViewModel: ObservableObject {
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false

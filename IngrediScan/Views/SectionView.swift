@@ -55,7 +55,8 @@ struct SectionView: View {
 #Preview {
     @Previewable @StateObject var viewModel: ViewModel = ViewModel()
     
-    var recipes = viewModel.recipes.shuffled()
+    let recipes = viewModel.recipes.shuffled()
     
     SectionView(recipes: recipes, title: "Empfohlen für dich")
+        .withPreviewEnvironmentObjects()
 }

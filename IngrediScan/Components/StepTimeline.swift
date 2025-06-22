@@ -18,8 +18,10 @@ struct StepContent: View {
                 .fontWeight(.semibold)
                 .strikethrough(isCompleted, color: .gray)
             
-            Text(step.description)
-                .foregroundColor(isCompleted ? .gray : .primary)
+            if let description = step.description {
+                Text(description)
+                    .foregroundColor(isCompleted ? .gray : .primary)
+            }
             
             Text("Dauer: \(step.duration) Min")
                 .font(.footnote)
