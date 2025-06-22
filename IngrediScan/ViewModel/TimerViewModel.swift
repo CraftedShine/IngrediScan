@@ -58,7 +58,6 @@ class TimerViewModel: ObservableObject {
         
         if let date = self.endDate {
             // Notification when Timer is over
-            NotificationService.shared.requestPermission()
             NotificationService.shared.scheduleNotification(for: date)
         }
     }
@@ -71,7 +70,7 @@ class TimerViewModel: ObservableObject {
             timer?.reset(to: newTime)
         } else {
             remainingTime = totalDuration
-            timer?.reset()
+            timer?.reset(to: totalDuration)
         }
         isRunning = false
     }
