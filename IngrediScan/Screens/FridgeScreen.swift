@@ -37,7 +37,7 @@ struct FridgeScreen: View {
                         .padding()
                     }
                     
-                    // add button -> opens a sheet
+                    // add button -> opens a ingredient sheet
                     HStack {
                         Spacer()
                         Button(action: {
