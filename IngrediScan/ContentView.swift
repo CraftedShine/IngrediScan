@@ -8,29 +8,34 @@
 import SwiftUI
 import Supabase
 
-struct ContentView: View {
+struct MainView: View {
     @State private var selectedTab: Int = 0
-    
+    private var fridge = MyFridge()
     var body: some View {
         TabView(selection: $selectedTab) {
             HomeView()
-                .tabItem{
+                .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
             SearchScreen()
                 .tabItem
             {
-                Label("Search", systemImage: "magnifyingglass")
+                Label("Suche", systemImage: "magnifyingglass")
             }.tag(1)
+            ShoppingListScreen()
+                .tabItem {
+                    Label("Einkaufsliste", systemImage: "cart.fill")
+                }
+                .tag(2)
             FavoritesScreen()
                 .tabItem {
-                    Label("Favorites", systemImage: "star.fill")
-                }.tag(2)
-            FridgeScreen()
-                .tabItem{
-                    Label("My Fridge", systemImage: "storefront.fill")
+                    Label("Favoriten", systemImage: "star.fill")
                 }.tag(3)
+            FridgeScreen()
+                .tabItem {
+                    Label("Kühlschrank", systemImage: "storefront.fill")
+                }.tag(4)
         }
         .toolbarBackground(Color(UIColor.secondarySystemBackground), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
@@ -38,7 +43,40 @@ struct ContentView: View {
     }
 }
 
+struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @State private var showLoadingScreen: Bool = true
+    
+    var body: some View {
+        ZStack {
+            if !showLoadingScreen && !viewModel.recipes.isEmpty {
+                MainView()
+            } else {
+                AppLoadingScreen()
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    showLoadingScreen = false
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    func withPreviewEnvironmentObjects() -> some View {
+        self
+            .environmentObject(ViewModel())
+            .environmentObject(CookingViewModel())
+            .environmentObject(TimerViewModel())
+            .environmentObject(ShoppingListViewModel())
+    }
+}
+
 #Preview {
     ContentView()
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
 }
+

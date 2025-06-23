@@ -19,7 +19,7 @@ struct CookingStatistics: View {
             HStack {
                 Text("Arbeitszeit:")
                     .font(.headline .smallCaps() .bold())
-                Text(String(recipe.duration))
+                Text("\(String(recipe.duration)) min")
                     .font(.subheadline .bold())
                     .foregroundStyle(.secondary)
             }

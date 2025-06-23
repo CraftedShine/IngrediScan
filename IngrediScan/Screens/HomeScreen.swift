@@ -18,13 +18,19 @@ struct HomeView: View {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        SectionView(recipes: viewModel.recipes.shuffled(), title: "Empfohlen für dich")
-                        SectionView(recipes: viewModel.recipes.shuffled().filter {
+                        let recommended = self.viewModel.recipes.shuffled()
+                        SectionView(recipes: recommended, title: "Empfohlen für dich")
+                        
+                        let classics = self.viewModel.recipes.shuffled().filter {
                             containsTag(recipe: $0, tag: "Klassiker")
-                        }, title: "Klassiker")
-                        SectionView(recipes: viewModel.recipes.shuffled().filter {
+                        }
+                        
+                        SectionView(recipes: classics, title: "Klassiker")
+                        
+                        let vegetarian = self.viewModel.recipes.shuffled().filter {
                             containsTag(recipe: $0, tag: "Vegetarisch")
-                        }, title: "Vegetarisch")
+                        }
+                        SectionView(recipes: vegetarian, title: "Vegetarisch")
                     }
                 }
             }
@@ -32,17 +38,8 @@ struct HomeView: View {
             .toolbar {
                 //MARK: Best Rated Recipe
                 ToolbarItem(placement: .cancellationAction) {
-                    Button {
+                    CircularButton(size: 20, padding: 10, color: Color.orange.opacity(0.75), image: "heart.fill") {
                         bestRatedRecipeVisible.toggle()
-                    } label: {
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
                     }
                     .sheet(isPresented: $bestRatedRecipeVisible) {
                         let bestRatedRecipe = $viewModel.recipes.sorted {
@@ -61,20 +58,12 @@ struct HomeView: View {
                 
                 //MARK: Random Recipe
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
+                    CircularButton(size: 20, padding: 10, color: Color.orange.opacity(0.75), image: "shuffle") {
                         randomRecipeVisible.toggle()
-                    } label: {
-                        Image(systemName: "shuffle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
                     }
                     .sheet(isPresented: $randomRecipeVisible) {
                         RecipeDetailView(recipe: $viewModel.recipes.shuffled().first!)
+                            .presentationBackgroundInteraction(.disabled)
                     }
                 }
             }
@@ -82,12 +71,11 @@ struct HomeView: View {
     }
     
     private func containsTag(recipe: Recipe, tag: String) -> Bool {
-        return recipe.hasTags.filter {
-            $0.Tag.name == tag
-        }.isEmpty
+        return recipe.hasTags.contains { $0.Tag.name == tag }
     }
 }
 
 #Preview {
     HomeView()
+        .withPreviewEnvironmentObjects()
 }

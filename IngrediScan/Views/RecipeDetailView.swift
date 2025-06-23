@@ -1,6 +1,51 @@
 import SwiftUI
 import Combine
 
+struct RecipeImagePlaceholder: View {
+    var body: some View {
+        Image(systemName: "photo")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .scaledToFit()
+            .overlay(Color.black.opacity(0.3))
+    }
+}
+
+struct RecipeImage : View {
+    @Binding var recipe: Recipe
+    
+    var body: some View {
+        ZStack(alignment: .topTrailing) {
+            ZStack {
+                AsyncImage(url: URL(string: recipe.imageUrl)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+                            .overlay(Color.black.opacity(0.3))
+                    case .failure(_):
+                        RecipeImagePlaceholder()
+                    @unknown default:
+                        RecipeImagePlaceholder()
+                    }
+                }
+                
+                
+                Text(recipe.name)
+                    .font(.largeTitle .bold() .smallCaps())
+                    .lineLimit(1)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                    .padding()
+            }
+        }
+    }
+}
+
 struct RecipeDetailView: View {
     @EnvironmentObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
@@ -62,5 +107,5 @@ struct RecipeDetailView: View {
 
 #Preview {
     RecipeDetailView(recipe: .constant(Recipe.pizzaMargherita))
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
 }

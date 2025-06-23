@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct CardBackground: View {
-    @Binding var recipe: Recipe
-    
+struct CardImagePlaceholder: View {
     var body: some View {
-        Image(self.recipe.imageUrl)
+        Image(systemName: "photo")
             .resizable()
             .scaledToFit()
             .aspectRatio(contentMode: .fill)
@@ -21,6 +19,37 @@ struct CardBackground: View {
                 RoundedRectangle(cornerRadius: 16)
                     .foregroundStyle(.black.opacity(0.4))
             }
+    }
+}
+
+struct CardBackground: View {
+    @Binding var recipe: Recipe
+    
+    var body: some View {
+        AsyncImage(url: URL(string: self.recipe.imageUrl))
+        { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 150)
+                    .clipped()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.black.opacity(0.4))
+                    }
+                
+            case .failure(_):
+                CardImagePlaceholder()
+            @unknown default:
+                CardImagePlaceholder()
+            }
+        }
+        
     }
 }
 
@@ -125,4 +154,5 @@ struct RecipeCard: View {
 
 #Preview {
     RecipeCard(recipe: Recipe.caesarSalad)
+        .withPreviewEnvironmentObjects()
 }

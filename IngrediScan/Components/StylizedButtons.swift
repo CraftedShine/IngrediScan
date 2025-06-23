@@ -16,12 +16,18 @@ protocol StylizedButton {
 
 struct CircularButton: View, StylizedButton {
     var title: String? = nil
+    var size: CGFloat?
+    var padding: CGFloat?
+    var contentColor: Color?
     var color: Color
     var image: String?
     var action: () -> Void
     
-    init(color: Color, image: String, action: @escaping () -> Void) {
+    init(size: CGFloat? = 20, padding: CGFloat? = 20, color: Color, contentColor: Color? = .white, image: String, action: @escaping () -> Void) {
+        self.size = size
+        self.padding = padding
         self.color = color
+        self.contentColor = contentColor
         self.image = image
         self.action = action
     }
@@ -32,13 +38,13 @@ struct CircularButton: View, StylizedButton {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .padding(20)
-                    .foregroundStyle(.white)
+                    .frame(width: size, height: size)
+                    .padding((padding != nil) ? padding! : 0)
+                    .foregroundStyle((contentColor != nil) ? contentColor! : .white)
+                    .background(color)
+                    .clipShape(Circle())
             }
         }
-        .background(color)
-        .clipShape(Circle())
     }
 }
 
@@ -68,12 +74,42 @@ struct RoundedRectangularButton: View, StylizedButton {
     }
 }
 
-#Preview {
-    CircularButton(color: .orange, image: "play.fill") {
-        print("Test")
+struct DismissButton: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        CircularButton(size: 20, padding: 10, color: Color.black.opacity(0.5), image: "xmark") {
+            dismiss()
+        }
+        .padding(30)
+    }
+}
+
+struct ToggleFavoriteButton: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @Binding var recipe: Recipe
+    
+    var body: some View {
+        CircularButton(size: 20, padding: 10, color: Color.black.opacity(0.5), contentColor: isFavorite ? .yellow : .white, image: isFavorite ? "star.fill" : "star") {
+            viewModel.toggleFavorite(for: recipe)
+        }
+        .padding(30)
     }
     
-    RoundedRectangularButton(title: "Test", color: .orange) {
-        print("Test")
+    var isFavorite: Bool {
+        return self.viewModel.isFavorite(self.recipe)
     }
+}
+
+#Preview {
+    VStack {
+        CircularButton(color: .orange, image: "play.fill") {}
+        
+        DismissButton()
+        
+        ToggleFavoriteButton(recipe: .constant(Recipe.caesarSalad))
+        
+        RoundedRectangularButton(title: "Test", color: .orange) {}
+    }
+    .withPreviewEnvironmentObjects()
 }

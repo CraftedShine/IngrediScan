@@ -55,7 +55,7 @@ struct IngredientTemplateView: View {
 }
 
 #Preview {
-    IngredientTemplateView(ingredient: Ingredient(id: "1", name: "Test", unitId: "1", unit: Unit(id: "1", name: "Stk")))
+    IngredientTemplateView(ingredient: Ingredient(id: 1, name: "Test", unitId: 1, unit: Unit(id: 1, name: "Stk")))
 }
 
 

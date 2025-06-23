@@ -76,7 +76,7 @@ struct IngredientBoxPreviewWrapper: View {
     var body: some View {
         VStack {
             IngredientBoxView(
-                ingredient: IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: "1", name: "Stk")),
+                ingredient: IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk")),
                 isEditing: $isEditing,
                 onDelete: { }
             )

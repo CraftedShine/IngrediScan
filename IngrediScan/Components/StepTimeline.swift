@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct StepContent: View {
-    let index: Int
-    @ObservedObject var cookingService = CookingService.shared
+    @EnvironmentObject var cookingViewModel: CookingViewModel
     @Binding var step: RecipeStep
+    let index: Int
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -18,8 +18,10 @@ struct StepContent: View {
                 .fontWeight(.semibold)
                 .strikethrough(isCompleted, color: .gray)
             
-            Text(step.description)
-                .foregroundColor(isCompleted ? .gray : .primary)
+            if let description = step.description {
+                Text(description)
+                    .foregroundColor(isCompleted ? .gray : .primary)
+            }
             
             Text("Dauer: \(step.duration) Min")
                 .font(.footnote)
@@ -32,49 +34,29 @@ struct StepContent: View {
     }
     
     var isCompleted: Bool {
-        return cookingService.isCompleted(stepId: step.id)
+        return cookingViewModel.isCompleted(stepId: step.id)
     }
 }
 
 struct TimelineIndicator: View {
-    @ObservedObject var cookingService = CookingService.shared
+    @EnvironmentObject var timerViewModel: TimerViewModel
+    @EnvironmentObject var cookingViewModel: CookingViewModel
     @Binding var step: RecipeStep
     
     var body: some View {
-        Button {
-            toggleStep(step.id)
-        } label: {
-            ZStack {
-                Circle()
-                    .fill(isCompleted ? Color.green : Color.orange)
-                    .frame(width: 25, height: 25)
-                
-                Image(systemName: "checkmark")
-                    .font(.system(size: 15))
-                    .foregroundColor(.white)
-                
-            }
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-    
-    func toggleStep(_ id: String) {
-        if isCompleted {
-            cookingService.uncompleteStep(stepId: id)
-            cookingService.previousStep()
-        } else {
-            cookingService.completeStep(stepId: step.id)
-            cookingService.nextStep()
+        CircularButton(size: 15, padding: 5, color: isCompleted ? .green : .orange, image: "checkmark") {
+            cookingViewModel.toggleStep(step.id)
         }
     }
     
     var isCompleted: Bool {
-        return cookingService.isCompleted(stepId: step.id)
+        return cookingViewModel.isCompleted(stepId: step.id)
     }
 }
 
 struct StepTimeline: View {
-    @ObservedObject var cookingService = CookingService.shared
+    @EnvironmentObject var timerViewModel: TimerViewModel
+    @EnvironmentObject var cookingViewModel: CookingViewModel
     @Binding var steps: [RecipeStep]
     
     var body: some View {
@@ -82,7 +64,7 @@ struct StepTimeline: View {
             let stepsArray = Array($steps.enumerated())
             
             ForEach(stepsArray, id: \.element.id) { index, $step in
-                let isCompleted = cookingService.isCompleted(stepId: step.id)
+                let isCompleted = cookingViewModel.isCompleted(stepId: step.id)
                 
                 HStack(alignment: .top) {
                     VStack(spacing: 12) {
@@ -98,19 +80,28 @@ struct StepTimeline: View {
                     }
                     
                     // Step content
-                    StepContent(index: index, step: $step)
+                    StepContent(step: $step, index: index)
                     
                 }
                 .opacity(isCompleted ? 0.6 : 1.0)
             }
         }
+        .onChange(of: cookingViewModel.currentStep) {
+            let currentStep = self.steps[cookingViewModel.currentStep]
+            
+            // * 60 because Recipe from Database gives duration in Minutes
+            self.timerViewModel.setTime(to: TimeInterval(currentStep.duration * 60))
+        }
         .onAppear {
-            cookingService.startCooking(steps: steps)
+            cookingViewModel.startCooking(steps: steps)
         }
         .padding()
     }
 }
 
 #Preview {
-    StepTimeline(steps: .constant(Recipe.caesarSalad.hasSteps.compactMap {$0.RecipeStep}))
+    let steps: [RecipeStep] = Recipe.spaghettiCarbonara.hasSteps.compactMap { $0.RecipeStep }
+    
+    StepTimeline(steps: .constant(steps))
+        .withPreviewEnvironmentObjects()
 }

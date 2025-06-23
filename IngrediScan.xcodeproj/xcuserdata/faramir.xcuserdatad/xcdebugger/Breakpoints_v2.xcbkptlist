@@ -39,17 +39,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BB74AD28-E124-44CF-8D1D-76430536EDF1"
-            shouldBeEnabled = "No"
+            uuid = "7DB0693A-B8E5-4A7B-A699-D54BE90263E5"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IngrediScan/Components/ToggleFavoriteButton.swift"
+            filePath = "IngrediScan/Views/RecipeDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "3"
+            endingLineNumber = "3"
+            landmarkName = "RecipeImagePlaceholder"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

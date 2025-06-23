@@ -9,17 +9,16 @@ import SwiftUI
 import Combine
 
 struct CookingView: View {
-    @ObservedObject var cookingService = CookingService.shared
+    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var timerViewModel: TimerViewModel
+    @EnvironmentObject var cookingViewModel: CookingViewModel
     @State var recipe: Recipe
-    @State var recipeSteps: [StepRelation]
-    @State var timerDuration: Int
-    @State var timeRemaining: Int
+    @State var recipeSteps: [RecipeStep]
+    @State var isCooking: Bool = false
     
     init(recipe: Recipe) {
         self.recipe = recipe
-        self.recipeSteps = recipe.hasSteps
-        self.timerDuration = recipe.hasSteps.first!.RecipeStep.duration
-        self.timeRemaining = recipe.hasSteps.first!.RecipeStep.duration
+        self.recipeSteps = recipe.hasSteps.compactMap { $0.RecipeStep }
     }
     
     var body: some View {
@@ -28,22 +27,48 @@ struct CookingView: View {
                 .font(.subheadline.smallCaps().bold())
                 .foregroundColor(.secondary)
             
-            VStack {
-                CookingTimer(duration: self.$timerDuration, timeRemaining: self.$timeRemaining)
-                    .onChange(of: cookingService.currentStep) {
-                        self.timerDuration = self.recipeSteps[cookingService.currentStep].RecipeStep.duration
-                        self.timeRemaining = self.recipeSteps[cookingService.currentStep].RecipeStep.duration
+            VStack(alignment: .leading) {
+                if !cookingViewModel.isFinished {
+                    InlineTimerView()
+                }
+                
+                if isCooking && cookingViewModel.isFinished {
+                    RoundedRectangularButton(title: "Kochen beenden", color: .green) {
+                        removeIngredientsFromFridge()
                     }
-                StepTimeline(steps: .constant(recipeSteps.compactMap {$0.RecipeStep}))
+                }
+                
+                if !isCooking && cookingViewModel.isFinished {
+                    Text("Zutaten wurden aus dem Kühlschrank entfernt.")
+                }
+                
+                StepTimeline(steps: .constant(recipeSteps))
             }
         }
         .onAppear {
-            cookingService.startCooking(steps: recipeSteps.compactMap { $0.RecipeStep })
+            NotificationService.shared.requestPermission()
             
+            if let firstStep = self.recipeSteps.first {
+                timerViewModel.setTime(to: TimeInterval(firstStep.duration * 60))
+                self.isCooking = true
+            }
         }
+    }
+    
+    func removeIngredientsFromFridge() {
+        let ingredientUsage = self.recipe.usesIngredients
+        
+        for usage in ingredientUsage {
+            let ingredient = usage.ingredient
+            let ingredientInFridge = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: usage.amount, Unit: ingredient.unit)
+            
+            viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: -usage.amount, ingredient: ingredientInFridge)
+        }
+        self.isCooking = false
     }
 }
 
 #Preview {
     CookingView(recipe: Recipe.cheesecake)
+        .withPreviewEnvironmentObjects()
 }

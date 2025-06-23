@@ -33,35 +33,6 @@ struct FavoritesScreen: View {
                             .font(.title .bold() .smallCaps())
                             .padding(.bottom)
                     }
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button {
-                            filterVisible.toggle()
-                        } label: {
-                            Image(systemName: "line.3.horizontal.decrease")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                                .padding(10)
-                                .foregroundStyle(.white)
-                                .background(Color.orange.opacity(0.75))
-                                .clipShape(Circle())
-                                .padding(.bottom)
-                        }
-                        .sheet(isPresented: $filterVisible) {
-                            FilterView(tags: viewModel.tags)
-                        }
-                    }
-                    ToolbarItem(placement: .confirmationAction) {
-                        Image(systemName: "gearshape.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
-                            .padding(.bottom)
-                    }
                 }
                 .searchable(text: $searchText)
             }
@@ -83,4 +54,5 @@ struct FavoritesScreen: View {
 
 #Preview {
     FavoritesScreen()
+        .withPreviewEnvironmentObjects()
 }
