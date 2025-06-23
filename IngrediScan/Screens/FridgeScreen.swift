@@ -18,6 +18,12 @@ struct FridgeScreen: View {
         NavigationView {
             ZStack {
                 VStack {
+                    if(self.viewModel.fridge.getIngredients().isEmpty) {
+                        Text("Du hast noch keine Zutaten im Kühlschrank.")
+                            .font(.callout .bold() .smallCaps())
+                            .foregroundStyle(.secondary)
+                            .padding(30)
+                    }
                     
                     // List of ingredients formatted in box views
                     ScrollView {

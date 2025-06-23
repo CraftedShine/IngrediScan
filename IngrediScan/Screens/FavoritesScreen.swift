@@ -34,7 +34,7 @@ struct FavoritesScreen: View {
                             .padding()
                     }
                 }
-                .searchable(text: $searchText)
+                .searchable(text: $searchText, prompt: "Suchen")
             }
         }
     }

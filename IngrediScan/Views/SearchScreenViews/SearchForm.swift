@@ -18,9 +18,13 @@ struct SearchForm: View {
     
     var body: some View {
         VStack{
+            TextField("Suchen nach Text...", text: $search.searchText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            Spacer()
+            
             Text("Rezepte sortieren nach...")
                 .font(.headline .bold() .smallCaps())
-                .padding(.top)
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 2), spacing: 12) {
                 ForEach(search.sortCategories, id: \.self) { option in
@@ -48,10 +52,10 @@ struct SearchForm: View {
             .padding(.init(top: 20, leading: 0, bottom: 0, trailing: 0))
             
             Divider()
+            Spacer()
             
             Text("Rezepte filtern nach...")
                 .font(.headline .bold() .smallCaps())
-                .padding(.init(top: 40, leading: 0, bottom: 20, trailing: 0))
             
             HStack {
                 Text("Bewertung")
@@ -84,19 +88,55 @@ struct SearchForm: View {
             }
             .padding(.init(top: 20, leading: 0, bottom: 0, trailing: 0))
             
-            Divider()
-            
-            Text("Suchen mit Kühlschrank")
-                .font(.headline .bold() .smallCaps())
-                .padding(.init(top: 40, leading: 0, bottom: 0, trailing: 0))
-            
-            Picker("", selection: $search.searchWithFridge) {
-                Text("Nur mit vorhandenen Zutaten").tag(0)
-                Text("Auch mit fehlenden Zutaten").tag(1)
-                Text("Kühlschrank ignorieren").tag(2)
+            HStack {
+                Text("Den Kühlschrank ignorieren")
+                Spacer()
+                Button(action: { search.searchWithFridge.toggle() }) {
+                    Image(systemName: !search.searchWithFridge ? "checkmark.square.fill" : "square")
+                        .scaleEffect(1.5)
+                        .foregroundColor(.orange)
+                }
             }
-            .pickerStyle(MenuPickerStyle())
-            .tint(.black)
+            .padding(.top, 20)
+            
+            if search.searchWithFridge {
+                Divider()
+                Spacer()
+                
+                Text("Suchen mit Zutaten...")
+                    .font(.headline .bold() .smallCaps())
+                
+                HStack {
+                    Button(action: { search.searchWithIngredients = true }) {
+                        Text("Nur Vorhanden")
+                            .foregroundColor(.orange)
+                            .font(.headline .bold() .smallCaps())
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(search.searchWithIngredients ? Color.orange.opacity(0.1) : Color(.systemGray6))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(search.searchWithIngredients ? Color.orange : Color.clear, lineWidth: 2)
+                            )
+                            .cornerRadius(10)
+                    }
+
+                    Button(action: { search.searchWithIngredients = false }) {
+                        Text("Alle Zutaten")
+                            .foregroundColor(.orange)
+                            .font(.headline .bold() .smallCaps())
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(!search.searchWithIngredients ? Color.orange.opacity(0.1) : Color(.systemGray6))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(!search.searchWithIngredients ? Color.orange : Color.clear, lineWidth: 2)
+                            )
+                            .cornerRadius(10)
+                    }
+                }
+            }
+            Spacer()
             
             Button(action: {
                 searchRecipes()
@@ -109,8 +149,8 @@ struct SearchForm: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
-            .padding(.init(top: 40, leading: 20, bottom: 20, trailing: 20))
-
+            
+            Spacer()
         }
         .padding()
     }
@@ -130,13 +170,9 @@ struct SearchForm: View {
         }
         
         //filter/ sort by fridge
-        if search.searchWithFridge == 0 {
+        if search.searchWithFridge && search.searchWithIngredients {
             searchResult = searchResult.filter { recipe in
                 viewModel.fridge.ingredientsMissing(recipe: recipe) == 0
-            }
-        } else if search.searchWithFridge == 2 {
-            searchResult = searchResult.sorted {
-                viewModel.fridge.ingredientsMissing(recipe: $0) < viewModel.fridge.ingredientsMissing(recipe: $1)
             }
         }
         
@@ -159,10 +195,14 @@ struct SearchForm: View {
             return score1 > score2
         }
         
-        if search.searchWithFridge == 1 {
+        if search.searchWithFridge && !search.searchWithIngredients {
             searchResult = searchResult.sorted {
                 viewModel.fridge.ingredientsMissing(recipe: $0) < viewModel.fridge.ingredientsMissing(recipe: $1)
             }
+        }
+        
+        if !search.searchText.isEmpty {
+            searchResult = searchResult.filter { $0.name.lowercased().contains(search.searchText.lowercased()) }
         }
     }
 }

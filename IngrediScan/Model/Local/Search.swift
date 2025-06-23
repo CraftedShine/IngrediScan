@@ -11,5 +11,7 @@ struct Search {
     let difficultyPicker: [String] = ["Einfach","Mittel","Schwierig"]
     var selectedDifficulty: [String] = []
     var selectedRating: Int = -1
-    var searchWithFridge: Int = 0
+    var searchWithFridge: Bool = true
+    var searchWithIngredients: Bool = true
+    var searchText: String = ""
 }

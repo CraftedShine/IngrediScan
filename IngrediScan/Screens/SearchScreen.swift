@@ -27,7 +27,7 @@ struct SearchScreen: View {
                         SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, onButtonPress: {withAnimation {
                             scrollProxy?.scrollTo("Result", anchor: .top)
                         }})
-                            .frame(height: 750)
+                            .frame(height: 700)
                             .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.05)))
                             .id("topBox")
                         
