@@ -102,7 +102,7 @@ struct SearchForm: View {
                 searchRecipes()
                 onButtonPress()
             }) {
-                Text("Show Recipes")
+                Text("Suchen")
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.orange)

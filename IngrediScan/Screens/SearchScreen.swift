@@ -31,7 +31,7 @@ struct SearchScreen: View {
                             .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.05)))
                             .id("topBox")
                         
-                        Text("Result")
+                        Text("Ergebnis")
                             .font(.title)
                             .padding(.top, 30)
                             .id("Result")

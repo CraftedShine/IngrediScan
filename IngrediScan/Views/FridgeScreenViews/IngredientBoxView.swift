@@ -16,23 +16,33 @@ struct IngredientBoxView: View {
     var body: some View {
         ZStack {
             
-            Text(ingredient.name)
-                .font(.headline)
-                .padding()
-            
-                .frame(width: 170, height: 100)
-                .background(Color(UIColor.secondarySystemBackground))
-                .cornerRadius(20)
-                .shadow(radius: 5)
-                .rotationEffect(.degrees(rotationAngle))
-                .onChange(of: isEditing) {
-                    if isEditing {
-                        startWobbleAnimation()
-                    }
+            VStack{
+                Text(ingredient.name)
+                    .font(.headline .smallCaps() .bold())
+                
+                HStack{
+                    Text(String(format: "%.1f", ingredient.amount))
+                        .font(.subheadline .bold())
+                        .foregroundColor(.secondary)
+                    
+                    Text(ingredient.Unit.name)
+                        .font(.subheadline .bold())
+                        .foregroundColor(.secondary)
                 }
-                .onLongPressGesture {
-                    isEditing.toggle()
+            }
+            .frame(width: 170, height: 100)
+            .background(Color(UIColor.secondarySystemBackground))
+            .cornerRadius(20)
+            .shadow(radius: 5)
+            .rotationEffect(.degrees(rotationAngle))
+            .onChange(of: isEditing) {
+                if isEditing {
+                    startWobbleAnimation()
                 }
+            }
+            .onLongPressGesture {
+                isEditing.toggle()
+            }
             
             if isEditing {
                 Button(action: { onDelete() }) {

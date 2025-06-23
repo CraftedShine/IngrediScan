@@ -17,7 +17,7 @@ struct FavoritesScreen: View {
             ScrollView {
                 VStack(spacing: 0) {
                     if(self.viewModel.favoriteRecipes.isEmpty) {
-                        Text("No Recipes marked as Favorite")
+                        Text("Du hast noch keine Favoriten.")
                             .font(.callout .bold() .smallCaps())
                             .foregroundStyle(.secondary)
                     }
@@ -31,7 +31,7 @@ struct FavoritesScreen: View {
                     ToolbarItem(placement: .principal) {
                         Text("Favoriten")
                             .font(.title .bold() .smallCaps())
-                            .padding(.bottom)
+                            .padding()
                     }
                 }
                 .searchable(text: $searchText)

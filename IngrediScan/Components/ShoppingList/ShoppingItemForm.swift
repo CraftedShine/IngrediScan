@@ -50,7 +50,7 @@ struct ShoppingItemForm: View {
                     
                     Spacer()
                     
-                    CircularButton(size: 20, padding: 10,color: .green, image: "plus") {
+                    CircularButton(size: 20, padding: 10,color: .orange, image: "plus") {
                         if let amount = selectedAmount {
                             let newItem = ShoppingItem(ingredientId: selection, amount: amount)
                             

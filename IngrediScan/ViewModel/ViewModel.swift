@@ -21,7 +21,7 @@ class ViewModel: ObservableObject {
     @Published var ingredients: [Ingredient] = []
     @Published var tags: [Tag] = []
     @Published var fridge: MyFridge = MyFridge()
-    @Published var fridgeIngredientsIDs: [Int: Float] = [:]
+    @Published var fridgeIngredientsIDs: [String: Float] = [:]
     
     init() {
 #if targetEnvironment(simulator)
@@ -42,8 +42,6 @@ class ViewModel: ObservableObject {
         Task {
             await loadIngredients()
         }
-        self.loadFavorites()
-        self.loadFridge()
 #endif
         self.loadFavorites()
         self.loadFridge()
@@ -99,12 +97,12 @@ class ViewModel: ObservableObject {
     }
     
     func loadFridge() {
-        if let savedData = UserDefaults.standard.dictionary(forKey: fridgeIngredientsKeys) as? [Int: Float] {
+        if let savedData = UserDefaults.standard.dictionary(forKey: fridgeIngredientsKeys) as? [String: Float] {
             fridgeIngredientsIDs = savedData
             fridge.ingredients.removeAll()
             
             for ingredient in ingredients {
-                if let amount = fridgeIngredientsIDs[ingredient.id] {
+                if let amount = fridgeIngredientsIDs[String(ingredient.id)] {
                     let fridgeIngredient = IngredientInFridge(
                         id: ingredient.id,
                         name: ingredient.name,
@@ -123,19 +121,20 @@ class ViewModel: ObservableObject {
     
     public func editIngredientInFridge(ingredientId: Int, amount: Float, ingredient: IngredientInFridge) {
         guard amount != 0 else { return }
+        let id = String(ingredientId)
         
-        if let currentAmount = fridgeIngredientsIDs[ingredientId] {
+        if let currentAmount = fridgeIngredientsIDs[id] {
             let newAmount = currentAmount + amount
             
             if newAmount <= 0 {
-                fridgeIngredientsIDs.removeValue(forKey: ingredientId)
+                fridgeIngredientsIDs.removeValue(forKey: id)
                 fridge.removeIngredient(ingredient: ingredient)
             } else {
-                fridgeIngredientsIDs[ingredientId] = newAmount
+                fridgeIngredientsIDs[id] = newAmount
                 fridge.addIngredient(ingredient)
             }
         } else if amount > 0 {
-            fridgeIngredientsIDs[ingredientId] = amount
+            fridgeIngredientsIDs[id] = amount
             fridge.addIngredient(ingredient)
         } else {
             return

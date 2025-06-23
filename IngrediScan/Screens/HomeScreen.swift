@@ -18,18 +18,18 @@ struct HomeView: View {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        let recommended = self.viewModel.recipes.shuffled()
+                        let recommended = Array(self.viewModel.recipes.shuffled().prefix(4))
                         SectionView(recipes: recommended, title: "Empfohlen für dich")
                         
-                        let classics = self.viewModel.recipes.shuffled().filter {
+                        let classics = Array(self.viewModel.recipes.shuffled().filter {
                             containsTag(recipe: $0, tag: "Klassiker")
-                        }
+                        }.prefix(4))
                         
                         SectionView(recipes: classics, title: "Klassiker")
                         
-                        let vegetarian = self.viewModel.recipes.shuffled().filter {
+                        let vegetarian = Array(self.viewModel.recipes.shuffled().filter {
                             containsTag(recipe: $0, tag: "Vegetarisch")
-                        }
+                        }.prefix(4))
                         SectionView(recipes: vegetarian, title: "Vegetarisch")
                     }
                 }
