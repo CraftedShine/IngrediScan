@@ -19,13 +19,15 @@ struct IngredientTemplateView: View {
             Text(ingredient.name)
                 .frame(maxWidth: 100, alignment: .leading)
             
+            Spacer()
+            
             TextField("Menge", text: $newAmount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 80)
                 .keyboardType(.decimalPad)
             
             Text(ingredient.unit.name)
-                .frame(maxWidth: 32, alignment: .leading)
+                .frame(maxWidth: 40, alignment: .leading)
             
             Button(action: {
                 addToFridge(ingredient: ingredient)

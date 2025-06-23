@@ -42,6 +42,8 @@ class ViewModel: ObservableObject {
         Task {
             await loadIngredients()
         }
+        self.loadFavorites()
+        self.loadFridge()
 #endif
         self.loadFavorites()
         self.loadFridge()

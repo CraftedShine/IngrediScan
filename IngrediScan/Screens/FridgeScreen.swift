@@ -37,7 +37,7 @@ struct FridgeScreen: View {
                         .padding()
                     }
                     
-                    // add button -> opens a sheet
+                    // add button -> opens a ingredient sheet
                     HStack {
                         Spacer()
                         Button(action: {
@@ -48,10 +48,11 @@ struct FridgeScreen: View {
                         }) {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
-                                .frame(width: 70, height: 70)
-                                .foregroundColor(.blue)
-                                .padding(.trailing, 20)
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.orange)
+                                .padding(.trailing, 4)
                         }
+                        .padding()
                         .sheet(isPresented: $showIngredientSheet) {
                             IngredientTemplateListView()
                         }
@@ -73,14 +74,20 @@ struct FridgeScreen: View {
                     )
                 }
             }
-            .navigationTitle("My Fridge")
             .onTapGesture {
                 isEditing = false
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("My Frigde")
+                        .font(.title .bold() .smallCaps())
+                }
+                
             }
         }
     }
 }
-
 
 #Preview {
     FridgeScreen()

@@ -47,7 +47,7 @@ struct IngredientTemplateListView: View {
                             dismiss()
                         }) {
                             Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.red)
+                                .foregroundColor(.orange)
                                 .scaleEffect(1.4)
                                 .padding(5)
                         }
