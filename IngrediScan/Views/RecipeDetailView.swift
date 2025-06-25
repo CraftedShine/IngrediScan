@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import SDWebImageSwiftUI
 
 struct RecipeImagePlaceholder: View {
     var body: some View {
@@ -17,22 +18,17 @@ struct RecipeImage : View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack {
-                AsyncImage(url: URL(string: recipe.imageUrl)) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .scaledToFit()
-                            .overlay(Color.black.opacity(0.3))
-                    case .failure(_):
-                        RecipeImagePlaceholder()
-                    @unknown default:
-                        RecipeImagePlaceholder()
-                    }
+                WebImage(url: URL(string: self.recipe.imageUrl)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .overlay(Color.black.opacity(0.3))
+                } placeholder: {
+                    RecipeImagePlaceholder()
                 }
+                .indicator(.activity)
+                .transition(.fade(duration: 0.5))
                 
                 
                 Text(recipe.name)
@@ -106,6 +102,6 @@ struct RecipeDetailView: View {
 }
 
 #Preview {
-    RecipeDetailView(recipe: .constant(Recipe.pizzaMargherita))
+    RecipeDetailView(recipe: .constant(Recipe.spaghettiCarbonara))
         .withPreviewEnvironmentObjects()
 }

@@ -46,8 +46,8 @@
             filePath = "IngrediScan/Views/RecipeDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3"
-            endingLineNumber = "3"
+            startingLineNumber = "4"
+            endingLineNumber = "4"
             landmarkName = "RecipeImagePlaceholder"
             landmarkType = "14">
          </BreakpointContent>

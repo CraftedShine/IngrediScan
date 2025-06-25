@@ -67,6 +67,7 @@
 		D5EC9EF62E082537004C0D3D /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF52E08252F004C0D3D /* ShoppingListItem.swift */; };
 		D5EC9EF82E082BE7004C0D3D /* ShoppingItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF72E082BE1004C0D3D /* ShoppingItemForm.swift */; };
 		D5EC9EFA2E086D93004C0D3D /* AppLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF92E086D93004C0D3D /* AppLoadingScreen.swift */; };
+		D5EC9EFD2E0BF755004C0D3D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5EC9EFC2E0BF755004C0D3D /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EC9EFD2E0BF755004C0D3D /* SDWebImageSwiftUI in Frameworks */,
 				9D6715F92DE4D02B000173B1 /* PostgREST in Frameworks */,
 				9D6715F72DE4D02B000173B1 /* Functions in Frameworks */,
 				9D6715FF2DE4D02B000173B1 /* Supabase in Frameworks */,
@@ -357,6 +359,7 @@
 				9D6715FA2DE4D02B000173B1 /* Realtime */,
 				9D6715FC2DE4D02B000173B1 /* Storage */,
 				9D6715FE2DE4D02B000173B1 /* Supabase */,
+				D5EC9EFC2E0BF755004C0D3D /* SDWebImageSwiftUI */,
 			);
 			productName = IngrediScan;
 			productReference = D53566022DBB7849007255D1 /* IngrediScan.app */;
@@ -900,6 +903,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D6715ED2DE4C78E000173B1 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
+		};
+		D5EC9EFC2E0BF755004C0D3D /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5EC9EFB2E0BF5AF004C0D3D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

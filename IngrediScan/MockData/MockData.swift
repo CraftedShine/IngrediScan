@@ -76,7 +76,7 @@ extension Recipe {
         Recipe(
             id: 1,
             name: "Spaghetti Carbonara",
-            imageUrl: "spaghetti-carbonara",
+            imageUrl: "https://zglesyibcbwjoalbzdjp.supabase.co/storage/v1/object/sign/images/spaghetti-carbonara.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kOWQ0M2RkMi0xYWYwLTQ2ZGItYWQ4OC1hOTJkZDU2ZDg5MGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbWFnZXMvc3BhZ2hldHRpLWNhcmJvbmFyYS5qcGciLCJpYXQiOjE3NTA1ODQxNTMsImV4cCI6MzE1NTMxOTA0ODE1M30.-EDUtESRMvh_IybXFsI36Maw2c5a6dnBJHWJTAoDIiM",
             rating: 4.8,
             duration: 25,
             calories: 700,
@@ -128,7 +128,7 @@ extension Recipe {
         Recipe(
             id: 2,
             name: "Pizza Margherita",
-            imageUrl: "pizza",
+            imageUrl: "https://zglesyibcbwjoalbzdjp.supabase.co/storage/v1/object/sign/images/pizza.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kOWQ0M2RkMi0xYWYwLTQ2ZGItYWQ4OC1hOTJkZDU2ZDg5MGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbWFnZXMvcGl6emEuanBnIiwiaWF0IjoxNzUwNTg0MTg0LCJleHAiOjMxNTUzMTkwNDgxODR9.CBCjbK2cDrHF5CznTZGhodLL_rGBVJwqG6w_cPPYFRM",
             rating: 4.6,
             duration: 60,
             calories: 900,
@@ -156,7 +156,7 @@ extension Recipe {
         Recipe(
             id: 3,
             name: "Caesar Salad",
-            imageUrl: "caesar",
+            imageUrl: "https://zglesyibcbwjoalbzdjp.supabase.co/storage/v1/object/sign/images/caesar.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kOWQ0M2RkMi0xYWYwLTQ2ZGItYWQ4OC1hOTJkZDU2ZDg5MGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbWFnZXMvY2Flc2FyLmpwZyIsImlhdCI6MTc1MDU4NDIzOCwiZXhwIjozMTU1MzE5MDQ4MjM4fQ.W4m4cDrnXpaBKFab9C4D_juAbcAdHUM1K9FzpPaDeUY",
             rating: 4.3,
             duration: 20,
             calories: 400,
@@ -184,7 +184,7 @@ extension Recipe {
         Recipe(
             id: 4,
             name: "Käsekuchen",
-            imageUrl: "cheesecake",
+            imageUrl: "https://zglesyibcbwjoalbzdjp.supabase.co/storage/v1/object/sign/images/cheesecake.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kOWQ0M2RkMi0xYWYwLTQ2ZGItYWQ4OC1hOTJkZDU2ZDg5MGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbWFnZXMvY2hlZXNlY2FrZS5qcGciLCJpYXQiOjE3NTA4NDM4OTEsImV4cCI6MzE1NTMxOTMwNzg5MX0.Zc2bTeCurQD1TENqgJ4uLCUu4LzB-gL8aEWvBDFydrE",
             rating: 4.9,
             duration: 90,
             calories: 1200,
