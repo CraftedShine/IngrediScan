@@ -8,6 +8,20 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+fileprivate struct IngredientImagePlaceholder: View {
+    var body: some View {
+        Image(systemName: "photo")
+            .resizable()
+            .scaledToFit()
+            .aspectRatio(contentMode: .fill)
+            .clipped()
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.black.opacity(0.4))
+            }
+    }
+}
+
 struct IngredientBoxView: View {
     @EnvironmentObject private var viewModel: ViewModel
     @State private var rotationAngle: Double = 0
@@ -19,16 +33,22 @@ struct IngredientBoxView: View {
         ZStack(alignment: .topTrailing) {
             ZStack {
                 if let ingredientDb = self.viewModel.ingredients.first(where: { $0.id == ingredient.id }) {
-                    WebImage(url: URL(string: ingredientDb.imageUrl))
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fill)
-                    .clipped()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.black.opacity(0.4))
+                    WebImage(url: URL(string: ingredientDb.imageUrl)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fill)
+                            .clipped()
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundStyle(.black.opacity(0.4))
+                            }
+                    } placeholder: {
+                        IngredientImagePlaceholder()
                     }
-            }
+                    .indicator(.activity)
+                    .transition(.fade(duration: 0.5))
+                }
                 
                 VStack{
                     Text(ingredient.name)
@@ -84,31 +104,15 @@ struct IngredientBoxView: View {
     }
 }
 
-
-struct IngredientBoxView_Previews: PreviewProvider {
-    static var previews: some View {
-        IngredientBoxPreviewWrapper()
-    }
-}
-
-struct IngredientBoxPreviewWrapper: View {
-    @State private var isEditing = false
+#Preview {
+    @Previewable @State var isEditing = false
     let ingredient = MockIngredients().ingredients.first!
-    
-    var body: some View {
-        VStack {
-            IngredientBoxView(
-                isEditing: $isEditing,
-                ingredient: IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk")),
-                onDelete: { }
-            )
-            .previewLayout(.sizeThatFits)
-            .padding()
-        }
-    }
+    let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk"))
+                                        
+    IngredientBoxView(
+        isEditing: $isEditing,
+        ingredient: ingredientInFridge,
+        onDelete: {}
+    )
+    .withPreviewEnvironmentObjects()
 }
-
-
-
-
-

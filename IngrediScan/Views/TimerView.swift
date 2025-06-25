@@ -51,9 +51,10 @@ struct InlineTimerView: View {
             Spacer()
             
             HStack {
-                RoundedRectangularButton(title: "Neustarten", color: .orange) {
+                RoundedRectangularButton(title: "Neustarten", color: .white, backgroundColor: .orange) {
                     viewModel.reset()
                 }
+                .frame(maxWidth: 150)
             }
             
         }
