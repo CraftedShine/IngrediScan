@@ -12,34 +12,48 @@
 import SwiftUI
 
 struct SearchScreen: View {
+    @EnvironmentObject var searchViewModel: SearchViewModel
     @EnvironmentObject var viewModel: ViewModel
+    @Environment(\.dismiss) private var dismiss
     @State private var scrollProxy: ScrollViewProxy?
+    @State private var searchFormVisible: Bool = true
     
-    @State var resultList: [Recipe] = []
+    var resultList: [Recipe] {
+        searchViewModel.searchResult
+    }
     
     var body: some View {
         NavigationView{
             ScrollViewReader { proxy in
                 ScrollView {
                     VStack(spacing: 0) {
-                        
-                        //Search
-                        SearchForm(searchResult: $resultList, recipeList: viewModel.recipes, onButtonPress: {withAnimation {
-                            scrollProxy?.scrollTo("Result", anchor: .top)
-                        }})
-                            .frame(height: 700)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.05)))
-                            .id("topBox")
-                        
-                        Text("Ergebnis")
-                            .font(.title)
-                            .padding(.top, 30)
-                            .id("Result")
-                        
+                        if resultList.isEmpty {
+                            Text("Keine Rezepte gefunden")
+                                .font(.callout .bold() .smallCaps())
+                                .foregroundStyle(.secondary)
+                        }
                         //Result
                         ForEach(resultList) { recipe in
                             RecipeCard(recipe: recipe)
                         }
+                    }
+                }
+                .sheet(isPresented: $searchFormVisible) {
+                    ScrollView {
+                        SearchForm(onButtonPress: {
+                            withAnimation {
+                                scrollProxy?.scrollTo("Result", anchor: .top)
+                                dismiss()
+                            }
+                        })
+                        .frame(height: 700)
+                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.05)))
+                        .id("topBox")
+                        .padding(.top)
+                        .presentationCornerRadius(16)
+                        .presentationBackgroundInteraction(.enabled)
+                        .presentationDragIndicator(.visible)
+                        .presentationDetents([.fraction(0.125), .large])
                     }
                 }
                 .onAppear {
@@ -49,41 +63,22 @@ struct SearchScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Rezept Suche")
+                    Text("Rezepte")
                         .font(.title .bold() .smallCaps())
                 }
-                
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        withAnimation {
-                            scrollProxy?.scrollTo("topBox", anchor: .top)
-                        }
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .padding(10)
-                            .foregroundStyle(.white)
-                            .background(Color.orange.opacity(0.75))
-                            .clipShape(Circle())
+                    CircularButton(size: 20, padding: 10, color: .orange, image: "magnifyingglass") {
+                        searchFormVisible.toggle()
                     }
                 }
             }
         }
         
     }
-    
-    func bindingForRecipe(_ recipe: Recipe) -> Binding<Recipe> {
-        guard let index = viewModel.recipes.firstIndex(where: { $0.id == recipe.id }) else {
-            return .constant(recipe)
-        }
-        return $viewModel.recipes[index]
-    }
 }
 
 #Preview {
     SearchScreen()
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
 }
 

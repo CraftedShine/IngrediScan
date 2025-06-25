@@ -21,7 +21,7 @@ struct ShoppingItemForm: View {
                 .foregroundColor(.secondary)
             
             HStack {
-                Image(systemName: "carrot.fill")
+                Image(systemName: "cart.fill")
                     .padding(8)
                     .background(.gray)
                     .clipShape(Circle())
@@ -63,10 +63,10 @@ struct ShoppingItemForm: View {
             }
         }
         .padding()
-        .background(Color(UIColor.secondarySystemBackground))
-        .cornerRadius(16)
+        //.background(Color(UIColor.secondarySystemBackground))
+        //.cornerRadius(16)
         .frame(maxWidth: .infinity)
-        .padding(.horizontal)
+        //.padding(.horizontal)
     }
 }
 

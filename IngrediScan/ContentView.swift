@@ -72,6 +72,7 @@ extension View {
             .environmentObject(CookingViewModel())
             .environmentObject(TimerViewModel())
             .environmentObject(ShoppingListViewModel())
+            .environmentObject(SearchViewModel())
     }
 }
 

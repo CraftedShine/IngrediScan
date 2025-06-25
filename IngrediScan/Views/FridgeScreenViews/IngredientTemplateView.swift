@@ -17,6 +17,7 @@ struct IngredientTemplateView: View {
     var body: some View {
         HStack {
             Text(ingredient.name)
+                .font(.headline .bold() .smallCaps())
                 .frame(maxWidth: 100, alignment: .leading)
             
             Spacer()
@@ -27,18 +28,12 @@ struct IngredientTemplateView: View {
                 .keyboardType(.decimalPad)
             
             Text(ingredient.unit.name)
+                .font(.subheadline .bold())
+                .foregroundStyle(.secondary)
                 .frame(maxWidth: 40, alignment: .leading)
             
-            Button(action: {
+            CircularButton(size: 20, padding: 10, color: .orange, image: "plus") {
                 addToFridge(ingredient: ingredient)
-            }) {
-                Text("->")
-                    .font(.callout)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
             }
         }
         .padding(6)
@@ -55,7 +50,7 @@ struct IngredientTemplateView: View {
 }
 
 #Preview {
-    IngredientTemplateView(ingredient: Ingredient(id: 1, name: "Test", unitId: 1, unit: Unit(id: 1, name: "Stk")))
+    IngredientTemplateView(ingredient: Ingredient(id: 1, name: "Test", unitId: 1, imageUrl: "eier", unit: Unit(id: 1, name: "Stk")))
 }
 
 

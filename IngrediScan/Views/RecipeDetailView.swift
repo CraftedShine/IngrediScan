@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 import SDWebImageSwiftUI
 
-struct RecipeImagePlaceholder: View {
+fileprivate struct RecipeImagePlaceholder: View {
     var body: some View {
         Image(systemName: "photo")
             .resizable()
@@ -73,8 +73,7 @@ struct RecipeDetailView: View {
                             .foregroundStyle(.white)
                         }
                         
-                        CardTagList(hasTags: recipe.hasTags)
-                            .padding()
+                        TagList(hasTags: recipe.hasTags)
                         
                         Divider()
                         

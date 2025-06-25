@@ -15,7 +15,7 @@ struct ShoppingListItem: View {
     var body: some View {
         if let ingredient = viewModel.getIngredient(item.ingredientId) {
             HStack {
-                Image(systemName: "carrot")
+                Image(systemName: "cart")
                     .padding(8)
                     .background(.gray)
                     .clipShape(Circle())

@@ -29,7 +29,7 @@ struct FridgeScreen: View {
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 20) {
                             ForEach(viewModel.fridge.getIngredients()) { ingredient in
-                                IngredientBoxView(ingredient: ingredient, isEditing: $isEditing, onDelete: {
+                                IngredientBoxView(isEditing: $isEditing, ingredient: ingredient, onDelete: {
                                     viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredient)
                                 })
                                 .onTapGesture {

@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct CardImagePlaceholder: View {
+fileprivate struct CardImagePlaceholder: View {
     var body: some View {
         Image(systemName: "photo")
             .resizable()
@@ -23,7 +23,7 @@ struct CardImagePlaceholder: View {
     }
 }
 
-struct CardBackground: View {
+fileprivate struct CardBackground: View {
     @Binding var recipe: Recipe
     @State var isLoaded: Bool = false
     
@@ -47,7 +47,7 @@ struct CardBackground: View {
     }
 }
 
-struct CardText: View {
+fileprivate struct CardText: View {
     @Binding var recipe: Recipe
     
     var body: some View {
@@ -95,29 +95,6 @@ struct CardText: View {
                 }
             }
         }
-    }
-}
-
-struct CardTagList: View {
-    var hasTags: [TagRelation]
-    
-    var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(hasTags, id: \.id) { tagRelation in
-                    Button {
-                        
-                    } label: {
-                        Text(tagRelation.Tag.name)
-                    }
-                    .padding(10)
-                    .buttonStyle(.plain)
-                    .background(.orange)
-                    .clipShape(Capsule())
-                }
-            }
-        }
-        .scrollIndicators(.hidden)
     }
 }
 

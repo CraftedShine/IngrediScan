@@ -38,7 +38,7 @@ struct HomeView: View {
             .toolbar {
                 //MARK: Best Rated Recipe
                 ToolbarItem(placement: .cancellationAction) {
-                    CircularButton(size: 20, padding: 10, color: Color.orange.opacity(0.75), image: "heart.fill") {
+                    CircularButton(size: 20, padding: 10, color: .orange, image: "heart.fill") {
                         bestRatedRecipeVisible.toggle()
                     }
                     .sheet(isPresented: $bestRatedRecipeVisible) {
@@ -58,7 +58,7 @@ struct HomeView: View {
                 
                 //MARK: Random Recipe
                 ToolbarItem(placement: .confirmationAction) {
-                    CircularButton(size: 20, padding: 10, color: Color.orange.opacity(0.75), image: "shuffle") {
+                    CircularButton(size: 20, padding: 10, color: .orange, image: "shuffle") {
                         randomRecipeVisible.toggle()
                     }
                     .sheet(isPresented: $randomRecipeVisible) {

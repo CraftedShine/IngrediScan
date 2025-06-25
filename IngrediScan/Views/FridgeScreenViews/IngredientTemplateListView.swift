@@ -41,15 +41,11 @@ struct IngredientTemplateListView: View {
                     HStack {
                         Spacer()
                         Text("Zutaten hinzufügen")
-                            .font(.title)
+                            .font(.title .bold() .smallCaps())
                         Spacer()
-                        Button(action: {
+                        
+                        CircularButton(size: 20, padding: 10, color: .orange, image: "xmark") {
                             dismiss()
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.orange)
-                                .scaleEffect(1.4)
-                                .padding(5)
                         }
                     }
                 }
@@ -62,11 +58,9 @@ struct IngredientTemplateListView: View {
 
 
 
-struct IngredientTemplateListView_Previews: PreviewProvider {
-    static var previews: some View {
-        IngredientTemplateListView()
-            .environmentObject(ViewModel())
-    }
+#Preview {
+    IngredientTemplateListView()
+        .withPreviewEnvironmentObjects()
 }
 
 

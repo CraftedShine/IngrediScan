@@ -51,12 +51,18 @@ struct CircularButton: View, StylizedButton {
 struct RoundedRectangularButton: View, StylizedButton {
     var title: String? = nil
     var color: Color
+    var backgroundColor: Color?
+    var borderColor: Color?
+    var cornerRadius: CGFloat?
     var image: String? = nil
     var action: () -> Void
     
-    init(title: String?, color: Color, action: @escaping () -> Void) {
+    init(title: String?, color: Color, backgroundColor: Color? = .secondary, borderColor: Color? = .clear, cornerRadius: CGFloat? = 16, action: @escaping () -> Void) {
         self.title = title
         self.color = color
+        self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
+        self.cornerRadius = cornerRadius
         self.action = action
     }
     
@@ -64,13 +70,18 @@ struct RoundedRectangularButton: View, StylizedButton {
         Button(action: action){
             if let text = title {
                 Text(text)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(color)
                     .font(.headline .bold() .smallCaps())
             }
         }
+        .frame(maxWidth: .infinity)
         .padding()
-        .background(color)
+        .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(borderColor ?? .clear, lineWidth: 2)
+        )
     }
 }
 

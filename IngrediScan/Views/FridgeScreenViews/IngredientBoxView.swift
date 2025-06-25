@@ -6,28 +6,44 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct IngredientBoxView: View {
-    let ingredient: IngredientInFridge
-    @Binding var isEditing: Bool
-    let onDelete: () -> Void
+    @EnvironmentObject private var viewModel: ViewModel
     @State private var rotationAngle: Double = 0
+    @Binding var isEditing: Bool
+    let ingredient: IngredientInFridge
+    let onDelete: () -> Void
     
     var body: some View {
-        ZStack {
-            
-            VStack{
-                Text(ingredient.name)
-                    .font(.headline .smallCaps() .bold())
+        ZStack(alignment: .topTrailing) {
+            ZStack {
+                if let ingredientDb = self.viewModel.ingredients.first(where: { $0.id == ingredient.id }) {
+                    WebImage(url: URL(string: ingredientDb.imageUrl))
+                    .resizable()
+                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
+                    .clipped()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.black.opacity(0.4))
+                    }
+            }
                 
-                HStack{
-                    Text(String(format: "%.1f", ingredient.amount))
-                        .font(.subheadline .bold())
-                        .foregroundColor(.secondary)
+                VStack{
+                    Text(ingredient.name)
+                        .font(.title2 .smallCaps() .bold())
+                        .foregroundStyle(.white)
                     
-                    Text(ingredient.Unit.name)
-                        .font(.subheadline .bold())
-                        .foregroundColor(.secondary)
+                    HStack{
+                        Text(String(format: "%.0f", ingredient.amount))
+                            .font(.headline .bold())
+                            .foregroundColor(.white.opacity(0.8))
+                        
+                        Text(ingredient.Unit.name)
+                            .font(.headline .bold())
+                            .foregroundColor(.white.opacity(0.8))
+                    }
                 }
             }
             .frame(width: 170, height: 100)
@@ -45,13 +61,9 @@ struct IngredientBoxView: View {
             }
             
             if isEditing {
-                Button(action: { onDelete() }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.red)
-                        .scaleEffect(1.4)
-                        .padding(5)
+                CircularButton(size: 10, padding: 10, color: .red, image: "xmark") {
+                    onDelete()
                 }
-                .offset(x: 69, y: -37)
             }
         }
     }
@@ -86,8 +98,8 @@ struct IngredientBoxPreviewWrapper: View {
     var body: some View {
         VStack {
             IngredientBoxView(
-                ingredient: IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk")),
                 isEditing: $isEditing,
+                ingredient: IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk")),
                 onDelete: { }
             )
             .previewLayout(.sizeThatFits)
