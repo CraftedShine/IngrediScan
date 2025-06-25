@@ -47,7 +47,7 @@ struct SearchScreen: View {
                             }
                         })
                         .frame(height: 700)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.05)))
+                        .background(Color.gray.opacity(0.05))
                         .id("topBox")
                         .padding(.top)
                         .presentationCornerRadius(16)

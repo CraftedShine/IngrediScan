@@ -38,7 +38,6 @@ struct ShoppingListScreen: View {
                     .presentationCornerRadius(16)
                     .presentationDetents([.fraction(0.25)])
                     .presentationBackgroundInteraction(.enabled)
-                    .presentationBackground(Color(UIColor.secondarySystemBackground))
                     .presentationDragIndicator(.visible)
                     .focused($isTextFieldFocused)
             }
