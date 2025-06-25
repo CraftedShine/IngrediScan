@@ -11,39 +11,41 @@ fileprivate struct FilterOptions: View {
     @EnvironmentObject var search: SearchViewModel
     
     var body: some View {
-        Text("Rezepte filtern nach")
-            .font(.headline .bold() .smallCaps())
-        
-        HStack {
-            Text("Bewertung")
-                .font(.subheadline .bold() .smallCaps())
-            Spacer()
-            StarRatingView(rating: $search.selectedRating)
-        }
-        
-        HStack {
-            ForEach(search.difficultyPicker, id: \.self) { difficulty in
-                let isSelected = search.selectedDifficulty.contains(difficulty)
-                let buttonBackground = isSelected ? Color.orange.opacity(0.1) : Color(.systemGray6)
-                let borderColor = isSelected ? Color.orange : Color.clear
-                
-                
-                RoundedRectangularButton(
-                    title: difficulty,
-                    color: .orange,
-                    backgroundColor: buttonBackground,
-                    borderColor: borderColor,
-                    cornerRadius: 10
-                ) {
-                    if isSelected {
-                        search.selectedDifficulty.removeAll { $0 == difficulty }
-                    } else {
-                        search.selectedDifficulty.append(difficulty)
+        VStack(spacing: 16) {
+            Text("Rezepte filtern nach")
+                .font(.headline .bold() .smallCaps())
+            
+            HStack {
+                Text("Bewertung")
+                    .font(.subheadline .bold() .smallCaps())
+                Spacer()
+                StarRatingView(rating: $search.selectedRating)
+            }
+            
+            HStack {
+                ForEach(search.difficultyPicker, id: \.self) { difficulty in
+                    let isSelected = search.selectedDifficulty.contains(difficulty)
+                    let buttonBackground = isSelected ? Color.orange.opacity(0.1) : Color(.systemGray6)
+                    let borderColor = isSelected ? Color.orange : Color.clear
+                    
+                    
+                    RoundedRectangularButton(
+                        title: difficulty,
+                        color: .orange,
+                        backgroundColor: buttonBackground,
+                        borderColor: borderColor,
+                        cornerRadius: 10
+                    ) {
+                        if isSelected {
+                            search.selectedDifficulty.removeAll { $0 == difficulty }
+                        } else {
+                            search.selectedDifficulty.append(difficulty)
+                        }
                     }
                 }
             }
+            .frame(width: .infinity)
         }
-        .frame(width: .infinity)
     }
 }
 
@@ -52,31 +54,33 @@ fileprivate struct SortOptions: View {
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        Text("Rezepte sortieren nach")
-            .font(.headline .bold() .smallCaps())
-        
-        LazyVGrid(columns: self.columns) {
-            ForEach(search.sortCategories, id: \.self) { option in
-                let isSelected = search.selectedSortCategories.contains(option)
-                let buttonBackground = isSelected ? Color.orange.opacity(0.1) : Color(.systemGray6)
-                let borderColor = isSelected ? Color.orange : Color.clear
-                
-                RoundedRectangularButton(
-                    title: option,
-                    color: .orange,
-                    backgroundColor: buttonBackground,
-                    borderColor: borderColor,
-                    cornerRadius: 10
-                ) {
-                    if isSelected {
-                        search.selectedSortCategories.removeAll { $0 == option }
-                    } else {
-                        search.selectedSortCategories.append(option)
+        VStack(spacing: 16) {
+            Text("Rezepte sortieren nach")
+                .font(.headline .bold() .smallCaps())
+            
+            LazyVGrid(columns: self.columns) {
+                ForEach(search.sortCategories, id: \.self) { option in
+                    let isSelected = search.selectedSortCategories.contains(option)
+                    let buttonBackground = isSelected ? Color.orange.opacity(0.1) : Color(.systemGray6)
+                    let borderColor = isSelected ? Color.orange : Color.clear
+                    
+                    RoundedRectangularButton(
+                        title: option,
+                        color: .orange,
+                        backgroundColor: buttonBackground,
+                        borderColor: borderColor,
+                        cornerRadius: 10
+                    ) {
+                        if isSelected {
+                            search.selectedSortCategories.removeAll { $0 == option }
+                        } else {
+                            search.selectedSortCategories.append(option)
+                        }
                     }
                 }
             }
+            .frame(width: .infinity)
         }
-        .frame(width: .infinity)
     }
 }
 
@@ -92,7 +96,7 @@ fileprivate struct IngredientOptions: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             //MARK: Ignore Fridge
             HStack {
                 Text("Kühlschrank ignorieren")
@@ -148,6 +152,9 @@ struct SearchForm: View {
     var body: some View {
         NavigationView {
             VStack {
+                Divider()
+                    .padding(.horizontal)
+                
                 IngredientOptions()
                     .padding()
                 

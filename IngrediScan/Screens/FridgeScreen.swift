@@ -60,7 +60,8 @@ struct FridgeScreen: View {
                         }
                         .padding()
                         .sheet(isPresented: $showIngredientSheet) {
-                            AddIngredientView(dismiss: _dismiss)
+                            AddIngredientView()
+                                .presentationDragIndicator(.visible)
                         }
                         
                     }

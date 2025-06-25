@@ -32,7 +32,7 @@ struct AddIngredientView: View {
                     .padding()
                 
                 List(filteredIngredients) { ingredient in
-                    IngredientForm(dismiss: _dismiss, ingredient: ingredient)
+                    IngredientForm(ingredient: ingredient)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
