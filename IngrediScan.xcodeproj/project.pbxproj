@@ -436,6 +436,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				9D6715ED2DE4C78E000173B1 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				D5EC9EFB2E0BF5AF004C0D3D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D53566032DBB7849007255D1 /* Products */;
@@ -857,6 +858,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.5.1;
+			};
+		};
+		D5EC9EFB2E0BF5AF004C0D3D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

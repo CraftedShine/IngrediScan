@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CardImagePlaceholder: View {
     var body: some View {
@@ -26,6 +27,23 @@ struct CardBackground: View {
     @Binding var recipe: Recipe
     
     var body: some View {
+        WebImage(url: URL(string: recipe.imageUrl))
+            .resizable()
+            .placeholder {
+                CardImagePlaceholder()
+            }
+            .indicator(.activity)
+            .transition(.fade(duration: 0.5))
+            .scaledToFit()
+            .aspectRatio(contentMode: .fill)
+            .frame(height: 150)
+            .clipped()
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.black.opacity(0.4))
+            }
+        
+        
         AsyncImage(url: URL(string: self.recipe.imageUrl))
         { phase in
             switch phase {
