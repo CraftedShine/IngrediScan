@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct IngredientTemplateView: View {
-    
+struct IngredientForm: View {
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
     let ingredient: Ingredient
     @State private var newAmount: String = ""
@@ -34,6 +34,7 @@ struct IngredientTemplateView: View {
             
             CircularButton(size: 20, padding: 10, color: .orange, image: "plus") {
                 addToFridge(ingredient: ingredient)
+                dismiss()
             }
         }
         .padding(6)
@@ -50,7 +51,8 @@ struct IngredientTemplateView: View {
 }
 
 #Preview {
-    IngredientTemplateView(ingredient: Ingredient(id: 1, name: "Test", unitId: 1, imageUrl: "eier", unit: Unit(id: 1, name: "Stk")))
+    IngredientForm(ingredient: Ingredient(id: 1, name: "Test", unitId: 1, imageUrl: "eier", unit: Unit(id: 1, name: "Stk")))
+        .withPreviewEnvironmentObjects()
 }
 
 

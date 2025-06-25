@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FridgeScreen: View {
-    
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
     @State private var selectedIngredient: IngredientInFridge?
     @State private var showIngredientSheet = false
@@ -29,7 +29,7 @@ struct FridgeScreen: View {
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 20) {
                             ForEach(viewModel.fridge.getIngredients()) { ingredient in
-                                IngredientBoxView(isEditing: $isEditing, ingredient: ingredient, onDelete: {
+                                IngredientCard(isEditing: $isEditing, ingredient: ingredient, onDelete: {
                                     viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredient)
                                 })
                                 .onTapGesture {
@@ -60,7 +60,7 @@ struct FridgeScreen: View {
                         }
                         .padding()
                         .sheet(isPresented: $showIngredientSheet) {
-                            IngredientTemplateListView()
+                            AddIngredientView(dismiss: _dismiss)
                         }
                         
                     }
@@ -74,7 +74,7 @@ struct FridgeScreen: View {
                             selectedIngredient = nil
                         }
                     
-                    IngredientOverlayView(
+                    ModifyIngredientView(
                         ingredient: ingredient,
                         onClose: { selectedIngredient = nil }
                     )

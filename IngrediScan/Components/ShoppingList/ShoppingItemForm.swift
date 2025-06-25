@@ -63,10 +63,7 @@ struct ShoppingItemForm: View {
             }
         }
         .padding()
-        //.background(Color(UIColor.secondarySystemBackground))
-        //.cornerRadius(16)
         .frame(maxWidth: .infinity)
-        //.padding(.horizontal)
     }
 }
 

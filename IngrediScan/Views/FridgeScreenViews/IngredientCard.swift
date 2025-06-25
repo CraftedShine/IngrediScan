@@ -22,7 +22,7 @@ fileprivate struct IngredientImagePlaceholder: View {
     }
 }
 
-struct IngredientBoxView: View {
+struct IngredientCard: View {
     @EnvironmentObject private var viewModel: ViewModel
     @State private var rotationAngle: Double = 0
     @Binding var isEditing: Bool
@@ -33,21 +33,25 @@ struct IngredientBoxView: View {
         ZStack(alignment: .topTrailing) {
             ZStack {
                 if let ingredientDb = self.viewModel.ingredients.first(where: { $0.id == ingredient.id }) {
-                    WebImage(url: URL(string: ingredientDb.imageUrl)) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .aspectRatio(contentMode: .fill)
-                            .clipped()
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .foregroundStyle(.black.opacity(0.4))
-                            }
-                    } placeholder: {
+                    if let imageUrl = ingredientDb.imageUrl {
+                        WebImage(url: URL(string: imageUrl)) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .aspectRatio(contentMode: .fill)
+                                .clipped()
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .foregroundStyle(.black.opacity(0.4))
+                                }
+                        } placeholder: {
+                            IngredientImagePlaceholder()
+                        }
+                        .indicator(.activity)
+                        .transition(.fade(duration: 0.5))
+                    } else {
                         IngredientImagePlaceholder()
                     }
-                    .indicator(.activity)
-                    .transition(.fade(duration: 0.5))
                 }
                 
                 VStack{
@@ -109,7 +113,7 @@ struct IngredientBoxView: View {
     let ingredient = MockIngredients().ingredients.first!
     let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk"))
                                         
-    IngredientBoxView(
+    IngredientCard(
         isEditing: $isEditing,
         ingredient: ingredientInFridge,
         onDelete: {}

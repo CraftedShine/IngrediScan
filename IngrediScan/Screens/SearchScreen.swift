@@ -53,7 +53,7 @@ struct SearchScreen: View {
                         .presentationCornerRadius(16)
                         .presentationBackgroundInteraction(.enabled)
                         .presentationDragIndicator(.visible)
-                        .presentationDetents([.fraction(0.125), .large])
+                        .presentationDetents([.fraction(0.25), .large])
                     }
                 }
                 .onAppear {

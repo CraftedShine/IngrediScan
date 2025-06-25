@@ -36,7 +36,7 @@ struct ShoppingListScreen: View {
             .sheet(isPresented: $showForm) {
                 ShoppingItemForm()
                     .presentationCornerRadius(16)
-                    .presentationDetents([.fraction(0.125)])
+                    .presentationDetents([.fraction(0.25)])
                     .presentationBackgroundInteraction(.enabled)
                     .presentationBackground(Color(UIColor.secondarySystemBackground))
                     .presentationDragIndicator(.visible)

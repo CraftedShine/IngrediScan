@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IngredientTemplateListView: View {
+struct AddIngredientView: View {
     
     @EnvironmentObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
@@ -32,7 +32,7 @@ struct IngredientTemplateListView: View {
                     .padding()
                 
                 List(filteredIngredients) { ingredient in
-                    IngredientTemplateView(ingredient: ingredient)
+                    IngredientForm(dismiss: _dismiss, ingredient: ingredient)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -59,7 +59,7 @@ struct IngredientTemplateListView: View {
 
 
 #Preview {
-    IngredientTemplateListView()
+    AddIngredientView()
         .withPreviewEnvironmentObjects()
 }
 

@@ -1,5 +1,5 @@
 //
-//  IngredientOverlay.swift
+//  ModifyIngredientSheet.swift
 //  IngrediScan
 //
 //  Created by Jan Keller on 14.05.25.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct IngredientOverlayView: View {
-    
+struct ModifyIngredientView: View {
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
     let ingredient: IngredientInFridge
     
@@ -86,5 +86,12 @@ struct IngredientOverlayView: View {
     }
 }
 
+#Preview {
+    let ingredient = MockIngredients().ingredients.first!
+    let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk"))
+    
+    ModifyIngredientView(ingredient: ingredientInFridge, onClose: {})
+        .withPreviewEnvironmentObjects()
+}
 
 
