@@ -14,8 +14,6 @@ class TimerViewModel: ObservableObject {
     @Published var isRunning = false
     @Published var totalDuration: TimeInterval = 1
     
-    @Published var saveToCalendar: Bool = false
-    
     private var timer: AdjustableTimer?
     
     init(initialDuration: TimeInterval = 10) {

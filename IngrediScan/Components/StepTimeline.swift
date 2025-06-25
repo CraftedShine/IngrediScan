@@ -28,6 +28,7 @@ struct StepContent: View {
                 .foregroundColor(.gray)
             
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(.gray.opacity(0.3))
         .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -84,6 +85,7 @@ struct StepTimeline: View {
                     
                 }
                 .opacity(isCompleted ? 0.6 : 1.0)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .onChange(of: cookingViewModel.currentStep) {
