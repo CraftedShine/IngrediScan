@@ -43,7 +43,7 @@ struct IngredientForm: View {
     func addToFridge(ingredient: Ingredient) {
         if !newAmount.isEmpty {
             if let amount = Double(newAmount), amount > 0 {
-                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), Unit: ingredient.unit)
+                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), icon: ingredient.icon, Unit: ingredient.unit)
                 viewModel.editIngredientInFridge(ingredientId: ingredientToAdd.id, amount: Float(amount), ingredient: ingredientToAdd)
             }
         }

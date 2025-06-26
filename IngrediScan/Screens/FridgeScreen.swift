@@ -27,7 +27,7 @@ struct FridgeScreen: View {
                     
                     // List of ingredients formatted in box views
                     ScrollView {
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 20) {
+                        VStack {
                             ForEach(viewModel.fridge.getIngredients()) { ingredient in
                                 IngredientCard(isEditing: $isEditing, ingredient: ingredient, onDelete: {
                                     viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredient)
@@ -40,7 +40,6 @@ struct FridgeScreen: View {
                                 }
                             }
                         }
-                        .padding()
                     }
                     
                     // add button -> opens a ingredient sheet
@@ -92,13 +91,14 @@ struct FridgeScreen: View {
                 }
                 
             }
+            .padding(.top)
         }
     }
 }
 
 #Preview {
     FridgeScreen()
-        .environmentObject(ViewModel())
+        .withPreviewEnvironmentObjects()
 }
 
 

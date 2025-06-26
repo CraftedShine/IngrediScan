@@ -60,7 +60,7 @@ struct CookingView: View {
         
         for usage in ingredientUsage {
             let ingredient = usage.ingredient
-            let ingredientInFridge = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: usage.amount, Unit: ingredient.unit)
+            let ingredientInFridge = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: usage.amount, icon: ingredient.icon, Unit: ingredient.unit)
             
             viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: -usage.amount, ingredient: ingredientInFridge)
         }

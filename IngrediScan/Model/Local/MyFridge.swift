@@ -48,5 +48,6 @@ struct IngredientInFridge: Codable, Identifiable {
     let id: Int
     let name: String
     var amount: Float
+    let icon: String?
     let Unit: Unit
 }

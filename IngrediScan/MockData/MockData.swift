@@ -12,9 +12,9 @@ class MockFridge: MyFridge {
         super.init()
 
         let stk = Unit(id: 1, name: "Stk")
-        addIngredient(IngredientInFridge(id: 0, name: "Eier", amount: 6, Unit: stk))
-        addIngredient(IngredientInFridge(id: 1, name: "Milch", amount: 1, Unit: stk))
-        addIngredient(IngredientInFridge(id: 2, name: "Käse", amount: 0.5, Unit: stk))
+        addIngredient(IngredientInFridge(id: 0, name: "Eier", amount: 6, icon: "🥚", Unit: stk))
+        addIngredient(IngredientInFridge(id: 1, name: "Milch", amount: 1, icon: "🥛", Unit: stk))
+        addIngredient(IngredientInFridge(id: 2, name: "Käse", amount: 0.5, icon: "🧀", Unit: stk))
     }
 }
 

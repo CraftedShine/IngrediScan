@@ -42,7 +42,7 @@ struct ModifyIngredientView: View {
                 HStack {
                     Button("Speichern") {
                         if let amount = Float(newAmount) {
-                            let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: amount-ingredient.amount, Unit: ingredient.Unit)
+                            let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: amount-ingredient.amount, icon: ingredient.icon, Unit: ingredient.Unit)
                             viewModel.editIngredientInFridge(ingredientId: ingredientToAdd.id, amount: ingredientToAdd.amount, ingredient: ingredientToAdd)
                         }
                         onClose()
@@ -56,7 +56,7 @@ struct ModifyIngredientView: View {
                     
                     // delete button
                     Button("Löschen") {
-                        let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: ingredient.amount * -1, Unit: ingredient.Unit)
+                        let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: ingredient.amount * -1, icon: ingredient.icon, Unit: ingredient.Unit)
                         viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredientToAdd)
                         onClose()
                     }
@@ -88,7 +88,7 @@ struct ModifyIngredientView: View {
 
 #Preview {
     let ingredient = MockIngredients().ingredients.first!
-    let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, Unit: Unit(id: 1, name: "Stk"))
+    let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, icon: "🥚", Unit: Unit(id: 1, name: "Stk"))
     
     ModifyIngredientView(ingredient: ingredientInFridge, onClose: {})
         .withPreviewEnvironmentObjects()

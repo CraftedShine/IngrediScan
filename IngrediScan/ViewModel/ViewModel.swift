@@ -107,6 +107,7 @@ class ViewModel: ObservableObject {
                         id: ingredient.id,
                         name: ingredient.name,
                         amount: amount,
+                        icon: ingredient.icon,
                         Unit: ingredient.unit
                     )
                     fridge.addIngredient(fridgeIngredient)
