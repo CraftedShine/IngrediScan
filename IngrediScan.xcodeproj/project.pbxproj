@@ -65,6 +65,8 @@
 		D5EC9EFA2E086D93004C0D3D /* AppLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EF92E086D93004C0D3D /* AppLoadingScreen.swift */; };
 		D5EC9EFD2E0BF755004C0D3D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5EC9EFC2E0BF755004C0D3D /* SDWebImageSwiftUI */; };
 		D5EC9EFF2E0C4971004C0D3D /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9EFE2E0C4971004C0D3D /* TagList.swift */; };
+		D5EC9F012E0DA912004C0D3D /* FridgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9F002E0DA912004C0D3D /* FridgeViewModel.swift */; };
+		D5EC9F032E0DA94F004C0D3D /* FridgeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC9F022E0DA94F004C0D3D /* FridgeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		D5EC9EF72E082BE1004C0D3D /* ShoppingItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemForm.swift; sourceTree = "<group>"; };
 		D5EC9EF92E086D93004C0D3D /* AppLoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingScreen.swift; sourceTree = "<group>"; };
 		D5EC9EFE2E0C4971004C0D3D /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
+		D5EC9F002E0DA912004C0D3D /* FridgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeViewModel.swift; sourceTree = "<group>"; };
+		D5EC9F022E0DA94F004C0D3D /* FridgeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +285,7 @@
 				D5EC9ED22E01EDA0004C0D3D /* CookingViewModel.swift */,
 				D5EC9EF22E080997004C0D3D /* ShoppingListViewModel.swift */,
 				9D76637E2DFE16F50091BB9A /* SearchViewModel.swift */,
+				D5EC9F002E0DA912004C0D3D /* FridgeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 			children = (
 				D58B6B352DCDF720006EA229 /* MyFridge.swift */,
 				D5EC9EF02E080944004C0D3D /* ShoppingItem.swift */,
+				D5EC9F022E0DA94F004C0D3D /* FridgeItem.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 				D598DAD52DE0D1A30093D5C1 /* RecipeDetailView.swift in Sources */,
 				D598DACF2DE0D1690093D5C1 /* IngredientList.swift in Sources */,
 				D58B6B532DCDF720006EA229 /* MyFridge.swift in Sources */,
+				D5EC9F012E0DA912004C0D3D /* FridgeViewModel.swift in Sources */,
 				D58C19852DDF2F7D00151F36 /* (null) in Sources */,
 				D58B6B952DD72B4C006EA229 /* (null) in Sources */,
 				D598DAF32DE0D2F50093D5C1 /* MockData.swift in Sources */,
@@ -519,6 +526,7 @@
 				D5EC9EE12E06AB63004C0D3D /* TimerView.swift in Sources */,
 				D5EC9EEF2E08087B004C0D3D /* ShoppingListScreen.swift in Sources */,
 				9D76637F2DFE16FB0091BB9A /* SearchViewModel.swift in Sources */,
+				D5EC9F032E0DA94F004C0D3D /* FridgeItem.swift in Sources */,
 				D598DAEF2DE0D2410093D5C1 /* HomeScreen.swift in Sources */,
 				D5EC9ED12E009F77004C0D3D /* StylizedButtons.swift in Sources */,
 				D58B6B5E2DCDF720006EA229 /* FridgeScreen.swift in Sources */,

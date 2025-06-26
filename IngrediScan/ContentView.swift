@@ -45,6 +45,8 @@ struct MainView: View {
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var search: SearchViewModel
+    @EnvironmentObject var fridge: FridgeViewModel
     @State private var showLoadingScreen: Bool = true
     
     var body: some View {
@@ -56,6 +58,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
+            search.fridge = self.fridge
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
                     showLoadingScreen = false
@@ -73,6 +76,7 @@ extension View {
             .environmentObject(TimerViewModel())
             .environmentObject(ShoppingListViewModel())
             .environmentObject(SearchViewModel())
+            .environmentObject(FridgeViewModel())
     }
 }
 

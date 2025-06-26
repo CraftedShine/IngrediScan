@@ -59,19 +59,6 @@ struct ShoppingListScreen: View {
                     Text("Einkaufsliste")
                         .font(.title .bold() .smallCaps())
                 }
-                ToolbarItem(placement: .cancellationAction) {
-                    CircularButton(size: 20, padding: 10, color: .orange, image: "xmark") {
-                        showConfirmation.toggle()
-                    }
-                    .confirmationDialog("Möchtest du Liste wirklich leeren?", isPresented: $showConfirmation, titleVisibility: .visible) {
-                        Button("Löschen", role: .destructive) {
-                            // Aktion hier ausführen
-                            shoppingListViewModel.clearList()
-                        }
-                        
-                        Button("Abbrechen", role: .cancel) { }
-                    }
-                }
             }
         }
     }

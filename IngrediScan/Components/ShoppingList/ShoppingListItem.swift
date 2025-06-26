@@ -10,6 +10,7 @@ import SwiftUI
 struct ShoppingListItem: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var shoppingListViewModel: ShoppingListViewModel
+    @EnvironmentObject private var fridgeViewModel: FridgeViewModel
     @Binding var item: ShoppingItem
     
     var body: some View {
@@ -58,6 +59,11 @@ struct ShoppingListItem: View {
                             .padding(.horizontal, 8)
                         
                         CircularButton(size: 20, padding: 10, color: item.isBought ? .red.opacity(0.8) : .green, image: "trash") {
+                            let newItem = FridgeItem(ingredientId: ingredient.id, amount: item.amount)
+                            
+                            fridgeViewModel.addItem(newItem)
+                            
+                            
                             shoppingListViewModel.deleteItem(item)
                         }
                         .padding(.horizontal, 32)

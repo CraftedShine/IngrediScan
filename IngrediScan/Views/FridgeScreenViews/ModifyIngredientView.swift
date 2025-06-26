@@ -11,86 +11,57 @@ import SwiftUI
 struct ModifyIngredientView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
-    let ingredient: IngredientInFridge
-    
-    let size: CGSize = CGSize(width: 350, height: 350)
-    let onClose: () -> Void
+    @EnvironmentObject var fridgeViewModel: FridgeViewModel
+    let item: FridgeItem
     
     @State private var newAmount: String = ""
-
+    
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                Text(ingredient.name)
-                    .font(.title)
-                    .padding()
-
-                Spacer()
-                HStack {
-                    TextField(String(format: "%.2f", ingredient.amount).replacingOccurrences(of: ".00", with: ""),text: $newAmount)
+        if let ingredient = viewModel.getIngredient(item.ingredientId) {
+            VStack(alignment: .trailing, spacing: 0) {
+                DismissButton(dismiss: _dismiss)
+                
+                HStack(spacing: 8) {
+                    Text(ingredient.name)
+                        .font(.headline .bold() .smallCaps())
+                    
+                    TextField(String(format: "%.0f", item.amount),text: $newAmount)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.leading)
                     
-                    Text(ingredient.Unit.name)
-                        .padding(.trailing)
+                    Text(ingredient.unit.name)
+                        .font(.subheadline .bold())
+                        .foregroundStyle(.secondary)
                 }
-
-                Spacer()
-                // save button
+                .padding(.horizontal)
+                
                 HStack {
-                    Button("Speichern") {
+                    RoundedRectangularButton(title: "Speichern", color: .white, backgroundColor: .green) {
                         if let amount = Float(newAmount) {
-                            let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: amount-ingredient.amount, icon: ingredient.icon, Unit: ingredient.Unit)
-                            viewModel.editIngredientInFridge(ingredientId: ingredientToAdd.id, amount: ingredientToAdd.amount, ingredient: ingredientToAdd)
+                            let newItem = FridgeItem(ingredientId: ingredient.id, amount: amount)
+                            
+                            fridgeViewModel.modifyItem(newItem)
                         }
-                        onClose()
+                        dismiss()
                     }
-                    .padding()
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding()
                     
-                    
-                    // delete button
-                    Button("Löschen") {
-                        let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: ingredient.amount * -1, icon: ingredient.icon, Unit: ingredient.Unit)
-                        viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredientToAdd)
-                        onClose()
+                    RoundedRectangularButton(title: "Löschen", color: .white, backgroundColor: .red) {
+                        fridgeViewModel.deleteItem(item)
+                        dismiss()
                     }
-                    .padding()
-                    .foregroundColor(.orange)
                 }
+                .padding()
             }
-            
-            // close Button
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(action: { onClose() }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.orange)
-                            .scaleEffect(2)
-                    }
-                    .padding()
-                }
-                Spacer()
-            }
+            .frame(maxWidth: 350, maxHeight: 200)
+            .background(Color(UIColor.secondarySystemBackground))
+            .cornerRadius(16)
+            .shadow(radius: 10)
         }
-        .frame(width: size.width, height: size.height)
-        .background(Color(UIColor.secondarySystemBackground))
-        .cornerRadius(25)
-        .shadow(radius: 10)
     }
 }
 
 #Preview {
-    let ingredient = MockIngredients().ingredients.first!
-    let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, icon: "🥚", Unit: Unit(id: 1, name: "Stk"))
-    
-    ModifyIngredientView(ingredient: ingredientInFridge, onClose: {})
+    ModifyIngredientView(item: FridgeItem(ingredientId: 9, amount: 10))
         .withPreviewEnvironmentObjects()
 }
 

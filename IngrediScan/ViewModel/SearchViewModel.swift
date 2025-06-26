@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class SearchViewModel: ObservableObject {
+    var fridge: FridgeViewModel?
+    
     let sortCategories: [String] = ["Kalorien","Bewertung","Kochzeit"]
     let difficultyPicker: [String] = ["Einfach","Mittel","Schwierig"]
     
@@ -21,7 +23,7 @@ class SearchViewModel: ObservableObject {
     @Published var searchWithIngredients: Bool = true
     @Published var searchText: String = ""
     
-    func searchRecipes(recipes: [Recipe], fridge: MyFridge) {
+    func searchRecipes(recipes: [Recipe]) {
         
         searchResult = recipes
         
@@ -38,7 +40,7 @@ class SearchViewModel: ObservableObject {
         //filter/ sort by fridge
         if searchWithFridge && searchWithIngredients {
             searchResult = searchResult.filter { recipe in
-                fridge.ingredientsMissing(recipe: recipe) == 0
+                    fridge!.ingredientsMissing(recipe: recipe) == 0
             }
         }
         
@@ -63,7 +65,7 @@ class SearchViewModel: ObservableObject {
         
         if searchWithFridge && !searchWithIngredients {
             searchResult = searchResult.sorted {
-                fridge.ingredientsMissing(recipe: $0) < fridge.ingredientsMissing(recipe: $1)
+                fridge!.ingredientsMissing(recipe: $0) < fridge!.ingredientsMissing(recipe: $1)
             }
         }
         

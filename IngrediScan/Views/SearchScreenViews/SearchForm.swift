@@ -145,6 +145,7 @@ fileprivate struct IngredientOptions: View {
 struct SearchForm: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject private var search: SearchViewModel
+    @EnvironmentObject private var fridge: FridgeViewModel
     @Environment(\.dismiss) private var dismiss
     
     var onButtonPress: () -> Void
@@ -188,7 +189,7 @@ struct SearchForm: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     CircularButton(size: 20, padding: 10, color: .orange, image: "magnifyingglass") {
-                        search.searchRecipes(recipes: viewModel.recipes, fridge: viewModel.fridge)
+                        search.searchRecipes(recipes: viewModel.recipes)
                         onButtonPress()
                         dismiss()
                     }

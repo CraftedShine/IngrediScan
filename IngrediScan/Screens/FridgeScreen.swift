@@ -9,79 +9,45 @@ import SwiftUI
 
 struct FridgeScreen: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var fridgeViewModel: FridgeViewModel
     @EnvironmentObject var viewModel: ViewModel
-    @State private var selectedIngredient: IngredientInFridge?
-    @State private var showIngredientSheet = false
-    @State private var isEditing = false
+    @State private var showForm: Bool = false
+    @State private var isEditing: Bool = false
     
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .bottomTrailing) {
                 VStack {
-                    if(self.viewModel.fridge.getIngredients().isEmpty) {
+                    if(self.fridgeViewModel.items.isEmpty) {
                         Text("Du hast noch keine Zutaten im Kühlschrank.")
                             .font(.callout .bold() .smallCaps())
                             .foregroundStyle(.secondary)
                             .padding(30)
                     }
                     
-                    // List of ingredients formatted in box views
                     ScrollView {
                         VStack {
-                            ForEach(viewModel.fridge.getIngredients()) { ingredient in
-                                IngredientCard(isEditing: $isEditing, ingredient: ingredient, onDelete: {
-                                    viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: ingredient.amount * -1, ingredient: ingredient)
-                                })
-                                .onTapGesture {
-                                    if !isEditing {
-                                        selectedIngredient = ingredient
+                            ForEach($fridgeViewModel.items) { $ingredient in
+                                IngredientCard(item: $ingredient)
+                                    .fullScreenCover(isPresented: $isEditing) {
+                                        ModifyIngredientView(item: ingredient)
                                     }
-                                    isEditing = false
-                                }
+                                    .onTapGesture {
+                                        isEditing.toggle()
+                                    }
                             }
                         }
                     }
+                }
                     
-                    // add button -> opens a ingredient sheet
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            if !isEditing {
-                                showIngredientSheet = true
-                            }
-                            isEditing = false
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .foregroundColor(.orange)
-                                .padding(.trailing, 4)
-                        }
-                        .padding()
-                        .sheet(isPresented: $showIngredientSheet) {
-                            AddIngredientView()
-                                .presentationDragIndicator(.visible)
-                        }
-                        
+                    CircularButton(color: .orange, image: "plus") {
+                        showForm.toggle()
                     }
-                }
-                
-                // overlay view after tapping on an ingredient box
-                if let ingredient = selectedIngredient {
-                    Color.black.opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            selectedIngredient = nil
-                        }
-                    
-                    ModifyIngredientView(
-                        ingredient: ingredient,
-                        onClose: { selectedIngredient = nil }
-                    )
-                }
-            }
-            .onTapGesture {
-                isEditing = false
+                    .sheet(isPresented: $showForm) {
+                        AddIngredientView()
+                            .presentationDragIndicator(.visible)
+                    }
+                    .padding(8)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

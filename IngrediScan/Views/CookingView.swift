@@ -12,6 +12,7 @@ struct CookingView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var timerViewModel: TimerViewModel
     @EnvironmentObject var cookingViewModel: CookingViewModel
+    @EnvironmentObject var fridgeViewModel: FridgeViewModel
     @State var recipe: Recipe
     @State var recipeSteps: [RecipeStep]
     @State var isCooking: Bool = false
@@ -33,7 +34,7 @@ struct CookingView: View {
                 }
                 
                 if isCooking && cookingViewModel.isFinished {
-                    RoundedRectangularButton(title: "Kochen beenden", color: .green) {
+                    RoundedRectangularButton(title: "Kochen beenden", color: .white, backgroundColor: .green) {
                         removeIngredientsFromFridge()
                     }
                 }
@@ -60,9 +61,9 @@ struct CookingView: View {
         
         for usage in ingredientUsage {
             let ingredient = usage.ingredient
-            let ingredientInFridge = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: usage.amount, icon: ingredient.icon, Unit: ingredient.unit)
+            let updatedFridgeItem = FridgeItem(ingredientId: ingredient.id, amount: -usage.amount)
             
-            viewModel.editIngredientInFridge(ingredientId: ingredient.id, amount: -usage.amount, ingredient: ingredientInFridge)
+            fridgeViewModel.modifyItem(updatedFridgeItem)
         }
         self.isCooking = false
     }

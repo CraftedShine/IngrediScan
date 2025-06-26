@@ -11,7 +11,7 @@ struct ShoppingItemForm: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var shoppingListViewModel: ShoppingListViewModel
     @State private var selection: Int = 9
-    @State private var selectedAmount: Int?
+    @State private var selectedAmount: Float?
     @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {

@@ -10,6 +10,7 @@ import SwiftUI
 struct IngredientForm: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var fridgeViewModel: FridgeViewModel
     let ingredient: Ingredient
     @State private var newAmount: String = ""
     
@@ -33,20 +34,13 @@ struct IngredientForm: View {
                 .frame(maxWidth: 40, alignment: .leading)
             
             CircularButton(size: 20, padding: 10, color: .orange, image: "plus") {
-                addToFridge(ingredient: ingredient)
+                if let amount = Float(newAmount) {
+                    fridgeViewModel.addItem(FridgeItem(ingredientId: ingredient.id, amount: amount))
+                }
                 dismiss()
             }
         }
         .padding(6)
-    }
-    
-    func addToFridge(ingredient: Ingredient) {
-        if !newAmount.isEmpty {
-            if let amount = Double(newAmount), amount > 0 {
-                let ingredientToAdd = IngredientInFridge(id: ingredient.id, name: ingredient.name, amount: Float(amount), icon: ingredient.icon, Unit: ingredient.unit)
-                viewModel.editIngredientInFridge(ingredientId: ingredientToAdd.id, amount: Float(amount), ingredient: ingredientToAdd)
-            }
-        }
     }
 }
 

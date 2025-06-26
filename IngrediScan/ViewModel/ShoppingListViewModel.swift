@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class ShoppingListViewModel: ObservableObject {
-    @Published var items: [ShoppingItem] = [ShoppingItem(ingredientId: 9, amount: 10), ShoppingItem(ingredientId: 10, amount: 10)]
+    @Published var items: [ShoppingItem] = []
     
     private let itemsKey = "shopping_items"
     

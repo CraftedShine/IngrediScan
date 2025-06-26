@@ -8,72 +8,61 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-fileprivate struct IngredientImagePlaceholder: View {
-    var body: some View {
-        Image(systemName: "photo")
-            .resizable()
-            .scaledToFit()
-            .aspectRatio(contentMode: .fill)
-            .clipped()
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(.black.opacity(0.4))
-            }
-    }
-}
-
 struct IngredientCard: View {
     @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var fridgeViewModel: FridgeViewModel
     @State private var rotationAngle: Double = 0
-    @Binding var isEditing: Bool
-    let ingredient: IngredientInFridge
-    let onDelete: () -> Void
+    @Binding var item: FridgeItem
+    @State var isEditing: Bool = false
+    @State var showForm: Bool = false
     
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            HStack {
-                if let icon = ingredient.icon {
-                    Text(icon)
-                        .padding(8)
-                        .background(.gray)
-                        .clipShape(Circle())
-                        .padding(.trailing)
+        if let ingredient = viewModel.getIngredient(item.ingredientId) {
+            ZStack(alignment: .topTrailing) {
+                HStack {
+                    if let icon = ingredient.icon {
+                        Text(icon)
+                            .padding(8)
+                            .background(.gray)
+                            .clipShape(Circle())
+                            .padding(.trailing)
+                    }
+                    
+                    Text(ingredient.name)
+                        .font(.headline .smallCaps() .bold())
+                    
+                    Text(String(item.amount))
+                        .font(.subheadline .bold())
+                        .foregroundStyle(.secondary)
+                    
+                    Text(ingredient.unit.name)
+                        .font(.subheadline .bold())
+                        .foregroundStyle(.secondary)
+                    
+                    Spacer()
                 }
+                .onChange(of: isEditing) {
+                    if isEditing {
+                        startWobbleAnimation()
+                    }
+                }
+                .onLongPressGesture {
+                    isEditing.toggle()
+                }
+                .padding()
+                .background(Color(UIColor.secondarySystemBackground))
+                .cornerRadius(16)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
                 
-                Text(ingredient.name)
-                    .font(.headline .smallCaps() .bold())
-                
-                Text(String(ingredient.amount))
-                    .font(.subheadline .bold())
-                    .foregroundStyle(.secondary)
-                
-                Text(ingredient.Unit.name)
-                    .font(.subheadline .bold())
-                    .foregroundStyle(.secondary)
-                
-                Spacer()
-            }
-            .onChange(of: isEditing) {
                 if isEditing {
-                    startWobbleAnimation()
+                    CircularButton(size: 10, padding: 10, color: .red, image: "xmark") {
+                        fridgeViewModel.deleteItem(item)
+                    }
                 }
             }
-            .onLongPressGesture {
-                isEditing.toggle()
-            }
-            .padding()
-            .background(Color(UIColor.secondarySystemBackground))
-            .cornerRadius(16)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
-            
-            if isEditing {
-                CircularButton(size: 10, padding: 10, color: .red, image: "xmark") {
-                    onDelete()
-                }
-            }
+            .rotationEffect(.degrees(rotationAngle))
         }
-        .rotationEffect(.degrees(rotationAngle))
     }
     
     private func startWobbleAnimation() {
@@ -92,16 +81,8 @@ struct IngredientCard: View {
 }
 
 #Preview {
-    @Previewable @State var isEditing = false
-    let ingredient = MockIngredients().ingredients.first!
-    let ingredientInFridge: IngredientInFridge = .init(id: ingredient.id, name: ingredient.name, amount: 1, icon: "🥚", Unit: Unit(id: 1, name: "Stk"))
-    
     VStack {
-        IngredientCard(
-            isEditing: $isEditing,
-            ingredient: ingredientInFridge,
-            onDelete: {}
-        )
+        IngredientCard(item: .constant(FridgeItem(ingredientId: 9, amount: 100)))
     }
     .withPreviewEnvironmentObjects()
 }
