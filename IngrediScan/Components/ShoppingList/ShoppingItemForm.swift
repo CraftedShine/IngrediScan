@@ -10,7 +10,7 @@ import SwiftUI
 struct ShoppingItemForm: View {
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var shoppingListViewModel: ShoppingListViewModel
-    @State private var selection: Int = 1
+    @State private var selection: Int = 9
     @State private var selectedAmount: Int?
     @FocusState private var isTextFieldFocused: Bool
     

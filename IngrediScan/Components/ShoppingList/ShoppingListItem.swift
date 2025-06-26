@@ -35,18 +35,9 @@ struct ShoppingListItem: View {
                     .foregroundStyle(.secondary)
                 
                 Spacer()
-                
-                //MARK: Toggle Item
-                CircularButton(size: 20, padding: 10, color: item.isBought ? .red : .green, image: item.isBought ? "xmark" : "checkmark") {
-                    shoppingListViewModel.toggleItem(item)
-                }
-                
-                //MARK: Delete Item
-                if item.isBought {
-                    CircularButton(size: 20, padding: 10, color: item.isBought ? .red : .green, image: "trash") {
-                        shoppingListViewModel.deleteItem(item)
-                    }
-                }
+            }
+            .onTapGesture {
+                shoppingListViewModel.toggleItem(item)
             }
             .padding()
             .background(Color(UIColor.secondarySystemBackground))
@@ -55,7 +46,8 @@ struct ShoppingListItem: View {
             .padding(.horizontal)
             .overlay {
                 if item.isBought {
-                    ZStack {
+                    ZStack(alignment: .trailing) {
+                        
                         RoundedRectangle(cornerRadius: 16)
                             .opacity(0.3)
                             .padding(.horizontal)
@@ -64,6 +56,11 @@ struct ShoppingListItem: View {
                             .fill(Color.black.opacity(0.5))
                             .frame(height: 2)
                             .padding(.horizontal, 8)
+                        
+                        CircularButton(size: 20, padding: 10, color: item.isBought ? .red.opacity(0.8) : .green, image: "trash") {
+                            shoppingListViewModel.deleteItem(item)
+                        }
+                        .padding(.horizontal, 32)
                     }
                 }
             }
