@@ -13,8 +13,7 @@ struct IngredientCard: View {
     @EnvironmentObject private var fridgeViewModel: FridgeViewModel
     @State private var rotationAngle: Double = 0
     @Binding var item: FridgeItem
-    @State var isEditing: Bool = false
-    @State var showForm: Bool = false
+    @Binding var isEditing: Bool
     
     var body: some View {
         if let ingredient = viewModel.getIngredient(item.ingredientId) {
@@ -46,14 +45,14 @@ struct IngredientCard: View {
                         startWobbleAnimation()
                     }
                 }
-                .onLongPressGesture {
-                    isEditing.toggle()
-                }
                 .padding()
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(16)
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
+                .onLongPressGesture(minimumDuration: 0.2) {
+                    isEditing.toggle()
+                }
                 
                 if isEditing {
                     CircularButton(size: 10, padding: 10, color: .red, image: "xmark") {
@@ -82,7 +81,7 @@ struct IngredientCard: View {
 
 #Preview {
     VStack {
-        IngredientCard(item: .constant(FridgeItem(ingredientId: 9, amount: 100)))
+        IngredientCard(item: .constant(FridgeItem(ingredientId: 9, amount: 100)), isEditing: .constant(true))
     }
     .withPreviewEnvironmentObjects()
 }

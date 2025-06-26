@@ -13,6 +13,7 @@ struct FridgeScreen: View {
     @EnvironmentObject var viewModel: ViewModel
     @State private var showForm: Bool = false
     @State private var isEditing: Bool = false
+    @State private var modifyForm: Bool = false
     
     var body: some View {
         NavigationView {
@@ -28,16 +29,19 @@ struct FridgeScreen: View {
                     ScrollView {
                         VStack {
                             ForEach($fridgeViewModel.items) { $ingredient in
-                                IngredientCard(item: $ingredient)
-                                    .fullScreenCover(isPresented: $isEditing) {
+                                IngredientCard(item: $ingredient, isEditing: $isEditing)
+                                    .fullScreenCover(isPresented: $modifyForm) {
                                         ModifyIngredientView(item: ingredient)
                                     }
                                     .onTapGesture {
-                                        isEditing.toggle()
+                                        modifyForm.toggle()
                                     }
                             }
                         }
                     }
+                }
+                .onTapGesture {
+                    isEditing = false
                 }
                     
                     CircularButton(color: .orange, image: "plus") {

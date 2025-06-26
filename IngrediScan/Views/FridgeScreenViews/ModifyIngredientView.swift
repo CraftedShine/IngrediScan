@@ -39,7 +39,6 @@ struct ModifyIngredientView: View {
                     RoundedRectangularButton(title: "Speichern", color: .white, backgroundColor: .green) {
                         if let amount = Float(newAmount) {
                             let newItem = FridgeItem(ingredientId: ingredient.id, amount: amount)
-                            
                             fridgeViewModel.modifyItem(newItem)
                         }
                         dismiss()

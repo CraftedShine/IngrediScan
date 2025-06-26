@@ -61,9 +61,17 @@ struct ShoppingListItem: View {
                         CircularButton(size: 20, padding: 10, color: item.isBought ? .red.opacity(0.8) : .green, image: "trash") {
                             let newItem = FridgeItem(ingredientId: ingredient.id, amount: item.amount)
                             
-                            fridgeViewModel.addItem(newItem)
-                            
-                            
+                            if !fridgeViewModel.items.contains(where: { $0.ingredientId == newItem.ingredientId }) {
+                                fridgeViewModel.addItem(newItem)
+                            } else {
+                                if var existing = fridgeViewModel.items.first(where: { $0.ingredientId == ingredient.id }) {
+                                    
+                                    existing.amount += newItem.amount
+                                    
+                                    fridgeViewModel.modifyItem(existing)
+                                }
+                            }
+
                             shoppingListViewModel.deleteItem(item)
                         }
                         .padding(.horizontal, 32)

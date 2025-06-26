@@ -8,7 +8,7 @@
 import SwiftUI
 
 class FridgeViewModel: ObservableObject {
-    @Published var items: [FridgeItem] = []
+    @Published var items: [FridgeItem] = [FridgeItem(ingredientId: 9, amount: 10), FridgeItem(ingredientId: 10, amount: 10)]
     
     private let itemsKey = "fridgeIngredientsKeys"
     
@@ -27,12 +27,7 @@ class FridgeViewModel: ObservableObject {
     
     func modifyItem(_ item: FridgeItem) {
         if let index = items.firstIndex(where: { $0.ingredientId == item.ingredientId}) {
-            let result: Float = (items[index].amount + item.amount)
-            if result < 0 {
-                items[index].amount = 0
-            } else {
-                items[index].amount = result
-            }
+            items[index].amount = item.amount
         }
         
         saveItems()
