@@ -61,7 +61,7 @@ struct InlineTimerView: View {
         .padding()
         .background(Color(uiColor: UIColor.secondarySystemFill))
         .clipShape(RoundedRectangle(cornerRadius: 16))
-        .frame(width: .infinity)
+        .frame(maxWidth: .infinity)
     }
     
     var isRunning: Bool {

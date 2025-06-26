@@ -59,14 +59,14 @@ struct Ingredient: Decodable, Hashable, Identifiable {
     let id: Int
     let name: String
     let unitId: Int
-    let imageUrl: String?
+    let icon: String?
     let unit: Unit
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case unitId
-        case imageUrl
+        case icon
         case unit
     }
 }

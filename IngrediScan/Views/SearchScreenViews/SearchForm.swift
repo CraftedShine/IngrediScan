@@ -44,7 +44,7 @@ fileprivate struct FilterOptions: View {
                     }
                 }
             }
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -79,7 +79,7 @@ fileprivate struct SortOptions: View {
                     }
                 }
             }
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -136,7 +136,7 @@ fileprivate struct IngredientOptions: View {
                         search.searchWithIngredients = false
                     }
                 }
-                .frame(width: .infinity)
+                .frame(maxWidth: .infinity)
             }
         }
     }

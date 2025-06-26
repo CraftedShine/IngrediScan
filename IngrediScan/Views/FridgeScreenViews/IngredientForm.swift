@@ -51,7 +51,7 @@ struct IngredientForm: View {
 }
 
 #Preview {
-    IngredientForm(ingredient: Ingredient(id: 1, name: "Test", unitId: 1, imageUrl: "eier", unit: Unit(id: 1, name: "Stk")))
+    IngredientForm(ingredient: Ingredient(id: 1, name: "Eier", unitId: 1, icon: "🥚", unit: Unit(id: 1, name: "Stk")))
         .withPreviewEnvironmentObjects()
 }
 

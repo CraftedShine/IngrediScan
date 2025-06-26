@@ -15,11 +15,13 @@ struct ShoppingListItem: View {
     var body: some View {
         if let ingredient = viewModel.getIngredient(item.ingredientId) {
             HStack {
-                Image(systemName: "cart")
-                    .padding(8)
-                    .background(.gray)
-                    .clipShape(Circle())
-                    .padding(.trailing)
+                if let icon = ingredient.icon {
+                    Text(icon)
+                        .padding(8)
+                        .background(.gray)
+                        .clipShape(Circle())
+                        .padding(.trailing)
+                }
                 
                 Text(ingredient.name)
                     .font(.headline .smallCaps() .bold())
