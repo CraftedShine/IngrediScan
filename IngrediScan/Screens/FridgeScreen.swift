@@ -31,7 +31,7 @@ struct FridgeScreen: View {
                             ForEach($fridgeViewModel.items) { $ingredient in
                                 IngredientCard(item: $ingredient, isEditing: $isEditing)
                                     .fullScreenCover(isPresented: $modifyForm) {
-                                        ModifyIngredientView(item: ingredient)
+                                        ModifyIngredientView(item: $ingredient)
                                     }
                                     .onTapGesture {
                                         modifyForm.toggle()

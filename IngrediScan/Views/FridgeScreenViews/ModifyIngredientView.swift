@@ -12,7 +12,7 @@ struct ModifyIngredientView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var fridgeViewModel: FridgeViewModel
-    let item: FridgeItem
+    @Binding var item: FridgeItem
     
     @State private var newAmount: String = ""
     
@@ -60,7 +60,7 @@ struct ModifyIngredientView: View {
 }
 
 #Preview {
-    ModifyIngredientView(item: FridgeItem(ingredientId: 9, amount: 10))
+    ModifyIngredientView(item: .constant(FridgeItem(ingredientId: 9, amount: 10)))
         .withPreviewEnvironmentObjects()
 }
 
