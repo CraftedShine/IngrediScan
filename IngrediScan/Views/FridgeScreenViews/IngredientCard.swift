@@ -14,6 +14,7 @@ struct IngredientCard: View {
     @State private var rotationAngle: Double = 0
     @Binding var item: FridgeItem
     @Binding var isEditing: Bool
+    @State var modifyForm: Bool = false
     
     var body: some View {
         if let ingredient = viewModel.getIngredient(item.ingredientId) {
@@ -61,6 +62,12 @@ struct IngredientCard: View {
                 }
             }
             .rotationEffect(.degrees(rotationAngle))
+            .onTapGesture {
+                modifyForm.toggle()
+            }
+            .fullScreenCover(isPresented: $modifyForm) {
+                ModifyIngredientView(item: $item)
+            }
         }
     }
     
