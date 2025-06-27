@@ -20,7 +20,9 @@ class FridgeViewModel: ObservableObject {
         if !items.contains(where: { $0.ingredientId == item.ingredientId }) {
             items.append(item)
         } else {
-            modifyItem(item)
+            if let index = items.firstIndex(where: { $0.ingredientId == item.ingredientId}) {
+                items[index].amount += item.amount
+            }
         }
         saveItems()
     }
